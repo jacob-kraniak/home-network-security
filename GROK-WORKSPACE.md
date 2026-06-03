@@ -33,9 +33,24 @@ This repository documents the transition from consumer-grade networking to a sec
 - Always maintain privacy: Sanitize MACs, IPs, and personal details in committed files.
 - Use redacted summaries alongside raw data (raw data should be gitignored where possible).
 - Follow existing folder structure.
-- When suggesting changes, provide full file content in markdown blocks.
+- When suggesting changes (especially when handing off from Grok Chat to Grok Build), provide full file content in markdown blocks. See the "Parallel Workflow" section below for the required hand-off format.
 - Cross-reference privacy-migration-docs where relevant.
 - Track progress against the 4 parallel tracks: Privacy Migration, Software Migrations, Cybersecurity Education, Network Rack Build-out.
+
+## Parallel Workflow: Grok Chat/Project Space vs. Grok Build
+
+- **Grok Chat / project space** is used for ideation, research, brainstorming, and high-level planning. This is where ideas are explored, options are researched, and decisions are drafted.
+- **Grok Build** is the implementation layer. It directly edits files in the GitHub repository, creates commits, opens issues, updates documentation, and executes concrete changes in the codebase.
+- **Clear separation of concerns**: Use Grok Chat for thinking and drafting. Use Grok Build to turn those drafts into actual repository changes.
+- **Hand-off rule**: Grok Chat should **always** present any input, instructions, or content destined for Grok Build in a cleanly formatted markdown block (using triple backticks with `markdown` or plain ```) that can be easily copied and pasted. This ensures a smooth, reliable hand-off between the two environments.
+
+Example hand-off block (to be pasted into Grok Build):
+
+```markdown
+[Full instructions, file contents, or structured tasks here]
+```
+
+This workflow keeps research fluid in chat while ensuring precise, auditable implementation in the repo.
 
 ## GitHub Project Integration
 
@@ -55,4 +70,4 @@ Main Project Board: https://github.com/users/jacob-kraniak/projects/1 (Privacy M
 
 This ensures all network activities roll up into the master Privacy Migration roadmap.
 
-Last Updated: 2026-06-04
+Last Updated: 2026-06-05
