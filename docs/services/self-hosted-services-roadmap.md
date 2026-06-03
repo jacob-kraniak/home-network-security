@@ -1,5 +1,7 @@
 # Self-Hosted Services Research & Roadmap Documentation
 
+> **High-level phases**: See the top-level [docs/ROADMAP.md](../ROADMAP.md) for the revised project roadmap (Phase 1-3 overview). This file contains the detailed research and decision logs.
+
 **Project:** Home Network Security & Self-Hosted Infrastructure  
 **Status:** Open Decisions | Aligned with Project Planner Goals (Security, Privacy, Reliability, Scalability)  
 **Date:** June 2026  
