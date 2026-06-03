@@ -28,11 +28,6 @@ This repository is for tracking and versioning the security posture, scans, diag
 - Services Host: Dell OptiPlex 7060 Micro (i7-8700T, 32GB RAM, 1TB NVMe) – Proxmox target
 - Future: Dedicated OPNsense router + Aoostar WTR Pro hybrid NAS/services
 
-## Current Status
-- Device inventory in progress (35+ hosts discovered via Nmap)
-- IoT risk register documented
-- Preparing for VLAN segmentation and rack build-out
-
 ## Key Documents
 - [IoT Devices & Risk Plan](docs/inventory/iot-devices.md)
 - [Grok Workspace Instructions](GROK-WORKSPACE.md)
