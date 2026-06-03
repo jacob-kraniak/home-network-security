@@ -17,7 +17,7 @@ This repository is for tracking and versioning the security posture, scans, diag
 ## Key Documents
 - [IoT Devices & Risk Plan](docs/inventory/iot-devices.md)
 - [Grok Workspace Instructions](GROK-WORKSPACE.md)
-- [Self-Hosted Services Research & Roadmap](docs/roadmap/self-hosted-services-roadmap.md)
+- [Self-Hosted Services Research & Roadmap](docs/services/self-hosted-services-roadmap.md)
 - Diagrams: `docs/diagrams/`
 
 ## Parallel Tracks
@@ -33,7 +33,7 @@ This repo supports the main Privacy Migration project. See [privacy-migration-do
     ├── inventory/     # Nmap XMLs, device lists, host inventories (see .gitignore)
     ├── diagrams/      # Draw.io / diagrams.net network topology diagrams
     ├── hardware/      # Rack measurements, infrastructure criteria
-    └── roadmap/       # Self-hosted services roadmap, future planning docs
+    └── services/      # Self-hosted services roadmap & research (OS, virtualization, key apps)
 ```
 
 ### docs/inventory/
