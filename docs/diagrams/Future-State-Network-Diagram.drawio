@@ -1,171 +1,120 @@
-<mxfile host="app.diagrams.net" modified="2026-06-04T15:10:00.000Z" agent="Grok-4.3" version="24.0.0" etag="future-state-revised">
-  <diagram name="Future-State Home Network Topology" id="future-state-revised">
-    <mxGraphModel dx="1424" dy="842" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1680" pageHeight="1050" math="0" shadow="0">
+<mxfile host="app.diagrams.net">
+  <diagram name="Future-State Home Network Topology" id="VYEXW0rNY10q_rIyr2fQ">
+    <mxGraphModel dx="1512" dy="592" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-
-        <!-- Title -->
-        <mxCell id="title" value="Future-State Home Network Topology" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="500" y="10" width="600" height="40" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=24;fontStyle=1;" value="Future-State Home Network Topology" vertex="1">
+          <mxGeometry height="40" width="600" x="540" y="50" as="geometry" />
         </mxCell>
-
-        <!-- Legend -->
-        <mxCell id="legend-box" value="Legend &amp; VLAN Color Code" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;" vertex="1" parent="1">
-          <mxGeometry x="20" y="20" width="220" height="160" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;align=center;verticalAlign=top;fontStyle=1" value="Legend &amp;amp; VLAN Color Code" vertex="1">
+          <mxGeometry height="160" width="220" x="60" y="60" as="geometry" />
         </mxCell>
-        <mxCell id="legend-green" value="Green: Trusted (VLAN 10) - PCs, Phones, Trusted Devices" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="30" y="45" width="200" height="20" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" value="Green: Trusted (VLAN 10) - PCs, Phones, Trusted Devices" vertex="1">
+          <mxGeometry height="20" width="200" x="70" y="85" as="geometry" />
         </mxCell>
-        <mxCell id="legend-red" value="Red: IoT (VLAN 20) - Kasa, Ring, Nest, Cameras" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="30" y="70" width="200" height="20" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-4" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" value="Red: IoT (VLAN 20) - Kasa, Ring, Nest, Cameras" vertex="1">
+          <mxGeometry height="20" width="200" x="70" y="110" as="geometry" />
         </mxCell>
-        <mxCell id="legend-yellow" value="Yellow: Guest (VLAN 30) - Visitors, BYOD" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="30" y="95" width="200" height="20" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-5" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" value="Yellow: Guest (VLAN 30) - Visitors, BYOD" vertex="1">
+          <mxGeometry height="20" width="200" x="70" y="135" as="geometry" />
         </mxCell>
-        <mxCell id="legend-blue" value="Blue: Work (VLAN 40) - Work Laptops, Office" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" vertex="1" parent="1">
-          <mxGeometry x="30" y="120" width="200" height="20" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-6" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;" value="Blue: Work (VLAN 40) - Work Laptops, Office" vertex="1">
+          <mxGeometry height="20" width="200" x="70" y="160" as="geometry" />
         </mxCell>
-        <mxCell id="legend-note" value="Dashed lines = Cable paths (Fiber/CAT6)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="30" y="145" width="200" height="20" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-7" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;" value="Dashed lines = Cable paths (Fiber/CAT6)" vertex="1">
+          <mxGeometry height="20" width="200" x="70" y="185" as="geometry" />
         </mxCell>
-
-        <!-- Notes Box - Updated -->
-        <mxCell id="notes-box" value="Notes&#10;- Centralized Basement Core - Minimal upstairs hardware&#10;- Starlink as WAN2 failover (future)&#10;- Wazuh for asset monitoring + vulnerability scanning&#10;- All IoT strictly isolated (egress-only)&#10;- Layers: 1. Current State (faded) 2. Future Rack Layout 3. Logical VLAN Flow&#10;- Fiber from outside → Basement Rack (FIOS ONT)&#10;- All LAN originates from Managed Switch → Patch Panel → drops&#10;- Archer A7 repurposed as additional WAP (AP Mode)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#FBC02D;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="1280" y="20" width="300" height="160" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF9C4;strokeColor=#FBC02D;fontSize=9;" value="Notes&#xa;- Centralized Basement Core - Minimal upstairs hardware&#xa;- Starlink as WAN2 failover (future)&#xa;- Wazuh for asset monitoring + vulnerability scanning&#xa;- All IoT strictly isolated (egress-only)&#xa;- Layers: 1. Current State (faded) 2. Future Rack Layout 3. Logical VLAN Flow&#xa;- Fiber from outside → Basement Rack (FIOS ONT)&#xa;- All LAN originates from Managed Switch → Patch Panel → drops&#xa;- Archer A7 repurposed as additional WAP (AP Mode)&#xa;- pfSense/OPNsense: 4+ NICs (WAN1 FIOS from ONT, WAN2 Starlink, LAN trunk)" vertex="1">
+          <mxGeometry height="140" width="300" x="1320" y="60" as="geometry" />
         </mxCell>
-
-        <!-- Upstairs Living Room Layer -->
-        <mxCell id="upstairs-layer" value="UPSTAIRS LIVING ROOM (Current Devices - Minimal)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;fontSize=12;fontStyle=1;opacity=80;" vertex="1" parent="1">
-          <mxGeometry x="300" y="80" width="900" height="180" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1976D2;fontSize=12;fontStyle=1;opacity=80;align=right;verticalAlign=top;" value="UPSTAIRS LIVING ROOM (Current Devices - Minimal)" vertex="1">
+          <mxGeometry height="180" width="900" x="340" y="120" as="geometry" />
         </mxCell>
-
-        <!-- Upstairs Devices - Updated: Ring with note, Archer A7, no old router, no ONT -->
-        <mxCell id="upstairs-devices" value="Upstairs Devices (Current)&#10;&#10;• Ring Base Station (Doorbell Cam, Floodlight)&#10;  Kept upstairs for armed status light visibility&#10;• TP-Link Kasa (12x: Switches + Plugs)&#10;• Google Nest (Hub, Thermostat, Minis, Speaker)&#10;• TP-Link Archer A7 (AP Mode) - repurposed as additional WAP&#10;&#10;All wireless via WAPs; wired drops to basement core" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="320" y="100" width="320" height="150" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B0BEC5;strokeColor=#37474F;fontSize=9;" value="Verizon FIOS ONT&#xa;(Moved to Basement Rack - shelf/bracket)&#xa;&#xa;Fiber from outside → ONT&#xa;Ethernet → Firewall WAN1" vertex="1">
+          <mxGeometry height="60" width="140" x="380" y="355" as="geometry" />
         </mxCell>
-
-        <!-- Basement WAP note -->
-        <mxCell id="upstairs-wap-note" value="TP-Link Omada / UniFi WAP (wired backhaul from basement)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="850" y="200" width="180" height="30" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCDD2;strokeColor=#C62828;fontSize=9;" value="Upstairs Devices (Current)&#xa;&#xa;• Ring Base Station (Doorbell Cam, Floodlight)&#xa;  Kept upstairs for armed status light visibility&#xa;• TP-Link Kasa (12x: Switches + Plugs)&#xa;• Google Nest (Hub, Thermostat, Minis, Speaker)&#xa;• TP-Link Archer A7 (AP Mode) - repurposed as additional WAP&#xa;&#xa;All wireless via WAPs; wired drops to basement core" vertex="1">
+          <mxGeometry height="140" width="280" x="560" y="140" as="geometry" />
         </mxCell>
-
-        <!-- Basement Rack Layer -->
-        <mxCell id="basement-layer" value="BASEMENT RISER / TABLE + 12U RACK (Centralized Core)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=12;fontStyle=1;opacity=90;" vertex="1" parent="1">
-          <mxGeometry x="300" y="280" width="900" height="420" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-12" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" value="TP-Link Omada / UniFi WAP (wired backhaul)" vertex="1">
+          <mxGeometry height="30" width="180" x="890" y="240" as="geometry" />
         </mxCell>
-
-        <!-- Patch Panel -->
-        <mxCell id="patch-panel" value="Patch Panel&#10;(Top of Rack)&#10;CAT6 terminations from house drops" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFECB3;strokeColor=#FF8F00;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="340" y="300" width="120" height="55" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#2E7D32;fontSize=12;fontStyle=1;opacity=90;align=right;verticalAlign=top;" value="BASEMENT RISER / TABLE + 12U RACK (Centralized Core)" vertex="1">
+          <mxGeometry height="420" width="900" x="340" y="320" as="geometry" />
         </mxCell>
-
-        <!-- FIOS ONT now in Basement Rack -->
-        <mxCell id="ont-basement" value="Verizon FIOS ONT&#10;(Moved to Basement Rack - shelf/bracket)&#10;&#10;Fiber from outside → ONT&#10;Ethernet → Firewall WAN1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B0BEC5;strokeColor=#37474F;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="340" y="360" width="140" height="70" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFECB3;strokeColor=#FF8F00;fontSize=9;" value="Patch Panel&#xa;(Top of Rack)&#xa;CAT6 terminations" vertex="1">
+          <mxGeometry height="60" width="120" x="380" y="340" as="geometry" />
         </mxCell>
-
-        <!-- Main Firewall -->
-        <mxCell id="firewall" value="pfSense / OPNsense&#10;Mini-PC (Primary Host)&#10;4+ NICs&#10;&#10;WAN1: FIOS (from ONT)&#10;WAN2: Starlink (future)&#10;LAN: Trunk → Managed Switch&#10;(VLANs 10,20,30,40)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="500" y="300" width="160" height="110" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-15" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;fontSize=9;" value="pfSense / OPNsense&#xa;Mini-PC (Primary Host)&#xa;4+ NICs&#xa;&#xa;WAN1: Verizon Fiber&#xa;WAN2: Starlink (future)&#xa;LAN: Trunk → Managed Switch&#xa;(VLANs 10,20,30,40)" vertex="1">
+          <mxGeometry height="110" width="160" x="380" y="420" as="geometry" />
         </mxCell>
-
-        <!-- Managed Switch -->
-        <mxCell id="switch" value="Managed Switch&#10;(VLAN Capable)&#10;Replaces Cisco SG100-16&#10;&#10;Trunk from Firewall&#10;Access ports by VLAN&#10;All LAN originates here → Patch Panel" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="680" y="300" width="150" height="90" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-16" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#C8E6C9;strokeColor=#2E7D32;fontSize=9;" value="Managed Switch&#xa;(VLAN Capable)&#xa;Replaces Cisco SG100-16&#xa;&#xa;Trunk from Firewall&#xa;Access ports by VLAN" vertex="1">
+          <mxGeometry height="90" width="150" x="560" y="420" as="geometry" />
         </mxCell>
-
-        <!-- Proxmox Server -->
-        <mxCell id="proxmox" value="Proxmox Server&#10;(Mini-PC / SFF)&#10;&#10;• Wazuh (monitoring + vuln scan)&#10;• Home Assistant&#10;• Frigate (NVR)&#10;• Other VMs/LXCs" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1C4E9;strokeColor=#512DA8;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="340" y="440" width="150" height="100" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-17" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#D1C4E9;strokeColor=#512DA8;fontSize=9;" value="Proxmox Server&#xa;(Mini-PC / SFF)&#xa;&#xa;• Wazuh (monitoring + vuln scan)&#xa;• Home Assistant&#xa;• Frigate (NVR)&#xa;• Other VMs/LXCs" vertex="1">
+          <mxGeometry height="100" width="150" x="750" y="415" as="geometry" />
         </mxCell>
-
-        <!-- UPS -->
-        <mxCell id="ups" value="UPS&#10;(Battery Backup)&#10;All critical gear" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#D84315;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="510" y="440" width="100" height="60" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-18" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFCCBC;strokeColor=#D84315;fontSize=9;" value="UPS&#xa;(Battery Backup)&#xa;All critical gear" vertex="1">
+          <mxGeometry height="60" width="100" x="920" y="420" as="geometry" />
         </mxCell>
-
-        <!-- Basement WAP -->
-        <mxCell id="basement-wap" value="TP-Link Omada / UniFi WAP&#10;Basement coverage" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00695C;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="680" y="440" width="100" height="50" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-19" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00695C;fontSize=8;" value="TP-Link Omada / UniFi WAP&#xa;Basement coverage" vertex="1">
+          <mxGeometry height="50" width="100" x="920" y="500" as="geometry" />
         </mxCell>
-
-        <!-- Rack Structure Note -->
-        <mxCell id="rack-note" value="12U Rack on Sturdy Table/Riser | Top → Bottom: Patch Panel | FIOS ONT | Firewall | Switch | Proxmox | UPS | WAP" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=2;" vertex="1" parent="1">
-          <mxGeometry x="340" y="550" width="640" height="30" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-20" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=2;" value="12U Rack on Sturdy Table/Riser&#xa;Top → Bottom: Patch Panel | FIOS ONT | Firewall | Switch | Proxmox | UPS" vertex="1">
+          <mxGeometry height="30" width="640" x="380" y="550" as="geometry" />
         </mxCell>
-
-        <!-- Home Office Layer -->
-        <mxCell id="office-layer" value="HOME OFFICE (Opposite Side of House)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=12;fontStyle=1;opacity=80;" vertex="1" parent="1">
-          <mxGeometry x="300" y="720" width="900" height="140" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFF3E0;strokeColor=#E65100;fontSize=12;fontStyle=1;opacity=80;align=right;verticalAlign=top;" value="HOME OFFICE (Opposite Side of House)" vertex="1">
+          <mxGeometry height="140" width="900" x="340" y="760" as="geometry" />
         </mxCell>
-
-        <mxCell id="office-switch" value="Existing 5-port Switch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFECB3;strokeColor=#FF8F00;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="340" y="740" width="130" height="40" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-22" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFECB3;strokeColor=#FF8F00;fontSize=9;" value="Existing 5-port Switch" vertex="1">
+          <mxGeometry height="40" width="130" x="380" y="780" as="geometry" />
         </mxCell>
-
-        <mxCell id="office-devices" value="Home Office Devices&#10;• Jacob's Desktop (Trusted)&#10;• Work Laptop (Work VLAN)&#10;• Other office gear" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="500" y="740" width="180" height="70" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-23" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#1565C0;fontSize=9;" value="Home Office Devices&#xa;• Jacob&#39;s Desktop (Trusted)&#xa;• Work Laptop (Work VLAN)&#xa;• Other office gear" vertex="1">
+          <mxGeometry height="70" width="180" x="540" y="780" as="geometry" />
         </mxCell>
-
-        <mxCell id="office-wap" value="TP-Link Omada WAP&#10;(Wired back to Basement Rack)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00695C;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="720" y="750" width="140" height="50" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-24" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B2DFDB;strokeColor=#00695C;fontSize=8;" value="TP-Link Omada WAP&#xa;(Wired back to Basement Rack)" vertex="1">
+          <mxGeometry height="50" width="140" x="760" y="790" as="geometry" />
         </mxCell>
-
-        <!-- Updated Cable Paths -->
-        <!-- Fiber from outside to Basement ONT (dashed) -->
-        <mxCell id="fiber-conn" value="Fiber (LC) from outside → Basement Rack (FIOS ONT in U3)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#455A64;strokeWidth=2;" edge="1" parent="1" source="ont-basement" target="ont-basement">
+        <mxCell id="z0eYjY46S8jfoElOQu6q-25" edge="1" parent="1" source="z0eYjY46S8jfoElOQu6q-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#455A64;strokeWidth=2;" target="z0eYjY46S8jfoElOQu6q-15" value="Fiber (LC) from outside → Basement Rack (FIOS ONT)">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- LAN from Switch to Patch Panel (solid, all LAN originates here) -->
-        <mxCell id="trunk-lan" value="LAN Trunk (VLANs 10/20/30/40) - All LAN originates from Managed Switch → Patch Panel" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565C0;strokeWidth=3;" edge="1" parent="1" source="switch" target="patch-panel">
+        <mxCell id="z0eYjY46S8jfoElOQu6q-26" edge="1" parent="1" source="z0eYjY46S8jfoElOQu6q-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#1565C0;strokeWidth=3;" target="z0eYjY46S8jfoElOQu6q-16" value="LAN Trunk (VLANs 10/20/30/40) - All LAN originates from Managed Switch → Patch Panel → drops">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Switch to Proxmox -->
-        <mxCell id="switch-proxmox" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#512DA8;" edge="1" parent="1" source="switch" target="proxmox">
+        <mxCell id="z0eYjY46S8jfoElOQu6q-27" edge="1" parent="1" source="z0eYjY46S8jfoElOQu6q-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#512DA8;" target="z0eYjY46S8jfoElOQu6q-17" value="">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Switch to Office (via Patch Panel and existing CAT6) -->
-        <mxCell id="basement-to-office" value="CAT6 Ethernet runs across basement + existing drops (from Patch Panel)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#455A64;strokeWidth=2;" edge="1" parent="1" source="patch-panel" target="office-switch">
+        <mxCell id="z0eYjY46S8jfoElOQu6q-28" edge="1" parent="1" source="z0eYjY46S8jfoElOQu6q-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#455A64;strokeWidth=2;" target="z0eYjY46S8jfoElOQu6q-22" value="CAT6 Ethernet runs across basement + existing drops">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- Upstairs WAP backhaul (dashed) -->
-        <mxCell id="upstairs-wap-backhaul" value="WAP backhaul to basement core" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#00695C;" edge="1" parent="1" source="upstairs-wap-note" target="switch">
+        <mxCell id="z0eYjY46S8jfoElOQu6q-29" edge="1" parent="1" source="z0eYjY46S8jfoElOQu6q-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#455A64;strokeWidth=1;" target="z0eYjY46S8jfoElOQu6q-14" value="Existing CAT6 drop (temporary)">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- VLAN Flow -->
-        <mxCell id="vlan-flow-label" value="Logical VLAN Flow (from Basement Managed Switch → Patch Panel → drops)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2;" vertex="1" parent="1">
-          <mxGeometry x="340" y="560" width="400" height="20" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-30" edge="1" parent="1" source="z0eYjY46S8jfoElOQu6q-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#00695C;" target="z0eYjY46S8jfoElOQu6q-16" value="">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <mxCell id="vlan10-trusted" value="VLAN 10 Trusted (Green)" style="text;html=1;strokeColor=#4CAF50;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="340" y="580" width="140" height="15" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-31" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2;" value="Logical VLAN Flow (from Firewall/Switch)" vertex="1">
+          <mxGeometry height="20" width="300" x="310" y="635" as="geometry" />
         </mxCell>
-        <mxCell id="vlan20-iot" value="VLAN 20 IoT (Red)" style="text;html=1;strokeColor=#E53935;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="340" y="595" width="140" height="15" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-32" parent="1" style="text;html=1;strokeColor=#4CAF50;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" value="VLAN 10 Trusted (Green)" vertex="1">
+          <mxGeometry height="15" width="140" x="570" y="610" as="geometry" />
         </mxCell>
-        <mxCell id="vlan30-guest" value="VLAN 30 Guest (Yellow)" style="text;html=1;strokeColor=#FDD835;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="340" y="610" width="140" height="15" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-33" parent="1" style="text;html=1;strokeColor=#E53935;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" value="VLAN 20 IoT (Red)" vertex="1">
+          <mxGeometry height="15" width="140" x="570" y="625" as="geometry" />
         </mxCell>
-        <mxCell id="vlan40-work" value="VLAN 40 Work (Blue)" style="text;html=1;strokeColor=#1E88E5;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="340" y="625" width="140" height="15" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-34" parent="1" style="text;html=1;strokeColor=#FDD835;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" value="VLAN 30 Guest (Yellow)" vertex="1">
+          <mxGeometry height="15" width="140" x="570" y="640" as="geometry" />
         </mxCell>
-
-        <!-- Current State Faded Note -->
-        <mxCell id="current-state-note" value="LAYER 1: Current State (faded background elements represent pre-migration - e.g. ONT upstairs, temporary router)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontStyle=2;opacity=50;" vertex="1" parent="1">
-          <mxGeometry x="300" y="860" width="900" height="20" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-35" parent="1" style="text;html=1;strokeColor=#1E88E5;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;" value="VLAN 40 Work (Blue)" vertex="1">
+          <mxGeometry height="15" width="140" x="570" y="655" as="geometry" />
         </mxCell>
-
-        <!-- Footer -->
-        <mxCell id="footer" value="Open in diagrams.net / draw.io to edit. Add images, precise shapes, and additional detail as build progresses. | Centralized Basement Core | Created as revised structure 2026-06-04" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;color=#666;" vertex="1" parent="1">
-          <mxGeometry x="300" y="890" width="900" height="20" as="geometry" />
+        <mxCell id="z0eYjY46S8jfoElOQu6q-36" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontStyle=2;opacity=50;" value="LAYER 1: Current State (faded background elements represent pre-migration)" vertex="1">
+          <mxGeometry height="20" width="900" x="340" y="900" as="geometry" />
         </mxCell>
-
+        <mxCell id="z0eYjY46S8jfoElOQu6q-37" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;color=#666;" value="Open in diagrams.net / draw.io to edit. Add images, precise shapes, and additional detail as build progresses. | Created as starting structure 2026-06-04" vertex="1">
+          <mxGeometry height="20" width="900" x="340" y="930" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
