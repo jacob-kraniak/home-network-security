@@ -1,0 +1,34 @@
+# Home Network Security
+# Ignore sensitive inventory files and backups
+
+# Nmap XMLs, device inventories, and any scans containing real MAC addresses, host details, live IPs, etc.
+# These are stored locally in docs/inventory/ but should not be committed to git.
+*.xml
+
+# Draw.io backup / autosave files (may embed sensitive diagram details)
+*.drawio.bak
+*.drawio~
+*.bak.drawio
+
+# Other sensitive files and secrets
+*.key
+*.pem
+id_rsa*
+*.env
+.env.*
+secrets/
+credentials/
+*.passwd
+passwords*.txt
+
+# OS and editor artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/
+
+# To force include a sanitized inventory despite the rule:
+#   git add -f docs/inventory/sanitized-devices.xml
+# Or prefer non-sensitive formats like devices.md or devices.csv in docs/inventory/
