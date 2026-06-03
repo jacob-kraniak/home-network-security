@@ -13,14 +13,14 @@ This repository is for tracking and versioning the security posture, scans, diag
 
 ### Current Phase: Foundation Networking + Initial Compute
 - **Phase 1 (In Progress)**: TP-Link hardware for quick, stable family internet with basic security.  
-  See [`/hardware`](hardware/) for full inventory.
+  See [docs/hardware](docs/hardware/) for full inventory.
 - **Phase 2 (Next)**: Deploy **Dell OptiPlex 7060 Micro** (i7-8700T, 32GB RAM) as first Proxmox services host.  
-  See [`/diagrams`](diagrams/) for updated network topology.
+  See [docs/diagrams](docs/diagrams/) for updated network topology.
 - **Phase 3**: Migrate routing to OPNsense + expand storage.
 
 **Core Principles**: Balance security/privacy with family stability. Prefer open source where low-risk; retain TP-Link for warranty and fast recovery.
 
-See [`docs/ROADMAP.md`](docs/ROADMAP.md) for detailed phases and [`hardware/`](hardware/) for decisions.
+See [docs/ROADMAP.md](docs/ROADMAP.md) for detailed phases and [docs/hardware](docs/hardware/) for decisions.
 
 ## Key Documents
 - [Project Status Update](README.md#project-status-update-june-2026) (this file)
