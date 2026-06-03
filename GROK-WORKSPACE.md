@@ -3,6 +3,25 @@
 ## Project Overview
 This repository documents the transition from consumer-grade networking to a secure, segmented, privacy-focused home network. It is part of the broader Privacy Migration project.
 
+## Current Project Status (June 2026)
+
+**Phase 1 – Stable Family Foundation** (In Progress / Next to Execute)
+- TP-Link networking core for quick stability and warranty support
+- VLAN segmentation for family/kids/guest/IoT isolation
+- First self-hosted services on refurbished Dell OptiPlex Micro
+
+**Core Design Principles**
+- Security + Privacy (open-source where practical)
+- Family stability & ease of recovery (I am the sole admin)
+- Phased migration from vendor-supported hardware → full open-source control
+- Single point of failure minimization with rollback options
+
+**Hardware Summary**
+- Router: TP-Link Festa FR205 (Multi-WAN)
+- Core Switch: TP-Link TL-SG1016DE (VLAN capable)
+- Services Host: Dell OptiPlex 7060 Micro (i7-8700T, 32GB RAM, 1TB NVMe) – Proxmox target
+- Future: Dedicated OPNsense router + Aoostar WTR Pro hybrid NAS/services
+
 ## Core Goals
 - Accurate inventory of all devices (especially IoT)
 - VLAN segmentation (Trusted, IoT, Guest, Work)
@@ -86,4 +105,4 @@ Main Project Board: https://github.com/users/jacob-kraniak/projects/1 (Privacy M
 
 This ensures all network activities roll up into the master Privacy Migration roadmap.
 
-Last Updated: 2026-06-05 (revised with parallel workflow)
+Last Updated: 2026-06-06 (added Current Project Status section)
