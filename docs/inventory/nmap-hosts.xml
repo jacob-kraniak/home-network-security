@@ -1,0 +1,106 @@
+Starting Nmap 7.99 ( https://nmap.org ) at 2026-06-03 10:48 -0400
+Nmap scan report for 192.168.0.1
+Host is up (0.0017s latency).
+MAC Address: B4:B0:24:D0:FD:60 (TP-Link Systems)
+Nmap scan report for 192.168.0.18
+Host is up (0.067s latency).
+MAC Address: 48:22:54:DF:C7:2D (TP-Link Systems)
+Nmap scan report for 192.168.0.30
+Host is up (0.086s latency).
+MAC Address: D8:E3:5E:38:57:1A (LG Innotek)
+Nmap scan report for 192.168.0.33
+Host is up (0.10s latency).
+MAC Address: 24:E5:0F:B7:5A:16 (Google)
+Nmap scan report for 192.168.0.44
+Host is up (0.12s latency).
+MAC Address: D8:E3:5E:37:75:C8 (LG Innotek)
+Nmap scan report for 192.168.0.45
+Host is up (0.0019s latency).
+MAC Address: E0:D5:5E:E3:98:97 (Giga-byte Technology)
+Nmap scan report for 192.168.0.46
+Host is up (0.074s latency).
+MAC Address: 9C:53:22:9B:BE:A4 (TP-Link Systems)
+Nmap scan report for 192.168.0.47
+Host is up (0.082s latency).
+MAC Address: 40:ED:00:13:4A:A2 (TP-Link Systems)
+Nmap scan report for 192.168.0.48
+Host is up (0.10s latency).
+MAC Address: 20:DF:B9:62:7C:6D (Google)
+Nmap scan report for 192.168.0.52
+Host is up (0.072s latency).
+MAC Address: E2:F4:64:E0:A2:F6 (Unknown)
+Nmap scan report for 192.168.0.58
+Host is up (0.077s latency).
+MAC Address: D8:0D:17:20:6A:56 (TP-Link Technologies)
+Nmap scan report for 192.168.0.65
+Host is up (0.098s latency).
+MAC Address: D0:3F:27:2B:2B:53 (Wyze Labs)
+Nmap scan report for 192.168.0.71
+Host is up (0.0047s latency).
+MAC Address: 08:3A:88:C4:A1:1F (Universal Global Scientific Industrial.)
+Nmap scan report for 192.168.0.78
+Host is up (0.066s latency).
+MAC Address: CC:F4:11:B6:BE:65 (Google)
+Nmap scan report for 192.168.0.81
+Host is up (0.10s latency).
+MAC Address: 40:ED:00:13:64:35 (TP-Link Systems)
+Nmap scan report for 192.168.0.82
+Host is up (0.11s latency).
+MAC Address: 14:EB:B6:25:ED:19 (TP-Link Systems)
+Nmap scan report for 192.168.0.99
+Host is up (0.084s latency).
+MAC Address: 50:91:E3:48:B3:2B (TP-Link Systems)
+Nmap scan report for 192.168.0.105
+Host is up (0.0021s latency).
+MAC Address: 5C:E9:31:6C:B5:44 (TP-Link Systems)
+Nmap scan report for 192.168.0.113
+Host is up (0.17s latency).
+MAC Address: D8:EB:46:AA:76:8D (Google)
+Nmap scan report for 192.168.0.115
+Host is up (0.12s latency).
+MAC Address: 40:ED:00:6B:B1:D4 (TP-Link Systems)
+Nmap scan report for 192.168.0.117
+Host is up (0.13s latency).
+MAC Address: 80:7D:3A:27:0A:84 (Espressif)
+Nmap scan report for 192.168.0.119
+Host is up (0.0021s latency).
+MAC Address: B0:09:DA:2C:C1:48 (Ring Solutions)
+Nmap scan report for 192.168.0.128
+Host is up (0.089s latency).
+MAC Address: 40:ED:00:6B:C8:43 (TP-Link Systems)
+Nmap scan report for 192.168.0.131
+Host is up (0.080s latency).
+MAC Address: D8:E3:5E:C5:B0:F3 (LG Innotek)
+Nmap scan report for 192.168.0.140
+Host is up (0.050s latency).
+MAC Address: 7E:64:4A:42:02:86 (Unknown)
+Nmap scan report for 192.168.0.147
+Host is up (0.13s latency).
+MAC Address: 94:BE:46:AA:30:7F (Motorola (Wuhan) Mobility Technologies Communication)
+Nmap scan report for 192.168.0.153
+Host is up (0.0082s latency).
+MAC Address: 32:10:CC:55:79:20 (Unknown)
+Nmap scan report for 192.168.0.164
+Host is up (0.028s latency).
+MAC Address: 50:91:E3:0F:64:11 (TP-Link Systems)
+Nmap scan report for 192.168.0.168
+Host is up (0.031s latency).
+MAC Address: 80:7D:3A:27:02:D4 (Espressif)
+Nmap scan report for 192.168.0.180
+Host is up (0.089s latency).
+MAC Address: 40:ED:00:6B:B9:F8 (TP-Link Systems)
+Nmap scan report for 192.168.0.197
+Host is up (0.070s latency).
+MAC Address: AC:67:84:F3:7F:04 (Google)
+Nmap scan report for 192.168.0.198
+Host is up (0.20s latency).
+MAC Address: E4:0D:36:F5:88:3B (Intel Corporate)
+Nmap scan report for 192.168.0.199
+Host is up (0.11s latency).
+MAC Address: 14:EB:B6:25:F9:C6 (TP-Link Systems)
+Nmap scan report for 192.168.0.200
+Host is up (0.073s latency).
+MAC Address: F4:F5:D8:CC:30:C0 (Google)
+Nmap scan report for 192.168.0.35
+Host is up.
+Nmap done: 256 IP addresses (35 hosts up) scanned in 5.39 seconds

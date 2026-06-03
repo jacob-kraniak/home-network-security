@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.99 scan initiated Wed Jun  3 10:56:24 2026 as: /usr/lib/nmap/nmap -&#45;privileged -sn -oX full-hosts.xml 192.168.0.0/24 -->
+<nmaprun scanner="nmap" args="/usr/lib/nmap/nmap -&#45;privileged -sn -oX full-hosts.xml 192.168.0.0/24" start="1780498584" startstr="Wed Jun  3 10:56:24 2026" version="7.99" xmloutputversion="1.05">
+<verbose level="0"/>
+<debugging level="0"/>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.1" addrtype="ipv4"/>
+<address addr="B4:B0:24:D0:FD:60" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="2386" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.18" addrtype="ipv4"/>
+<address addr="48:22:54:DF:C7:2D" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="88821" rttvar="88821" to="444105"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.30" addrtype="ipv4"/>
+<address addr="D8:E3:5E:38:57:1A" addrtype="mac" vendor="LG Innotek"/>
+<hostnames>
+</hostnames>
+<times srtt="298583" rttvar="298583" to="1492915"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.33" addrtype="ipv4"/>
+<address addr="24:E5:0F:B7:5A:16" addrtype="mac" vendor="Google"/>
+<hostnames>
+</hostnames>
+<times srtt="96325" rttvar="96325" to="481625"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.44" addrtype="ipv4"/>
+<address addr="D8:E3:5E:37:75:C8" addrtype="mac" vendor="LG Innotek"/>
+<hostnames>
+</hostnames>
+<times srtt="141972" rttvar="141972" to="709860"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.45" addrtype="ipv4"/>
+<address addr="E0:D5:5E:E3:98:97" addrtype="mac" vendor="Giga-byte Technology"/>
+<hostnames>
+</hostnames>
+<times srtt="2815" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.46" addrtype="ipv4"/>
+<address addr="9C:53:22:9B:BE:A4" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="85151" rttvar="85151" to="425755"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.47" addrtype="ipv4"/>
+<address addr="40:ED:00:13:4A:A2" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="92570" rttvar="92570" to="462850"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.48" addrtype="ipv4"/>
+<address addr="20:DF:B9:62:7C:6D" addrtype="mac" vendor="Google"/>
+<hostnames>
+</hostnames>
+<times srtt="90184" rttvar="90184" to="450920"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.52" addrtype="ipv4"/>
+<address addr="E2:F4:64:E0:A2:F6" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="176280" rttvar="176280" to="881400"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.58" addrtype="ipv4"/>
+<address addr="D8:0D:17:20:6A:56" addrtype="mac" vendor="TP-Link Technologies"/>
+<hostnames>
+</hostnames>
+<times srtt="91583" rttvar="91583" to="457915"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.65" addrtype="ipv4"/>
+<address addr="D0:3F:27:2B:2B:53" addrtype="mac" vendor="Wyze Labs"/>
+<hostnames>
+</hostnames>
+<times srtt="91624" rttvar="91624" to="458120"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.71" addrtype="ipv4"/>
+<address addr="08:3A:88:C4:A1:1F" addrtype="mac" vendor="Universal Global Scientific Industrial."/>
+<hostnames>
+</hostnames>
+<times srtt="7186" rttvar="7186" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.78" addrtype="ipv4"/>
+<address addr="CC:F4:11:B6:BE:65" addrtype="mac" vendor="Google"/>
+<hostnames>
+</hostnames>
+<times srtt="62023" rttvar="62023" to="310115"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.81" addrtype="ipv4"/>
+<address addr="40:ED:00:13:64:35" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="121111" rttvar="121111" to="605555"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.82" addrtype="ipv4"/>
+<address addr="14:EB:B6:25:ED:19" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="99530" rttvar="99530" to="497650"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.83" addrtype="ipv4"/>
+<address addr="50:F1:4A:F7:4A:1A" addrtype="mac" vendor="Texas Instruments"/>
+<hostnames>
+</hostnames>
+<times srtt="99482" rttvar="99482" to="497410"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.99" addrtype="ipv4"/>
+<address addr="50:91:E3:48:B3:2B" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="93816" rttvar="93816" to="469080"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.105" addrtype="ipv4"/>
+<address addr="5C:E9:31:6C:B5:44" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="1283" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.113" addrtype="ipv4"/>
+<address addr="D8:EB:46:AA:76:8D" addrtype="mac" vendor="Google"/>
+<hostnames>
+</hostnames>
+<times srtt="114730" rttvar="114730" to="573650"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.115" addrtype="ipv4"/>
+<address addr="40:ED:00:6B:B1:D4" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="65095" rttvar="47963" to="256947"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.117" addrtype="ipv4"/>
+<address addr="80:7D:3A:27:0A:84" addrtype="mac" vendor="Espressif"/>
+<hostnames>
+</hostnames>
+<times srtt="92940" rttvar="92940" to="464700"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.119" addrtype="ipv4"/>
+<address addr="B0:09:DA:2C:C1:48" addrtype="mac" vendor="Ring Solutions"/>
+<hostnames>
+</hostnames>
+<times srtt="2395" rttvar="5000" to="100000"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.128" addrtype="ipv4"/>
+<address addr="40:ED:00:6B:C8:43" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="62194" rttvar="62194" to="310970"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.140" addrtype="ipv4"/>
+<address addr="7E:64:4A:42:02:86" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="60861" rttvar="60861" to="304305"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.147" addrtype="ipv4"/>
+<address addr="94:BE:46:AA:30:7F" addrtype="mac" vendor="Motorola (Wuhan) Mobility Technologies Communication"/>
+<hostnames>
+</hostnames>
+<times srtt="94474" rttvar="94474" to="472370"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.153" addrtype="ipv4"/>
+<address addr="32:10:CC:55:79:20" addrtype="mac"/>
+<hostnames>
+</hostnames>
+<times srtt="1064846" rttvar="1214391" to="5922410"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.164" addrtype="ipv4"/>
+<address addr="50:91:E3:0F:64:11" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="79716" rttvar="79716" to="398580"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.168" addrtype="ipv4"/>
+<address addr="80:7D:3A:27:02:D4" addrtype="mac" vendor="Espressif"/>
+<hostnames>
+</hostnames>
+<times srtt="180546" rttvar="194030" to="956666"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.180" addrtype="ipv4"/>
+<address addr="40:ED:00:6B:B9:F8" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="53876" rttvar="53876" to="269380"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.197" addrtype="ipv4"/>
+<address addr="AC:67:84:F3:7F:04" addrtype="mac" vendor="Google"/>
+<hostnames>
+</hostnames>
+<times srtt="72171" rttvar="72171" to="360855"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.198" addrtype="ipv4"/>
+<address addr="E4:0D:36:F5:88:3B" addrtype="mac" vendor="Intel Corporate"/>
+<hostnames>
+</hostnames>
+<times srtt="192433" rttvar="192433" to="962165"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.199" addrtype="ipv4"/>
+<address addr="14:EB:B6:25:F9:C6" addrtype="mac" vendor="TP-Link Systems"/>
+<hostnames>
+</hostnames>
+<times srtt="116068" rttvar="116068" to="580340"/>
+</host>
+<host><status state="up" reason="arp-response" reason_ttl="0"/>
+<address addr="192.168.0.200" addrtype="ipv4"/>
+<address addr="F4:F5:D8:CC:30:C0" addrtype="mac" vendor="Google"/>
+<hostnames>
+</hostnames>
+<times srtt="13166" rttvar="13166" to="100000"/>
+</host>
+<host><status state="up" reason="localhost-response" reason_ttl="0"/>
+<address addr="192.168.0.35" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+</host>
+<runstats><finished time="1780498593" timestr="Wed Jun  3 10:56:33 2026" summary="Nmap done at Wed Jun  3 10:56:33 2026; 256 IP addresses (35 hosts up) scanned in 9.33 seconds" elapsed="9.33" exit="success"/><hosts up="35" down="221" total="256"/>
+</runstats>
+</nmaprun>
