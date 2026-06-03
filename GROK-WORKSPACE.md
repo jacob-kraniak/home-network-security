@@ -35,4 +35,22 @@ This repository documents the transition from consumer-grade networking to a sec
 - Cross-reference privacy-migration-docs where relevant.
 - Track progress against the 4 parallel tracks: Privacy Migration, Software Migrations, Cybersecurity Education, Network Rack Build-out.
 
-Last Updated: 2026-06-03
+## GitHub Project Integration
+
+Main Project Board: https://github.com/users/jacob-kraniak/projects/1 (Privacy Migration)
+
+### How to Link Work:
+1. Create Issues in this repo for specific tasks (Network Rack, IoT, Wazuh, etc.).
+2. Add them to the main Project board:
+   - Open the issue → Click "Projects" → Add to "Privacy Migration".
+   - Or from the Project board, use "Add item" and search for issues from this repo.
+3. Use these labels consistently:
+   - `track:network-rack`
+   - `track:privacy-migration`
+   - `track:cyber-education`
+   - `track:software-migration`
+   - `status:planning` / `status:in-progress`
+
+This ensures all network activities roll up into the master Privacy Migration roadmap.
+
+Last Updated: 2026-06-04
