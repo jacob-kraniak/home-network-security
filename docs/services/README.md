@@ -2,6 +2,8 @@
 
 This directory documents the planned self-hosted services and core infrastructure for the Home Network Security & Self-Hosted Infrastructure project.
 
+See the high-level [docs/ROADMAP.md](../ROADMAP.md) for phases, and hardware decisions in [../hardware/DECISIONS.md](../hardware/DECISIONS.md) and [../hardware/RACK.md](../hardware/RACK.md).
+
 All decisions prioritize **security, privacy, reliability, and scalability**. Documentation follows a consistent format (Decision Area, Research Summary, Recommendation, Pros/Cons, Action Items, Risks).
 
 ## Planned Applications & Infrastructure

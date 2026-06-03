@@ -19,7 +19,10 @@ This directory contains `.drawio` (diagrams.net / draw.io) files documenting the
 ## Related Documentation
 
 - [infrastructure-criteria.md](../hardware/infrastructure-criteria.md) — Server hardware decisions and revised core infrastructure strategy.
+- [DECISIONS.md](../hardware/DECISIONS.md) — Hardware decisions log.
+- [RACK.md](../hardware/RACK.md) — Rack & physical infrastructure.
 - [rack-measurements.md](../hardware/rack-measurements.md) — Measurement tasks for finalizing the physical layout.
+- [ROADMAP.md](../ROADMAP.md) — High-level project roadmap.
 - Main project: [README.md](../../README.md) and [GROK-WORKSPACE.md](../../GROK-WORKSPACE.md)
 
 **Note**: These are living documents. Update the diagrams and this README as the network build progresses.

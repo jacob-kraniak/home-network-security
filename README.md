@@ -9,30 +9,28 @@ This repository is for tracking and versioning the security posture, scans, diag
 **Related projects:**
 - [privacy-migration-docs](https://github.com/jacob-kraniak/privacy-migration-docs) — privacy and data migration documentation
 
-## Current Project Status (June 2026)
+## Project Status Update (June 2026)
 
-**Phase 1 – Stable Family Foundation** (In Progress / Next to Execute)
-- TP-Link networking core for quick stability and warranty support
-- VLAN segmentation for family/kids/guest/IoT isolation
-- First self-hosted services on refurbished Dell OptiPlex Micro
+### Current Phase: Foundation Networking + Initial Compute
+- **Phase 1 (In Progress)**: TP-Link hardware for quick, stable family internet with basic security.  
+  See [`/hardware`](hardware/) for full inventory.
+- **Phase 2 (Next)**: Deploy **Dell OptiPlex 7060 Micro** (i7-8700T, 32GB RAM) as first Proxmox services host.  
+  See [`/diagrams`](diagrams/) for updated network topology.
+- **Phase 3**: Migrate routing to OPNsense + expand storage.
 
-**Core Design Principles**
-- Security + Privacy (open-source where practical)
-- Family stability & ease of recovery (I am the sole admin)
-- Phased migration from vendor-supported hardware → full open-source control
-- Single point of failure minimization with rollback options
+**Core Principles**: Balance security/privacy with family stability. Prefer open source where low-risk; retain TP-Link for warranty and fast recovery.
 
-**Hardware Summary**
-- Router: TP-Link Festa FR205 (Multi-WAN)
-- Core Switch: TP-Link TL-SG1016DE (VLAN capable)
-- Services Host: Dell OptiPlex 7060 Micro (i7-8700T, 32GB RAM, 1TB NVMe) – Proxmox target
-- Future: Dedicated OPNsense router + Aoostar WTR Pro hybrid NAS/services
+See [`docs/ROADMAP.md`](docs/ROADMAP.md) for detailed phases and [`hardware/`](hardware/) for decisions.
 
 ## Key Documents
+- [Project Status Update](README.md#project-status-update-june-2026) (this file)
+- [Project Roadmap](docs/ROADMAP.md)
 - [IoT Devices & Risk Plan](docs/inventory/iot-devices.md)
 - [Grok Workspace Instructions](GROK-WORKSPACE.md)
 - [Self-Hosted Services Research & Roadmap](docs/services/self-hosted-services-roadmap.md)
 - [Document Digitization System](docs/services/document-digitization.md) (Paperless-ngx - high priority)
+- [Hardware Decisions](docs/hardware/DECISIONS.md)
+- [Rack & Physical Infrastructure](docs/hardware/RACK.md)
 - Diagrams: `docs/diagrams/`
 
 ## Parallel Tracks
@@ -47,8 +45,9 @@ This repo supports the main Privacy Migration project. See [privacy-migration-do
 └── docs/
     ├── inventory/     # Nmap XMLs, device lists, host inventories (see .gitignore)
     ├── diagrams/      # Draw.io / diagrams.net network topology diagrams
-    ├── hardware/      # Rack measurements, infrastructure criteria
-    └── services/      # See README.md for table of planned applications (summarized from roadmap) + individual docs (document-digitization.md, self-hosted-services-roadmap.md)
+    ├── hardware/      # Rack measurements, infrastructure criteria, DECISIONS.md, RACK.md
+    ├── services/      # Self-hosted services roadmap, document digitization (Paperless-ngx) + table of planned apps in services/README.md
+    └── ROADMAP.md     # High-level project roadmap (phases)
 ```
 
 ### docs/inventory/
