@@ -9,6 +9,25 @@ This repository is for tracking and versioning the security posture, scans, diag
 **Related projects:**
 - [privacy-migration-docs](https://github.com/jacob-kraniak/privacy-migration-docs) — privacy and data migration documentation
 
+## Current Project Status (June 2026)
+
+**Phase 1 – Stable Family Foundation** (In Progress / Next to Execute)
+- TP-Link networking core for quick stability and warranty support
+- VLAN segmentation for family/kids/guest/IoT isolation
+- First self-hosted services on refurbished Dell OptiPlex Micro
+
+**Core Design Principles**
+- Security + Privacy (open-source where practical)
+- Family stability & ease of recovery (I am the sole admin)
+- Phased migration from vendor-supported hardware → full open-source control
+- Single point of failure minimization with rollback options
+
+**Hardware Summary**
+- Router: TP-Link Festa FR205 (Multi-WAN)
+- Core Switch: TP-Link TL-SG1016DE (VLAN capable)
+- Services Host: Dell OptiPlex 7060 Micro (i7-8700T, 32GB RAM, 1TB NVMe) – Proxmox target
+- Future: Dedicated OPNsense router + Aoostar WTR Pro hybrid NAS/services
+
 ## Current Status
 - Device inventory in progress (35+ hosts discovered via Nmap)
 - IoT risk register documented
