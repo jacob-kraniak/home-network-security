@@ -47,7 +47,23 @@ This repository documents the transition from consumer-grade networking to a sec
 Example hand-off block (to be pasted into Grok Build):
 
 ```markdown
-[Full instructions, file contents, or structured tasks here]
+## Task for Grok Build
+
+**Objective:** [Brief description]
+
+**Files to create/update:**
+- `path/to/file.md` (or full content if small)
+- ...
+
+**Instructions:**
+1. ...
+2. ...
+
+**Context / Research Summary:**
+[Key findings from chat/ideation]
+
+**Acceptance Criteria:**
+- ...
 ```
 
 This workflow keeps research fluid in chat while ensuring precise, auditable implementation in the repo.
