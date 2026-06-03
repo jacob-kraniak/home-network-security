@@ -18,6 +18,7 @@ This repository is for tracking and versioning the security posture, scans, diag
 - [IoT Devices & Risk Plan](docs/inventory/iot-devices.md)
 - [Grok Workspace Instructions](GROK-WORKSPACE.md)
 - [Self-Hosted Services Research & Roadmap](docs/services/self-hosted-services-roadmap.md)
+- [Document Digitization System](docs/services/document-digitization.md) (Paperless-ngx - high priority)
 - Diagrams: `docs/diagrams/`
 
 ## Parallel Tracks
@@ -33,7 +34,7 @@ This repo supports the main Privacy Migration project. See [privacy-migration-do
     ├── inventory/     # Nmap XMLs, device lists, host inventories (see .gitignore)
     ├── diagrams/      # Draw.io / diagrams.net network topology diagrams
     ├── hardware/      # Rack measurements, infrastructure criteria
-    └── services/      # Self-hosted services roadmap & research (OS, virtualization, key apps)
+    └── services/      # Self-hosted services roadmap, document digitization (Paperless-ngx), future app research
 ```
 
 ### docs/inventory/

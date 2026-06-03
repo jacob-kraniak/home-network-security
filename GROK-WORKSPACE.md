@@ -22,6 +22,7 @@ This repository documents the transition from consumer-grade networking to a sec
 - **Risk Register**: docs/risk/ (IoT devices, mitigation plans)
 - **Hardware Plans**: docs/hardware/ (rack build, shopping lists, mini-PC specs)
 - **Self-Hosted Services Research & Roadmap**: docs/services/self-hosted-services-roadmap.md (Host OS, Proxmox, OPNsense, Wazuh, RustDesk, media servers, Home Assistant, camera migration, phased roadmap)
+- **Document Digitization**: docs/services/document-digitization.md (Paperless-ngx based searchable archive - high priority)
 
 ## IoT Risk Strategy
 - TP-Link Kasa (12x): VLAN + HA integration (Mitigation)
