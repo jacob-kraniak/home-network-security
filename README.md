@@ -9,6 +9,19 @@ This repository is for tracking and versioning the security posture, scans, diag
 **Related projects:**
 - [privacy-migration-docs](https://github.com/jacob-kraniak/privacy-migration-docs) — privacy and data migration documentation
 
+## Current Status
+- Device inventory in progress (35+ hosts discovered via Nmap)
+- IoT risk register documented
+- Preparing for VLAN segmentation and rack build-out
+
+## Key Documents
+- [IoT Devices & Risk Plan](docs/inventory/iot-devices.md)
+- [Grok Workspace Instructions](GROK-WORKSPACE.md)
+- Diagrams: `docs/diagrams/`
+
+## Parallel Tracks
+This repo supports the main Privacy Migration project. See [privacy-migration-docs](https://github.com/jacob-kraniak/privacy-migration-docs) for overarching roadmap.
+
 ## Repository Structure
 
 ```
