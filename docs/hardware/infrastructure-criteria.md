@@ -18,3 +18,14 @@
 **Current Direction**: Prioritize efficiency. Use rack space for networking gear, UPS, and clean cable management first.
 
 Status: Decision documented 2026-06-03
+
+## Revised Core Infrastructure Strategy
+
+- **Centralized Basement Rack**: All critical networking hardware (including FIOS ONT) will be moved to the 12U rack.
+- **Exceptions**:
+  - Ring Base Station (upstairs) — kept for family armed status light visibility.
+  - Wireless devices (Kasa, Nest, phones) will connect via WAPs.
+- **Repurposed Hardware**:
+  - TP-Link Archer A7 → Dedicated Access Point (AP Mode only).
+
+This design maximizes security, simplifies cable management long-term, and creates a clean "single pane of glass" in the basement.
