@@ -1,7 +1,7 @@
 # Home Document Digitization and Searchable Archive System
 
 **Project:** Home Network Security & Self-Hosted Infrastructure  
-**Status:** Planning | High Priority  
+**Status:** Promoted from project-ideas to active self-hosted service.  
 **Date:** June 2026  
 **Related:** [Self-Hosted Services Roadmap](../services/self-hosted-services-roadmap.md)
 
@@ -10,20 +10,15 @@ Goal: Eliminate paper clutter by creating a fully local, privacy-respecting, ful
 
 This project supports the broader goals of **Security, Privacy, Reliability, and Scalability**.
 
-## Recommended Stack (2026)
-- **Primary Tool:** Paperless-ngx (core document management)
-  - OCR via Tesseract (excellent for printed + good handwriting support)
-  - Automatic tagging, correspondent detection, and full-text search
-  - Consumption folder (hotfolder) for easy import from scanners/phones
-  - REST API for integrations (e.g., Home Assistant)
-- **Frontend/Dashboard:** Paperless-ngx web UI + integration into a central Homepage or Nextcloud dashboard.
-- **Storage Backend:** Local ZFS/Btrfs volume (via Proxmox) with snapshots. Optional MinIO for S3-compatible object storage and offsite encrypted backups.
-- **Scanning/Input:**
-  - Mobile: Open-source apps like "Open Scanner" or "Document Scanner" apps that save directly to SMB/NFS share.
-  - Hardware: Dedicated document scanner (e.g., Fujitsu ScanSnap or Brother) feeding the consumption folder.
-- **Backup & Redundancy:** Automated rsync to external drive + encrypted remote (e.g., via rclone to a private location).
-- **Search Enhancement:** Paperless-ngx built-in search is strong; future integration with a local search engine if needed (e.g., via Meilisearch).
-- **Optional Additions:** Gotenberg (for advanced PDF rendering), Tika (for more file types).
+## Recommended Stack
+- Paperless-ngx (core DMS)
+- Tesseract OCR
+- Proxmox LXC + Docker
+- High-performance scanner (SMB/WiFi)
+- Grok API for AI summaries
+- Nginx + Auth + VPN access
+
+**Details:** Paperless-ngx as primary for document management, OCR with Tesseract, automatic tagging, full-text search, consumption folder (hotfolder) for easy import. Deploy in Proxmox LXC + Docker. Storage on local ZFS with snapshots + optional MinIO for backups. Access via Nginx reverse proxy with auth and VPN only (no direct exposure). Use Grok API for AI-powered summaries and search enhancements.
 
 ## Decision Area: Document Management Platform
 **Options & Research Summary:**
@@ -39,13 +34,12 @@ This project supports the broader goals of **Security, Privacy, Reliability, and
 - **Pros:** Excellent search and organization, local-only, active development, easy consumption workflow, API for automation, free and open source.
 - **Cons:** Initial setup for consumption/hotfolder and scanning workflow; requires some maintenance for updates and backups; OCR quality depends on document quality.
 
-**Action Items / Roadmap:**
-- Deploy Paperless-ngx on Proxmox (LXC preferred for resource efficiency).
-- Configure consumption directory with proper permissions (SMB share for easy phone/scanner access).
-- Set up automated backups (ZFS snapshots + offsite encrypted copy).
-- Test import workflow with sample documents (receipts, manuals).
-- Integrate notifications (e.g., new documents added → Home Assistant).
-- High priority: POC and initial import of critical documents in Q2 2026. Full production archive by end of Q3 2026.
+**Action Items:**
+- Acquire scanner
+- Deploy Paperless-ngx test instance
+- Configure consumption folder and automation
+
+**Roadmap:** High priority - POC in Q2 2026, production by Q3. Integrate with Phase 1 of self-hosted services.
 
 **Risks/Dependencies:**
 - Dependency on Proxmox storage stability.

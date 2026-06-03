@@ -179,9 +179,24 @@ Proxmox VE (Debian-based) is the 2026 homelab favorite: free, KVM VMs + LXC cont
 
 ## 9. Home Document Digitization and Searchable Archive System (New High-Priority Project)
 
-**Recommendation:** Paperless-ngx as the core tool for OCR, tagging, and full-text search. Deploy in Proxmox LXC/Docker with consumption folder for easy scanning. Backups via ZFS + encrypted offsite.
+**Status:** Promoted from project-ideas to active self-hosted service.
 
-See dedicated page: [docs/services/document-digitization.md](document-digitization.md) for full Decision Area, Research, Pros/Cons, Action Items, and integration details (local-first, privacy-focused, integrates with Proxmox, Wazuh, Home Assistant).
+**Recommended Stack:**
+- Paperless-ngx (core DMS)
+- Tesseract OCR
+- Proxmox LXC + Docker
+- High-performance scanner (SMB/WiFi)
+- Grok API for AI summaries
+- Nginx + Auth + VPN access
+
+See dedicated page: [docs/services/document-digitization.md](document-digitization.md) for full well-structured details (Decision Area, Research Summary, Recommendation, Pros/Cons, Action Items, Risks, integration).
+
+**Action Items:**
+- Acquire scanner
+- Deploy Paperless-ngx test instance
+- Configure consumption folder and automation
+
+**Roadmap:** High priority - include in Phase 1. POC in Q2 2026.
 
 ## Overall Roadmap Integration
 
@@ -195,5 +210,6 @@ See dedicated page: [docs/services/document-digitization.md](document-digitizati
 
 **Changelog / Version Notes:**
 - 2026-06-03: Added condensed core decisions summary (Block 1). Promoted Document Digitization project from /project-ideas into active services documentation with dedicated page using Paperless-ngx stack. Updated GitHub issues for board. Maintained consistent formatting and privacy focus.
+- 2026-06-03 (refinement): Incorporated exact user-provided content for Status, Recommended Stack (including Grok API, Nginx+Auth+VPN), and Action Items into document-digitization.md and linked section in roadmap.
 
 **Next Steps for Workspace:** Expand issues in GitHub Project Board and track decisions. Let me know which area to deep-dive or generate configs for next. This keeps everything documented, privacy-aligned, and actionable per your guidelines.
