@@ -34,7 +34,7 @@ This repo supports the main Privacy Migration project. See [privacy-migration-do
     ├── inventory/     # Nmap XMLs, device lists, host inventories (see .gitignore)
     ├── diagrams/      # Draw.io / diagrams.net network topology diagrams
     ├── hardware/      # Rack measurements, infrastructure criteria
-    └── services/      # Self-hosted services roadmap, document digitization (Paperless-ngx), future app research
+    └── services/      # See README.md for table of planned applications (summarized from roadmap) + individual docs (document-digitization.md, self-hosted-services-roadmap.md)
 ```
 
 ### docs/inventory/
