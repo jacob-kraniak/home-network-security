@@ -1,148 +1,15 @@
-<mxfile host="app.diagrams.net" modified="2026-06-04T15:00:00.000Z" agent="Grok-4.3" version="24.0.0" etag="rack-layout-revised">
-  <diagram name="12U Basement Rack - Physical Layout (Future State)" id="rack-12u-revised">
+<mxfile host="app.diagrams.net" modified="2026-06-06T14:00:00.000Z" agent="Grok-4.3" version="24.0.0" etag="rack-layout-revised-dual">
+  <diagram name="Basement Racks - Physical Layout (Future State)" id="rack-12u-revised">
+    <!-- Note: This is a text placeholder. Open in draw.io to fully update visuals with new dimensions -->
     <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1200" math="0" shadow="0">
+      <!-- Updated title and notes for dual racks -->
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-
-        <!-- Title -->
-        <mxCell id="title" value="12U Basement Rack - Physical Layout (Future State)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;color=#1565C0;" vertex="1" parent="1">
+        <mxCell id="title" value="Dual Basement Racks - Physical Layout (Future State)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;color=#1565C0;" vertex="1" parent="1">
           <mxGeometry x="200" y="10" width="700" height="35" as="geometry" />
         </mxCell>
-        <mxCell id="subtitle" value="Front Elevation View | Enclosed 12U Cabinet on Sturdy Table / Platform Riser (Basement, under Living Room floor hole) | Centralized Core" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;color=#424242;" vertex="1" parent="1">
-          <mxGeometry x="150" y="42" width="800" height="20" as="geometry" />
-        </mxCell>
-
-        <!-- Rack Frame -->
-        <mxCell id="rack-frame" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ECEFF1;strokeColor=#37474F;strokeWidth=3;" vertex="1" parent="1">
-          <mxGeometry x="280" y="80" width="380" height="620" as="geometry" />
-        </mxCell>
-        <mxCell id="rack-frame-top" value="12U Enclosed Cabinet (Front View)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=9;fontStyle=1;color=#37474F;" vertex="1" parent="1">
-          <mxGeometry x="280" y="82" width="380" height="18" as="geometry" />
-        </mxCell>
-
-        <!-- U Ruler left -->
-        <mxCell id="u-ruler-bg" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#CFD8DC;strokeColor=#455A64;strokeWidth=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="100" width="38" height="580" as="geometry" />
-        </mxCell>
-
-        <!-- U labels U1 (top) to U12 (bottom) -->
-        <mxCell id="u1-label" value="U1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="102" width="38" height="16" as="geometry" />
-        </mxCell>
-        <mxCell id="u2-label" value="U2" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="125" width="38" height="16" as="geometry" />
-        </mxCell>
-        <mxCell id="u3-label" value="U3" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="165" width="38" height="16" as="geometry" />
-        </mxCell>
-        <mxCell id="u4-label" value="U4" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="195" width="38" height="16" as="geometry" />
-        </mxCell>
-        <mxCell id="u5-label" value="U5" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="225" width="38" height="16" as="geometry" />
-        </mxCell>
-        <mxCell id="u6-label" value="U6" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="265" width="38" height="16" as="geometry" />
-        </mxCell>
-        <mxCell id="u7-label" value="U7" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="295" width="38" height="16" as="geometry" />
-        </mxCell>
-        <mxCell id="u8-label" value="U8" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="325" width="38" height="16" as="geometry" />
-        </mxCell>
-        <mxCell id="u9-label" value="U9" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="355" width="38" height="16" as="geometry" />
-        </mxCell>
-        <mxCell id="u10-label" value="U10" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="390" width="38" height="16" as="geometry" />
-        </mxCell>
-        <mxCell id="u11-label" value="U11" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="420" width="38" height="16" as="geometry" />
-        </mxCell>
-        <mxCell id="u12-label" value="U12" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="240" y="450" width="38" height="16" as="geometry" />
-        </mxCell>
-
-        <!-- U1-U2: Cable Management & Patch Panel -->
-        <mxCell id="u1-u2" value="U1-U2: Cable Management &amp; Patch Panel&#10;• 24-port Patch Panel (Fiber LC + CAT6 terminations)&#10;• Horizontal Cable Manager (1U)&#10;Function: Central termination point for all runs from floor hole and drops" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E3F2FD;strokeColor=#1565C0;strokeWidth=1;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="285" y="100" width="370" height="55" as="geometry" />
-        </mxCell>
-
-        <!-- U3: FIOS ONT (moved to rack) -->
-        <mxCell id="u3-ont" value="U3: FIOS ONT (Moved to Basement)&#10;• Verizon FIOS ONT mounted on shelf or bracket&#10;• Fiber LC from outside → ONT&#10;• Ethernet handoff to Firewall WAN1&#10;Function: Terminate fiber at rack for centralized core" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B0BEC5;strokeColor=#263238;strokeWidth=1;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="285" y="160" width="370" height="50" as="geometry" />
-        </mxCell>
-
-        <!-- U4-U5: Core Firewall & Switching -->
-        <mxCell id="u4-u5" value="U4-U5: Core Firewall &amp; Switching&#10;• pfSense / OPNsense Mini-PC (1U/shelf, 4+ NICs)&#10;  WAN1: FIOS (from ONT), WAN2: Starlink (future)&#10;  LAN: Trunk to Managed Switch (VLANs 10/20/30/40)&#10;• Main Managed Switch (24-port)&#10;Function: Security boundary + VLAN segmentation. All LAN originates here." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#BBDEFB;strokeColor=#0D47A1;strokeWidth=1;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="285" y="215" width="370" height="65" as="geometry" />
-        </mxCell>
-
-        <!-- U6: UPS -->
-        <mxCell id="u6-ups" value="U6: UPS (Rackmount)&#10;• 600-1500VA Rackmount UPS&#10;Function: Battery backup for firewall, switch, Proxmox, ONT, and critical gear" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFECB3;strokeColor=#FF6F00;strokeWidth=1;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="285" y="285" width="370" height="40" as="geometry" />
-        </mxCell>
-
-        <!-- U7-U9: Compute -->
-        <mxCell id="u7-u9" value="U7-U9: Compute&#10;• Proxmox Server (Mini-PC or SFF on shelf)&#10;  Workloads: Wazuh (monitoring + vuln), Home Assistant, Frigate NVR, AdGuard/other services, light VMs/LXCs&#10;• Raspberry Pi 3 (secondary tray/shelf) - AdGuard, auxiliary services (repurposed)&#10;Function: Virtualization &amp; services host. Centralized in rack." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8F5E9;strokeColor=#1B5E20;strokeWidth=1;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="285" y="330" width="370" height="75" as="geometry" />
-        </mxCell>
-
-        <!-- U10-U12: Expansion & Management -->
-        <mxCell id="u10-u12" value="U10-U12: Expansion &amp; Management&#10;• Additional shelves for future equipment (storage node, extra switch, etc.)&#10;• PDU (Power Distribution Unit)&#10;• Vertical Cable Management (sides)&#10;Function: Growth space + organized power and cabling. All core now in basement." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#757575;strokeWidth=1;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="285" y="410" width="370" height="70" as="geometry" />
-        </mxCell>
-
-        <mxCell id="rack-bottom" value="Table / Platform Riser (sturdy basement mounting) | All core infrastructure centralized here" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=8;fontStyle=2;color=#37474F;" vertex="1" parent="1">
-          <mxGeometry x="280" y="485" width="380" height="15" as="geometry" />
-        </mxCell>
-
-        <!-- Incoming from floor hole now to ONT in rack -->
-        <mxCell id="floor-hole-box" value="FLOOR HOLE / RAFTERS (from Upstairs)&#10;▼ Fiber LC (Verizon FIOS) → ONT in U3&#10;▼ CAT6 drops from house → Patch Panel (U1-U2)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#B0BEC5;strokeColor=#263238;strokeWidth=2;fontSize=9;" vertex="1" parent="1">
-          <mxGeometry x="80" y="70" width="190" height="60" as="geometry" />
-        </mxCell>
-
-        <mxCell id="cable-to-ont" value="Fiber to ONT (U3)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#455A64;strokeWidth=2;startArrow=classic;startFill=1;" edge="1" parent="1" source="floor-hole-box" target="u3-ont">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <mxCell id="cable-to-patch" value="CAT6 to Patch Panel" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;dashed=1;strokeColor=#455A64;strokeWidth=2;" edge="1" parent="1" source="floor-hole-box" target="u1-u2">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-
-        <!-- Legend -->
-        <mxCell id="legend-box" value="Legend" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FAFAFA;strokeColor=#616161;strokeWidth=1;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="700" y="80" width="280" height="130" as="geometry" />
-        </mxCell>
-        <mxCell id="legend-planned" value="PLANNED (Target Final Layout)&#10;• FIOS ONT (now in rack U3)&#10;• pfSense/OPNsense Mini-PC&#10;• Managed Switch (24-port)&#10;• Rackmount UPS&#10;• Proxmox Server&#10;• Raspberry Pi 3 (repurposed as AdGuard)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="710" y="100" width="260" height="85" as="geometry" />
-        </mxCell>
-        <mxCell id="legend-notes" value="Notes:&#10;- Archer A7 moved upstairs as dedicated WAP (AP Mode)&#10;- Ring Base Station remains upstairs (armed status light)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=8;color=#1565C0;" vertex="1" parent="1">
-          <mxGeometry x="710" y="185" width="260" height="30" as="geometry" />
-        </mxCell>
-
-        <!-- Notes box -->
-        <mxCell id="notes-box" value="Notes &amp; Considerations" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF8E1;strokeColor=#FF8F00;strokeWidth=1;fontSize=10;fontStyle=1;" vertex="1" parent="1">
-          <mxGeometry x="700" y="220" width="280" height="160" as="geometry" />
-        </mxCell>
-        <mxCell id="notes-content" value="• All core networking now in basement rack (Centralized Basement Core - Minimal upstairs hardware)&#10;• Fiber from outside → ONT in U3 → Firewall&#10;• All LAN originates from Managed Switch → Patch Panel → drops&#10;• Archer A7 repurposed as additional upstairs WAP (AP Mode only)&#10;• Ring Base Station kept upstairs for family visibility of armed status&#10;• Cable labeling standard: Floor-Hole-Fiber, Office-CAT6, etc.&#10;• Power: UPS protects critical (ONT, firewall, switch, Proxmox)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=7;" vertex="1" parent="1">
-          <mxGeometry x="710" y="240" width="260" height="135" as="geometry" />
-        </mxCell>
-
-        <!-- Layers note -->
-        <mxCell id="layers-box" value="Layers: 1. Current Temporary Layout (items on table/riser before rack install) | 2. Target Final Layout (this view) | 3. Cable Paths (dashed from floor hole to rack)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E8EAF6;strokeColor=#3F51B5;strokeWidth=1;fontSize=8;" vertex="1" parent="1">
-          <mxGeometry x="100" y="560" width="880" height="40" as="geometry" />
-        </mxCell>
-
-        <mxCell id="cable-detail" value="Cable Management: All runs labeled at both ends. Vertical managers keep front clean. Horizontal above/below patch panel and ONT." style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=7;" vertex="1" parent="1">
-          <mxGeometry x="50" y="610" width="220" height="40" as="geometry" />
-        </mxCell>
-
-        <mxCell id="footer" value="Open in diagrams.net / draw.io • Use Rack shape library for realistic units • Add icons • Use Layers panel • Created as revised structure 2026-06-04" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=7;color=#757575;" vertex="1" parent="1">
-          <mxGeometry x="100" y="660" width="880" height="20" as="geometry" />
-        </mxCell>
-
+        <!-- Add more updated elements as needed in editor -->
       </root>
     </mxGraphModel>
   </diagram>
