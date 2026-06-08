@@ -1,93 +1,168 @@
-<mxfile host="app.diagrams.net" modified="2026-06-07" agent="Grok" version="24.0.0" etag="rack-12u-revised-v2-20260607">
-  <diagram name="Dual Basement Racks - Physical Layout" id="rack-layout-12u-v2">
-    <mxGraphModel dx="1700" dy="1300" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="1100" math="0" shadow="0">
+<mxfile host="app.diagrams.net">
+  <diagram name="Basement Racks - Physical Layout (Future State)" id="aXq1wloKAyIDRiCsV4TI">
+    <mxGraphModel dx="1779" dy="696" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
-        <mxCell id="0"/>
-        <mxCell id="1" parent="0"/>
-        
-        <!-- Title -->
-        <mxCell id="title" value="&lt;b&gt;Dual Basement Racks - Physical Layout (Future State, June 2026)&lt;/b&gt;&lt;br&gt;~12U Enclosed Compute/Storage + ~9U Open Networking | VLAN / Privacy Focused" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;color=#1565C0;" vertex="1" parent="1">
-          <mxGeometry x="180" y="20" width="1100" height="60" as="geometry"/>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=20;fontStyle=1;color=#1565C0;" value="Dual Basement Racks - Physical Layout (Future State)" vertex="1">
+          <mxGeometry height="35" width="700" x="240" y="50" as="geometry" />
         </mxCell>
-
-        <!-- Large Enclosed Rack (~12U) - Compute/Storage -->
-        <mxCell id="rack_large" value="Large Enclosed Rack (~12-15U Cabinet)&lt;br&gt;Core Compute / Storage" style="swimlane;startSize=40;horizontal=0;fillColor=#f5f5f5;strokeColor=#666666;html=1;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="80" y="100" width="440" height="780" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;color=#1565C0;" value="&lt;b&gt;Dual Basement Racks - Physical Layout (Future State, June 2026)&lt;/b&gt;&lt;br&gt;~12U Enclosed Compute/Storage + ~9U Open Networking | VLAN / Privacy Focused" vertex="1">
+          <mxGeometry height="60" width="1000" x="480" y="150" as="geometry" />
         </mxCell>
-
-        <!-- Units in Large Rack -->
-        <!-- U1-2: Dell MiniPC (Sole Container Host) -->
-        <mxCell id="minipc" value="Dell MiniPC&lt;br&gt;Sole Containerized Services Host&lt;br&gt;Bazzite / Podman / Wazuh / Proxmox / Jellyfin" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="rack_large">
-          <mxGeometry x="50" y="55" width="340" height="90" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-3" parent="1" style="swimlane;startSize=40;horizontal=0;fillColor=#f5f5f5;strokeColor=#666666;html=1;fontStyle=1;whiteSpace=wrap;" value="Large Enclosed Rack (~12-15U Cabinet)&lt;br&gt;Core Compute / Storage / Proxmox Host" vertex="1">
+          <mxGeometry height="720" width="420" x="360" y="230" as="geometry" />
         </mxCell>
-
-        <!-- U3: Verizon ONT Shelf -->
-        <mxCell id="ont" value="Verizon ONT&lt;br&gt;(Moved to Rack)" style="shape=mxgraph.rack.shelf;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="rack_large">
-          <mxGeometry x="50" y="160" width="340" height="50" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-4" parent="sFFoBQhHbWahwSxUXSo6-3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="Dell OptiPlex 7060 Micro&lt;br&gt;Proxmox / Jellyfin Host&lt;br&gt;i7-8700T | 32GB RAM" vertex="1">
+          <mxGeometry height="85" width="320" x="50" y="130" as="geometry" />
         </mxCell>
-
-        <!-- U4-5: Expansion / Storage -->
-        <mxCell id="shelf1" value="1U Shelf - Expansion / Storage" style="shape=mxgraph.rack.shelf;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="rack_large">
-          <mxGeometry x="50" y="225" width="340" height="50" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-6" parent="sFFoBQhHbWahwSxUXSo6-3" style="shape=mxgraph.rack.shelf;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="1U Shelf - Expansion / Storage" vertex="1">
+          <mxGeometry height="45" width="320" x="50" y="255" as="geometry" />
         </mxCell>
-
-        <!-- U6-7: Future Expansion -->
-        <mxCell id="future_compute" value="Future: Additional Storage / UPS" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;opacity=70;fontSize=11;" vertex="1" parent="rack_large">
-          <mxGeometry x="50" y="290" width="340" height="85" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-7" parent="sFFoBQhHbWahwSxUXSo6-3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;opacity=70;fontSize=11;" value="Future: Additional Storage / UPS" vertex="1">
+          <mxGeometry height="80" width="320" x="50" y="315" as="geometry" />
         </mxCell>
-
-        <!-- PDU Large -->
-        <mxCell id="pdularge" value="PDU / Power Distribution" style="shape=mxgraph.rack.rack_unit;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="rack_large">
-          <mxGeometry x="50" y="390" width="340" height="45" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-8" parent="sFFoBQhHbWahwSxUXSo6-3" style="shape=mxgraph.rack.rack_unit;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="PDU / Power Distribution" vertex="1">
+          <mxGeometry height="45" width="320" x="50" y="410" as="geometry" />
         </mxCell>
-
-        <!-- Smaller Open Rack (~9U) - Networking -->
-        <mxCell id="rack_small" value="Small Open Rack (~9U)&lt;br&gt;Networking / Edge Devices" style="swimlane;startSize=40;horizontal=0;fillColor=#f8cecc;strokeColor=#b85450;html=1;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
-          <mxGeometry x="600" y="100" width="440" height="620" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-9" parent="1" style="swimlane;startSize=40;horizontal=0;fillColor=#f8cecc;strokeColor=#b85450;html=1;fontStyle=1;whiteSpace=wrap;" value="Small Open Rack (~9U)&lt;br&gt;Networking / Edge Devices" vertex="1">
+          <mxGeometry height="450" width="420" x="860" y="440" as="geometry" />
         </mxCell>
-
-        <!-- Units in Small Rack -->
-        <!-- U1: TP-Link FR205 Router (with future Starlink) -->
-        <mxCell id="fr205" value="TP-Link FR205 Router&lt;br&gt;Multi-WAN Firewall&lt;br&gt;(Future Starlink WAN Failover)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" vertex="1" parent="rack_small">
-          <mxGeometry x="50" y="55" width="340" height="75" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-17" edge="1" parent="sFFoBQhHbWahwSxUXSo6-9" source="sFFoBQhHbWahwSxUXSo6-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="sFFoBQhHbWahwSxUXSo6-11">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- U2: Cisco Unmanaged Switch (Placeholder) -->
-        <mxCell id="cisco_switch" value="Cisco Unmanaged Switch&lt;br&gt;(Current Placeholder)&lt;br&gt;Until Managed Switch Acquired" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" vertex="1" parent="rack_small">
-          <mxGeometry x="50" y="145" width="340" height="70" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-10" parent="sFFoBQhHbWahwSxUXSo6-9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="TP-Link FR205 Router&lt;br&gt;Multi-WAN Firewall" vertex="1">
+          <mxGeometry height="65" width="320" x="50" y="30" as="geometry" />
         </mxCell>
-
-        <!-- U3: Patch Panel -->
-        <mxCell id="patch" value="24-Port Cat6 Patch Panel" style="shape=mxgraph.rack.patch_panel;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="rack_small">
-          <mxGeometry x="50" y="230" width="340" height="45" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-19" edge="1" parent="sFFoBQhHbWahwSxUXSo6-9" source="sFFoBQhHbWahwSxUXSo6-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="sFFoBQhHbWahwSxUXSo6-13">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
-
-        <!-- PDU Small -->
-        <mxCell id="pdusmall" value="StarTech 8-Outlet PDU" style="shape=mxgraph.rack.rack_unit;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="rack_small">
-          <mxGeometry x="50" y="290" width="340" height="45" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-11" parent="sFFoBQhHbWahwSxUXSo6-9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="TP-Link TL-SG1016DE&lt;br&gt;16-Port Managed Switch&lt;br&gt;VLAN Support" vertex="1">
+          <mxGeometry height="70" width="320" x="50" y="135" as="geometry" />
         </mxCell>
-
-        <!-- Notes / Legend -->
-        <mxCell id="notes" value="&lt;b&gt;Notes:&lt;/b&gt;&lt;br&gt;• Dell MiniPC = Sole container host (Proxmox + services)&lt;br&gt;• TP-Link Archer A7 remains upstairs (as WAP)&lt;br&gt;• Existing Omada WAP stays in office (future rack option)&lt;br&gt;• Cisco switch = temporary until managed replacement&lt;br&gt;• Color-coded cables by VLAN zone&lt;br&gt;• Power: Dedicated circuits + UPS planned&lt;br&gt;• Cooling: Airflow priority" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;strokeColor=#666666;fillColor=#f5f5f5;" vertex="1" parent="1">
-          <mxGeometry x="80" y="920" width="960" height="160" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-12" parent="sFFoBQhHbWahwSxUXSo6-9" style="shape=mxgraph.rack.patch_panel;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="24-Port Cat6 Patch Panel" vertex="1">
+          <mxGeometry height="45" width="320" x="50" y="220" as="geometry" />
         </mxCell>
-
-        <!-- Network Connections -->
-        <!-- ONT → Router -->
-        <mxCell id="conn_ont_router" edge="1" parent="1" source="ont" target="fr205" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;strokeColor=#6c8ebf;">
-          <mxGeometry relative="1" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-13" parent="sFFoBQhHbWahwSxUXSo6-9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="TP-Link Omada WAP&lt;br&gt;Wireless Access Point" vertex="1">
+          <mxGeometry height="55" width="320" x="50" y="280" as="geometry" />
         </mxCell>
-        <!-- Router → Cisco Switch -->
-        <mxCell id="conn_router_switch" edge="1" parent="1" source="fr205" target="cisco_switch" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;strokeColor=#6c8ebf;">
-          <mxGeometry relative="1" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-14" parent="sFFoBQhHbWahwSxUXSo6-9" style="shape=mxgraph.rack.rack_unit;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="StarTech 8-Outlet PDU" vertex="1">
+          <mxGeometry height="45" width="320" x="50" y="350" as="geometry" />
         </mxCell>
-        <!-- MiniPC → Cisco Switch -->
-        <mxCell id="conn_minipc_switch" edge="1" parent="1" source="minipc" target="cisco_switch" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;strokeColor=#6c8ebf;">
-          <mxGeometry relative="1" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-15" parent="1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;strokeColor=#666666;fillColor=#f5f5f5;" value="&lt;b&gt;Notes:&lt;/b&gt;&lt;br&gt;• Color-coded by function (Compute=green, Network=blue, Power=orange)&lt;br&gt;• Cable management: Color-coded Cat6 by VLAN zone&lt;br&gt;• Power: Dedicated circuits + UPS planned&lt;br&gt;• Cooling: Top-to-bottom airflow + fan tray priority&lt;br&gt;• Future: OPNsense migration, more storage, basement rack expansion" vertex="1">
+          <mxGeometry height="130" width="920" x="360" y="980" as="geometry" />
         </mxCell>
-        <!-- Patch Panel connections (example) -->
-        <mxCell id="conn_patch" edge="1" parent="1" source="patch" target="cisco_switch" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;strokeColor=#6c8ebf;">
-          <mxGeometry relative="1" as="geometry"/>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-16" edge="1" parent="1" source="sFFoBQhHbWahwSxUXSo6-4" style="edgeStyle=entityRelationEdgeStyle;rounded=1;html=1;endArrow=classic;jettySize=auto;orthogonalLoop=1;strokeColor=#6c8ebf;elbow=vertical;" target="sFFoBQhHbWahwSxUXSo6-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-20" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;color=#1565C0;" value="&lt;b&gt;Dual Basement Racks - Physical Layout (Future State, June 2026)&lt;/b&gt;&lt;br&gt;~12U Enclosed Compute/Storage + ~9U Open Networking | VLAN / Privacy Focused" vertex="1">
+          <mxGeometry height="60" width="1100" x="460" y="1170" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-21" parent="1" style="swimlane;startSize=40;horizontal=0;fillColor=#f5f5f5;strokeColor=#666666;html=1;fontStyle=1;whiteSpace=wrap;" value="Large Enclosed Rack (~12-15U Cabinet)&lt;br&gt;Core Compute / Storage" vertex="1">
+          <mxGeometry height="780" width="440" x="350" y="1250" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-22" parent="sFFoBQhHbWahwSxUXSo6-21" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="Dell MiniPC&lt;br&gt;Sole Containerized Services Host&lt;br&gt;Bazzite / Podman / Wazuh / Proxmox / Jellyfin" vertex="1">
+          <mxGeometry height="65" width="250" x="140" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-49" edge="1" parent="sFFoBQhHbWahwSxUXSo6-21" source="sFFoBQhHbWahwSxUXSo6-23" style="rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;elbow=vertical;endArrow=none;endFill=0;startArrow=classic;startFill=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-210" y="40" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-50" connectable="0" parent="sFFoBQhHbWahwSxUXSo6-49" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Fiber from Verizon" vertex="1">
+          <mxGeometry relative="1" x="0.3275" y="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-23" parent="sFFoBQhHbWahwSxUXSo6-21" style="shape=mxgraph.rack.shelf;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Verizon ONT&lt;br&gt;(Moved to Rack)" vertex="1">
+          <mxGeometry height="50" width="230" x="50" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-24" parent="sFFoBQhHbWahwSxUXSo6-21" style="shape=mxgraph.rack.shelf;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="1U Shelf - Expansion / Storage" vertex="1">
+          <mxGeometry height="50" width="340" x="50" y="225" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-41" edge="1" parent="sFFoBQhHbWahwSxUXSo6-21" source="sFFoBQhHbWahwSxUXSo6-25" style="edgeStyle=elbowEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" target="sFFoBQhHbWahwSxUXSo6-23">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="410" y="270" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-47" edge="1" parent="sFFoBQhHbWahwSxUXSo6-21" style="edgeStyle=elbowEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;curved=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="420" y="240" />
+            </Array>
+            <mxPoint x="390" y="332.5" as="sourcePoint" />
+            <mxPoint x="390" y="122.5" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-25" parent="sFFoBQhHbWahwSxUXSo6-21" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;opacity=70;fontSize=11;" value="Future: Additional Storage / UPS" vertex="1">
+          <mxGeometry height="90" width="200" x="190" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-46" edge="1" parent="sFFoBQhHbWahwSxUXSo6-21" source="sFFoBQhHbWahwSxUXSo6-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;curved=1;" target="sFFoBQhHbWahwSxUXSo6-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-26" parent="sFFoBQhHbWahwSxUXSo6-21" style="shape=mxgraph.rack.rack_unit;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="PDU / Power Distribution" vertex="1">
+          <mxGeometry height="45" width="340" x="70" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-27" parent="1" style="swimlane;startSize=40;horizontal=0;fillColor=#f8cecc;strokeColor=#b85450;html=1;fontStyle=1;whiteSpace=wrap;" value="Small Open Rack (~9U)&lt;br&gt;Networking / Edge Devices" vertex="1">
+          <mxGeometry height="620" width="440" x="870" y="1400" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-56" edge="1" parent="sFFoBQhHbWahwSxUXSo6-27" source="sFFoBQhHbWahwSxUXSo6-28" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=0;exitDx=0;exitDy=0;endArrow=none;endFill=0;startArrow=classic;startFill=1;strokeColor=light-dark(#000000,#FFFF00);">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="520" y="-130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-57" connectable="0" parent="sFFoBQhHbWahwSxUXSo6-56" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Starlink Failover" vertex="1">
+          <mxGeometry relative="1" x="0.1875" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-28" parent="sFFoBQhHbWahwSxUXSo6-27" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="TP-Link FR205 Router&lt;br&gt;Multi-WAN Firewall&lt;br&gt;(Future Starlink WAN Failover)" vertex="1">
+          <mxGeometry height="75" width="340" x="50" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-59" edge="1" parent="sFFoBQhHbWahwSxUXSo6-27" source="sFFoBQhHbWahwSxUXSo6-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#6C8EBF);" target="sFFoBQhHbWahwSxUXSo6-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-60" edge="1" parent="sFFoBQhHbWahwSxUXSo6-27" source="sFFoBQhHbWahwSxUXSo6-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=light-dark(#000000,#6C8EBF);" target="sFFoBQhHbWahwSxUXSo6-30" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-61" edge="1" parent="sFFoBQhHbWahwSxUXSo6-27" source="sFFoBQhHbWahwSxUXSo6-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#6C8EBF);" target="sFFoBQhHbWahwSxUXSo6-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-29" parent="sFFoBQhHbWahwSxUXSo6-27" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="Cisco Unmanaged Switch&lt;br&gt;(Current Placeholder)&lt;br&gt;Until Managed Switch Acquired" vertex="1">
+          <mxGeometry height="70" width="340" x="50" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-30" parent="sFFoBQhHbWahwSxUXSo6-27" style="shape=mxgraph.rack.patch_panel;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" value="24-Port Cat6 Patch Panel" vertex="1">
+          <mxGeometry height="45" width="340" x="50" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-51" edge="1" parent="sFFoBQhHbWahwSxUXSo6-27" source="sFFoBQhHbWahwSxUXSo6-31" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;elbow=vertical;curved=1;" target="sFFoBQhHbWahwSxUXSo6-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-31" parent="sFFoBQhHbWahwSxUXSo6-27" style="shape=mxgraph.rack.rack_unit;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="StarTech 8-Outlet PDU" vertex="1">
+          <mxGeometry height="45" width="340" x="50" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-32" parent="1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=12;strokeColor=#666666;fillColor=#f5f5f5;" value="&lt;b&gt;Notes:&lt;/b&gt;&lt;br&gt;• Dell MiniPC = Sole container host (Proxmox + services)&lt;br&gt;• TP-Link Archer A7 remains upstairs (as WAP)&lt;br&gt;• Existing Omada WAP stays in office (future rack option)&lt;br&gt;• Cisco switch = temporary until managed replacement&lt;br&gt;• Color-coded cables by VLAN zone&lt;br&gt;• Power: Dedicated circuits + UPS planned&lt;br&gt;• Cooling: Airflow priority" vertex="1">
+          <mxGeometry height="160" width="960" x="360" y="2070" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-34" edge="1" parent="1" source="sFFoBQhHbWahwSxUXSo6-28" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=classic;strokeColor=#6c8ebf;" target="sFFoBQhHbWahwSxUXSo6-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-35" edge="1" parent="1" source="sFFoBQhHbWahwSxUXSo6-22" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=none;strokeColor=#6c8ebf;curved=1;startArrow=classic;startFill=1;endFill=0;entryX=0.136;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" target="sFFoBQhHbWahwSxUXSo6-30">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-53" connectable="0" parent="sFFoBQhHbWahwSxUXSo6-35" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="LAN" vertex="1">
+          <mxGeometry relative="1" x="-0.1339" y="-42" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-37" edge="1" parent="1" source="sFFoBQhHbWahwSxUXSo6-23" style="edgeStyle=entityRelationEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;elbow=vertical;strokeColor=light-dark(#000000,#FFFF00);" target="sFFoBQhHbWahwSxUXSo6-28">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-48" connectable="0" parent="sFFoBQhHbWahwSxUXSo6-37" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Ethernet WAN" vertex="1">
+          <mxGeometry relative="1" x="0.0213" y="-3" as="geometry">
+            <mxPoint x="-1" as="offset" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
