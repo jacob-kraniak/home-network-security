@@ -8,14 +8,16 @@
 
 ## Project Cost Tracker (Known Purchases to Date)
 
-**Total Confirmed Project Spend: $117.43** (as of June 12, 2026)
+**Total Confirmed Project Spend: $277.43** (as of June 12, 2026)
 
-Only direct purchases made specifically for this project are tracked here. Pre-existing personal hardware, racks, and stock cabling are noted as "Existing (pre-project)" with N/A cost.
+Only direct purchases made specifically for this project are tracked here. Personal daily-driver PCs and stock items are noted separately.
 
-| Date       | Item                                              | Order / Vendor                  | Cost (USD) | Cumulative | Delivery / Notes                          |
-|------------|---------------------------------------------------|---------------------------------|------------|------------|-------------------------------------------|
-| 2026-06-09 | TP-Link ER605 V2 Omada Gigabit VPN Router        | Amazon #111-0504065-9871411    | 49.99     | 49.99     | Delivered 2026-06-11 (front door/porch)  |
-| 2026-06-11 | StarTech.com 8-Outlet Horizontal 1U Rack PDU (RKPW081915) | Amazon (separate order)       | 67.44     | **117.43** | Delivered 2026-06-11; surge protection, 6ft cord |
+| Date        | Item                                                              | Order / Vendor                          | Cost (USD) | Cumulative | Delivery / Notes                                      |
+|-------------|-------------------------------------------------------------------|-----------------------------------------|------------|------------|-------------------------------------------------------|
+| June 2026  | Both Network Racks (Large Enclosed + Smaller Open)               | Facebook Marketplace (cash)            | 60.00     | 60.00     | Item: https://www.facebook.com/marketplace/item/2286578495082262/ |
+| June 2026  | Steel and Wood Table                                             | Facebook Marketplace (cash)            | 100.00    | 160.00    | Sturdy hybrid table for basement workspace/rack support. Previously detailed. Item: https://www.facebook.com/marketplace/item/1326552762948891/ |
+| 2026-06-09 | TP-Link ER605 V2 Omada Gigabit VPN Router                        | Amazon #111-0504065-9871411            | 49.99     | 209.99    | Delivered 2026-06-11 (front door/porch)              |
+| 2026-06-11 | StarTech.com 8-Outlet Horizontal 1U Rack PDU (RKPW081915)        | Amazon (separate order)                | 67.44     | **277.43**| Delivered 2026-06-11; surge protection, 6ft cord     |
 
 **Future / Planned Additions (will be added when purchased):**
 - TP-Link TL-SG1016DE 16-port managed switch
@@ -25,8 +27,8 @@ Only direct purchases made specifically for this project are tracked here. Pre-e
 - Potential Omada EAP-series WAP
 
 **Cost Notes:**
-- Prices reflect actual Amazon subtotals/totals from order confirmations.
-- Tax, shipping (usually $0), and any rewards/gift card usage noted in detailed logs (see `DECISIONS.md` and order screenshots in chat history).
+- Amazon purchases include actual subtotals/totals from order confirmations (tax/shipping noted where applicable).
+- Facebook Marketplace items logged as cash transactions with direct item links for reference.
 - No estimates included in the running total until actual purchase.
 
 ## Hardware Inventory by Category
@@ -39,21 +41,27 @@ Only direct purchases made specifically for this project are tracked here. Pre-e
 
 ### Rack Infrastructure (Physical)
 
-| Device                  | Model / Specs                                      | Status | Acquired      | Cost   | Location                  | Role / Notes                                      |
-|-------------------------|----------------------------------------------------|--------|---------------|--------|---------------------------|---------------------------------------------------|
-| Large Enclosed Rack    | ~21" H cabinet-style (~12-15U equiv), 19" wide   | ⚪ Existing | Pre-project  | N/A   | Basement (cinder block wall area) | Future compute/storage (Proxmox host, NAS)       |
-| Smaller Open Rack      | ~15.5" H open-frame (~8-9U equiv), 19" wide, shallow | ⚪ Existing | Pre-project  | N/A   | Basement (currently on bins)     | Primary Phase 1 target: networking, PDU, patch panel, mini-PC |
+| Device                  | Model / Specs                                      | Status     | Acquired     | Cost                  | Location                        | Role / Notes                                                                 |
+|-------------------------|----------------------------------------------------|------------|--------------|-----------------------|---------------------------------|------------------------------------------------------------------------------|
+| Large Enclosed Rack    | ~21" H cabinet-style (~12-15U equiv), 19" wide   | 🟢 Acquired | June 2026   | $30 (part of $60 pair) | Basement (cinder block wall area) | Future compute/storage (Proxmox host, NAS). Purchased as pair with smaller open rack via Facebook Marketplace. |
+| Smaller Open Rack      | ~15.5" H open-frame (~8-9U equiv), 19" wide, shallow | 🟢 Acquired | June 2026   | $30 (part of $60 pair) | Basement (currently on bins)     | Primary Phase 1 target: networking, PDU, patch panel, mini-PC. Purchased as pair via Facebook Marketplace. |
+
+### Furniture & Workspace Support
+
+| Device                  | Model / Specs                                      | Status     | Acquired     | Cost    | Location                        | Role / Notes                                                                 |
+|-------------------------|----------------------------------------------------|------------|--------------|---------|---------------------------------|------------------------------------------------------------------------------|
+| Steel and Wood Table   | Sturdy hybrid steel frame + wood top table (previously detailed) | 🟢 Acquired | June 2026   | 100.00 | Basement workspace / near racks | Work surface, staging area, and structural support for rack equipment, tools, and assembly. Purchased via Facebook Marketplace. |
 
 ### Power Distribution
 
-| Device                  | Model / Specs                                      | Status | Acquired      | Cost   | Location                  | Role / Notes                                      |
-|-------------------------|----------------------------------------------------|--------|---------------|--------|---------------------------|---------------------------------------------------|
+| Device                  | Model / Specs                                      | Status     | Acquired     | Cost   | Location                  | Role / Notes                                      |
+|-------------------------|----------------------------------------------------|------------|--------------|--------|---------------------------|---------------------------------------------------|
 | Rack PDU               | StarTech.com 8 Outlet Horizontal 1U (RKPW081915), surge prot., 120V/15A, 6ft cord | 🟢 Acquired | 2026-06-11   | 67.44 | Smaller open rack (1U slot) | Centralized clean power + surge protection for all rack equipment. See `home-lab-rack-build.md` |
 
 ### Core Networking (Gateway, Switch, Termination)
 
-| Device                  | Model / Specs                                      | Status | Acquired      | Cost   | Location                  | Role / Notes                                      |
-|-------------------------|----------------------------------------------------|--------|---------------|--------|---------------------------|---------------------------------------------------|
+| Device                  | Model / Specs                                      | Status     | Acquired     | Cost   | Location                  | Role / Notes                                      |
+|-------------------------|----------------------------------------------------|------------|--------------|--------|---------------------------|---------------------------------------------------|
 | Primary Gateway / Router | TP-Link ER605 V2 Omada SDN Gigabit VPN Router (3x WAN + 1x USB WAN, load balance, VPN firewall, lightning protection) | 🟢 Acquired | 2026-06-11   | 49.99 | Smaller open rack / shelf (initial) | Phase 1 edge device. Multi-WAN stability, Omada SDN ready, basic segmentation/VPN. See `DECISIONS.md`, `RACK.md` |
 | Managed Switch         | TP-Link TL-SG1016DE (16-port Gigabit, VLAN + Omada support) | 🔵 Planned | TBD          | TBD   | Smaller open rack        | VLAN segmentation, managed switching for trusted/IoT/guest/work networks |
 | Patch Panel            | 24-port Cat6                                       | 🔵 Planned | TBD          | TBD   | Smaller open rack        | Organized cable terminations and labeling        |
@@ -61,15 +69,15 @@ Only direct purchases made specifically for this project are tracked here. Pre-e
 
 ### Wireless & Access Points
 
-| Device                  | Model / Specs                                      | Status | Acquired      | Cost   | Location                  | Role / Notes                                      |
-|-------------------------|----------------------------------------------------|--------|---------------|--------|---------------------------|---------------------------------------------------|
+| Device                  | Model / Specs                                      | Status     | Acquired     | Cost   | Location                  | Role / Notes                                      |
+|-------------------------|----------------------------------------------------|------------|--------------|--------|---------------------------|---------------------------------------------------|
 | Repurposed AP          | TP-Link Archer A7 (AP mode only)                   | ⚪ Existing / Repurposed | Pre-project | N/A   | Strategic location (TBD) | Dedicated access point to reduce IoT/main mixing. See `infrastructure-criteria.md` |
 | Omada WAP / EAP        | TBD (Omada SDN compatible EAP series)              | 🔵 Planned | TBD          | TBD   | Rack / ceiling mount     | Future expansion of Omada centralized management |
 
 ### Compute & Services Hosts
 
-| Device                  | Model / Specs                                      | Status | Acquired      | Cost   | Location                  | Role / Notes                                      |
-|-------------------------|----------------------------------------------------|--------|---------------|--------|---------------------------|---------------------------------------------------|
+| Device                  | Model / Specs                                      | Status     | Acquired     | Cost   | Location                  | Role / Notes                                      |
+|-------------------------|----------------------------------------------------|------------|--------------|--------|---------------------------|---------------------------------------------------|
 | Primary Daily Driver (Bazzite) | MSI B450M DS3H, Ryzen 5 2600X, 16GB DDR4, GTX 1070, Bazzite Linux (immutable) | ⚪ Existing | Feb 2024    | N/A (personal) | Desk / home office       | Current Wazuh/Podman testing + daily use. May partially integrate or remain separate |
 | Primary Proxmox Host   | Dell OptiPlex 7060 Micro (or N100/N305-class mini-PC), i7-8700T or equiv, 32GB RAM, 1TB NVMe (renewed or new) | 🔵 Planned (Phase 2) | TBD       | ~200-400 (est.) | Large enclosed or small rack | Low-power always-on host for Wazuh, Jellyfin, Home Assistant, AdGuard, WireGuard, document archive, etc. Preferred over full rack servers for efficiency |
 | Dev / Testing          | Lenovo ThinkPad X380 Yoga (Kali Linux)             | ⚪ Existing | ~2018?      | N/A   | Portable                 | Security testing, lab work                       |
@@ -77,8 +85,8 @@ Only direct purchases made specifically for this project are tracked here. Pre-e
 
 ### Cabling, Accessories & Misc (Planned / Stock)
 
-| Device                  | Model / Specs                                      | Status | Acquired      | Cost   | Location                  | Role / Notes                                      |
-|-------------------------|----------------------------------------------------|--------|---------------|--------|---------------------------|---------------------------------------------------|
+| Device                  | Model / Specs                                      | Status     | Acquired     | Cost   | Location                  | Role / Notes                                      |
+|-------------------------|----------------------------------------------------|------------|--------------|--------|---------------------------|---------------------------------------------------|
 | Ethernet Cabling       | Monoprice Cat6 (or existing stock)                 | 🔵 Planned / Partial Existing | TBD     | TBD   | Rack runs                | Color-coded by VLAN where possible (Trusted/Main, IoT, Guest, Work) |
 | Cable Management       | Velcro, ties, labels, organizers                   | 🔵 Planned | TBD          | TBD   | Rack                     | Professional appearance and maintainability      |
 | Mounting Hardware      | Rails, shelves, brackets (as needed for open rack) | 🔵 Planned | TBD          | TBD   | Rack                     | Secure mounting of non-1U gear                   |
