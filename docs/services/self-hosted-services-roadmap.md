@@ -4,7 +4,7 @@
 
 **Project:** Home Network Security & Self-Hosted Infrastructure  
 **Status:** Open Decisions | Aligned with Project Planner Goals (Security, Privacy, Reliability, Scalability)  
-**Date:** June 2026  
+**Date:** June 12, 2026  
 
 These markdown blocks are structured for easy pasting into your Grok build workspace. They follow a consistent format: Decision Area, Options & Research Summary, Recommendation, Pros/Cons, Action Items/Roadmap, and Risks/Dependencies. This aligns with your emphasis on privacy migration, documentation, and iterative planning.
 
@@ -30,6 +30,9 @@ These markdown blocks are structured for easy pasting into your Grok build works
 
 ### 7. Security Monitoring
 **Recommendation:** Wazuh SIEM/XDR
+
+### 8. IT Asset Management (ITAM)
+**Recommendation:** NetBox (primary) or Snipe-IT
 
 ---
 
@@ -161,6 +164,71 @@ Proxmox VE (Debian-based) is the 2026 homelab favorite: free, KVM VMs + LXC cont
 
 **Risks:** Resource usage (monitor RAM/CPU); start small.
 
+### 8. IT Asset Management (ITAM) / CMDB
+
+**Options:** Snipe-IT, NetBox, GLPI, RackTables, custom Markdown/Obsidian + Dataview.
+
+**Research Summary:**
+
+Markdown tables (as currently used in `docs/inventory/devices-summary.md`) work for small setups but become difficult to maintain as hardware, accessories, warranties, licenses, and rack relationships grow. A dedicated self-hosted ITAM tool provides structured data, relationships (racks → devices → ports → cables), search, reporting, QR/barcode support, warranty tracking, and depreciation.
+
+**Top Contenders:**
+
+- **Snipe-IT** (https://snipeitapp.com): Excellent traditional hardware asset management. Strong on check-in/check-out, people assignment, accessories, licenses, consumables, QR codes, and reporting. Docker Compose friendly. Very popular in homelabs and small IT teams. PHP + MySQL/MariaDB stack.
+
+- **NetBox** (https://netbox.dev): Modern DCIM + IPAM + asset management. Outstanding for physical infrastructure (racks, devices, interfaces, cables, power distribution, VLANs). Has growing plugin ecosystem. Python/Django, excellent API, Docker support. Often preferred when you have physical racks + networking focus.
+
+- **GLPI**: Feature-rich (assets + helpdesk + agent-based auto-inventory). More ITIL-oriented but heavier resource footprint.
+
+- **RackTables**: Lightweight older tool focused on rack/DC management. Simpler but less actively developed.
+
+- **Lightweight/Custom**: Keep using/enhancing `devices-summary.md` + Obsidian Dataview/Kanban (you already use Obsidian heavily). Or a simple self-hosted database frontend (e.g., Baserow, NocoDB, or Datasette). Lower overhead but less structured relationships and reporting.
+
+**Recommendation:**
+
+**Primary recommendation: NetBox**
+
+Given your active basement rack build (large enclosed + smaller open rack), physical networking gear (ER605, future OPNsense, Omada, patch panels, cabling), and desire for structured relationships between racks, devices, and connections, **NetBox** is the stronger long-term fit. It excels at modeling exactly what you're building.
+
+**Strong alternative: Snipe-IT** if your primary pain point is hardware tracking, warranties, accessories, and simple check-in/out rather than deep rack/cable/port modeling. Snipe-IT has a gentler learning curve for pure asset management.
+
+You could even run both (NetBox for infrastructure modeling + Snipe-IT for consumables/licenses), but start with one.
+
+**Pros of NetBox (Recommended):**
+- Native rack elevation views and device positioning
+- Excellent modeling of connections (interfaces, cables, power)
+- Strong API + plugins (many homelab users extend it)
+- Privacy-friendly self-hosted (no cloud dependency)
+- Aligns well with future OPNsense + network documentation goals
+
+**Cons of NetBox:**
+- Steeper initial learning curve than Snipe-IT for non-networking assets
+- Requires more initial modeling effort
+
+**Pros of Snipe-IT:**
+- Very intuitive for hardware, accessories, and people assignment
+- Great reporting, depreciation, and warranty tracking
+- Easier QR code / barcode workflows
+- Slightly lighter for pure asset tracking
+
+**Action Items:**
+
+- Deploy a test instance of NetBox (Docker Compose recommended) on Proxmox.
+- Import current hardware from `docs/inventory/devices-summary.md` (racks, ER605, PDU, table, planned devices).
+- Evaluate rack elevation views and device type templates.
+- Decide between NetBox vs Snipe-IT after 1-2 weeks of testing.
+- If choosing one, plan migration path from Markdown tables and update `devices-summary.md` to point to the live ITAM as source of truth.
+
+**Roadmap:**
+- POC/test instance in late Q2 / early Q3 2026 (alongside rack physical install).
+- Production deployment once rack hardware is mounted and initial devices are racked.
+- Integrate with Wazuh (asset inventory as source) and future documentation systems.
+
+**Risks/Dependencies:**
+- Initial data modeling effort required.
+- Database (PostgreSQL for NetBox) adds another service to maintain.
+- Avoid over-modeling early; start minimal (racks + key devices) and expand.
+
 ## Later Goals
 
 ### 5. Plex/Jellyfin Media Server
@@ -202,16 +270,17 @@ See dedicated page: [docs/services/document-digitization.md](document-digitizati
 
 ## Overall Roadmap Integration
 
-**Phase 1 (Q2 2026):** Base OS + Proxmox + OPNsense + Wazuh + Document Digitization POC.
+**Phase 1 (Q2 2026):** Base OS + Proxmox + OPNsense + Wazuh + Document Digitization POC + ITAM POC (NetBox or Snipe-IT).
 
-**Phase 2:** Core services (RustDesk, backups, media, full digitization import).
+**Phase 2:** Core services (RustDesk, backups, media, full digitization import, production ITAM).
 
-**Phase 3:** HA + cameras + advanced automation.
+**Phase 3:** HA + cameras + advanced automation + full infrastructure modeling in ITAM.
 
 ---
 
 **Changelog / Version Notes:**
 - 2026-06-03: Added condensed core decisions summary (Block 1). Promoted Document Digitization project from /project-ideas into active services documentation with dedicated page using Paperless-ngx stack. Updated GitHub issues for board. Maintained consistent formatting and privacy focus.
 - 2026-06-03 (refinement): Incorporated exact user-provided content for Status, Recommended Stack (including Grok API, Nginx+Auth+VPN), and Action Items into document-digitization.md and linked section in roadmap.
+- 2026-06-12: Added new Decision Area #8 for IT Asset Management (ITAM). Recommended NetBox as primary (due to rack + networking focus) with Snipe-IT as strong alternative. Updated summary table and Phase 1 roadmap to include ITAM POC. This directly addresses growing Markdown table maintenance burden in `devices-summary.md`.
 
-**Next Steps for Workspace:** Expand issues in GitHub Project Board and track decisions. Let me know which area to deep-dive or generate configs for next. This keeps everything documented, privacy-aligned, and actionable per your guidelines.
+**Next Steps for Workspace:** Expand issues in GitHub Project Board and track decisions. Let me know which area to deep-dive or generate configs for next (e.g., NetBox Docker Compose example, import script from current Markdown, or Snipe-IT comparison testing plan). This keeps everything documented, privacy-aligned, and actionable per your guidelines.
