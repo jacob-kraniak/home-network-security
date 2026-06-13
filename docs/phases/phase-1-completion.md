@@ -11,7 +11,7 @@
 6. Confirmed network stability after powering everything back on.
 
 **Photos:**
-(Images to be uploaded later)
+(Images to be uploaded later to /assets/phase1/)
 
 **Temporary Setup Notes:**
 - Yellow/black cables are current runs (clean-up planned post-electrician).
@@ -31,8 +31,6 @@ Now that we have a better physical picture, deciding between:
 **Pros/Cons** to discuss:
 - Option 1: Simpler cabling/power in one place; better for short-term.
 - Option 2: Cleaner separation (security/isolation); easier long-term scaling with Wazuh/Proxmox/Jellyfin etc.
-
-**Recommendation pending** your preference on power density, heat, VLAN segmentation goals, and miniPC/container host plans.
 
 ### Credits & Thanks
 Huge thanks to Aaron Kraniak for the hands-on help, patch panel, and keystones — this phase would have taken much longer without it!
