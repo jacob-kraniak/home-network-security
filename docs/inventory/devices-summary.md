@@ -1,7 +1,7 @@
 # Hardware & Project Inventory Summary
 
 **Project:** Home Network Security / Privacy Migration / Basement Rack Build  
-**Last Updated:** June 12, 2026  
+**Last Updated:** June 14, 2026  
 **Purpose:** Master single-source inventory of all hardware (purchased, existing, planned) relevant to Phase 1 networking (ER605 + Omada), rack infrastructure, power, compute for self-hosted services (Proxmox/Wazuh/Jellyfin/etc.), and overall privacy/security goals. Includes cost tracking for project expenditure.
 
 > **Note on Sensitivity:** This file contains only high-level, non-sensitive summaries (models, roles, status, costs). Live discovered devices with MAC addresses, hostnames, or IPs remain in local/gitignored `docs/inventory/*.xml` files (nmap, services, etc.). See `iot-devices.md` for IoT-specific risk tracking.
@@ -79,6 +79,7 @@ Only direct purchases made specifically for this project are tracked here. Perso
 | Device                  | Model / Specs                                      | Status     | Acquired     | Cost   | Location                  | Role / Notes                                      |
 |-------------------------|----------------------------------------------------|------------|--------------|--------|---------------------------|---------------------------------------------------|
 | Primary Daily Driver (Bazzite) | MSI B450M DS3H, Ryzen 5 2600X, 16GB DDR4, GTX 1070, Bazzite Linux (immutable) | ⚪ Existing | Feb 2024    | N/A (personal) | Desk / home office       | Current Wazuh/Podman testing + daily use. May partially integrate or remain separate |
+| Raspberry Pi 3         | Raspberry Pi 3 Model B (or B+)                     | ⚪ Existing / Repurposed | Pre-project | N/A   | Basement rack / temporary | Previously tested as Pi-hole. Repurposing as lightweight container host (e.g., Docker/Podman for simple services) while awaiting mini-PC for Proxmox. Low-power testing platform. |
 | Primary Proxmox Host   | Dell OptiPlex 7060 Micro (or N100/N305-class mini-PC), i7-8700T or equiv, 32GB RAM, 1TB NVMe (renewed or new) | 🔵 Planned (Phase 2) | TBD       | ~200-400 (est.) | Large enclosed or small rack | Low-power always-on host for Wazuh, Jellyfin, Home Assistant, AdGuard, WireGuard, document archive, etc. Preferred over full rack servers for efficiency |
 | Dev / Testing          | Lenovo ThinkPad X380 Yoga (Kali Linux)             | ⚪ Existing | ~2018?      | N/A   | Portable                 | Security testing, lab work                       |
 | Work Laptop            | Lenovo ThinkPad P14s Gen 4 (i7-1370P, 32GB, RTX A500, Win11) | ⚪ Existing | 202?        | N/A   | Not rack-mounted         | Day job + occasional lab access                  |
