@@ -11,7 +11,10 @@
 6. Confirmed network stability after powering everything back on.
 
 **Photos:**
-(Images to be uploaded later to /assets/phase1/)
+
+![Rack Interior - PDU & Equipment](https://github.com/jacob-kraniak/home-network-security/blob/main/assets/phase1/PXL_20260613_162004808.jpg)
+
+![Full Rack View with Cisco & Router](https://github.com/jacob-kraniak/home-network-security/blob/main/assets/phase1/PXL_20260613_193632285.jpg)
 
 **Temporary Setup Notes:**
 - Yellow/black cables are current runs (clean-up planned post-electrician).
