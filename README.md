@@ -12,4 +12,9 @@
 - [hardware/RACK.md](hardware/RACK.md)
 - [docs/ROADMAP.md](docs/ROADMAP.md)
 
-Images uploaded to `/assets/phase1/` — update paths in phase doc as needed.
+**Photos from Phase 1:**
+
+![Phase 1 Rack Setup](https://github.com/jacob-kraniak/home-network-security/blob/main/assets/phase1/PXL_20260613_162004808.jpg)
+![Phase 1 Full View](https://github.com/jacob-kraniak/home-network-security/blob/main/assets/phase1/PXL_20260613_193632285.jpg)
+
+Images in `/assets/phase1/`.
