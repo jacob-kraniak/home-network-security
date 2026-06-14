@@ -1,25 +1,38 @@
-# Home Network Security Roadmap (Revised June 12, 2026)
+# Home Network Security Roadmap (Revised June 14, 2026)
 
-## Phase 1: Stable Family Foundation (Current - In Progress)
-- Deploy **TP-Link ER605 V2** Omada SDN Gigabit VPN Router (Multi-WAN / load balance / VPN firewall; purchased June 9, delivered June 11, 2026 for $49.99) + TL-SG1016DE managed switch (planned).
-- StarTech 8-outlet 1U horizontal rackmount PDU also acquired (delivered June 11, 2026; $67.44) for clean power in small open rack.
-- Initial VLAN segmentation (Main/Trusted, Kids/Guest, IoT, Work) and basic firewall rules on ER605.
-- Rack organization and mounting of new networking gear in basement smaller open rack.
-- **Reference**: [`/hardware`](../hardware/) (DECISIONS.md, RACK.md, home-lab-rack-build.md for full inventory/purchase details) and update diagrams in [`/diagrams`](../diagrams/).
-- **Status**: Router and PDU received and ready for physical install/config. Phase 1 hardware foundation complete on procurement side.
+## Phase 1: Stable Family Foundation + Rack Relocation + NetBox Bootstrap - ✅ COMPLETE
+- **Physical**: TP-Link ER605 V2 Omada SDN router + Startech 8-outlet 1U PDU acquired and installed in basement. CAT6/fiber relocation, equipment moved to rack with help from Aaron Kraniak (patch panel + keystones). Temporary power/cabling; dedicated outlet pending electrician. Network stability confirmed.
+- **Rack Config**: Two racks established in basement:
+  - **Network Stack** (enclosed 12U w/ drawer): PDU mounted + space for ER605, switch, patch panel.
+  - **Server Hosts**: Empty, reserved for Proxmox/NAS/compute.
+- **Documentation & CMDB**: Parallel bootstrap of **NetBox** as primary structured inventory tool (DCIM/IPAM). Created sites/locations/contacts, custom roles (incl. Power Distribution Unit, IoT-Device, Hypervisor), manufacturers, device types with interface/power templates (ER605, Archer A7, PDU, IoT generics), racks, power panels/feeds/outlets, and comprehensive tags (Home-Lab, Proxmox, Wazuh, IoT, Critical, KWE, Tesla, etc.). Initial device (Startech PDU) created and rack-mounted. Full changelog + rack elevation screenshot captured.
+- **See**: [phase-1-completion.md](phases/phase-1-completion.md) and new [phase-1-netbox-foundation.md](phases/phase-1-netbox-foundation.md) for details, gaps, and Phase 2 plan.
+- **VLAN/Segmentation**: Basic plan defined (Trusted, IoT, Guest, Work); implementation on ER605 pending full config.
+- **Status**: Hardware foundation and NetBox model complete. Next: electrician, Omada config, core device population in NetBox, cabling/power connections.
 
-## Phase 2: Self-Hosted Services (Next)
-- Install Proxmox on Dell OptiPlex 7060 Micro (or equivalent miniPC).
-- Core services/containers: AdGuard Home (or Pi-hole), WireGuard VPN, Vaultwarden, Wazuh monitoring/SIEM, Jellyfin/Plex media, Home Assistant, document archive (Paperless-ngx).
-- Retain TP-Link ER605 V2 as primary edge router initially for network stability during transition (Omada SDN ready for expansion).
-- **Reference**: Update [`/diagrams`](../diagrams/) with Proxmox host placement and service connections. See `docs/services/` for research roadmaps.
+## Phase 2: Self-Hosted Services & NetBox Population (Next)
+- Install Proxmox on Dell OptiPlex / miniPC host; add as Device in NetBox (Hypervisor role).
+- Core services: AdGuard/Pi-hole, WireGuard, Vaultwarden, Wazuh (SIEM/XDR), Jellyfin/Plex, Home Assistant, Paperless-ngx document archive.
+- **NetBox Phase 2 Priorities** (see phase-1-netbox-foundation.md):
+  - Create missing Device Types (Proxmox host, NAS, managed switch, APs).
+  - Instantiate & mount core devices (ER605 first, then others); apply tags.
+  - Model power connections (PDU outlets → devices), circuits from Main Panel.
+  - Add Cables & interface connections (start with temporary runs; plan structured).
+  - Seed IPAM/VLANs/Prefixes from sanitized inventory data.
+  - Begin virtualization modeling (Clusters, VMs) once Proxmox live.
+  - Bulk IoT device entry with risk tags; cross-ref risk register.
+- Retain ER605 as edge initially; evaluate OPNsense/pfSense migration later (Phase 3).
+- Update diagrams/ and inventory/ summaries to align with NetBox as source of truth.
+- **Reference**: `docs/services/self-hosted-services-roadmap.md`, hardware/ docs, privacy-migration board.
 
 ## Phase 3: Open Source Routing & Expansion (Future)
-- Evaluate migration of routing/firewall to OPNsense (or pfSense) on dedicated hardware for full open-source control and advanced features.
-- Add hybrid NAS/storage solution (e.g. Aoostar or custom).
-- Expand rack utilization (large enclosed rack for compute/storage).
-- **Reference**: [`hardware/`](../hardware/) for hardware matrix and future purchases.
+- Migrate routing/firewall to OPNsense (or pfSense) on dedicated hardware for full control.
+- Expand rack (additional large rack?), hybrid NAS, more IoT replacements (Reolink/Frigate for Ring, Zigbee for Nest).
+- Full NetBox utilization: advanced queries, exports, potential plugins/webhooks for Proxmox/Wazuh integration, custom fields for costs/warranty/risk.
+- Align with ongoing privacy migration, cyber certs, and homelab automation (MCP, GitHub Actions, Obsidian).
 
-**Risk / Rollback Note**: ER605 V2 supports easy configuration backup/export for quick restore or rollback if issues arise during any phase. Maintain fallback options and test failover where multi-WAN is configured.
+**Risk / Rollback**: ER605 config exportable for quick restore. Maintain fallback options during transitions. All changes tracked in NetBox changelog.
 
-**Recent Inventory Updates**: Logged TP-Link ER605 V2 and StarTech PDU purchases with full order details, costs, delivery info, and intended roles. See hardware/ docs for complete tracking. This keeps project inventory accurate and auditable against the Privacy Migration goals.
+**Recent Updates (June 13-14)**: Physical rack relocation complete + NetBox foundation bootstrap (taxonomy, power, racks, PDU). See phases/ docs and attached changelog/screenshots for full audit trail. Inventory tracked against Privacy Migration goals.
+
+*Last updated: 2026-06-14* (Phase 1 marked complete; NetBox integration added; rack decisions clarified)
