@@ -1,7 +1,7 @@
 # Hardware & Project Inventory Summary
 
 **Project:** Home Network Security / Privacy Migration / Basement Rack Build  
-**Last Updated:** June 14, 2026  
+**Last Updated:** June 16, 2026  
 **Purpose:** Master single-source inventory of all hardware (purchased, existing, planned) relevant to Phase 1 networking (ER605 + Omada), rack infrastructure, power, compute for self-hosted services (Proxmox/Wazuh/Jellyfin/etc.), and overall privacy/security goals. Includes cost tracking for project expenditure.
 
 > **Note on Sensitivity:** This file contains only high-level, non-sensitive summaries (models, roles, status, costs). Live discovered devices with MAC addresses, hostnames, or IPs remain in local/gitignored `docs/inventory/*.xml` files (nmap, services, etc.). See `iot-devices.md` for IoT-specific risk tracking.
@@ -19,8 +19,8 @@ Only direct purchases made specifically for this project are tracked here. Perso
 | 2026-06-09 | TP-Link ER605 V2 Omada Gigabit VPN Router                        | Amazon #111-0504065-9871411            | 49.99     | 209.99    | Delivered 2026-06-11 (front door/porch)              |
 | 2026-06-11 | StarTech.com 8-Outlet Horizontal 1U Rack PDU (RKPW081915)        | Amazon (separate order)                | 67.44     | **277.43**| Delivered 2026-06-11; surge protection, 6ft cord     |
 
-**Future / Planned Additions (will be added when purchased):**
-- TP-Link TL-SG1016DE 16-port managed switch
+**Future / Planned Additions (will be added when purchased):**  
+(Note: New switch now onsite — update cost when receipt available.)
 - Dell OptiPlex 7060 Micro (or N100/N305-class mini-PC) for Proxmox
 - 24-port Cat6 patch panel
 - Additional Cat6 cabling, mounting hardware, cable management accessories
@@ -63,7 +63,7 @@ Only direct purchases made specifically for this project are tracked here. Perso
 | Device                  | Model / Specs                                      | Status     | Acquired     | Cost   | Location                  | Role / Notes                                      |
 |-------------------------|----------------------------------------------------|------------|--------------|--------|---------------------------|---------------------------------------------------|
 | Primary Gateway / Router | TP-Link ER605 V2 Omada SDN Gigabit VPN Router (3x WAN + 1x USB WAN, load balance, VPN firewall, lightning protection) | 🟢 Acquired | 2026-06-11   | 49.99 | Smaller open rack / shelf (initial) | Phase 1 edge device. Multi-WAN stability, Omada SDN ready, basic segmentation/VPN. See `DECISIONS.md`, `RACK.md` |
-| Managed Switch         | TP-Link TL-SG1016DE (16-port Gigabit, VLAN + Omada support) | 🔵 Planned | TBD          | TBD   | Smaller open rack        | VLAN segmentation, managed switching for trusted/IoT/guest/work networks |
+| Managed Switch         | TP-Link TL-SG1016DE (16-port Gigabit, VLAN + Omada support) | 🟢 Acquired | June 16, 2026 | TBD   | Smaller open rack        | VLAN segmentation, managed switching for trusted/IoT/guest/work networks. Now onsite — ready for install per cutover plan. |
 | Patch Panel            | 24-port Cat6                                       | 🔵 Planned | TBD          | TBD   | Smaller open rack        | Organized cable terminations and labeling        |
 | ISP ONT (FIOS)         | ISP-provided Optical Network Terminal              | ⚪ Existing (to relocate) | N/A       | N/A   | Move to rack area        | Will be relocated to basement rack per infrastructure criteria |
 
