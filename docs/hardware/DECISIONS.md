@@ -1,4 +1,4 @@
-# Hardware Decisions Log (Updated June 12, 2026)
+# Hardware Decisions Log (Updated June 16, 2026)
 
 ## Completed Purchases (June 2026)
 
@@ -15,10 +15,14 @@
   - **Cost**: $67.44
   - **Rationale**: Exact match for planned 1U horizontal PDU in smaller open rack layout. Provides organized surge-protected power for rack gear (router, switch, compute, WAP, etc.), reducing cable clutter and improving reliability/safety in basement setup.
 
+- **Managed Switch (Phase 1)**: TP-Link TL-SG1016DE 16-port Gigabit managed switch with VLAN and Omada SDN support. 
+  - **Status**: Now onsite as of June 16, 2026. Ready for cutover and integration.
+  - **Rationale**: Omada-compatible for centralized management and VLAN segmentation (trusted, IoT, guest, work networks). Enables clean rollout per network migration plan.
+
 ## Planned / Approved (Future Phases)
 
-- **Switch**: TP-Link TL-SG1016DE — 16-port Gigabit managed switch with VLAN and Omada support (Phase 1).
 - **Compute (Phase 2)**: Dell OptiPlex 7060 Micro (Renewed, i7-8700T, 32GB RAM, 1TB NVMe SSD) as primary Proxmox host for self-hosted services (Wazuh, Jellyfin, etc.).
+- Patch panel and cabling accessories.
 
 ## Rationale Summary
 - **TP-Link Omada ecosystem** chosen for balance of features, warranty/support, simple management UI, fast recovery/rollback options (important for family network), and centralized SDN control (controller can later run self-hosted on Proxmox).
