@@ -11,8 +11,10 @@
 
 ## Web Portals
 
-- [NetBox Cloud (CMDB / IPAM)](https://arfv7221.cloud.netboxapp.com/)
-- [Omada Cloud](https://use1-omada-cloud.tplinkcloud.com/)
+|Console|URL|Purpose|
+|---|---|---|
+|NetBox Cloud|https://arfv7221.cloud.netboxapp.com| CMDB / IPAM|
+|Omada Cloud|https://use1-omada-cloud.tplinkcloud.com| SDN Management|
 
 ## Quick Links
 - [Post-Cutover Stabilization](docs/Post-Cutover-Network-Stabilization-and-Provisioning.md)
