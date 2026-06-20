@@ -1,4 +1,4 @@
-# Hardware Decisions Log (Updated June 16, 2026)
+# Hardware Decisions Log (Updated June 20, 2026)
 
 ## Completed Purchases (June 2026)
 
@@ -16,8 +16,17 @@
   - **Rationale**: Exact match for planned 1U horizontal PDU in smaller open rack layout. Provides organized surge-protected power for rack gear (router, switch, compute, WAP, etc.), reducing cable clutter and improving reliability/safety in basement setup.
 
 - **Managed Switch (Phase 1)**: TP-Link TL-SG1016DE 16-port Gigabit managed switch with VLAN and Omada SDN support. 
-  - **Status**: Now onsite as of June 16, 2026. Ready for cutover and integration.
+  - **Status**: Onsite; integrated in cutover path. Omada Cloud adoption pending.
   - **Rationale**: Omada-compatible for centralized management and VLAN segmentation (trusted, IoT, guest, work networks). Enables clean rollout per network migration plan.
+
+## Cutover Decision (June 20, 2026)
+
+- **ER605 promoted to primary gateway** replacing Archer A7 as edge router/DHCP server.
+  - **Cutover window**: ~11:45 AM ET; <30 min downtime.
+  - **Verified**: 320/320 Mbps on Verizon FIOS.
+  - **Gateway**: `192.168.0.1` (ER605 LAN MAC `58:04:4f:37:b9:cb`).
+  - **Rollback**: ER605 config exportable; Archer A7 retained for AP conversion fallback.
+  - **Documentation**: [Post-Cutover-Network-Stabilization-and-Provisioning.md](../Post-Cutover-Network-Stabilization-and-Provisioning.md)
 
 ## Planned / Approved (Future Phases)
 

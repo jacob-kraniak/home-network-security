@@ -17,6 +17,9 @@ This repository documents the transition from consumer-grade networking to a sec
   - docs/inventory/devices-summary.md
   - docs/inventory/iot-devices.md
   - docs/inventory/nmap/ (raw & sanitized scans)
+- **Post-Cutover (2026-06-20)**:
+  - docs/Post-Cutover-Network-Stabilization-and-Provisioning.md
+  - docs/NetBox-Inventory-Progress.md
 - **Diagrams**: docs/diagrams/ (Home-Network-Diagram.drawio + VLAN versions)
 - **Configs**: docs/configs/ (pfSense, Wazuh, firewall rules)
 - **Risk Register**: docs/risk/ (IoT devices, mitigation plans)

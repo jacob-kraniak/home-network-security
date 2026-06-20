@@ -1,4 +1,16 @@
-# Home Network Security Roadmap (Revised June 14, 2026)
+# Home Network Security Roadmap (Revised June 20, 2026)
+
+## Phase 1.5: ER605 Cutover + Stabilization — 🟡 IN PROGRESS (2026-06-20)
+
+- **Cutover**: ER605 is primary gateway (`192.168.0.1`, MAC `58:04:4f:37:b9:cb`). Completed ~11:45 AM ET with <30 min downtime. Verizon speed verified at 320/320 Mbps.
+- **Documentation**: [Post-Cutover-Network-Stabilization-and-Provisioning.md](Post-Cutover-Network-Stabilization-and-Provisioning.md), [NetBox-Inventory-Progress.md](NetBox-Inventory-Progress.md).
+- **Immediate next steps**:
+  1. Omada Cloud adoption (ER605, EAP225, TL-SG1016DE)
+  2. Archer A7 → Access Point conversion
+  3. ER605 DHCP reservations for critical MACs
+  4. VLAN provisioning (10 Main, 20 IoT, 30 Guest, 40 Lab, 99 Mgmt)
+  5. NetBox topology refresh (ONT → ER605 → switch cables)
+- **Focus**: Network stability → VLAN segmentation → full Omada management.
 
 ## Phase 1: Stable Family Foundation + Rack Relocation + NetBox Bootstrap - ✅ COMPLETE
 - **Physical**: TP-Link ER605 V2 Omada SDN router + Startech 8-outlet 1U PDU acquired and installed in basement. CAT6/fiber relocation, equipment moved to rack with help from Aaron Kraniak (patch panel + keystones). Temporary power/cabling; dedicated outlet pending electrician. Network stability confirmed.
@@ -7,8 +19,8 @@
   - **Server Hosts**: Empty, reserved for Proxmox/NAS/compute.
 - **Documentation & CMDB**: Parallel bootstrap of **NetBox** as primary structured inventory tool (DCIM/IPAM). Created sites/locations/contacts, custom roles (incl. Power Distribution Unit, IoT-Device, Hypervisor), manufacturers, device types with interface/power templates (ER605, Archer A7, PDU, IoT generics), racks, power panels/feeds/outlets, and comprehensive tags (Home-Lab, Proxmox, Wazuh, IoT, Critical, KWE, Tesla, etc.). Initial device (Startech PDU) created and rack-mounted. Full changelog + rack elevation screenshot captured.
 - **See**: [phase-1-completion.md](phases/phase-1-completion.md) and new [phase-1-netbox-foundation.md](phases/phase-1-netbox-foundation.md) for details, gaps, and Phase 2 plan.
-- **VLAN/Segmentation**: Basic plan defined (Trusted, IoT, Guest, Work); implementation on ER605 pending full config.
-- **Status**: Hardware foundation and NetBox model complete. Next: electrician, Omada config, core device population in NetBox, cabling/power connections.
+- **VLAN/Segmentation**: Plan expanded — VLAN 10 Main, 20 IoT, 30 Guest, 40 Lab, 99 Mgmt (see post-cutover doc). Implementation pending Omada adoption.
+- **Status**: Hardware foundation and NetBox model complete. ER605 cutover done; VLAN + full Omada management next.
 
 ## Phase 2: Self-Hosted Services & NetBox Population (Next)
 - Install Proxmox on Dell OptiPlex / miniPC host; add as Device in NetBox (Hypervisor role).
@@ -35,4 +47,4 @@
 
 **Recent Updates (June 13-14)**: Physical rack relocation complete + NetBox foundation bootstrap (taxonomy, power, racks, PDU). See phases/ docs and attached changelog/screenshots for full audit trail. Inventory tracked against Privacy Migration goals.
 
-*Last updated: 2026-06-14* (Phase 1 marked complete; NetBox integration added; rack decisions clarified)
+*Last updated: 2026-06-20* (ER605 cutover complete; post-cutover stabilization docs added)

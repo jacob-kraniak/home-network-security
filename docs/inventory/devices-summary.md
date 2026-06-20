@@ -62,8 +62,8 @@ Only direct purchases made specifically for this project are tracked here. Perso
 
 | Device                  | Model / Specs                                      | Status     | Acquired     | Cost   | Location                  | Role / Notes                                      |
 |-------------------------|----------------------------------------------------|------------|--------------|--------|---------------------------|---------------------------------------------------|
-| Primary Gateway / Router | TP-Link ER605 V2 Omada SDN Gigabit VPN Router (3x WAN + 1x USB WAN, load balance, VPN firewall, lightning protection) | 🟢 Acquired | 2026-06-11   | 49.99 | Smaller open rack / shelf (initial) | Phase 1 edge device. Multi-WAN stability, Omada SDN ready, basic segmentation/VPN. See `DECISIONS.md`, `RACK.md` |
-| Managed Switch         | TP-Link TL-SG1016DE (16-port Gigabit, VLAN + Omada support) | 🟢 Acquired | June 16, 2026 | TBD   | Smaller open rack        | VLAN segmentation, managed switching for trusted/IoT/guest/work networks. Now onsite — ready for install per cutover plan. |
+| Primary Gateway / Router | TP-Link ER605 V2 Omada SDN Gigabit VPN Router (3x WAN + 1x USB WAN, load balance, VPN firewall, lightning protection) | 🟢 **Active (cutover 2026-06-20)** | 2026-06-11   | 49.99 | Network Stack rack | **Primary gateway** `192.168.0.1`. Cutover complete; Omada adoption + VLANs pending. See [Post-Cutover doc](../Post-Cutover-Network-Stabilization-and-Provisioning.md) |
+| Managed Switch         | TP-Link TL-SG1016DE (16-port Gigabit, VLAN + Omada support) | 🟢 Acquired / installing | June 16, 2026 | TBD   | Smaller open rack        | VLAN segmentation trunk to ER605. Omada adoption pending. |
 | Patch Panel            | 24-port Cat6                                       | 🔵 Planned | TBD          | TBD   | Smaller open rack        | Organized cable terminations and labeling        |
 | ISP ONT (FIOS)         | ISP-provided Optical Network Terminal              | ⚪ Existing (to relocate) | N/A       | N/A   | Move to rack area        | Will be relocated to basement rack per infrastructure criteria |
 
@@ -71,7 +71,7 @@ Only direct purchases made specifically for this project are tracked here. Perso
 
 | Device                  | Model / Specs                                      | Status     | Acquired     | Cost   | Location                  | Role / Notes                                      |
 |-------------------------|----------------------------------------------------|------------|--------------|--------|---------------------------|---------------------------------------------------|
-| Repurposed AP          | TP-Link Archer A7 (AP mode only)                   | ⚪ Existing / Repurposed | Pre-project | N/A   | Strategic location (TBD) | Dedicated access point to reduce IoT/main mixing. See `infrastructure-criteria.md` |
+| Repurposed AP          | TP-Link Archer A7 (AP mode only)                   | 🟡 **Pending conversion** | Pre-project | N/A   | Strategic location (TBD) | Former primary router; convert to AP (static IP, DHCP off). See [Post-Cutover doc](../Post-Cutover-Network-Stabilization-and-Provisioning.md) |
 | Omada WAP / EAP        | TBD (Omada SDN compatible EAP series)              | 🔵 Planned | TBD          | TBD   | Rack / ceiling mount     | Future expansion of Omada centralized management |
 
 ### Compute & Services Hosts
