@@ -3,90 +3,72 @@
 ## Project Overview
 This repository documents the transition from consumer-grade networking to a secure, segmented, privacy-focused home network. It is part of the broader Privacy Migration project.
 
+## Production Architecture (2026-06-20)
+
+**Segmented VLAN lab** — ER605 tags VLANs 1/10/20; OpenWRT terminates via `br-lan.N` subinterfaces.
+
+| VID | Name | SSID | Prefix |
+|-----|------|------|--------|
+| 1 | LAN-Secure | K108-Home-Secure | 192.168.0.0/24 |
+| 10 | IoT | K108-Home-IoT | 192.168.10.0/24 |
+| 20 | Guest | K108-Guest | 192.168.20.0/24 |
+
+**Core devices:** ER605-Gateway, OpenWRT-AP, TL-SG116E-SWITCH-1, K108_WAP2_Office, BazzitePC  
+**Authoritative IPAM:** [NetBox Cloud](https://arfv7221.cloud.netboxapp.com/) (private — not mirrored in this repo)  
+**Public doc:** [docs/network-overview.md](docs/network-overview.md)
+
 ## Core Goals
-- Accurate inventory of all devices (especially IoT)
-- VLAN segmentation (Trusted, IoT, Guest, Work)
+- Accurate inventory of all devices (especially IoT) — **NetBox is source of truth**
+- VLAN segmentation (LAN-Secure, IoT, Guest) — **deployed 2026-06-20**
 - Risk Mitigation (isolation) and Risk Transference (replacement) for IoT
-- Self-hosted monitoring (Wazuh, Home Assistant)
-- Rack build-out with pfSense/OPNsense
+- Self-hosted monitoring (Wazuh, Home Assistant) — Phase 2
+- Rack build-out; evaluate OPNsense/pfSense in Phase 3
 
 ## Key Project Artifacts & Locations
 
-- **Master Roadmap**: ../privacy-migration-docs (or link in GitHub Projects)
-- **Current Inventory**:
-  - docs/inventory/devices-summary.md
+- **Network overview (public):** docs/network-overview.md
+- **Master Roadmap:** docs/ROADMAP.md + [Privacy Migration board](https://github.com/users/jacob-kraniak/projects/1)
+- **Current Inventory:**
+  - docs/inventory/devices-summary.md (hardware, costs — no live IPs)
   - docs/inventory/iot-devices.md
-  - docs/inventory/nmap/ (raw & sanitized scans)
-- **Post-Cutover (2026-06-20)**:
-  - docs/Post-Cutover-Network-Stabilization-and-Provisioning.md
-  - docs/NetBox-Inventory-Progress.md
-- **Diagrams**: docs/diagrams/ (Home-Network-Diagram.drawio + VLAN versions)
-- **Configs**: docs/configs/ (pfSense, Wazuh, firewall rules)
-- **Risk Register**: docs/risk/ (IoT devices, mitigation plans)
-- **Hardware Plans**: docs/hardware/ (rack build, shopping lists, mini-PC specs)
-- **Self-Hosted Services Research & Roadmap**: docs/services/self-hosted-services-roadmap.md (Host OS, Proxmox, OPNsense, Wazuh, RustDesk, media servers, Home Assistant, camera migration, phased roadmap)
-- **Document Digitization**: docs/services/document-digitization.md (Paperless-ngx based searchable archive - high priority)
+  - docs/inventory/nmap/ (raw & sanitized scans — gitignored where sensitive)
+- **NetBox audit log:** docs/NetBox-Inventory-Progress.md
+- **Post-Cutover:** docs/Post-Cutover-Network-Stabilization-and-Provisioning.md
+- **Diagrams:** docs/diagrams/ (public topology diagrams — next phase)
+- **Configs:** docs/configs/ (pfSense, Wazuh, firewall rules)
+- **Hardware Plans:** docs/hardware/
+- **Self-Hosted Services:** docs/services/self-hosted-services-roadmap.md
+- **Automation:** [netbox-nmap-scan](https://github.com/jacob-kraniak/netbox-nmap-scan)
 
 ## IoT Risk Strategy
-- TP-Link Kasa (12x): VLAN + HA integration (Mitigation)
-- Ring (4x): VLAN now → Full replacement with Reolink/Frigate (Transference)
-- Google Nest (6x+): VLAN + local control → Zigbee/Z-Wave migration
+- TP-Link Kasa (12x): VLAN 10 + HA integration (Mitigation)
+- Ring (4x): VLAN 10 → Full replacement with Reolink/Frigate (Transference)
+- Google Nest (6x+): VLAN 10 + local control → Zigbee/Z-Wave migration
 
 ## Working Guidelines for Grok
-- Always maintain privacy: Sanitize MACs, IPs, and personal details in committed files.
-- Use redacted summaries alongside raw data (raw data should be gitignored where possible).
+- **Always maintain privacy:** Sanitize MACs, IPs, and personal details in committed files.
+- **NetBox holds live data** — this repo holds architecture, decisions, and redacted summaries.
+- Raw scan data should be gitignored where possible.
 - Follow existing folder structure.
-- When suggesting changes (especially when handing off from Grok Chat to Grok Build), provide full file content in markdown blocks. See the "Parallel Workflow" section below for the required hand-off format.
+- When handing off to Grok Build, provide full file content in markdown blocks (see Parallel Workflow below).
 - Cross-reference privacy-migration-docs where relevant.
-- Track progress against the 4 parallel tracks: Privacy Migration, Software Migrations, Cybersecurity Education, Network Rack Build-out.
+- Track progress against: Privacy Migration, Software Migrations, Cyber Education, Network Rack Build-out.
 
 ## Parallel Workflow: Grok Chat/Project Space vs. Grok Build
 
-- **Grok Chat / project space** is used for ideation, research, brainstorming, and high-level planning. This is where ideas are explored, options are researched, and decisions are drafted.
-- **Grok Build** is the implementation layer. It directly edits files in the GitHub repository, creates commits, opens issues, updates documentation, and executes concrete changes in the codebase.
-- **Clear separation of concerns**: Use Grok Chat for thinking and drafting. Use Grok Build to turn those drafts into actual repository changes.
-- **Hand-off rule**: Grok Chat should **always** present any input, instructions, or content destined for Grok Build in a cleanly formatted markdown block (using triple backticks with `markdown` or plain ```) that can be easily copied and pasted. This ensures a smooth, reliable hand-off between the two environments.
-
-Example hand-off block (to be pasted into Grok Build):
-
-```markdown
-## Task for Grok Build
-
-**Objective:** [Brief description]
-
-**Files to create/update:**
-- `path/to/file.md` (or full content if small)
-- ...
-
-**Instructions:**
-1. ...
-2. ...
-
-**Context / Research Summary:**
-[Key findings from chat/ideation]
-
-**Acceptance Criteria:**
-- ...
-```
-
-This workflow keeps research fluid in chat while ensuring precise, auditable implementation in the repo.
+- **Grok Chat / project space** — ideation, research, planning.
+- **Grok Build** — implementation: edits files, commits, issues, documentation.
+- **Hand-off rule:** Present Build-bound content in copy-pasteable markdown blocks.
 
 ## GitHub Project Integration
 
 Main Project Board: https://github.com/users/jacob-kraniak/projects/1 (Privacy Migration)
 
-### How to Link Work:
-1. Create Issues in this repo for specific tasks (Network Rack, IoT, Wazuh, etc.).
-2. Add them to the main Project board:
-   - Open the issue → Click "Projects" → Add to "Privacy Migration".
-   - Or from the Project board, use "Add item" and search for issues from this repo.
-3. Use these labels consistently:
-   - `track:network-rack`
-   - `track:privacy-migration`
-   - `track:cyber-education`
-   - `track:software-migration`
-   - `status:planning` / `status:in-progress`
+### Labels
+- `track:network-rack`
+- `track:privacy-migration`
+- `track:cyber-education`
+- `track:software-migration`
+- `status:planning` / `status:in-progress`
 
-This ensures all network activities roll up into the master Privacy Migration roadmap.
-
-Last Updated: 2026-06-05 (revised with parallel workflow)
+Last Updated: 2026-06-20 (production VLAN architecture + NetBox documentation complete)
