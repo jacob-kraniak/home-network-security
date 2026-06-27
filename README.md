@@ -1,55 +1,27 @@
-# Home Network Security Lab
+# Home Network Security Buildout
 
-**Production state documented:** 2026-06-20  
-**Visibility:** Public-safe — sensitive host IPs/MACs live in private [NetBox Cloud](https://arfv7221.cloud.netboxapp.com/) only.
+Production segmented network using TP-Link Omada SDN (June 2026).
 
-Segmented home lab transitioning from consumer networking to VLAN-isolated, privacy-focused infrastructure. Part of the broader [Privacy Migration](https://github.com/users/jacob-kraniak/projects/1) program.
+## Architecture Overview
 
-## Current Topology (summary)
+**Hardware Stack:**
+- **Gateway**: TP-Link ER605 v2.30 (firmware 2.3.3) – 192.168.0.1
+- **Core Switch**: TP-Link SG2008P v3.20 (firmware 3.20.24) – 192.168.0.146
+- **Wireless**: 2× TP-Link EAP225 v4.0
+  - Living Room (192.168.0.148, firmware 5.2.4)
+  - Office (192.168.0.105, firmware 5.2.2)
+- **Controller**: Omada Software on BazzitePC
 
-```
-ISP ONT → ER605-Gateway (VLAN tagging) → OpenWRT-AP (subinterfaces)
-                                              ↓
-                                    TL-SG116E Switch → clients / APs
-```
+**VLAN Plan:**
+- VLAN 1 (Management) – Infrastructure
+- VLAN 10 (Trusted) – User devices / PCs
+- VLAN 20 (IoT)
+- VLAN 30 (Guest)
+- VLAN 40 (Lab / Servers)
 
-| Layer | Device | Role |
-|-------|--------|------|
-| Gateway | ER605-Gateway | Omada primary router; VLAN 1/10/20 tagging on LAN trunk |
-| Distribution | OpenWRT-AP | `br-lan.1`, `br-lan.10` (IoT), `br-lan.20` (Guest) subinterfaces |
-| Switching | TL-SG116E-SWITCH-1 | Basement rack switch; patch panel 1:1 mapping |
-| Wireless | K108_WAP2_Office | EAP225 Omada office AP (uplink via ER605 LAN segment) |
-| Workstation | BazzitePC | Primary daily driver / lab host |
+**Key Features:**
+- 802.1Q trunking on AP ports (Native = Management, Tagged = 10/20/30/40)
+- Centralized management & monitoring
+- Foundation for Wazuh, Proxmox homelab, and further security tooling
 
-**WiFi SSIDs:** `K108-Home-Secure` (VLAN 1), `K108-Home-IoT` (VLAN 10), `K108-Guest` (VLAN 20)
-
-See [docs/network-overview.md](docs/network-overview.md) for VLAN/prefix mapping and redaction policy.
-
-## Web Portals
-
-| Portal | Purpose |
-|--------|---------|
-| [NetBox Cloud](https://arfv7221.cloud.netboxapp.com/) | Authoritative CMDB / IPAM (~52 devices) |
-| [Omada Cloud](https://use1-omada-cloud.tplinkcloud.com/) | ER605 / EAP management |
-
-## Project Status
-
-- **Phase 1** — Rack + NetBox bootstrap: complete
-- **Phase 1.5** — ER605 cutover + VLAN segmentation: complete (2026-06-20)
-- **NetBox documentation** — production inventory synced: complete
-- **Next:** Proxmox/Wazuh integration, automated NetBox sync, public topology diagrams
-
-## Quick Links
-
-- [Network Overview](docs/network-overview.md)
-- [NetBox Inventory Progress](docs/NetBox-Inventory-Progress.md)
-- [Post-Cutover Stabilization](docs/Post-Cutover-Network-Stabilization-and-Provisioning.md)
-- [Devices Summary](docs/inventory/devices-summary.md)
-- [Roadmap](docs/ROADMAP.md)
-- [Phase 1 Completion](docs/phases/phase-1-completion.md)
-- [Automation repo](https://github.com/jacob-kraniak/netbox-nmap-scan)
-
-## Rack Photos (Phase 1)
-
-![Rack front](assets/phase1/image_rack_front.jpg)
-![Rack rear](assets/phase1/image_rack_rear.jpg)
+See `docs/` for switch port profiles, WLAN mappings, ACL examples, and NetBox export.
