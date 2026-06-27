@@ -30,14 +30,15 @@ This repository documents the transition from consumer-grade networking to a sec
 - **Master Roadmap:** docs/ROADMAP.md + [Privacy Migration board](https://github.com/users/jacob-kraniak/projects/1)
 - **Current Inventory:**
   - docs/inventory/devices-summary.md (hardware, costs — no live IPs)
-  - docs/inventory/iot-devices.md
+  - docs/inventory/iot-devices.md (validated against Omada JSON: 21 clients, smartHome 10 Kasa, camera 2, etc.)
   - docs/inventory/nmap/ (raw & sanitized scans — gitignored where sensitive)
 - **NetBox audit log:** docs/NetBox-Inventory-Progress.md
 - **Post-Cutover:** docs/Post-Cutover-Network-Stabilization-and-Provisioning.md
-- **Diagrams:** docs/diagrams/ (public topology diagrams — next phase)
+- **Diagrams:** docs/diagrams/ (public topology diagrams — next phase; updated with final EAP225, FR205, TL-SG1016DE, 21 clients)
 - **Configs:** docs/configs/ (pfSense, Wazuh, firewall rules)
-- **Hardware Plans:** docs/hardware/
-- **Self-Hosted Services:** docs/services/self-hosted-services-roadmap.md
+- **Hardware Plans:** docs/hardware/ (rack build, shopping lists, mini-PC specs; final deployed per Omada JSON June 2026: FR205 router, TL-SG1016DE switch K108-MSW-1, 2x EAP225 APs, Dell OptiPlex 7060 Micro Proxmox; 21 clients with clientStat/clientTypeStat)
+- **Self-Hosted Services Research & Roadmap:** docs/services/self-hosted-services-roadmap.md (Host OS, Proxmox, OPNsense, Wazuh, RustDesk, media servers, Home Assistant, camera migration, phased roadmap)
+- **Document Digitization:** docs/services/document-digitization.md (Paperless-ngx based searchable archive - high priority)
 - **Automation:** [netbox-nmap-scan](https://github.com/jacob-kraniak/netbox-nmap-scan)
 
 ## IoT Risk Strategy

@@ -1,47 +1,21 @@
-# Hardware Decisions Log (Updated June 20, 2026)
+# Hardware Decisions Log (Updated June 2026 - Final Buildout per Omada JSON)
 
-## Completed Purchases (June 2026)
+## Deployed Hardware (Final Buildout - June 2026)
+- **Router/Gateway (Phase 1)**: TP-Link FR205 (Multi-WAN) - deployed as core router (public IP 173.56.71.104, handling WAN for Omada SDN).
+- **Core Switch**: TP-Link TL-SG1016DE (K108-MSW-1, VLAN capable) - deployed, 1 switch in deviceStat.
+- **APs**: 2x TP-Link EAP225 v4 (K108_WAP1_LivingRoom "58:04:4f:dc:ce:72", K108_WAP2_Office "5c:e9:31:6c:b5:44") - deployed, EAP225 US v4.0, 2 APs in deviceStat, running 5.2.2 firmware, providing K108-Home-Secure (vid10) and K108-Home-IoT (vid20) SSIDs. Channel/radio details per JSON (e.g., 2.4G ch11 40MHz, 5G ch48 80MHz).
+- **Compute/Services Host (Phase 2)**: Dell OptiPlex 7060 Micro (i7-8700T, 32GB RAM, 1TB NVMe) as primary Proxmox host - deployed (associated with "BazzitePC" wired client e0:d5:5e:e3:98:97 or compute; model B450m DSH3 noted in client data). 1 wired desktop/compute client.
+- **Clients/Inventory (from Omada controller)**: 21 total (2 wired, 19 wireless; clientStat: ipc:2 camera, noData:19, wired:2, wireless:19). clientTypeStat: audioVideo:1, camera:2 (WyzeCam v3 "Baby Cam" d0:3f:27:2b:2b:53 +), mobile:1, office:4 (Lenovo Smart Clock bc:df:58:b3:b2:c0 "Bedroom Clock", BazzitePC, etc.), other:3, smartHome:10 (TP-Link Kasa HS220/HS105 e.g. 50:91:e3:48:b3:2b "DIMM1-Dining-Room", "1A-5D-BE-06-32-C6" etc. on IoT). Full list in controller JSON (names, IPs on vid 10/20/1, rssi, traffic, etc.).
 
-- **Router (Phase 1)**: TP-Link ER605 V2 Wired Gigabit Omada SDN VPN Router 
-  - **Details**: Up to 3 WAN Ethernet Ports + 1 USB WAN, VPN Firewall SMB Router, Omada SDN Integrated, Load Balance, Lightning Protection. 
-  - **Order**: Amazon Order #111-0504065-9871411 placed June 9, 2026; Delivered June 11, 2026 (left near front door/porch at 108 Uncas St, Ronkonkoma, NY 11779).
-  - **Cost**: Item subtotal $49.99; Estimated tax $4.37; Grand Total $54.36. Paid with Prime Visa ending in 9182 (additional rewards) + Amazon gift card balance.
-  - **Rationale**: Selected for full Omada SDN integration, multi-WAN load balancing for family internet stability, built-in VPN/firewall, and lightning protection. Strong match for home/SMB use case and future Omada WAP/AP integration in the privacy migration and home lab rack project. (Note: Supersedes earlier FR205 consideration for better SDN/controller features.)
+## Rationale (Updated for Final State)
+- TP-Link Omada (FR205 + TL-SG1016DE + 2x EAP225) chosen and deployed for vendor warranty, simple UI, fast recovery, Multi-WAN, VLAN (vid10 Secure, vid20 IoT), and family network priority (Phase 1 complete per JSON deviceStat: 2 APs, 1 switch, 1 gateway).
+- Refurb OptiPlex Micro selected/deployed for Proxmox (reliability, low power ~15-40W, upgradability); BazzitePC client confirms compute active.
+- 21 clients across categories confirm smartHome/IoT isolation on vid20, office/compute on Secure/Management.
+- Single NIC on services host acceptable (downstream from router/switch).
 
-- **PDU (Phase 1 Rack Power)**: StarTech.com 8 Outlet Horizontal 1U Rack Mount PDU Power Strip 
-  - **Model**: RKPW081915
-  - **Details**: Surge Protection - 120V/15A - w/ 6ft Power Cord. Designed for Network Server Racks.
-  - **Order**: Separate Amazon order; Delivered June 11, 2026. Return/replace eligible through July 11, 2026.
-  - **Cost**: $67.44
-  - **Rationale**: Exact match for planned 1U horizontal PDU in smaller open rack layout. Provides organized surge-protected power for rack gear (router, switch, compute, WAP, etc.), reducing cable clutter and improving reliability/safety in basement setup.
-
-- **Managed Switch (Phase 1)**: TP-Link TL-SG1016DE 16-port Gigabit managed switch with VLAN and Omada SDN support. 
-  - **Status**: Onsite; integrated in cutover path. Omada Cloud adoption pending.
-  - **Rationale**: Omada-compatible for centralized management and VLAN segmentation (trusted, IoT, guest, work networks). Enables clean rollout per network migration plan.
-
-## Cutover Decision (June 20, 2026)
-
-- **ER605 promoted to primary gateway** replacing Archer A7 as edge router/DHCP server.
-  - **Cutover window**: ~11:45 AM ET; <30 min downtime.
-  - **Verified**: 320/320 Mbps on Verizon FIOS.
-  - **Gateway**: `192.168.0.1` (ER605 LAN MAC `58:04:4f:37:b9:cb`).
-  - **Rollback**: ER605 config exportable; Archer A7 retained for AP conversion fallback.
-  - **Documentation**: [Post-Cutover-Network-Stabilization-and-Provisioning.md](../Post-Cutover-Network-Stabilization-and-Provisioning.md)
-
-## Planned / Approved (Future Phases)
-
-- **Compute (Phase 2)**: Dell OptiPlex 7060 Micro (Renewed, i7-8700T, 32GB RAM, 1TB NVMe SSD) as primary Proxmox host for self-hosted services (Wazuh, Jellyfin, etc.).
-- Patch panel and cabling accessories.
-
-## Rationale Summary
-- **TP-Link Omada ecosystem** chosen for balance of features, warranty/support, simple management UI, fast recovery/rollback options (important for family network), and centralized SDN control (controller can later run self-hosted on Proxmox).
-- **Rack infrastructure** (PDU, measurements, layout) prioritized for clean, scalable basement installation supporting both current TP-Link gear and future open-source routing/compute.
-- Refurb enterprise-grade mini PC selected for low power draw, reliability, and expandability.
-
-**Cross-References**:
-- Rack layout & Phase details: [RACK.md](RACK.md)
-- Rack build overview & acquired gear: [home-lab-rack-build.md](home-lab-rack-build.md)
-- Measurements: [rack-measurements.md](rack-measurements.md)
-- Infrastructure criteria: [infrastructure-criteria.md](infrastructure-criteria.md)
-- Project README & inventory notes: [../README.md](../README.md)
-- GROK-WORKSPACE.md for workflow guidelines.
+**Links**:
+- Related inventory/measurements: [rack-measurements.md](rack-measurements.md)
+- Rack layout: [RACK.md](RACK.md) (in this directory)
+- Diagrams: [`../diagrams/`](../diagrams/)
+- Root status: [README.md](../../README.md#project-status-update-june-2026)
+- Controller data (final state): project notes / JSON (2 EAP225, TL-SG1016DE, FR205, 21 clients with exact mac/ip/vid/rssi/traffic)

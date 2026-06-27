@@ -23,4 +23,4 @@
 - Central control via self-hosted Home Assistant (Proxmox VM)
 - Long-term goal: Minimize cloud dependency for privacy
 
-**Status**: Inventory complete. Prioritize VLAN implementation during rack build-out.
+**Status (Final June 2026)**: Inventory complete and validated against Omada controller (21 clients total). clientTypeStat matches: smartHome 10 (TP-Link Kasa e.g. HS220/HS105 on vid20 IoT), camera 2 (Wyze v3 "Baby Cam" d0:3f:27:2b:2b:53 +), office 4 (Lenovo Smart Clock bc:df:58:b3:b2:c0 +), with full details (ips, rssi, traffic, vid 10/20). VLANs implemented (K108-Home-IoT vid20, Secure vid10). See root README and docs/ROADMAP.md for clientStat/JSON data. Rack buildout complete (FR205 + TL-SG1016DE + 2x EAP225).
