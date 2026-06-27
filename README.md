@@ -28,7 +28,13 @@ Production segmented network using TP-Link Omada SDN (June 2026).
 
 **Hardware Stack:**
 - **Gateway/Router**: TP-Link FR205 (Multi-WAN, firmware matching Omada) – public IP 173.56.71.104
-- **Core Switch**: TP-Link TL-SG1016DE / K108-MSW-1 (VLAN capable)
+- **Core Switch**: TP-Link SG2008P v3.20 (K108-MSW-1)
+  - Serial: Y25A081000375
+  - MAC: 10:5a:95:3a:16:b4
+  - IP: 192.168.0.146
+  - Firmware: 3.20.24 Build 20260509 Rel.2353
+  - Uptime: 4day(s) 3h 31m 52s (as of data)
+  - VLAN capable, Omada integrated.
 - **Wireless**: 2× TP-Link EAP225 v4.0 (Living Room "58:04:4f:dc:ce:72" fw 5.2.2, Office "5c:e9:31:6c:b5:44" fw 5.2.4)
 - **Controller**: Omada on BazzitePC / Dell OptiPlex
 
@@ -111,4 +117,3 @@ Placeholder for future configuration management:
 - Regularly audit committed files for accidental secrets.
 
 Initial structure created 2026.
->>>>>>> 36f14c9 (Update docs per final Omada controller JSON (completed network buildout): root README status with 21 clients/Omada stats (2 EAP225, TL-SG1016DE, FR205, vid/SSIDs); docs/ROADMAP.md Phase 1 complete + actual hardware; hardware/DECISIONS.md + RACK.md + infrastructure-criteria.md + rack-measurements.md + inventory/iot-devices.md + services/self-hosted... + diagrams/README.md + GROK-WORKSPACE.md with final deployed (21 clients, clientTypeStat, deviceStat). Fixed all /docs paths. No duplication.)

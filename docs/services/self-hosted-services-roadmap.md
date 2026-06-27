@@ -270,13 +270,13 @@ See dedicated page: [docs/services/document-digitization.md](document-digitizati
 
 ## Overall Roadmap Integration
 
-**Phase 1 (Completed June 2026)**: TP-Link Omada SDN (FR205 + TL-SG1016DE K108-MSW-1 + 2x EAP225 APs) + base Proxmox on Dell OptiPlex 7060 Micro (BazzitePC/compute). 21 clients (2 wired, 19 wireless; smartHome 10 Kasa, camera 2 Wyze, office 4 incl. Lenovo Clock + BazzitePC desktop, vid 10/20/1 SSIDs). Per final controller JSON data. Document Digitization POC started. Wazuh/monitoring integrated.
+**Phase 1 (Completed June 2026)**: TP-Link Omada SDN (FR205 + SG2008P v3.20 K108-MSW-1 + 2x EAP225 APs) + base Proxmox on Dell OptiPlex 7060 Micro (BazzitePC/compute). 21 clients (2 wired, 19 wireless; smartHome 10 Kasa, camera 2 Wyze, office 4 incl. Lenovo Clock + BazzitePC desktop, vid 10/20/1 SSIDs). Per final controller JSON data. Document Digitization POC started. Wazuh/monitoring integrated.
 
 **Phase 2 (In Progress)**: Expand self-hosted services on Proxmox (AdGuard, WireGuard, Vaultwarden, Jellyfin, Immich, HA, Paperless-ngx, RustDesk). Keep TP-Link Omada primary (FR205 warm spare).
 
 **Phase 3 (Future)**: OPNsense migration + hybrid NAS (Aoostar WTR Pro). Full open-source routing.
 
-**Final Buildout Stats (from Omada JSON)**: clientStat total 21 (wired 2, wireless 19, ipc 2, noData 19); clientType smartHome 10, camera 2, office 4, audioVideo 1, mobile 1, other 3; devices: 2 APs (EAP225 v4 fw5.2.2), 1 switch (TL-SG1016DE), 1 gateway (FR205); APs on 192.168.0.x, clients on 192.168.10/20/0 with rssi/traffic/vid details (e.g. Wyze d0:3f:27:2b:2b:53 Baby Cam on IoT, HS220 on IoT, BazzitePC e0:d5:5e:e3:98:97 wired Management, Lenovo bc:df:58:b3:b2:c0 Bedroom Clock on Secure).
+**Final Buildout Stats (from Omada JSON)**: clientStat total 21 (wired 2, wireless 19, ipc 2, noData 19); clientType smartHome 10, camera 2, office 4, audioVideo 1, mobile 1, other 3; devices: 2 APs (EAP225 v4 fw5.2.2), 1 switch (SG2008P v3.20), 1 gateway (FR205); APs on 192.168.0.x, clients on 192.168.10/20/0 with rssi/traffic/vid details (e.g. Wyze d0:3f:27:2b:2b:53 Baby Cam on IoT, HS220 on IoT, BazzitePC e0:d5:5e:e3:98:97 wired Management, Lenovo bc:df:58:b3:b2:c0 Bedroom Clock on Secure).
 
 See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 
@@ -285,6 +285,6 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 **Changelog / Version Notes:**
 - 2026-06-03: Added condensed core decisions summary (Block 1). Promoted Document Digitization project from /project-ideas into active services documentation with dedicated page using Paperless-ngx stack. Updated GitHub issues for board. Maintained consistent formatting and privacy focus.
 - 2026-06-03 (refinement): Incorporated exact user-provided content for Status, Recommended Stack (including Grok API, Nginx+Auth+VPN), and Action Items into document-digitization.md and linked section in roadmap.
-- 2026-06-06 (final buildout): Updated all references per Omada controller JSON (21 clients, 2 EAP225 APs, TL-SG1016DE switch, FR205 router, vid/SSID details, clientTypeStat). Marked Phase 1 complete; Phase 2 Dell Proxmox deployed. Fixed links to /docs subdirs in root README and related docs. No duplication.
+- 2026-06-06 (final buildout): Updated all references per Omada controller JSON (21 clients, 2 EAP225 APs, SG2008P v3.20 switch, FR205 router, vid/SSID details, clientTypeStat). Marked Phase 1 complete; Phase 2 Dell Proxmox deployed. Fixed links to /docs subdirs in root README and related docs. No duplication.
 
 **Next Steps for Workspace:** Expand issues in GitHub Project Board and track decisions. Let me know which area to deep-dive or generate configs for next. This keeps everything documented, privacy-aligned, and actionable per your guidelines.

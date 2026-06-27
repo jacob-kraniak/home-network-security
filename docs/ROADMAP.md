@@ -3,7 +3,7 @@
 # Home Network Security Roadmap (Revised June 2026)
 
 ## Phase 1: Stable Family Foundation (Completed)
-- Deployed TP-Link Omada SDN: FR205 (Multi-WAN) router + TL-SG1016DE managed switch (K108-MSW-1) + 2x EAP225 v4 APs (K108_WAP1_LivingRoom, K108_WAP2_Office).
+- Deployed TP-Link Omada SDN: FR205 (Multi-WAN) router + SG2008P v3.20 managed switch (K108-MSW-1, serial Y25A081000375, MAC 10:5a:95:3a:16:b4, IP 192.168.0.146, fw 3.20.24) + 2x EAP225 v4 APs (K108_WAP1_LivingRoom, K108_WAP2_Office).
 - VLAN segmentation active: K108-Home-Secure (vid 10), K108-Home-IoT (vid 20), Management.
 - 21 clients (2 wired including BazzitePC desktop, 19 wireless): smartHome:10 (TP-Link Kasa), camera:2 (Wyze v3 "Baby Cam" +), office:4 (Lenovo Smart Clock, etc.), with full clientStat/clientTypeStat per Omada controller JSON.
 - Rack organization with PDU, Cat6.
@@ -23,6 +23,6 @@
 
 **Risk Note**: Always maintain FR205 as warm spare for quick rollback. All updates use /docs structure; links in root README fixed to point under /docs.
 
-**Final Buildout Stats (June 2026 per provided Omada JSON)**: 21 clients (2 wired/19 wireless), deviceStat: 2 APs (EAP225), 1 switch (TL-SG1016DE), 1 gateway (FR205); clientType: smartHome 10, camera 2, office 4, audioVideo 1, mobile 1, other 3. See full client list in project notes (Kasa HS220/HS105, Wyze "Baby Cam" d0:3f:27:2b:2b:53, Lenovo Clock bc:df:58:b3:b2:c0, BazzitePC e0:d5:5e:e3:98:97, Digital Frame, etc. on IoT/Secure SSIDs with rssi, traffic, vid 10/20/1).
+**Final Buildout Stats (June 2026 per provided Omada JSON)**: 21 clients (2 wired/19 wireless), deviceStat: 2 APs (EAP225), 1 switch (SG2008P v3.20), 1 gateway (FR205); clientType: smartHome 10, camera 2, office 4, audioVideo 1, mobile 1, other 3. See full client list in project notes (Kasa HS220/HS105, Wyze "Baby Cam" d0:3f:27:2b:2b:53, Lenovo Clock bc:df:58:b3:b2:c0, BazzitePC e0:d5:5e:e3:98:97, Digital Frame, etc. on IoT/Secure SSIDs with rssi, traffic, vid 10/20/1).
 
 *Last updated: 2026-06-06 — Phase 1 complete per JSON final state; docs updated with actual hardware/client stats.*

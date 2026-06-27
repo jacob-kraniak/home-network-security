@@ -43,7 +43,7 @@ Project for organizing and mounting home lab equipment (Bazzite/Podman/Wazuh + P
   - Return/replace eligible through July 11, 2026.
   - Supplied by: Amazon.com (Sold by: Other)
 - **Key Specs & Features**: 8 Outlets, Horizontal 1U rack-mount form factor, Surge Protection, 120V/15A rating, includes 6ft Power Cord. Designed specifically for network/server racks.
-- **Intended Role in Project**: Centralized power distribution and surge protection for all equipment in the rack (ER605, TL-SG1016DE switch, miniPC/Proxmox host, Omada WAP, patch panel, etc.). Eliminates power strip clutter, improves organization, safety, and reliability in the basement rack build. Mounts cleanly in 1U horizontal space of the smaller open rack.
+- **Intended Role in Project**: Centralized power distribution and surge protection for all equipment in the rack (ER605, SG2008P v3.20 switch, miniPC/Proxmox host, Omada WAP, patch panel, etc.). Eliminates power strip clutter, improves organization, safety, and reliability in the basement rack build. Mounts cleanly in 1U horizontal space of the smaller open rack.
 
 **Notes on Purchases**: Both items arrived June 11, 2026 per Amazon delivery notifications and order summaries. Inventory updated in project docs (DECISIONS.md, RACK.md) with full order details for tracking, warranty, and reference.
 
@@ -58,7 +58,7 @@ Project for organizing and mounting home lab equipment (Bazzite/Podman/Wazuh + P
    - VLAN prep: Plan initial segmentation (even if basic ACLs initially) aligned with privacy migration.
    - Update network topology diagrams in `docs/diagrams/` post physical install and config.
 4. **Monitoring & Validation**: Once stable, add ER605 (if SNMP/compatible) or downstream devices to Wazuh monitoring (via Bazzite/Proxmox). Run updated nmap scans and update `docs/inventory/` assets. Validate against risk register and security goals.
-5. **Expansion Prep**: Source TL-SG1016DE switch, plan Dell OptiPlex 7060 Micro or other miniPC mounting, cable management kit, any additional 1U/2U shelves or organizers.
+5. **Expansion Prep**: Source SG2008P v3.20 switch, plan Dell OptiPlex 7060 Micro or other miniPC mounting, cable management kit, any additional 1U/2U shelves or organizers.
 6. **Documentation**: Keep this file, RACK.md, and DECISIONS.md updated with photos, configs, issues encountered, and lessons learned. Link updates to GitHub Project board (Privacy Migration).
 
 ## References

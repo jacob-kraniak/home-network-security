@@ -72,7 +72,7 @@ This directly supports core project goals: IoT inventory/risk mitigation, VLAN s
 Create types for immediate/planned hardware so instances can inherit templates:
 - Proxmox hypervisor / miniPC host (Dell OptiPlex or equivalent; include CPU/RAM/storage attrs if available)
 - NAS (model-specific or generic storage device)
-- Managed Switch (e.g. TP-Link TL-SG1016DE / Omada equivalent, or Cisco placeholder)
+- Managed Switch (e.g. TP-Link SG2008P v3.20 / Omada equivalent, or Cisco placeholder)
 - Access Point (Omada EAP series if expanding)
 - Any specific vehicle or other edge devices
 

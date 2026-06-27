@@ -21,7 +21,7 @@ Status: Decision documented 2026-06-03
 
 ## Revised Core Infrastructure Strategy (Final State June 2026)
 
-- **Deployed TP-Link Omada SDN (Phase 1 Complete)**: FR205 Multi-WAN router + TL-SG1016DE switch (K108-MSW-1) + 2x EAP225 v4 APs (K108_WAP1_LivingRoom, K108_WAP2_Office) providing centralized control with VLANs (vid 10 Secure "K108-Home-Secure", vid 20 IoT "K108-Home-IoT"). 21 clients (clientStat/clientTypeStat per JSON: smartHome 10 TP-Link Kasa, camera 2 Wyze etc., office 4 incl. BazzitePC desktop/Lenovo Clock, 2 wired/19 wireless).
+- **Deployed TP-Link Omada SDN (Phase 1 Complete)**: FR205 Multi-WAN router + SG2008P v3.20 switch (K108-MSW-1) + 2x EAP225 v4 APs (K108_WAP1_LivingRoom, K108_WAP2_Office) providing centralized control with VLANs (vid 10 Secure "K108-Home-Secure", vid 20 IoT "K108-Home-IoT"). 21 clients (clientStat/clientTypeStat per JSON: smartHome 10 TP-Link Kasa, camera 2 Wyze etc., office 4 incl. BazzitePC desktop/Lenovo Clock, 2 wired/19 wireless).
 - **Exceptions**:
   - Ring Base Station (upstairs) — kept for family armed status light visibility (as before).
   - Wireless devices (Kasa 10+, Nest incl. Lenovo Clock, phones, cameras) connect via EAP225 WAPs on IoT/Secure SSIDs.
@@ -30,4 +30,4 @@ Status: Decision documented 2026-06-03
 
 This design (Omada SDN + Proxmox) maximizes security/privacy with VLAN isolation, family stability (TP-Link warranty/recovery), and single pane (Omada controller + Proxmox). 21 clients confirm success (see JSON data for full list: HS220, Wyze "Baby Cam", Lenovo Clock, Digital Frame, BazzitePC, etc.). Links fixed to /docs subdirs.
 
-**Final Device Stats**: 2 APs (EAP225, fw 5.2.2), 1 switch (TL-SG1016DE), 1 gateway (FR205); clients on vid10/20/1 with rssi/signal/traffic details.
+**Final Device Stats**: 2 APs (EAP225, fw 5.2.2), 1 switch (SG2008P v3.20), 1 gateway (FR205); clients on vid10/20/1 with rssi/signal/traffic details.

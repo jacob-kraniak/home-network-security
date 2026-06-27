@@ -15,11 +15,11 @@ This directory contains `.drawio` (diagrams.net / draw.io) files documenting the
 
 ## Related Documentation
 
-- [infrastructure-criteria.md](../hardware/infrastructure-criteria.md) — Server hardware decisions and revised core infrastructure strategy (updated for final Omada buildout: FR205, TL-SG1016DE, 2x EAP225, 21 clients per JSON).
+- [infrastructure-criteria.md](../hardware/infrastructure-criteria.md) — Server hardware decisions and revised core infrastructure strategy (updated for final Omada buildout: FR205, SG2008P v3.20, 2x EAP225, 21 clients per JSON).
 - [DECISIONS.md](../hardware/DECISIONS.md) — Hardware decisions log (final deployed).
 - [RACK.md](../hardware/RACK.md) — Rack & physical infrastructure (Phase 1 completed with Omada names).
 - [rack-measurements.md](../hardware/rack-measurements.md) — Measurement tasks completed for final layout.
-- [ROADMAP.md](../ROADMAP.md) — High-level project roadmap (Phase 1 complete per Omada JSON: 2 APs EAP225, switch TL-SG1016DE, FR205, client stats).
+- [ROADMAP.md](../ROADMAP.md) — High-level project roadmap (Phase 1 complete per Omada JSON: 2 APs EAP225, switch SG2008P v3.20, FR205, client stats).
 - Main project: [README.md](../../README.md) and [GROK-WORKSPACE.md](../../GROK-WORKSPACE.md)
 
-**Note**: Living documents. Updated June 6, 2026 with confirmed rack measurements and final client/device stats from Omada JSON. Open diagrams in draw.io to adjust physical scales, add second rack representation, and reallocate gear (FR205 + TL-SG1016DE + 2x EAP225).
+**Note**: Living documents. Updated June 6, 2026 with confirmed rack measurements and final client/device stats from Omada JSON. Open diagrams in draw.io to adjust physical scales, add second rack representation, and reallocate gear (FR205 + SG2008P v3.20 + 2x EAP225).

@@ -1,11 +1,11 @@
 # Rack & Physical Infrastructure (Updated June 2026 - Final Buildout per Omada JSON)
 
 ## Phase 1 Layout (Completed)
-- Router/Gateway: TP-Link FR205 (Multi-WAN) + TL-SG1016DE managed switch (K108-MSW-1) + 24-port patch panel on 1U shelf.
+- Router/Gateway: TP-Link FR205 (Multi-WAN) + SG2008P v3.20 managed switch (K108-MSW-1, serial Y25A081000375, MAC 10:5a:95:3a:16:b4, IP 192.168.0.146, fw 3.20.24) + 24-port patch panel on 1U shelf.
 - APs (wall-mounted but part of infrastructure): 2x TP-Link EAP225 v4 (K108_WAP1_LivingRoom "58:04:4f:dc:ce:72", K108_WAP2_Office "5c:e9:31:6c:b5:44").
 - PDU: StarTech 8-Outlet.
 - Cabling: Monoprice Cat6; color-code by VLAN (vid10 Secure, vid20 IoT, Management).
-- Per final Omada data: 2 APs (EAP225), 1 switch (TL-SG1016DE), gateway (FR205); clients 21 (2 wired incl. BazzitePC on vid1, 19 wireless on K108-Home-Secure/IoT).
+- Per final Omada data: 2 APs (EAP225), 1 switch (SG2008P v3.20), gateway (FR205); clients 21 (2 wired incl. BazzitePC on vid1, 19 wireless on K108-Home-Secure/IoT).
 
 ## Phase 2 Additions (In Progress)
 - Mount Dell OptiPlex 7060 Micro (i7-8700T, 32GB, 1TB NVMe) / BazzitePC on additional shelf space as Proxmox host.
