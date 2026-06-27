@@ -6,7 +6,12 @@ Production segmented network using TP-Link Omada SDN (June 2026).
 
 **Hardware Stack:**
 - **Gateway**: TP-Link ER605 v2.30 (firmware 2.3.3) – 192.168.0.1
-- **Core Switch**: TP-Link SG2008P v3.20 (firmware 3.20.24) – 192.168.0.146
+- **Core Switch**: TP-Link SG2008P v3.20 (K108-MSW-1)
+  - Serial: Y25A081000375
+  - MAC: 10:5a:95:3a:16:b4
+  - IP: 192.168.0.146
+  - Firmware: 3.20.24 Build 20260509 Rel.2353
+  - Uptime (snapshot): 4day(s) 3h 31m 52s
 - **Wireless**: 2× TP-Link EAP225 v4.0
   - Living Room (192.168.0.148, firmware 5.2.4)
   - Office (192.168.0.105, firmware 5.2.2)
