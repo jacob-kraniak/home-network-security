@@ -1,6 +1,6 @@
 # NetBox Inventory Progress
 
-**Last updated:** 2026-06-20  
+**Last updated:** 2026-07-10  
 **NetBox instance:** [NetBox Cloud](https://arfv7221.cloud.netboxapp.com/) (private)  
 **Primary site:** Kraniak Home  
 **Automation repo:** [netbox-nmap-scan](https://github.com/jacob-kraniak/netbox-nmap-scan)  
@@ -12,7 +12,7 @@
 
 | Metric | Value (approx.) |
 |--------|-----------------|
-| Devices | ~52 |
+| Devices | ~53 (+1 Proxmox host) |
 | VLANs | 3 active (1, 10, 20) |
 | Prefixes | 3 (`192.168.0/10/20.0/24`) |
 | Tag schema | `key:value` |
@@ -29,6 +29,21 @@
 | K108_WAP2_Office | WAP (EAP225) | LAN-Secure | Omada office AP |
 | PATCH-PANEL | Infrastructure | — | PP# = switch port # |
 | Startech PDU | PDU | — | Rack-mounted |
+| **Lenovo-M715q-Proxmox** | Hypervisor | LAN-Secure (planned) | **NEW 2026-07-10** — Free employer M715q Tiny (S/N MJ067MNT, type 10M3000PUS). 16GB RAM. KingSpec 512GB NVMe boot + SanDisk Z400 256GB 2.5" for potential RAID1. Dual DP. To be racked in Server Hosts rack. |
+
+---
+
+## 2026-07-10 — Proxmox Host Acquired ✅
+
+- Free Lenovo ThinkCentre M715q Tiny (retired employer asset) received and inventoried.
+- Serial: MJ067MNT
+- Machine Type: 10M3000PUS (M715q)
+- Support: https://pcsupport.lenovo.com/us/en/products/desktops-and-all-in-ones/thinkcentre-m-series-desktops/m715q/10m3/10m3000pus/mj067mnt
+- Storage: KingSpec 512GB NVMe Gen3x4 installed; SanDisk Z400 256GB 2.5" SATA mounted in bay (potential RAID1 mirror).
+- RAM: 16GB DDR4 (upgrade path to 32GB available).
+- Role: Primary Proxmox VE host for containers/VMs (Wazuh, Jellyfin, HA, etc.).
+- **Action required in NetBox**: Create Device Type (Lenovo M715q Tiny), Device instance (role: Hypervisor / Server), assign to Server Hosts rack, add interfaces (DP, Ethernet, USB), power port, custom fields (serial, acquisition_date=2026-07-10, cost=0, notes=employer surplus).
+- Public docs updated in devices-summary.md, DECISIONS.md, RACK.md, ROADMAP.md.
 
 ---
 
@@ -83,7 +98,7 @@ NetBox documentation milestone reached. Public repo updated with redacted summar
 ## Remaining Gaps (Phase 2)
 
 1. **Power modeling** — PDU outlet → device connections ([#19](https://github.com/jacob-kraniak/home-network-security/issues/19))
-2. **Proxmox / virtualization** — cluster + VM objects once host live
+2. **Proxmox / virtualization** — cluster + VM objects once host live (**host hardware now acquired — next**)
 3. **Automated sync** — scheduled NetBox refresh from DHCP/nmap
 4. **Public diagrams** — sanitized topology draw.io from NetBox export
 5. **Omada Cloud adoption** — move PRECONFIGURED APs to managed state
