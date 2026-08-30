@@ -1,7 +1,7 @@
 # Phase Artifacts & Documentation Map
 
 **Canonical reference** for which documents, diagrams, configs, and inventories belong to each project phase.  
-**Last Updated:** 2026-07-10  
+**Last Updated:** 2026-08-29  
 **Authoritative Timeline:** GitHub Project Board + Issues (see bottom)
 
 > **Usage:** When working on a phase, start here. Update this file whenever a new artifact is created or an existing one is promoted/demoted between phases.
@@ -43,7 +43,7 @@
 | **Network Overview** | [docs/network-overview.md](../network-overview.md) | Public sanitized architecture |
 | | [docs/Post-Cutover-Network-Stabilization-and-Provisioning.md](../Post-Cutover-Network-Stabilization-and-Provisioning.md) | Cutover notes |
 | **Assets** | `assets/phase1/` | Photos of rack install |
-| **Workspace** | [GROK-WORKSPACE.md](../../GROK-WORKSPACE.md) | Phase 1 production architecture snapshot |
+| **Workspace** | [GROK-WORKSPACE.md](../../GROK-WORKSPACE.md) | Workspace instructions |
 
 ### Phase 1 Exit Criteria (Met)
 - [x] Racks powered & organized
@@ -56,12 +56,12 @@
 
 ## Phase 2: Self-Hosted Services Build
 
-**Status:** 🟡 **In Progress** (Host hardware acquired 2026-07-09/10)  
+**Status:** 🟡 **In Progress** (PVE live; Wazuh recovered 2026-08-29)  
 **Goal:** Deploy Proxmox VE on dedicated host, stand up core self-hosted services (Wazuh, AdGuard, WireGuard, Jellyfin, Immich, Home Assistant, Paperless-ngx, RustDesk, Vaultwarden, etc.), integrate with NetBox & monitoring, document everything.
 
 ### Core Deliverables (Target)
-- Proxmox VE host online (Lenovo M715q Tiny)
-- Containerized / VM services running
+- Proxmox VE host online (Lenovo M715q Tiny) — **done**
+- Containerized / VM services running — **Wazuh + Portainer only**
 - NetBox fully populated with hypervisor + VMs + interfaces + power
 - Local management display + backup strategy
 - Service-specific docs, configs, and runbooks
@@ -71,32 +71,37 @@
 
 | Category | File / Location | Description |
 |----------|-----------------|-------------|
-| **Roadmap & Status** | [docs/ROADMAP.md](../ROADMAP.md) | Phase 2 section (host status, next steps) |
+| **Roadmap & Status** | [docs/ROADMAP.md](../ROADMAP.md) | Phase 2 section |
 | | [docs/phases/PHASE-ARTIFACTS.md](PHASE-ARTIFACTS.md) | This file |
-| | [docs/NetBox-Inventory-Progress.md](../NetBox-Inventory-Progress.md) | Phase 2 NetBox entries (Proxmox host, future VMs) |
-| **Services Research** | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) | Core decisions (Proxmox, Wazuh, OPNsense later, etc.) |
-| | [docs/services/document-digitization.md](../services/document-digitization.md) | Paperless-ngx stack (high priority) |
+| | [docs/phases/phase-2-baseline-2026-08-29.md](phase-2-baseline-2026-08-29.md) | **Live return baseline** (PVE / CTs / Wazuh outage + repair) |
+| | [docs/NetBox-Inventory-Progress.md](../NetBox-Inventory-Progress.md) | Phase 2 NetBox entries |
+| **Services Research** | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) | Core decisions |
+| | [docs/services/document-digitization.md](../services/document-digitization.md) | Paperless-ngx stack |
 | | [docs/services/README.md](../services/README.md) | Services index |
-| **Hardware (Phase 2 Host)** | [docs/inventory/devices-summary.md](../inventory/devices-summary.md) | Lenovo M715q entry (KingSpec NVMe + SanDisk Z400) |
-| | [docs/hardware/DECISIONS.md](../hardware/DECISIONS.md) | M715q acquisition & rationale |
+| **Hardware (Phase 2 Host)** | [docs/inventory/devices-summary.md](../inventory/devices-summary.md) | M715q entry (corrected RAM / missing SATA) |
+| | [docs/hardware/DECISIONS.md](../hardware/DECISIONS.md) | M715q acquisition & live CPU/RAM correction |
 | | [docs/hardware/RACK.md](../hardware/RACK.md) | Phase 2 host placement notes |
-| **Configs (Future)** | `docs/configs/` | Proxmox, Wazuh, Docker Compose, firewall rules, etc. (to be populated) |
-| **Diagrams (Future)** | `docs/diagrams/` | Updated with Proxmox host, service topology, VLANs |
-| **Inventory** | NetBox Cloud | Authoritative for VMs, IPs, interfaces once live |
+| **Configs (Future)** | `docs/configs/` | Still a placeholder |
+| **Diagrams (Future)** | `docs/diagrams/` | Not yet updated with CTs |
+| **Inventory** | NetBox Cloud | Authoritative for IPs once updated |
 
-### Phase 2 Entry / Current State (2026-07-10)
+### Phase 2 Entry / Current State (updated 2026-08-29)
 - [x] Free Lenovo ThinkCentre M715q Tiny acquired (S/N MJ067MNT)
 - [x] KingSpec 512GB NVMe installed
-- [x] SanDisk Z400 256GB 2.5" mounted for potential RAID1
-- [ ] BIOS prep (SVM, C6, Secure Boot, etc.)
-- [ ] Proxmox VE install
-- [ ] NetBox device + rack placement
+- [ ] SanDisk Z400 256GB 2.5" — **not visible to the OS as of 2026-08-29**
+- [x] SVM/HVM enabled (live `hvm: true`)
+- [x] Proxmox VE 9.2.4 installed (node `debian`, `192.168.0.176`)
+- [ ] NetBox device + rack placement for hypervisor + CTs
 - [ ] Local DP monitor / adapter decision
-- [ ] First services (Wazuh, AdGuard, WireGuard recommended order)
+- [x] Wazuh 4.8.2 AIO on CT 100 (`192.168.0.178`) — recovered from disk-full outage
+- [x] Portainer on CT 101 (`192.168.0.200`) — no other stacks
+- [ ] AdGuard / WireGuard / remaining Phase 2 apps
+- [ ] Backups (vzdump / off-box)
+- [ ] `pve-edk2-firmware` repair (only if UEFI VMs are needed)
 
 ### Phase 2 Exit Criteria (Target)
-- [ ] Proxmox VE stable + updated
-- [ ] Core services running with backups
+- [ ] Proxmox VE stable + updated *(host is stable; storage.cfg / firmware package still dirty)*
+- [ ] Core services running with backups *(Wazuh+Portainer running; no backups documented)*
 - [ ] NetBox reflects hypervisor + VMs + power + cables
 - [ ] All Phase 2 docs & diagrams current
 - [ ] Project board Phase 2 issues closed or moved to Phase 3
@@ -133,5 +138,6 @@ Artifacts will be defined when Phase 2 nears completion. Placeholder references 
 - NetBox Cloud: https://arfv7221.cloud.netboxapp.com/ (private)
 - GROK-WORKSPACE.md (top-level instructions)
 - Privacy Migration overarching docs (separate repo)
+- Return baseline: [phase-2-baseline-2026-08-29.md](phase-2-baseline-2026-08-29.md)
 
 *This file is the single source of truth for “which docs belong to which phase.” Keep it current.*
