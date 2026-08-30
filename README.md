@@ -1,6 +1,7 @@
 # Home Network Security Buildout
 
-Production segmented network using TP-Link Omada SDN (June 2026).
+Production segmented network using TP-Link Omada SDN (June 2026).  
+**Phase 2 services host is live** — start here: [docs/phases/phase-2-baseline-2026-08-29.md](docs/phases/phase-2-baseline-2026-08-29.md) (2026-08-29).
 
 ## Architecture Overview
 
@@ -16,6 +17,7 @@ Production segmented network using TP-Link Omada SDN (June 2026).
   - Living Room (192.168.0.148, firmware 5.2.4)
   - Office (192.168.0.105, firmware 5.2.2)
 - **Controller**: Omada Software on BazzitePC
+- **Proxmox (Phase 2, live 2026-08-29):** Lenovo ThinkCentre M715q Tiny — PVE 9.2.4 node `debian` `192.168.0.176`. CT 100 Wazuh `192.168.0.178`. CT 101 Portainer `192.168.0.200`.
 
 **VLAN Plan:**
 - VLAN 1 (Management) – Infrastructure
@@ -32,16 +34,16 @@ Production segmented network using TP-Link Omada SDN (June 2026).
 ## Architecture Overview (Final Buildout June 2026 per Omada JSON)
 
 **Hardware Stack:**
-- **Gateway/Router**: TP-Link FR205 (Multi-WAN, firmware matching Omada) – public IP 173.56.71.104
+- **Gateway/Router**: TP-Link FR205 (Multi-WAN, firmware matching Omada)
 - **Core Switch**: TP-Link SG2008P v3.20 (K108-MSW-1)
   - Serial: Y25A081000375
   - MAC: 10:5a:95:3a:16:b4
   - IP: 192.168.0.146
   - Firmware: 3.20.24 Build 20260509 Rel.2353
-  - Uptime: 4day(s) 3h 31m 52s (as of data)
   - VLAN capable, Omada integrated.
-- **Wireless**: 2× TP-Link EAP225 v4.0 (Living Room "58:04:4f:dc:ce:72" fw 5.2.2, Office "5c:e9:31:6c:b5:44" fw 5.2.4)
-- **Controller**: Omada on BazzitePC / Dell OptiPlex
+- **Wireless**: 2× TP-Link EAP225 v4.0
+- **Controller**: Omada on BazzitePC
+- **Services hypervisor:** Lenovo M715q Tiny (not the Dell OptiPlex 7060). See Phase 2 baseline.
 
 **VLAN Plan (Active):**
 - VLAN 1 (Management) – Infrastructure
@@ -53,13 +55,14 @@ Production segmented network using TP-Link Omada SDN (June 2026).
 - 802.1Q trunking on AP ports (Native = Management, Tagged = 10/20/30/40)
 - Centralized management & monitoring via Omada
 - 21 clients (clientStat: 2 wired, 19 wireless, ipc:2 cameras; clientType: smartHome:10, camera:2, office:4, audioVideo:1, mobile:1, other:3)
-- Foundation for Wazuh, Proxmox homelab, and further security tooling. Dell OptiPlex 7060 Micro (i7-8700T 32GB) as Proxmox services host (BazzitePC client).
+- Foundation for Wazuh + Portainer on Proxmox (M715q). ~7 GiB host RAM is the Phase 2 constraint.
 
 See `docs/` for switch port profiles, WLAN mappings, ACL examples, and NetBox export. See [docs/ROADMAP.md](docs/ROADMAP.md) for phases.
 
 ## Key Documents
-- [Project Status Update](README.md#project-status-update-june-2026) (this file)
+- [Phase 2 live baseline (2026-08-29)](docs/phases/phase-2-baseline-2026-08-29.md) — **return here first**
 - [Project Roadmap](docs/ROADMAP.md)
+- [Phase Artifacts Map](docs/phases/PHASE-ARTIFACTS.md)
 - [IoT Devices & Risk Plan](docs/inventory/iot-devices.md)
 - [Grok Workspace Instructions](GROK-WORKSPACE.md)
 - [Self-Hosted Services Research & Roadmap](docs/services/self-hosted-services-roadmap.md)
@@ -76,12 +79,14 @@ This repo supports the main Privacy Migration project. See [privacy-migration-do
 ```
 .
 ├── README.md
+├── GROK-WORKSPACE.md
 ├── .gitignore
 └── docs/
     ├── inventory/     # Nmap XMLs, device lists, host inventories (see .gitignore)
     ├── diagrams/      # Draw.io / diagrams.net network topology diagrams
     ├── hardware/      # Rack measurements, infrastructure criteria, DECISIONS.md, RACK.md
-    ├── services/      # Self-hosted services roadmap, document digitization (Paperless-ngx) + table of planned apps in services/README.md
+    ├── phases/        # Phase map + completion logs + Phase 2 live baseline
+    ├── services/      # Self-hosted services roadmap, document digitization
     └── ROADMAP.md     # High-level project roadmap (phases)
 ```
 
@@ -111,8 +116,8 @@ Placeholder for future configuration management:
 ## Getting Started
 
 1. Clone the repo (private — access restricted)
-2. Place your own Nmap XMLs or inventories into `docs/inventory/` — they will be ignored by default
-3. Add diagrams to `docs/diagrams/`
+2. Read [docs/phases/phase-2-baseline-2026-08-29.md](docs/phases/phase-2-baseline-2026-08-29.md) before touching the M715q
+3. Place your own Nmap XMLs or inventories into `docs/inventory/` — they will be ignored by default
 4. Review `.gitignore` before any `git add -f` of sensitive data
 
 ## Security Notes
@@ -121,4 +126,4 @@ Placeholder for future configuration management:
 - Even so, avoid committing live credentials, full packet captures, or unredacted device details unless necessary.
 - Regularly audit committed files for accidental secrets.
 
-Initial structure created 2026.
+Initial structure created 2026. Phase 2 baseline added 2026-08-29.
