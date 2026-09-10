@@ -1,4 +1,4 @@
-# Home Network Security Roadmap (Revised September 5, 2026)
+# Home Network Security Roadmap (Revised September 9, 2026)
 
 > **Phase Artifacts Map:** See [docs/phases/PHASE-ARTIFACTS.md](phases/PHASE-ARTIFACTS.md).
 >
@@ -9,7 +9,7 @@
 **Timeline:** June 2026  
 **Status:** Complete
 
-- Deployed TP-Link Omada SDN: FR205 (Multi-WAN) router + SG2008P v3.20 managed switch (K108-MSW-1) + 2× EAP225 v4 APs.
+- Deployed TP-Link Omada SDN: **ER605 V2** gateway + SG2008P v3.20 managed switch (K108-MSW-1) + EAP225 coverage.
 - VLAN segmentation active: Management / LAN-Secure (1), Trusted/Secure (10), IoT (20).
 - 21 clients inventoried via Omada.
 - Physical racks, StarTech PDU, patch panel, Cat6.
@@ -41,7 +41,7 @@
 
 ---
 
-**Risk Note:** Keep FR205 as warm spare. Keep CT 100 disk well under 80% or vuln feeds will kill Wazuh again. One fstab line only for the Seagate UUID.  
+**Risk Note:** Keep CT 100 disk well under 80% or vuln feeds will kill Wazuh again. One fstab line only for the Seagate UUID.  
 **Project Board:** https://github.com/users/jacob-kraniak/projects/1
 
-*Last updated: 2026-09-05 — RAM correction + USB media disk + CT memory split.*
+*Last updated: 2026-09-09 — ER605-only gateway wording; RAM/USB/CT split per Sep 5 checkpoint.*
