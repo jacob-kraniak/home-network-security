@@ -1,5 +1,8 @@
 # Phase 2 Live Baseline — 2026-08-29
 
+> **Superseded for live facts** by [phase-2-checkpoint-2026-09-05.md](phase-2-checkpoint-2026-09-05.md) (16 GB RAM confirmed, CT memory split 6G/2G, Seagate USB).  
+> **Keep this file** for the Wazuh disk-full outage + repair narrative only.
+
 **Captured:** 2026-08-29 evening (EDT)  
 **Purpose:** Return-to-project snapshot after Proxmox / Portainer / Wazuh troubleshooting.  
 **Supersedes:** July 10 paper state (“Proxmox install pending”, “16GB RAM”).
