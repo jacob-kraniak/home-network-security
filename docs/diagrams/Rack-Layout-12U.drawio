@@ -31,7 +31,7 @@
         <mxCell id="sFFoBQhHbWahwSxUXSo6-17" edge="1" parent="sFFoBQhHbWahwSxUXSo6-9" source="sFFoBQhHbWahwSxUXSo6-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="sFFoBQhHbWahwSxUXSo6-11">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="sFFoBQhHbWahwSxUXSo6-10" parent="sFFoBQhHbWahwSxUXSo6-9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="TP-Link FR205 Router&lt;br&gt;Multi-WAN Firewall" vertex="1">
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-10" parent="sFFoBQhHbWahwSxUXSo6-9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="TP-Link ER605 V2 Gateway&lt;br&gt;Omada SDN Gateway" vertex="1">
           <mxGeometry height="65" width="320" x="50" y="30" as="geometry" />
         </mxCell>
         <mxCell id="sFFoBQhHbWahwSxUXSo6-19" edge="1" parent="sFFoBQhHbWahwSxUXSo6-9" source="sFFoBQhHbWahwSxUXSo6-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="sFFoBQhHbWahwSxUXSo6-13">
@@ -118,7 +118,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="sFFoBQhHbWahwSxUXSo6-28" parent="sFFoBQhHbWahwSxUXSo6-27" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="TP-Link FR205 Router&lt;br&gt;Multi-WAN Firewall&lt;br&gt;(Future Starlink WAN Failover)" vertex="1">
+        <mxCell id="sFFoBQhHbWahwSxUXSo6-28" parent="sFFoBQhHbWahwSxUXSo6-27" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=11;" value="TP-Link ER605 V2 Gateway&lt;br&gt;Omada SDN Gateway&lt;br&gt;(Future Starlink WAN Failover)" vertex="1">
           <mxGeometry height="75" width="340" x="50" y="60" as="geometry" />
         </mxCell>
         <mxCell id="sFFoBQhHbWahwSxUXSo6-59" edge="1" parent="sFFoBQhHbWahwSxUXSo6-27" source="sFFoBQhHbWahwSxUXSo6-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;strokeColor=light-dark(#000000,#6C8EBF);" target="sFFoBQhHbWahwSxUXSo6-30">
