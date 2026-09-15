@@ -1,7 +1,7 @@
 # Phase Artifacts & Documentation Map
 
 **Canonical reference** for which documents, diagrams, configs, and inventories belong to each project phase.  
-**Last Updated:** 2026-09-05  
+**Last Updated:** 2026-09-14  
 **Authoritative Timeline:** GitHub Project Board + Issues (see bottom)
 
 > **Usage:** When working on a phase, start here. Update this file whenever a new artifact is created or an existing one is promoted/demoted between phases.
@@ -40,7 +40,7 @@ Unchanged. See prior revision for the Phase 1 tables.
 
 ## Phase 2: Self-Hosted Services Build
 
-**Status:** 🟡 **In Progress** (PVE live; 16 GB RAM confirmed 2026-09-05; Wazuh + Portainer + HV agent)  
+**Status:** 🟡 **In Progress** (Omada on-prem 2026-09-14; Wazuh + Portainer + RustDesk on CTs)  
 **Goal:** Deploy Proxmox VE, stand up core self-hosted services, integrate with NetBox & monitoring, document everything.
 
 ### Associated Artifacts / Documents
@@ -48,26 +48,28 @@ Unchanged. See prior revision for the Phase 1 tables.
 | Category | File / Location | Description |
 |----------|-----------------|-------------|
 | **Roadmap & Status** | [docs/ROADMAP.md](../ROADMAP.md) | Phase 2 section |
-| | [docs/phases/phase-2-checkpoint-2026-09-05.md](phase-2-checkpoint-2026-09-05.md) | **Current live checkpoint** (RAM split, Seagate 3TB, CT limits) |
+| | [docs/phases/phase-2-checkpoint-2026-09-14.md](phase-2-checkpoint-2026-09-14.md) | **Current live checkpoint** (Omada CBC → CT 101) |
+| | [docs/phases/phase-2-checkpoint-2026-09-05.md](phase-2-checkpoint-2026-09-05.md) | RAM split, Seagate 3TB, CT limits |
 | | [docs/phases/phase-2-baseline-2026-08-29.md](phase-2-baseline-2026-08-29.md) | Wazuh disk-full outage + repair narrative |
 | | [docs/NetBox-Inventory-Progress.md](../NetBox-Inventory-Progress.md) | Phase 2 NetBox entries |
 | **Services** | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) | Planned apps |
 | | [docs/services/document-digitization.md](../services/document-digitization.md) | Paperless-ngx |
-| **Hardware** | [docs/inventory/devices-summary.md](../inventory/devices-summary.md) | M715q + Seagate USB |
+| **Hardware** | [docs/inventory/devices-summary.md](../inventory/devices-summary.md) | M715q + Seagate USB + Omada kit |
 | | [docs/hardware/DECISIONS.md](../hardware/DECISIONS.md) | Acquisition notes |
 
-### Phase 2 Current State (2026-09-05)
+### Phase 2 Current State (2026-09-14)
 - [x] M715q acquired; KingSpec NVMe boot
 - [ ] SanDisk Z400 — still not visible
 - [x] PVE 9.2.4 node `debian`
 - [x] **16 GB RAM (2×8 GB)** visible after 2026-09-05 reboot
-- [x] CT 100 Wazuh at 6G / 81G / `192.168.0.178`; HV agent `pve-debian` (003)
-- [x] CT 101 Portainer at 2G / 4G disk / `192.168.0.200`
+- [x] CT 100 Wazuh at 6G / 81G / `192.168.0.178`; agents 003–006
+- [x] CT 101 Portainer + RustDesk + **Omada 6.3** / `192.168.0.200`
 - [x] Seagate Backup+ Desk 3TB exFAT at `/mnt/seagate3tb`
+- [x] Omada CBC 6.3.0.100 → local 6.3.0.45; cloud closed
 - [ ] PVE Directory storage / vzdump onto the Seagate
-- [ ] NetBox hypervisor + CTs + USB disk
-- [ ] AdGuard / WireGuard / remaining apps
-- [ ] Grow CT 101 disk before media stacks
+- [ ] NetBox hypervisor + CTs + USB disk + Omada controller
+- [ ] AdGuard / WireGuard / Plane.so
+- [ ] Wazuh noise reduction (`local_rules.xml` / group agent.conf)
 - [ ] `pve-edk2-firmware` only if UEFI VMs needed
 
 ### Phase 2 Exit Criteria (Target)
@@ -87,7 +89,8 @@ Unchanged. See prior revision for the Phase 1 tables.
 
 ## Related Links
 - Project Board: https://github.com/users/jacob-kraniak/projects/1
-- Current checkpoint: [phase-2-checkpoint-2026-09-05.md](phase-2-checkpoint-2026-09-05.md)
+- Current checkpoint: [phase-2-checkpoint-2026-09-14.md](phase-2-checkpoint-2026-09-14.md)
+- Prior checkpoint: [phase-2-checkpoint-2026-09-05.md](phase-2-checkpoint-2026-09-05.md)
 - Wazuh repair baseline: [phase-2-baseline-2026-08-29.md](phase-2-baseline-2026-08-29.md)
 
 *Keep this map current when adding artifacts.*

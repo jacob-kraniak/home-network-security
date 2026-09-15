@@ -1,38 +1,41 @@
-# Home Network Security Roadmap (Revised September 9, 2026)
+# Home Network Security Roadmap (Revised September 14, 2026)
 
 > **Phase Artifacts Map:** See [docs/phases/PHASE-ARTIFACTS.md](phases/PHASE-ARTIFACTS.md).
 >
-> **Current live state:** [docs/phases/phase-2-checkpoint-2026-09-05.md](phases/phase-2-checkpoint-2026-09-05.md)  
+> **Current live state:** [docs/phases/phase-2-checkpoint-2026-09-14.md](phases/phase-2-checkpoint-2026-09-14.md)  
+> **Prior checkpoint:** [docs/phases/phase-2-checkpoint-2026-09-05.md](phases/phase-2-checkpoint-2026-09-05.md)  
 > **Wazuh outage narrative:** [docs/phases/phase-2-baseline-2026-08-29.md](phases/phase-2-baseline-2026-08-29.md)
 
 ## Phase 1: Network Build — Stable Family Foundation (Completed ✅)
 **Timeline:** June 2026  
 **Status:** Complete
 
-- Deployed TP-Link Omada SDN: **ER605 V2** gateway + SG2008P v3.20 managed switch (K108-MSW-1) + EAP225 coverage.
-- VLAN segmentation active: Management / LAN-Secure (1), Trusted/Secure (10), IoT (20).
-- 21 clients inventoried via Omada.
+- Deployed TP-Link Omada SDN: **ER605 V2** gateway + managed switch (K108-MSW-1) + EAP coverage (Living Room + Office).
+- VLAN segmentation active: Management / LAN-Secure (1), Trusted/Secure (10), IoT (20), plus 30/40 as provisioned.
 - Physical racks, StarTech PDU, patch panel, Cat6.
 - NetBox Cloud foundation complete.
+- **2026-09-14:** Controller moved off Omada Cloud onto CT 101. Hardware unchanged; management is local.
 
 **Primary Artifacts:**  
 [PHASE-ARTIFACTS.md § Phase 1](phases/PHASE-ARTIFACTS.md#phase-1-network-build-stable-family-foundation) · [phase-1-completion.md](phases/phase-1-completion.md) · [devices-summary.md](inventory/devices-summary.md)
 
 ## Phase 2: Self-Hosted Services Build (In Progress 🟡)
 **Timeline:** July 2026 – ongoing  
-**Status:** PVE live. 16 GB RAM confirmed. Wazuh recovered + HV agent enrolled. Portainer healthy. 3 TB Seagate USB mounted for media/backups.
+**Status:** PVE live. Wazuh + Portainer + RustDesk + **Omada 6.3 on-prem**. 3 TB Seagate USB mounted.
 
 - **Host:** Lenovo M715q Tiny, node `debian`, PVE 9.2.4, `192.168.0.176`.
-- **RAM:** 2×8 GB DDR4 SO-DIMM. PVE/top ~14.6 GiB after 2026-09-05 reboot (Aug 29 7.2 GiB reading was one DIMM not visible to the kernel).
-- **CT 100 wazuh:** 6G RAM / 81G disk / `192.168.0.178`. Agent `pve-debian` (003) live.
-- **CT 101 portainer:** 2G RAM / **4G disk** / `192.168.0.200`.
-- **USB:** Seagate Backup+ Desk 3TB exFAT at `/mnt/seagate3tb` (376G used). USB 2 port. Not for VM disks.
+- **RAM:** 2×8 GB DDR4 SO-DIMM (~14.6 GiB).
+- **CT 100 wazuh:** 6G RAM / 81G disk / `192.168.0.178`. Agents 003–006.
+- **CT 101 portainer:** Portainer + RustDesk + Omada Controller / `192.168.0.200`. UI `https://192.168.0.200:8043`.
+- **Omada:** `mbentley/omada-controller:6.3` (6.3.0.45). Inform / Controller Hostname **`192.168.0.200`**. Cloud CBC closed.
+- **USB:** Seagate Backup+ Desk 3TB exFAT at `/mnt/seagate3tb`.
 
 **Immediate Next Steps:**
-1. Optional PVE Directory storage on `/mnt/seagate3tb/pve-backup` for vzdump
-2. Grow CT 101 disk before any new Portainer stack
-3. NetBox: hypervisor + CTs + USB disk
-4. Small next apps: AdGuard → WireGuard/Tailscale (not media until USB 3 or a dedicated media CT)
+1. Wazuh tuning (group `agent.conf` + `local_rules.xml`)
+2. Optional PVE Directory storage on `/mnt/seagate3tb/pve-backup`
+3. NetBox: hypervisor + CTs + USB + Omada controller
+4. Small next apps: AdGuard → WireGuard/Tailscale; Plane.so
+5. Omada syslog → Wazuh only after SIEM noise is down
 
 ## Phase 3: Open Source Routing & Expansion (Future 🔵)
 - OPNsense on dedicated hardware.
@@ -41,7 +44,7 @@
 
 ---
 
-**Risk Note:** Keep CT 100 disk well under 80% or vuln feeds will kill Wazuh again. One fstab line only for the Seagate UUID.  
+**Risk Note:** Keep CT 100 disk well under 80% or vuln feeds will kill Wazuh again. Omada Controller Hostname must stay `192.168.0.200` (not Docker `172.19.0.2`). One fstab line only for the Seagate UUID.  
 **Project Board:** https://github.com/users/jacob-kraniak/projects/1
 
-*Last updated: 2026-09-09 — ER605-only gateway wording; RAM/USB/CT split per Sep 5 checkpoint.*
+*Last updated: 2026-09-14 — Omada on-prem on CT 101.*
