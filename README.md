@@ -13,17 +13,19 @@ This repository is **public**. Keep credentials, WAN IPs, full MACs, and unredac
 - **Gateway:** TP-Link ER605 V2 (Omada SDN)
 - **Core switch:** TP-Link SG2008P v3.20 (K108-MSW-1) — `192.168.0.146`
 - **Wireless:** Omada EAP225 coverage (office AP live; additional AP conversion planned — see inventory)
-- **Controller:** Omada software on BazzitePC
+- **Controller:** Omada software on-prem (CT 101 Portainer, `192.168.0.200`) — cloud CBC closed 2026-09-14
 - **Proxmox (Phase 2, live):** Lenovo ThinkCentre M715q Tiny — PVE 9.2.4 node `debian` `192.168.0.176`
   - **RAM:** 2×8 GB DDR4 SO-DIMM (~14.6 GiB visible after 2026-09-05 reboot)
   - CT 100 Wazuh `192.168.0.178` (6 GiB)
   - CT 101 Portainer `192.168.0.200` (2 GiB; 4G rootfs — do not pull media stacks yet)
 
-**VLAN plan (active)**
-- VLAN 1 — Management / LAN-Secure
-- VLAN 10 — Trusted / Secure (K108-Home-Secure)
-- VLAN 20 — IoT (K108-Home-IoT)
-- Guest / Lab VLANs — planned or partial; see [docs/network-overview.md](docs/network-overview.md)
+**VLAN plan (active — Omada SoT 2026-09-15)**
+- VLAN 1 — Management (Default) — `192.168.0.1/24`
+- VLAN 10 — Trusted — `192.168.10.1/24` (K108-Home-Secure)
+- VLAN 20 — IoT — `192.168.20.1/24` (K108-Home-IoT)
+- VLAN 30 — Guest — `192.168.30.1/24`
+- VLAN 40 — Lab — `192.168.40.1/24`
+- Details: [docs/network-overview.md](docs/network-overview.md)
 
 **Design notes**
 - 802.1Q tagging at the ER605; L2 distribution via managed switch + patch panel
@@ -77,4 +79,4 @@ This repo supports the Privacy Migration project. See [privacy-migration-docs](h
 - Do not commit full packet captures or unredacted device dumps
 - Audit diffs for accidental secrets before commit
 
-*Last reconciled: 2026-09-09 (README vs Sep 5 SoT — ER605 primary, 16 GB RAM, public visibility).*
+*Last reconciled: 2026-09-15 (Omada VLAN SoT + on-prem controller on CT 101; M715q Proxmox unchanged).*
