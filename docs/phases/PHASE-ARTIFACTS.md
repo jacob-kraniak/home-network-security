@@ -49,6 +49,8 @@ Unchanged. See prior revision for the Phase 1 tables.
 |----------|-----------------|-------------|
 | **Roadmap & Status** | [docs/ROADMAP.md](../ROADMAP.md) | Phase 2 section |
 | | [docs/phases/phase-2-checkpoint-2026-09-16.md](phase-2-checkpoint-2026-09-16.md) | **Current live checkpoint** (NetBox on CT 101) |
+| | [docs/phases/phase-2-close-linkedin.md](phase-2-close-linkedin.md) | **Phase 2 close + LinkedIn publish gates** |
+| | [docs/phases/netbox-cloud-to-local.md](netbox-cloud-to-local.md) | Cloud → local inventory import runbook |
 | | [docs/phases/phase-2-checkpoint-2026-09-14.md](phase-2-checkpoint-2026-09-14.md) | Omada CBC → CT 101 |
 | | [docs/phases/phase-2-checkpoint-2026-09-05.md](phase-2-checkpoint-2026-09-05.md) | RAM split, Seagate 3TB, prior CT limits |
 | | [docs/phases/phase-2-baseline-2026-08-29.md](phase-2-baseline-2026-08-29.md) | Wazuh disk-full outage + repair narrative |
@@ -68,18 +70,22 @@ Unchanged. See prior revision for the Phase 1 tables.
 - [x] Seagate Backup+ Desk 3TB exFAT at `/mnt/seagate3tb`
 - [x] Omada CBC 6.3.0.100 → local 6.3.0.45; cloud closed
 - [x] NetBox Docker stack healthy (`v4.7-5.1.1`) on CT 101 — Cloud still SoT until import
+- [ ] Import Cloud inventory into local NetBox; then flip SoT
+- [ ] One restore path (vzdump / volume copy to Seagate)
 - [ ] PVE Directory storage / vzdump onto the Seagate
-- [ ] Import Cloud inventory into local NetBox; model hypervisor + CTs + Omada
-- [ ] AdGuard / WireGuard / Plane.so
+- [ ] AdGuard / WireGuard / Plane.so — **Phase 3 unless already live**
 - [ ] Wazuh noise reduction (`local_rules.xml` / group agent.conf)
 - [ ] `pve-edk2-firmware` only if UEFI VMs needed
+
+Close gates (including LinkedIn): [phase-2-close-linkedin.md](phase-2-close-linkedin.md).
 
 ### Phase 2 Exit Criteria (Target)
 - [ ] Proxmox VE stable + backups documented
 - [ ] Core services running with backups
-- [ ] NetBox reflects hypervisor + CTs + power + cables
-- [ ] Docs & diagrams current
+- [ ] NetBox local holds Cloud inventory + hypervisor + CTs
+- [ ] Docs & diagrams current; SoT flipped to local
 - [ ] Project board Phase 2 issues closed or moved to Phase 3
+- [ ] LinkedIn follow-up only after SoT flip (see close note)
 
 ---
 
@@ -92,6 +98,8 @@ Unchanged. See prior revision for the Phase 1 tables.
 ## Related Links
 - Project Board: https://github.com/users/jacob-kraniak/projects/1
 - Current checkpoint: [phase-2-checkpoint-2026-09-16.md](phase-2-checkpoint-2026-09-16.md)
+- Close / LinkedIn gates: [phase-2-close-linkedin.md](phase-2-close-linkedin.md)
+- Cloud → local: [netbox-cloud-to-local.md](netbox-cloud-to-local.md)
 - Prior checkpoint: [phase-2-checkpoint-2026-09-14.md](phase-2-checkpoint-2026-09-14.md)
 - Wazuh repair baseline: [phase-2-baseline-2026-08-29.md](phase-2-baseline-2026-08-29.md)
 - NetBox deploy issue: [#28](https://github.com/jacob-kraniak/home-network-security/issues/28)
