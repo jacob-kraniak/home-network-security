@@ -1,10 +1,12 @@
 # NetBox Inventory Progress
 
-**Last updated:** 2026-07-10  
-**NetBox instance:** [NetBox Cloud](https://arfv7221.cloud.netboxapp.com/) (private)  
+**Last updated:** 2026-09-16  
+**Authoritative IPAM:** [NetBox Cloud](https://arfv7221.cloud.netboxapp.com/) (private) until local import is verified  
+**Local instance (empty):** `http://192.168.0.200:8000` on CT 101 — NetBox Community v4.7.0 / docker `v4.7-5.1.1`  
 **Primary site:** Kraniak Home  
 **Automation repo:** [netbox-nmap-scan](https://github.com/jacob-kraniak/netbox-nmap-scan)  
-**Public summary:** [network-overview.md](network-overview.md)
+**Public summary:** [network-overview.md](network-overview.md)  
+**Live checkpoint:** [phase-2-checkpoint-2026-09-16.md](phases/phase-2-checkpoint-2026-09-16.md)
 
 ---
 
@@ -12,10 +14,11 @@
 
 | Metric | Value (approx.) |
 |--------|-----------------|
-| Devices | ~53 (+1 Proxmox host) |
+| Devices | ~53 (+1 Proxmox host) — **in Cloud** |
 | VLANs | 3 active (1, 10, 20) |
 | Prefixes | 3 (`192.168.0/10/20.0/24`) |
 | Tag schema | `key:value` |
+| Local UI | Healthy, 0 objects — import pending |
 | Public repo | Redacted — NetBox is authoritative IPAM |
 
 ### Core infrastructure (production)
@@ -29,9 +32,16 @@
 | K108_WAP2_Office | WAP (EAP225) | LAN-Secure | Omada office AP |
 | PATCH-PANEL | Infrastructure | — | PP# = switch port # |
 | Startech PDU | PDU | — | Rack-mounted |
-| **Lenovo-M715q-Proxmox** | Hypervisor | LAN-Secure (planned) | **NEW 2026-07-10** — Free employer M715q Tiny (S/N MJ067MNT, type 10M3000PUS). 16GB RAM. KingSpec 512GB NVMe boot + SanDisk Z400 256GB 2.5" for potential RAID1. Dual DP. To be racked in Server Hosts rack. |
+| **Lenovo-M715q-Proxmox** | Hypervisor | LAN-Secure | Live PVE 9.2.4. Still needs full NetBox virtualization objects. |
 
 ---
+
+## 2026-09-16 — Local NetBox service online ✅
+
+- Stack: `netbox-community/netbox-docker` at `/opt/stacks/netbox` on CT 101.
+- Image pin: `v4.7-5.1.1`. UI login confirmed.
+- Cloud remains SoT. Next: API/`netbox-nmap-scan` import, then hypervisor + CT objects.
+- Issue [#28](https://github.com/jacob-kraniak/home-network-security/issues/28).
 
 ## 2026-07-10 — Proxmox Host Acquired ✅
 
@@ -97,11 +107,11 @@ NetBox documentation milestone reached. Public repo updated with redacted summar
 
 ## Remaining Gaps (Phase 2)
 
-1. **Power modeling** — PDU outlet → device connections ([#19](https://github.com/jacob-kraniak/home-network-security/issues/19))
-2. **Proxmox / virtualization** — cluster + VM objects once host live (**host hardware now acquired — next**)
-3. **Automated sync** — scheduled NetBox refresh from DHCP/nmap
-4. **Public diagrams** — sanitized topology draw.io from NetBox export
-5. **Omada Cloud adoption** — move PRECONFIGURED APs to managed state
+1. **Cloud → local import** — dual-run, then flip SoT ([#28](https://github.com/jacob-kraniak/home-network-security/issues/28))
+2. **Power modeling** — PDU outlet → device connections ([#19](https://github.com/jacob-kraniak/home-network-security/issues/19))
+3. **Proxmox / virtualization** — cluster + CT/VM objects on the local instance
+4. **Automated sync** — scheduled NetBox refresh from DHCP/nmap against local API
+5. **Public diagrams** — sanitized topology draw.io from NetBox export
 
 ---
 

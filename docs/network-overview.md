@@ -1,7 +1,8 @@
-# Network Overview — Production State (2026-06-20)
+# Network Overview — Production State (2026-06-20, services note 2026-09-16)
 
 **Site:** Kraniak Home  
-**Authoritative IPAM:** [NetBox Cloud](https://arfv7221.cloud.netboxapp.com/) (private)  
+**Authoritative IPAM:** [NetBox Cloud](https://arfv7221.cloud.netboxapp.com/) (private) until local import is verified  
+**Local NetBox (empty):** `http://192.168.0.200:8000` on CT 101  
 **Automation:** [netbox-nmap-scan](https://github.com/jacob-kraniak/netbox-nmap-scan)
 
 This document is a **redacted, public-safe** summary. Exact host IPs, full MAC addresses, serial numbers, and DHCP client tables are maintained only in NetBox.
@@ -16,19 +17,20 @@ This document is a **redacted, public-safe** summary. Exact host IPs, full MAC a
                     │   (Omada SDN)   │
                     └────────┬────────┘
                              │ LAN3 trunk
-                    ┌────────▼────────┐
+                    ┌───────┴────────┐
                     │   OpenWRT-AP    │
                     │  br-lan.1       │  LAN-Secure
                     │  br-lan.10      │  IoT
                     │  br-lan.20      │  Guest
-                    └────────┬────────┘
+                    └───────┬────────┘
                              │
-                    ┌────────▼────────┐
+                    ┌───────┴────────┐
                     │ TL-SG116E       │  16-port Easy Smart
                     │ SWITCH-1        │  patch panel 1:1
-                    └────────┬────────┘
+                    └───────┬────────┘
                              │
-              ┌──────────────┼──────────────┐
+              ┌─────────────┼──────────────┐
+              │              │              │
               ▼              ▼              ▼
         K108_WAP2_Office  BazzitePC    IoT clients (~40+)
         (EAP225 office)   (workstation)
@@ -38,6 +40,7 @@ This document is a **redacted, public-safe** summary. Exact host IPs, full MAC a
 - ER605 performs **802.1Q VLAN tagging** on the uplink trunk.
 - OpenWRT terminates VLANs via **subinterfaces** (`br-lan.N`).
 - Basement switch provides L2 distribution; management IPs are on LAN-Secure.
+- Phase 2 services host (M715q) and CT 101 apps (Omada, NetBox, Portainer) live on VLAN 1. See [phase-2-checkpoint-2026-09-16.md](phases/phase-2-checkpoint-2026-09-16.md).
 
 ---
 
@@ -49,7 +52,7 @@ This document is a **redacted, public-safe** summary. Exact host IPs, full MAC a
 | 10 | IoT | Smart home / IoT devices | `192.168.10.0/24` | K108-Home-IoT |
 | 20 | Guest | Visitor network | `192.168.20.0/24` | K108-Guest |
 
-All three VLANs are **active** in NetBox (group: `Kranak-Home-VLANs`).
+All three VLANs are **active** in NetBox Cloud (group: `Kranak-Home-VLANs`).
 
 ---
 
@@ -101,4 +104,4 @@ Raw nmap XML and ARP captures remain **local / gitignored** per [GROK-WORKSPACE.
 - [Devices Summary](inventory/devices-summary.md)
 - [Roadmap](ROADMAP.md)
 
-*Last updated: 2026-06-20*
+*Last updated: 2026-09-16 (local NetBox service note; Cloud still SoT).*
