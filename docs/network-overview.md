@@ -13,7 +13,7 @@ This document is a **redacted, public-safe** summary. Exact host IPs, full MAC a
 
 ```
                     ┌─────────────────┐
-   ISP ────────────►│  ER605-Gateway  │  VLAN tagging (1 / 10 / 20)
+   ISP ────────────►│  ER605-Gateway  │  VLAN tagging (1 / 10 / 20 / 30 / 40)
                     │   (Omada SDN)   │
                     └────────┬────────┘
                              │ LAN3 trunk
@@ -32,27 +32,30 @@ This document is a **redacted, public-safe** summary. Exact host IPs, full MAC a
               ┌─────────────┼──────────────┐
               │              │              │
               ▼              ▼              ▼
-        K108_WAP2_Office  BazzitePC    IoT clients (~40+)
-        (EAP225 office)   (workstation)
+         Trusted clients  IoT / Guest    Lab / mgmt hosts
+         (VLAN 10)        (20 / 30)      (40 / 1)
 ```
 
 **Design notes:**
-- ER605 performs **802.1Q VLAN tagging** on the uplink trunk.
-- OpenWRT terminates VLANs via **subinterfaces** (`br-lan.N`).
-- Basement switch provides L2 distribution; management IPs are on LAN-Secure.
-- Phase 2 services host (M715q) and CT 101 apps (Omada, NetBox, Portainer) live on VLAN 1. See [phase-2-checkpoint-2026-09-16.md](phases/phase-2-checkpoint-2026-09-16.md).
+- ER605 performs **802.1Q VLAN tagging**; Omada Controller is on-prem (CT 101).
+- SSIDs / L2 distribution via Omada-managed switch + APs (OpenWRT may still terminate some subinterfaces historically).
+- Management hosts (Proxmox, CTs, controller) live on VLAN 1 (`192.168.0.0/24`).
 
 ---
 
 ## VLANs & Prefixes
 
-| VID | NetBox name | Purpose | Prefix | SSID |
-|-----|-------------|---------|--------|------|
-| 1 | LAN-Secure | Trusted LAN / infrastructure | `192.168.0.0/24` | K108-Home-Secure |
-| 10 | IoT | Smart home / IoT devices | `192.168.10.0/24` | K108-Home-IoT |
-| 20 | Guest | Visitor network | `192.168.20.0/24` | K108-Guest |
+**Omada SoT (2026-09-15 screenshot / Lab Watch cross-check):** gateway = `.1` on each `/24`.
 
-All three VLANs are **active** in NetBox Cloud (group: `Kranak-Home-VLANs`).
+| VID | Omada name | Purpose | Gateway / prefix | Typical SSID |
+|-----|------------|---------|------------------|--------------|
+| 1 | Management (Default) | Infrastructure / management | `192.168.0.1/24` (`192.168.0.0/24`) | (wired / mgmt) |
+| 10 | Trusted | Trusted clients / secure WLAN | `192.168.10.1/24` (`192.168.10.0/24`) | K108-Home-Secure |
+| 20 | IoT | Smart home / IoT devices | `192.168.20.1/24` (`192.168.20.0/24`) | K108-Home-IoT |
+| 30 | Guest | Visitor network | `192.168.30.1/24` (`192.168.30.0/24`) | K108-Guest (as provisioned) |
+| 40 | Lab | Lab / experiment segment | `192.168.40.1/24` (`192.168.40.0/24`) | (as provisioned) |
+
+> **Supersedes** the June 2026 public table that incorrectly mapped VLAN 10→IoT and VLAN 20→Guest. NetBox Cloud may still lag — treat Omada as live network SoT until IPAM is reconciled.
 
 ---
 

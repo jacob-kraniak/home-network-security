@@ -19,11 +19,13 @@ This repository is **public**. Keep credentials, WAN IPs, full MACs, and unredac
   - CT 100 Wazuh `192.168.0.178` (6 GiB)
   - CT 101 Portainer `192.168.0.200` (6 GiB / 100G) — Portainer + Omada + RustDesk + **NetBox v4.7** (`http://192.168.0.200:8000`)
 
-**VLAN plan (active)**
-- VLAN 1 — Management / LAN-Secure
-- VLAN 10 — Trusted / Secure (K108-Home-Secure)
-- VLAN 20 — IoT (K108-Home-IoT)
-- Guest / Lab VLANs — planned or partial; see [docs/network-overview.md](docs/network-overview.md)
+**VLAN plan (active — Omada SoT 2026-09-15)**
+- VLAN 1 — Management (Default) — `192.168.0.1/24`
+- VLAN 10 — Trusted — `192.168.10.1/24` (K108-Home-Secure)
+- VLAN 20 — IoT — `192.168.20.1/24` (K108-Home-IoT)
+- VLAN 30 — Guest — `192.168.30.1/24`
+- VLAN 40 — Lab — `192.168.40.1/24`
+- Details: [docs/network-overview.md](docs/network-overview.md)
 
 **Design notes**
 - 802.1Q tagging at the ER605; L2 distribution via managed switch + patch panel

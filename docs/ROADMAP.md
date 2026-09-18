@@ -11,7 +11,7 @@
 **Status:** Complete
 
 - Deployed TP-Link Omada SDN: **ER605 V2** gateway + managed switch (K108-MSW-1) + EAP coverage (Living Room + Office).
-- VLAN segmentation active: Management / LAN-Secure (1), Trusted/Secure (10), IoT (20), plus 30/40 as provisioned.
+- VLAN segmentation active (Omada SoT 2026-09-15): Management (1) `192.168.0.1/24`, Trusted (10) `192.168.10.1/24`, IoT (20) `192.168.20.1/24`, Guest (30) `192.168.30.1/24`, Lab (40) `192.168.40.1/24`.
 - Physical racks, StarTech PDU, patch panel, Cat6.
 - NetBox Cloud foundation complete.
 - **2026-09-14:** Controller moved off Omada Cloud onto CT 101. Hardware unchanged; management is local.

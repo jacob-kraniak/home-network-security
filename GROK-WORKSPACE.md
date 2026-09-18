@@ -5,13 +5,15 @@ This repository documents the transition from consumer-grade networking to a sec
 
 ## Production Architecture (network June 2026 + services host Sep 2026)
 
-**Segmented VLAN lab** — **ER605 V2** tags VLANs 1/10/20; Omada / OpenWRT terminate SSIDs and L2 distribution.
+**Segmented VLAN lab** — **ER605 V2** tags VLANs 1/10/20/30/40; Omada terminates SSIDs and L2 distribution (Controller on CT 101).
 
-| VID | Name | SSID | Prefix |
-|-----|------|------|--------|
-| 1 | LAN-Secure / Management | K108-Home-Secure | 192.168.0.0/24 |
-| 10 | Trusted / Secure | K108-Home-Secure | see NetBox / network-overview |
-| 20 | IoT | K108-Home-IoT | see NetBox / network-overview |
+| VID | Omada name | SSID | Gateway / prefix |
+|-----|------------|------|------------------|
+| 1 | Management (Default) | (mgmt) | 192.168.0.1/24 |
+| 10 | Trusted | K108-Home-Secure | 192.168.10.1/24 |
+| 20 | IoT | K108-Home-IoT | 192.168.20.1/24 |
+| 30 | Guest | (as provisioned) | 192.168.30.1/24 |
+| 40 | Lab | (as provisioned) | 192.168.40.1/24 |
 
 **Core devices:** ER605-Gateway (primary), OpenWRT / EAP225s, TL-SG116E / SG2008P, BazzitePC  
 **Proxmox Host (Phase 2, live):** Lenovo ThinkCentre M715q Tiny (S/N MJ067MNT) — PVE 9.2.4 node `debian`, **~14.6 GiB RAM (2×8 GB)**, KingSpec 512GB NVMe. CT 100 Wazuh (6G), CT 101 Portainer (6G / 100G) running Portainer + Omada 6.3 + RustDesk + **NetBox v4.7**. See [docs/phases/phase-2-checkpoint-2026-09-16.md](docs/phases/phase-2-checkpoint-2026-09-16.md).  
