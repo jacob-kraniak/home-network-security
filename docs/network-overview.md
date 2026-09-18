@@ -1,7 +1,8 @@
-# Network Overview — Production State (2026-09-15)
+# Network Overview — Production State (2026-06-20, services note 2026-09-16)
 
 **Site:** Kraniak Home  
-**Authoritative IPAM:** [NetBox Cloud](https://arfv7221.cloud.netboxapp.com/) (private)  
+**Authoritative IPAM:** [NetBox Cloud](https://arfv7221.cloud.netboxapp.com/) (private) until local import is verified  
+**Local NetBox (empty):** `http://192.168.0.200:8000` on CT 101  
 **Automation:** [netbox-nmap-scan](https://github.com/jacob-kraniak/netbox-nmap-scan)
 
 This document is a **redacted, public-safe** summary. Exact host IPs, full MAC addresses, serial numbers, and DHCP client tables are maintained only in NetBox.
@@ -15,14 +16,21 @@ This document is a **redacted, public-safe** summary. Exact host IPs, full MAC a
    ISP ────────────►│  ER605-Gateway  │  VLAN tagging (1 / 10 / 20 / 30 / 40)
                     │   (Omada SDN)   │
                     └────────┬────────┘
-                             │ trunk
-                    ┌────────▼────────┐
-                    │ Omada switch/APs│  L2 + SSIDs
-                    │ (+ OpenWRT as   │
-                    │  needed)        │
-                    └────────┬────────┘
+                             │ LAN3 trunk
+                    ┌───────┴────────┐
+                    │   OpenWRT-AP    │
+                    │  br-lan.1       │  LAN-Secure
+                    │  br-lan.10      │  IoT
+                    │  br-lan.20      │  Guest
+                    └───────┬────────┘
                              │
-              ┌──────────────┼──────────────┐
+                    ┌───────┴────────┐
+                    │ TL-SG116E       │  16-port Easy Smart
+                    │ SWITCH-1        │  patch panel 1:1
+                    └───────┬────────┘
+                             │
+              ┌─────────────┼──────────────┐
+              │              │              │
               ▼              ▼              ▼
          Trusted clients  IoT / Guest    Lab / mgmt hosts
          (VLAN 10)        (20 / 30)      (40 / 1)
@@ -99,4 +107,4 @@ Raw nmap XML and ARP captures remain **local / gitignored** per [GROK-WORKSPACE.
 - [Devices Summary](inventory/devices-summary.md)
 - [Roadmap](ROADMAP.md)
 
-*Last updated: 2026-09-15 (Omada VLAN SoT)*
+*Last updated: 2026-09-16 (local NetBox service note; Cloud still SoT).*

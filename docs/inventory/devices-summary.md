@@ -1,7 +1,7 @@
 # Hardware & Project Inventory Summary
 
 **Project:** Home Network Security / Privacy Migration / Basement Rack Build  
-**Last Updated:** September 14, 2026  
+**Last Updated:** September 16, 2026  
 **Purpose:** Hardware inventory (purchased, existing, planned). Live IPs stay in NetBox except RFC1918 lab notes in Phase 2 checkpoints.
 
 ## Project Cost Tracker (Known Purchases to Date)
@@ -26,6 +26,7 @@
 |--------|-------|--------|--------------|
 | Primary Gateway | TP-Link ER605 V2 (K108-ER605-Gateway) | 🟢 Active | On-prem Omada 6.3 (CT 101). VLAN 1/10/20 (+30/40). `192.168.0.1` |
 | Omada Controller | `mbentley/omada-controller:6.3` on CT 101 | 🟢 Active | `https://192.168.0.200:8043`. Cloud CBC closed 2026-09-14 |
+| NetBox (local) | `netboxcommunity/netbox:v4.7-5.1.1` on CT 101 | 🟢 Active service | `http://192.168.0.200:8000`. Empty until Cloud import. Cloud still IPAM SoT. |
 | VLAN Termination | OpenWRT-AP | 🟢 Active | `br-lan.1/.10/.20` |
 | Managed Switch | K108-MSW-1 | 🟢 Active | Omada-managed; `192.168.0.102` |
 | Distribution Switch | TP-Link TL-SG105 | 🟢 Active | Office branch |
@@ -47,7 +48,7 @@
 |--------|-------|--------|--------------|
 | BazzitePC | MSI B450M / Ryzen 5 / GTX 1070 | ⚪ Existing | Primary workstation; Wazuh agent 005 |
 | Raspberry Pi 3 | Pi 3 Model B | ⚪ Repurposed | Temp basement host |
-| **Proxmox Host** | **Lenovo ThinkCentre M715q Tiny (10M3000PUS / S/N MJ067MNT)** | 🟢 **Live PVE 9.2.4** | AMD PRO A12-9800E (4C). **RAM: 2×8 GB DDR4 SO-DIMM (~14.6 GiB).** KingSpec 512GB NVMe. Node `debian`. CT 100 Wazuh 6G; CT 101 Portainer + RustDesk + Omada. |
+| **Proxmox Host** | **Lenovo ThinkCentre M715q Tiny (10M3000PUS / S/N MJ067MNT)** | 🟢 **Live PVE 9.2.4** | AMD PRO A12-9800E (4C). **RAM: 2×8 GB DDR4 SO-DIMM (~14.6 GiB).** KingSpec 512GB NVMe. Node `debian`. CT 100 Wazuh 6G; CT 101 Portainer 6G/100G + Omada + RustDesk + NetBox. |
 | Dev Laptop | ThinkPad X380 Yoga (Kali) | ⚪ Existing | Security testing; agent 002 |
 | Spouse laptop | Windows 10 22H2 (Christines_Laptop) | ⚪ Existing | Wazuh agent 006; `192.168.10.101` |
 | Work Laptop | ThinkPad P14s Gen 4 | ⚪ Existing | Day job |
@@ -66,7 +67,7 @@
 | Smaller Open Rack | 🟢 Acquired | Network stack |
 | StarTech PDU | 🟢 Acquired | 8-outlet 1U |
 
-**Related:** [ROADMAP.md](../ROADMAP.md) · [phase-2-checkpoint-2026-09-14.md](../phases/phase-2-checkpoint-2026-09-14.md) · [phase-2-checkpoint-2026-09-05.md](../phases/phase-2-checkpoint-2026-09-05.md)
+**Related:** [ROADMAP.md](../ROADMAP.md) · [phase-2-checkpoint-2026-09-16.md](../phases/phase-2-checkpoint-2026-09-16.md) · [phase-2-checkpoint-2026-09-14.md](../phases/phase-2-checkpoint-2026-09-14.md)
 
 ---
-*Public-safe hardware summary. NetBox is authoritative for IPAM.*
+*Public-safe hardware summary. NetBox Cloud remains authoritative for IPAM until local import.*
