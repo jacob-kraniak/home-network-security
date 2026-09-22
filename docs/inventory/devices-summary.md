@@ -1,8 +1,8 @@
 # Hardware & Project Inventory Summary
 
 **Project:** Home Network Security / Privacy Migration / Basement Rack Build  
-**Last Updated:** September 16, 2026  
-**Purpose:** Hardware inventory (purchased, existing, planned). Live IPs stay in NetBox except RFC1918 lab notes in Phase 2 checkpoints.
+**Last Updated:** September 21, 2026  
+**Purpose:** Hardware inventory (purchased, existing, planned). Live IPs stay in on-prem NetBox except RFC1918 lab notes in Phase 2 checkpoints.
 
 ## Project Cost Tracker (Known Purchases to Date)
 
@@ -26,7 +26,7 @@
 |--------|-------|--------|--------------|
 | Primary Gateway | TP-Link ER605 V2 (K108-ER605-Gateway) | 🟢 Active | On-prem Omada 6.3 (CT 101). VLAN 1/10/20 (+30/40). `192.168.0.1` |
 | Omada Controller | `mbentley/omada-controller:6.3` on CT 101 | 🟢 Active | `https://192.168.0.200:8043`. Cloud CBC closed 2026-09-14 |
-| NetBox (local) | `netboxcommunity/netbox:v4.7-5.1.1` on CT 101 | 🟢 Active service | `http://192.168.0.200:8000`. Empty until Cloud import. Cloud still IPAM SoT. |
+| NetBox (local) | `netboxcommunity/netbox:v4.7-5.1.1` on CT 101 | 🟢 Active — **IPAM SoT** | `http://192.168.0.200:8000`. On-prem SoT (Jacob GO 2026-09-21). Cloud is archive pending reconcile ([#28](https://github.com/jacob-kraniak/home-network-security/issues/28)). |
 | VLAN Termination | OpenWRT-AP | 🟢 Active | `br-lan.1/.10/.20` |
 | Managed Switch | K108-MSW-1 | 🟢 Active | Omada-managed; `192.168.0.102` |
 | Distribution Switch | TP-Link TL-SG105 | 🟢 Active | Office branch |
@@ -70,4 +70,4 @@
 **Related:** [ROADMAP.md](../ROADMAP.md) · [phase-2-checkpoint-2026-09-16.md](../phases/phase-2-checkpoint-2026-09-16.md) · [phase-2-checkpoint-2026-09-14.md](../phases/phase-2-checkpoint-2026-09-14.md)
 
 ---
-*Public-safe hardware summary. NetBox Cloud remains authoritative for IPAM until local import.*
+*Public-safe hardware summary. On-prem NetBox is authoritative for IPAM; Cloud is archive pending reconcile.*

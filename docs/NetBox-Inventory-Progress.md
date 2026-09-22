@@ -1,8 +1,8 @@
 # NetBox Inventory Progress
 
-**Last updated:** 2026-09-16  
-**Authoritative IPAM:** [NetBox Cloud](https://arfv7221.cloud.netboxapp.com/) (private) until local import is verified  
-**Local instance (empty):** `http://192.168.0.200:8000` on CT 101 — NetBox Community v4.7.0 / docker `v4.7-5.1.1`  
+**Last updated:** 2026-09-21  
+**Authoritative IPAM:** on-prem NetBox at `http://192.168.0.200:8000` on CT 101 — NetBox Community v4.7.0 / docker `v4.7-5.1.1` (SoT as of 2026-09-21)  
+**NetBox Cloud:** archive / reference only — pending reconcile toward on-prem ([#28](https://github.com/jacob-kraniak/home-network-security/issues/28))  
 **Primary site:** Kraniak Home  
 **Automation repo:** [netbox-nmap-scan](https://github.com/jacob-kraniak/netbox-nmap-scan)  
 **Public summary:** [network-overview.md](network-overview.md)  
@@ -14,12 +14,12 @@
 
 | Metric | Value (approx.) |
 |--------|-----------------|
-| Devices | ~53 (+1 Proxmox host) — **in Cloud** |
-| VLANs | 3 active (1, 10, 20) |
-| Prefixes | 3 (`192.168.0/10/20.0/24`) |
+| Devices | ~53 (+1 Proxmox host) — **historical Cloud inventory**; reconcile into on-prem |
+| VLANs | 3 active in Cloud dump (1, 10, 20); Omada live plan is 1/10/20/30/40 |
+| Prefixes | 3 (`192.168.0/10/20.0/24`) in Cloud dump |
 | Tag schema | `key:value` |
-| Local UI | Healthy, 0 objects — import pending |
-| Public repo | Redacted — NetBox is authoritative IPAM |
+| Local UI | Healthy — **IPAM SoT**; import/reconcile from Cloud archive still open |
+| Public repo | Redacted — on-prem NetBox is authoritative IPAM |
 
 ### Core infrastructure (production)
 
@@ -36,11 +36,17 @@
 
 ---
 
+## 2026-09-21 — On-prem NetBox declared IPAM SoT ✅
+
+- Jacob GO (via Chief of Staff): **on-prem is authoritative IPAM SoT now**; Cloud is archive-only pending reconcile.
+- Docs flipped in this change set. Import/reconcile path remains historical in [netbox-cloud-to-local.md](phases/netbox-cloud-to-local.md); issue [#28](https://github.com/jacob-kraniak/home-network-security/issues/28).
+- No live sync from bots without Jacob yes. No home-rack admin from this pass.
+
 ## 2026-09-16 — Local NetBox service online ✅
 
 - Stack: `netbox-community/netbox-docker` at `/opt/stacks/netbox` on CT 101.
 - Image pin: `v4.7-5.1.1`. UI login confirmed.
-- Cloud remains SoT. Next: API/`netbox-nmap-scan` import, then hypervisor + CT objects.
+- At the time: Cloud was still documented as SoT; local UI empty pending import. **Superseded for SoT:** see 2026-09-21 above.
 - Issue [#28](https://github.com/jacob-kraniak/home-network-security/issues/28).
 
 ## 2026-07-10 — Proxmox Host Acquired ✅
@@ -107,10 +113,10 @@ NetBox documentation milestone reached. Public repo updated with redacted summar
 
 ## Remaining Gaps (Phase 2)
 
-1. **Cloud → local import** — dual-run, then flip SoT ([#28](https://github.com/jacob-kraniak/home-network-security/issues/28))
+1. **Cloud → local reconcile** — Cloud is archive; finish import/counts toward on-prem SoT ([#28](https://github.com/jacob-kraniak/home-network-security/issues/28)). Docs SoT already flipped (Jacob GO 2026-09-21).
 2. **Power modeling** — PDU outlet → device connections ([#19](https://github.com/jacob-kraniak/home-network-security/issues/19))
 3. **Proxmox / virtualization** — cluster + CT/VM objects on the local instance
-4. **Automated sync** — scheduled NetBox refresh from DHCP/nmap against local API
+4. **Automated sync** — scheduled NetBox refresh from DHCP/nmap against local API (Jacob yes required)
 5. **Public diagrams** — sanitized topology draw.io from NetBox export
 
 ---
