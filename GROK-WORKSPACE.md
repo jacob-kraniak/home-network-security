@@ -17,8 +17,8 @@ This repository documents the transition from consumer-grade networking to a sec
 
 **Core devices:** ER605-Gateway (primary), OpenWRT / EAP225s, TL-SG116E / SG2008P, BazzitePC  
 **Proxmox Host (Phase 2, live):** Lenovo ThinkCentre M715q Tiny (S/N MJ067MNT) — PVE 9.2.4 node `debian`, **~14.6 GiB RAM (2×8 GB)**, KingSpec 512GB NVMe. CT 100 Wazuh (6G), CT 101 Portainer (6G / 100G) running Portainer + Omada 6.3 + RustDesk + **NetBox v4.7**. See [docs/phases/phase-2-checkpoint-2026-09-16.md](docs/phases/phase-2-checkpoint-2026-09-16.md).  
-**Authoritative IPAM:** NetBox Cloud (private — not mirrored here) until local import is verified  
-**Local NetBox (empty until import):** `http://192.168.0.200:8000` — VLAN 1 / mesh only  
+**Authoritative IPAM:** on-prem NetBox at `http://192.168.0.200:8000` (CT 101). Cloud is archive / reference pending reconcile ([#28](https://github.com/jacob-kraniak/home-network-security/issues/28)).  
+**Local NetBox (SoT):** `http://192.168.0.200:8000` — VLAN 1 / mesh only; Cloud archive pending reconcile  
 **Public doc:** [docs/network-overview.md](docs/network-overview.md)
 
 ## Phase Artifacts Map (Canonical)
@@ -28,7 +28,7 @@ This repository documents the transition from consumer-grade networking to a sec
 **Wazuh outage narrative only:** [docs/phases/phase-2-baseline-2026-08-29.md](docs/phases/phase-2-baseline-2026-08-29.md)
 
 ## Core Goals
-- Accurate inventory — **NetBox is source of truth for live IPs/MACs**
+- Accurate inventory — **on-prem NetBox is source of truth for live IPs/MACs**
 - VLAN segmentation — deployed
 - Risk mitigation / transference for IoT
 - Self-hosted monitoring (Wazuh live; more services Phase 2)
@@ -46,7 +46,7 @@ This repository documents the transition from consumer-grade networking to a sec
 
 ## Working Guidelines for Grok
 - **Always maintain privacy:** sanitize MACs, WAN IPs, credentials. RFC1918 lab addresses in Phase 2 checkpoints are intentional.
-- **NetBox holds live data** — this repo holds architecture, decisions, and redacted summaries. Cloud remains SoT until local import is verified.
+- **On-prem NetBox holds live IPAM SoT** — this repo holds architecture, decisions, and redacted summaries. Cloud is archive pending reconcile (Jacob GO 2026-09-21). No live sync from bots without Jacob yes.
 - **Do not assume Aug 29 RAM (~7.2 GiB) is current.** Trust Sep 16 checkpoint + devices-summary for live facts. Primary gateway is ER605 V2 only.
 - Update PHASE-ARTIFACTS.md when adding artifacts.
 - Small diffs; no drive-by refactors.
@@ -54,4 +54,4 @@ This repository documents the transition from consumer-grade networking to a sec
 ## GitHub Project Integration
 Main board: https://github.com/users/jacob-kraniak/projects/1
 
-Last Updated: 2026-09-16 (NetBox local service active on CT 101)
+Last Updated: 2026-09-21 (on-prem NetBox IPAM SoT; Cloud archive)

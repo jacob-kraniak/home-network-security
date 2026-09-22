@@ -10,7 +10,7 @@ RFC1918 only. No tokens, passwords, or WAN IPs.
 
 ## Milestone
 
-**NetBox Community is an active container service on CT 101.** Empty local instance is healthy; **NetBox Cloud remains authoritative IPAM** until inventory is imported and counts match.
+**NetBox Community is an active container service on CT 101.** Local instance is healthy. **On-prem NetBox is IPAM SoT** as of 2026-09-21 (Jacob GO); Cloud is archive pending reconcile ([#28](https://github.com/jacob-kraniak/home-network-security/issues/28)). Historical note: at checkpoint time local widgets were empty pending Cloud import.
 
 Placement decision: grow CT 101 (no CT 102). Same Docker/Portainer control plane as Omada and RustDesk.
 
@@ -61,12 +61,14 @@ Do not port-forward `:8000`. Do not `compose down -v`.
 
 ## Still open
 
-1. Import Cloud inventory via API / `netbox-nmap-scan`; dual-run; flip SoT only after device/prefix/VLAN counts match.
+1. Reconcile Cloud archive → on-prem via API / `netbox-nmap-scan` (counts/deltas). **SoT already flipped** 2026-09-21; Cloud is not authoritative.
 2. Model hypervisor + CT 100/101 + Omada controller in NetBox (issue #28 remainder).
 3. Scheduled DHCP/nmap sync against the **local** API.
 4. Optional Proxbox later — not on this pass.
 5. Wazuh noise reduction; PVE Directory/vzdump on the Seagate; no Omada Cloud Access.
 
 ---
+
+**Authority addendum (2026-09-21):** Docs SoT flipped to on-prem; this checkpoint's live CT/stack facts remain valid. Cloud = archive.
 
 *Checkpoint written 2026-09-16 from CT 101 `docker compose ps` + local UI. Secrets stay on the guest.*

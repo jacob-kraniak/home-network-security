@@ -17,7 +17,7 @@ This is the close definition for Phase 2 and the public-article gate. AdGuard, W
 | App host | Portainer on CT 101 |
 | Network controller | Omada 6.3 on-prem (cloud closed) |
 | Remote access | RustDesk on CT 101 |
-| IPAM/DCIM | NetBox v4.7 on CT 101 **with Cloud inventory imported** |
+| IPAM/DCIM | NetBox v4.7 on CT 101 (**on-prem SoT**); Cloud archive reconcile still open |
 
 Wazuh agents to cite internally: `003` pve-debian, `004` ct101-portainer, `005` bazzite, `006` Christines_Laptop. Public wording: hypervisor + Portainer CT + two workstation endpoints. Do not count disconnected Kali `002` as coverage.
 
@@ -27,7 +27,7 @@ Wazuh agents to cite internally: `003` pve-debian, `004` ct101-portainer, `005` 
 
 - [ ] Cloud → local NetBox import complete; device / prefix / VLAN / tag counts match within an agreed delta ([netbox-cloud-to-local.md](netbox-cloud-to-local.md))
 - [ ] Local NetBox contains Phase 2 objects: M715q, CT 100, CT 101, Omada controller, four SDN devices (ER605, MSW-1, two EAPs)
-- [ ] SoT flipped: Cloud is archive; local is authoritative in `GROK-WORKSPACE.md`, `network-overview.md`, `NetBox-Inventory-Progress.md`
+- [x] SoT flipped (2026-09-21 Jacob GO): Cloud is archive; on-prem is authoritative in `GROK-WORKSPACE.md`, `network-overview.md`, `NetBox-Inventory-Progress.md`
 - [ ] One restore path written (vzdump of CT 100/101 and/or NetBox volume copy to the Seagate). “Core services running with backups” is an existing Phase 2 exit line
 - [ ] Checkpoint `phase-2-complete` (or dated close note) + `PHASE-ARTIFACTS.md` / `ROADMAP.md` set Phase 2 ✅
 - [ ] #28 closed after import; leftover Phase 2 issues closed or relabeled `phase:3`; #23 closed or explicitly deferred
@@ -39,7 +39,7 @@ Wazuh agents to cite internally: `003` pve-debian, `004` ct101-portainer, `005` 
 
 ## LinkedIn article — publish gates
 
-Do **not** publish until SoT has actually moved, or the post must say the platform is up and data is still in Cloud.
+SoT has moved to on-prem (2026-09-21). Do **not** publish until Cloud→local reconcile is honest in the narrative (platform up; archive pending reconcile OK to state).
 
 ### Must include
 - Consumer SDN → local Omada controller

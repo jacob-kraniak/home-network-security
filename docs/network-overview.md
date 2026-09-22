@@ -1,8 +1,8 @@
-# Network Overview — Production State (2026-06-20, services note 2026-09-16)
+# Network Overview — Production State (2026-06-20, services note 2026-09-21)
 
 **Site:** Kraniak Home  
-**Authoritative IPAM:** [NetBox Cloud](https://arfv7221.cloud.netboxapp.com/) (private) until local import is verified  
-**Local NetBox (empty):** `http://192.168.0.200:8000` on CT 101  
+**Authoritative IPAM:** on-prem NetBox at `http://192.168.0.200:8000` (CT 101) — SoT as of 2026-09-21 ([#28](https://github.com/jacob-kraniak/home-network-security/issues/28))  
+**NetBox Cloud:** archive / reference only — pending reconcile toward on-prem (not authoritative)  
 **Automation:** [netbox-nmap-scan](https://github.com/jacob-kraniak/netbox-nmap-scan)
 
 This document is a **redacted, public-safe** summary. Exact host IPs, full MAC addresses, serial numbers, and DHCP client tables are maintained only in NetBox.
@@ -55,7 +55,7 @@ This document is a **redacted, public-safe** summary. Exact host IPs, full MAC a
 | 30 | Guest | Visitor network | `192.168.30.1/24` (`192.168.30.0/24`) | K108-Guest (as provisioned) |
 | 40 | Lab | Lab / experiment segment | `192.168.40.1/24` (`192.168.40.0/24`) | (as provisioned) |
 
-> **Supersedes** the June 2026 public table that incorrectly mapped VLAN 10→IoT and VLAN 20→Guest. NetBox Cloud may still lag — treat Omada as live network SoT until IPAM is reconciled.
+> **Supersedes** the June 2026 public table that incorrectly mapped VLAN 10→IoT and VLAN 20→Guest. Treat **Omada as live VLAN/network SoT**. On-prem NetBox is IPAM SoT; Cloud archive may lag and is not authoritative.
 
 ---
 
@@ -107,4 +107,4 @@ Raw nmap XML and ARP captures remain **local / gitignored** per [GROK-WORKSPACE.
 - [Devices Summary](inventory/devices-summary.md)
 - [Roadmap](ROADMAP.md)
 
-*Last updated: 2026-09-16 (local NetBox service note; Cloud still SoT).*
+*Last updated: 2026-09-21 (on-prem NetBox IPAM SoT; Cloud archive pending reconcile).*

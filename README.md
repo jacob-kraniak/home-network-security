@@ -5,7 +5,7 @@ Production segmented home network (Omada SDN, June 2026) plus Phase 2 self-hoste
 **Start here for live state:** [docs/phases/phase-2-checkpoint-2026-09-16.md](docs/phases/phase-2-checkpoint-2026-09-16.md) (2026-09-16).  
 **Wazuh outage narrative (historical):** [docs/phases/phase-2-baseline-2026-08-29.md](docs/phases/phase-2-baseline-2026-08-29.md).
 
-This repository is **public**. Keep credentials, WAN IPs, full MACs, and unredacted scans out of commits. NetBox is authoritative for IPAM (Cloud until local import is verified).
+This repository is **public**. Keep credentials, WAN IPs, full MACs, and unredacted scans out of commits. NetBox is authoritative for IPAM: **on-prem** (local CT 101 / `http://192.168.0.200:8000`) is SoT; Cloud is archive pending reconcile ([#28](https://github.com/jacob-kraniak/home-network-security/issues/28)).
 
 ## Architecture Overview (live)
 
@@ -71,7 +71,7 @@ This repo supports the Privacy Migration project. See [privacy-migration-docs](h
 1. Clone the repo
 2. Read [docs/phases/phase-2-checkpoint-2026-09-16.md](docs/phases/phase-2-checkpoint-2026-09-16.md) before changing the M715q
 3. Keep raw scans and secrets local; review `.gitignore` before any forced adds
-4. Prefer NetBox for live IPs/MACs — this repo holds architecture and redacted summaries
+4. Prefer on-prem NetBox for live IPs/MACs — this repo holds architecture and redacted summaries. No live sync from bots without Jacob yes.
 
 ## Security Notes
 
@@ -80,4 +80,4 @@ This repo supports the Privacy Migration project. See [privacy-migration-docs](h
 - Audit diffs for accidental secrets before commit
 - Do not WAN-publish admin UIs (PVE, Wazuh, Portainer, Omada, NetBox)
 
-*Last reconciled: 2026-09-16 (NetBox v4.7 active on CT 101; Cloud still IPAM SoT).*
+*Last reconciled: 2026-09-21 (on-prem NetBox IPAM SoT; Cloud archive pending reconcile).*

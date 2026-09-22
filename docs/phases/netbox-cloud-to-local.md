@@ -1,9 +1,11 @@
 # NetBox Cloud → Local Import
 
-**Status:** In progress (2026-09-16)  
-**Local:** `http://192.168.0.200:8000` — NetBox Community v4.7.0 / `v4.7-5.1.1` on CT 101  
-**Cloud:** private NetBox Cloud instance (URL not repeated here; already in older docs)  
+**Status:** Import/reconcile path remains open; **SoT flipped 2026-09-21** (on-prem authoritative; Cloud archive)  
+**Local (SoT):** `http://192.168.0.200:8000` — NetBox Community v4.7.0 / `v4.7-5.1.1` on CT 101  
+**Cloud:** private NetBox Cloud instance — **archive / reference only** (URL not repeated here; already in older docs)  
 **Issue:** [#28](https://github.com/jacob-kraniak/home-network-security/issues/28)
+
+> **Authority note (Jacob GO 2026-09-21):** On-prem NetBox is IPAM SoT **now**. This runbook remains the historical Cloud→local import path for reconcile; do not treat Cloud as authoritative. No live sync from bots without Jacob yes.
 
 Cloud Free does not give a usable `pg_dump`. Official docs cover OSS → Cloud, not the reverse. Path is **REST API export → JSON on disk → REST API import**. Tokens stay off this repo and off chat pastes.
 
@@ -124,10 +126,10 @@ After each layer:
 cloud count == local count  (or document the delta)
 ```
 
-When devices, prefixes, VLANs, and tags match:
+When devices, prefixes, VLANs, and tags match (or deltas are documented):
 
 1. Point `netbox-nmap-scan` (if the private repo is still in play) at `NB_LOCAL_URL` only.
-2. Flip SoT in `GROK-WORKSPACE.md` / `network-overview.md` / `NetBox-Inventory-Progress.md`.
+2. **SoT docs:** already flipped 2026-09-21 — on-prem authoritative; Cloud archive. Keep `GROK-WORKSPACE.md` / `network-overview.md` / `NetBox-Inventory-Progress.md` aligned if wording drifts.
 3. Check [phase-2-close-linkedin.md](phase-2-close-linkedin.md).
 
 ---
@@ -139,3 +141,4 @@ When devices, prefixes, VLANs, and tags match:
 - Re-scan Cloud on every retry (use the files)
 - Enable PVE SDN NetBox IPAM as part of this import
 - WAN-publish `:8000`
+- Treat Cloud as authoritative after the 2026-09-21 SoT flip
