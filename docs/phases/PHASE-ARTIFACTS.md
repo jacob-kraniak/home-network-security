@@ -1,7 +1,7 @@
 # Phase Artifacts & Documentation Map
 
 **Canonical reference** for which documents, diagrams, configs, and inventories belong to each project phase.  
-**Last Updated:** 2026-09-16  
+**Last Updated:** 2026-09-24  
 **Authoritative Timeline:** GitHub Project Board + Issues (see bottom)
 
 > **Usage:** When working on a phase, start here. Update this file whenever a new artifact is created or an existing one is promoted/demoted between phases.
@@ -91,7 +91,34 @@ Close gates (including LinkedIn): [phase-2-close-linkedin.md](phase-2-close-link
 
 ## Phase 3: Open Source Routing & Expansion (Future)
 
-**Status:** 🔵 Planned
+**Status:** 🔵 Planned  
+**Remote-access slice is now specified.** Routing/NAS/hardening remain stubs.
+
+### Associated Artifacts / Documents
+
+| Category | File / Location | Description |
+|----------|-----------------|-------------|
+| **Remote access (network path)** | [docs/phases/phase-3-remote-access.md](phase-3-remote-access.md) | **Exit:** laptop reaches datacenter from anywhere |
+| **Roadmap** | [docs/ROADMAP.md](../ROADMAP.md) | Phase 3 bullets |
+| **Research** | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) §4–5 | DDNS / VPN / RustDesk decision log |
+| **Board** | [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) | Phase 3 remote-access issue |
+| | [#13](https://github.com/jacob-kraniak/home-network-security/issues/13) | Older DDNS + VPN research |
+| | [#9](https://github.com/jacob-kraniak/home-network-security/issues/9) | OPNsense (separate track) |
+
+### Phase 3 — Remote access exit (network path)
+
+- [ ] Encrypted path from Jacob's laptop off-LAN into the rack (WireGuard and/or Tailscale / Headscale)
+- [ ] Off-LAN test: PVE + one CT 101 admin UI load over the tunnel
+- [ ] Admin UIs still not WAN-published
+- [ ] Dated checkpoint written
+
+RustDesk does **not** satisfy this exit. Cloudflare Tunnel (#25) is the voice-agent inbound path, not this gate.
+
+### Phase 3 — Other tracks (not specified here)
+- OPNsense on dedicated hardware
+- Hybrid NAS
+- Advanced privacy hardening & monitoring
+- AdGuard / Plane.so / media unless pulled forward
 
 ---
 
@@ -99,9 +126,10 @@ Close gates (including LinkedIn): [phase-2-close-linkedin.md](phase-2-close-link
 - Project Board: https://github.com/users/jacob-kraniak/projects/1
 - Current checkpoint: [phase-2-checkpoint-2026-09-16.md](phase-2-checkpoint-2026-09-16.md)
 - Close / LinkedIn gates: [phase-2-close-linkedin.md](phase-2-close-linkedin.md)
+- Phase 3 remote access: [phase-3-remote-access.md](phase-3-remote-access.md) · [#34](https://github.com/jacob-kraniak/home-network-security/issues/34)
 - Cloud → local: [netbox-cloud-to-local.md](netbox-cloud-to-local.md)
 - Prior checkpoint: [phase-2-checkpoint-2026-09-14.md](phase-2-checkpoint-2026-09-14.md)
 - Wazuh repair baseline: [phase-2-baseline-2026-08-29.md](phase-2-baseline-2026-08-29.md)
-- NetBox deploy issue: [#28](https://github.com/jacob-kraniak/home-network-security/issues/28)
+- NetBox deploy issue: [#28](https://github.com/jacob-kraniak/home-network-security/issues/28) (closed; import/reconcile still documented as open)
 
 *Keep this map current when adding artifacts.*
