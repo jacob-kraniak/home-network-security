@@ -6,6 +6,8 @@
 
 This is the close definition for Phase 2 and the public-article gate. AdGuard, WireGuard/Tailscale as a product, Plane.so, media, and OPNsense stay **Phase 3** unless already live.
 
+Phase 3 remote-access exit (laptop → datacenter from anywhere): [phase-3-remote-access.md](phase-3-remote-access.md) · [#34](https://github.com/jacob-kraniak/home-network-security/issues/34).
+
 ---
 
 ## Phase 2 scope (what “done” means)
@@ -16,7 +18,7 @@ This is the close definition for Phase 2 and the public-article gate. AdGuard, W
 | SIEM | Wazuh 4.8.2 on CT 100 |
 | App host | Portainer on CT 101 |
 | Network controller | Omada 6.3 on-prem (cloud closed) |
-| Remote access | RustDesk on CT 101 |
+| Remote access | RustDesk on CT 101 (**desktop only** — not off-LAN VPN) |
 | IPAM/DCIM | NetBox v4.7 on CT 101 (**on-prem SoT**); Cloud archive reconcile still open |
 
 Wazuh agents to cite internally: `003` pve-debian, `004` ct101-portainer, `005` bazzite, `006` Christines_Laptop. Public wording: hypervisor + Portainer CT + two workstation endpoints. Do not count disconnected Kali `002` as coverage.

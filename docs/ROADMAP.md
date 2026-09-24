@@ -1,10 +1,12 @@
-# Home Network Security Roadmap (Revised September 16, 2026)
+# Home Network Security Roadmap (Revised September 24, 2026)
 
 > **Phase Artifacts Map:** See [docs/phases/PHASE-ARTIFACTS.md](phases/PHASE-ARTIFACTS.md).
 >
 > **Current live state:** [docs/phases/phase-2-checkpoint-2026-09-16.md](phases/phase-2-checkpoint-2026-09-16.md)  
 > **Prior checkpoints:** [2026-09-14](phases/phase-2-checkpoint-2026-09-14.md) (Omada on-prem) · [2026-09-05](phases/phase-2-checkpoint-2026-09-05.md)  
 > **Wazuh outage narrative:** [docs/phases/phase-2-baseline-2026-08-29.md](phases/phase-2-baseline-2026-08-29.md)
+>
+> **Phase 3 remote access:** [docs/phases/phase-3-remote-access.md](phases/phase-3-remote-access.md) · [#34](https://github.com/jacob-kraniak/home-network-security/issues/34)
 
 ## Phase 1: Network Build — Stable Family Foundation (Completed ✅)
 **Timeline:** June 2026  
@@ -28,18 +30,22 @@
 - **CT 100 wazuh:** 6G RAM / 81G disk / `192.168.0.178`. Agents 003–006.
 - **CT 101 portainer:** 6G / 100G / `192.168.0.200`. Portainer + RustDesk + Omada 6.3 + NetBox.
 - **Omada:** `mbentley/omada-controller:6.3` (6.3.0.45). Inform / Controller Hostname **`192.168.0.200`**. Cloud CBC closed.
-- **NetBox:** `netboxcommunity/netbox:v4.7-5.1.1` at `http://192.168.0.200:8000`. Local UI healthy; **Cloud still SoT** until import. Issue [#28](https://github.com/jacob-kraniak/home-network-security/issues/28).
+- **NetBox:** `netboxcommunity/netbox:v4.7-5.1.1` at `http://192.168.0.200:8000`. Local UI healthy; Cloud archive pending reconcile. Issue [#28](https://github.com/jacob-kraniak/home-network-security/issues/28) closed as platform deploy; import still open in docs.
 - **USB:** Seagate Backup+ Desk 3TB exFAT at `/mnt/seagate3tb`.
+- **Remote desktop:** RustDesk on CT 101 is the Phase 2 remote-access line. It is **not** off-LAN network access to the rack.
 
-**Immediate Next Steps:**
-1. Import Cloud inventory into local NetBox; dual-run; flip SoT only after counts match
+**Immediate Next Steps (still Phase 2):**
+1. Import Cloud inventory into local NetBox; dual-run; keep on-prem as SoT; document count deltas
 2. Wazuh tuning (group `agent.conf` + `local_rules.xml`)
 3. Optional PVE Directory storage on `/mnt/seagate3tb/pve-backup`
 4. Model hypervisor + CTs + USB + Omada controller in NetBox
-5. Small next apps: AdGuard → WireGuard/Tailscale; Plane.so
+5. One restore path written (vzdump / volume copy)
 6. Omada syslog → Wazuh only after SIEM noise is down
 
+AdGuard, WireGuard/Tailscale, Plane.so — **Phase 3** unless already live. See [phase-3-remote-access.md](phases/phase-3-remote-access.md).
+
 ## Phase 3: Open Source Routing & Expansion (Future 🔵)
+- **Remote network access (specified 2026-09-24):** VPN / WireGuard / Tailscale so the laptop reaches the datacenter from anywhere. Exit and test: [phase-3-remote-access.md](phases/phase-3-remote-access.md) · [#34](https://github.com/jacob-kraniak/home-network-security/issues/34).
 - OPNsense on dedicated hardware.
 - Hybrid NAS.
 - Advanced privacy hardening & monitoring.
@@ -49,4 +55,4 @@
 **Risk Note:** Keep CT 100 disk well under 80% or vuln feeds will kill Wazuh again. Omada Controller Hostname must stay `192.168.0.200` (not Docker `172.19.0.2`). One fstab line only for the Seagate UUID. Do not WAN-publish NetBox `:8000`.  
 **Project Board:** https://github.com/users/jacob-kraniak/projects/1
 
-*Last updated: 2026-09-16 — NetBox v4.7 active on CT 101.*
+*Last updated: 2026-09-24 — Phase 3 remote-access exit documented.*
