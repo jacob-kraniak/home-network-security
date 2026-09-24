@@ -92,27 +92,38 @@ Close gates (including LinkedIn): [phase-2-close-linkedin.md](phase-2-close-link
 ## Phase 3: Open Source Routing & Expansion (Future)
 
 **Status:** 🔵 Planned  
-**Remote-access slice is now specified.** Routing/NAS/hardening remain stubs.
+**Remote-access slice is specified (P0 L3 + P1 RustDesk fleet).** Routing/NAS/hardening remain stubs.
 
 ### Associated Artifacts / Documents
 
 | Category | File / Location | Description |
 |----------|-----------------|-------------|
-| **Remote access (network path)** | [docs/phases/phase-3-remote-access.md](phase-3-remote-access.md) | **Exit:** laptop reaches datacenter from anywhere |
+| **Remote access** | [docs/phases/phase-3-remote-access.md](phase-3-remote-access.md) | P0 L3 exit + P1 RustDesk fleet |
 | **Roadmap** | [docs/ROADMAP.md](../ROADMAP.md) | Phase 3 bullets |
 | **Research** | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) §4–5 | DDNS / VPN / RustDesk decision log |
-| **Board** | [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) | Phase 3 remote-access issue |
+| **Board** | [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) | P0 Layer 3 |
+| | [#35](https://github.com/jacob-kraniak/home-network-security/issues/35) | P1 RustDesk clients |
+| | [#29](https://github.com/jacob-kraniak/home-network-security/issues/29) | RustDesk *server* (Phase 2) |
 | | [#13](https://github.com/jacob-kraniak/home-network-security/issues/13) | Older DDNS + VPN research |
 | | [#9](https://github.com/jacob-kraniak/home-network-security/issues/9) | OPNsense (separate track) |
 
-### Phase 3 — Remote access exit (network path)
+### Phase 3 — P0 Remote access exit (network path)
 
 - [ ] Encrypted path from Jacob's laptop off-LAN into the rack (WireGuard and/or Tailscale / Headscale)
 - [ ] Off-LAN test: PVE + one CT 101 admin UI load over the tunnel
 - [ ] Admin UIs still not WAN-published
 - [ ] Dated checkpoint written
 
-RustDesk does **not** satisfy this exit. Cloudflare Tunnel (#25) is the voice-agent inbound path, not this gate.
+RustDesk sessions do **not** satisfy P0. Cloudflare Tunnel (#25) is the voice-agent inbound path, not this gate.
+
+### Phase 3 — P1 RustDesk fleet (parallel, lower priority)
+
+- [ ] Clients on first-cohort desktops (Jacob laptop, Christine laptop, BazzitePC) pointed at on-prem server
+- [ ] On-LAN session from Jacob's laptop to each
+- [ ] Off-LAN over P0, or explicitly deferred until #34 is green
+- [ ] hbbs/hbbr not WAN-published
+
+Can be installed on-LAN in parallel with P0. Does not block P0.
 
 ### Phase 3 — Other tracks (not specified here)
 - OPNsense on dedicated hardware
@@ -126,7 +137,7 @@ RustDesk does **not** satisfy this exit. Cloudflare Tunnel (#25) is the voice-ag
 - Project Board: https://github.com/users/jacob-kraniak/projects/1
 - Current checkpoint: [phase-2-checkpoint-2026-09-16.md](phase-2-checkpoint-2026-09-16.md)
 - Close / LinkedIn gates: [phase-2-close-linkedin.md](phase-2-close-linkedin.md)
-- Phase 3 remote access: [phase-3-remote-access.md](phase-3-remote-access.md) · [#34](https://github.com/jacob-kraniak/home-network-security/issues/34)
+- Phase 3 remote access: [phase-3-remote-access.md](phase-3-remote-access.md) · [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) · [#35](https://github.com/jacob-kraniak/home-network-security/issues/35)
 - Cloud → local: [netbox-cloud-to-local.md](netbox-cloud-to-local.md)
 - Prior checkpoint: [phase-2-checkpoint-2026-09-14.md](phase-2-checkpoint-2026-09-14.md)
 - Wazuh repair baseline: [phase-2-baseline-2026-08-29.md](phase-2-baseline-2026-08-29.md)
