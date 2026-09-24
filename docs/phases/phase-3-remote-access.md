@@ -4,14 +4,13 @@
 **Created:** 2026-09-24  
 **Does not close Phase 2.** RustDesk *server* on CT 101 is already the Phase 2 remote-access line.
 
-Two tracks. They can run in parallel. They are not equal.
+| Priority | Track | Exit in one line | Issue | When |
+|----------|-------|------------------|-------|------|
+| **P0** | Layer 3 path | Laptop reaches the datacenter from anywhere | [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) | First |
+| **P0-next** | Datacenter RustDesk | Off-LAN session into the rack, then hop into each CT | [#36](https://github.com/jacob-kraniak/home-network-security/issues/36) | After P0 |
+| **P1** | Family desktop fleet | Session to each named family desktop | [#35](https://github.com/jacob-kraniak/home-network-security/issues/35) | Parallel on-LAN; off-LAN after P0 |
 
-| Priority | Track | Exit in one line | Issue |
-|----------|-------|------------------|-------|
-| **P0** | Layer 3 path | Laptop reaches the datacenter from anywhere | [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) |
-| **P1** | RustDesk fleet | Real-time desktop session to each in-scope endpoint | [#35](https://github.com/jacob-kraniak/home-network-security/issues/35) |
-
-P1 does not block P0. P1 is not a substitute for P0. A working RustDesk session to one PC is not “datacenter access.”
+P0-next is the natural outcome of P0. It is not a substitute for P0. Browser tabs and laptop SSH can exist; they are not the intended daily remote path into the stack.
 
 ---
 
@@ -19,10 +18,11 @@ P1 does not block P0. P1 is not a substitute for P0. A working RustDesk session 
 
 | Path | Phase | What it is | What it is not |
 |------|-------|------------|----------------|
-| RustDesk server (`hbbs`/`hbbr` on CT 101) | 2 (live) | ID/relay for desktop sessions | Clients on every endpoint; off-LAN path |
-| RustDesk **clients** on endpoints | **3 / P1** | Screen control of named desktops | Network path into the rack |
+| RustDesk server (`hbbs`/`hbbr` on CT 101) | 2 (live) | ID/relay for desktop sessions | Clients; off-LAN path; per-CT GUI |
+| VPN / WireGuard / Tailscale | **3 / P0** | Encrypted path from the laptop to management LAN | WAN publish of admin UIs |
+| RustDesk → jump guest → CT shells | **3 / P0-next** | Desktop landing zone in the rack | XFCE on the Wazuh CT |
+| RustDesk on family desktops | **3 / P1** | Screen control of named PCs | Network path into the rack |
 | Cloudflare Tunnel (#25) | Voice-agent track | Inbound HTTPS to one app | Laptop → datacenter |
-| VPN / WireGuard / Tailscale | **3 / P0** | Encrypted path from Jacob's laptop to management LAN | WAN publish of admin UIs |
 
 ---
 
@@ -59,7 +59,7 @@ Research already on file: [self-hosted-services-roadmap.md §4](../services/self
 - [ ] Short dated checkpoint in `docs/phases/` (no keys, no WAN IPs)
 - [ ] #34 closed or moved to a follow-on only after the test is recorded
 
-**Not required for P0:** OPNsense live, site-to-site, family devices on the mesh, AdGuard, Plane.so, media stack, RustDesk fleet (#35).
+**Not required for P0:** OPNsense live, site-to-site, family devices on the mesh, AdGuard, Plane.so, media stack, RustDesk fleet (#35), jump guest (#36).
 
 ## P0 acceptance test (copy into the checkpoint)
 
@@ -67,25 +67,58 @@ Research already on file: [self-hosted-services-roadmap.md §4](../services/self
 2. Bring the tunnel/mesh up on the laptop.
 3. Open PVE and one of: Portainer, Omada controller, NetBox.
 4. Confirm the same services are not reachable from the hotspot *without* the tunnel.
-5. Write the dated note. Stop.
+5. Write the dated note. Stop. Then #36 is unblocked.
 
 ---
 
-# P1 — RustDesk fleet (parallel, lower priority)
+# P0-next — RustDesk into the datacenter stack
 
-**Exit criterion:** From Jacob's laptop, a real-time RustDesk session opens to each in-scope desktop endpoint.
+**Depends on:** #34 green.  
+**Exit criterion:** Off-LAN, Jacob lands a RustDesk session *in the rack* and from that session opens a shell on each current CT. Laptop SSH and PVE/noVNC may exist as break-glass. They are not the daily path.
 
-The **server** is Phase 2 and already running on CT 101. This track is **clients + pointing them at that server**. Install work can happen on-LAN now, in parallel with P0. Off-LAN sessions should ride the P0 tunnel once it exists — do not WAN-publish `hbbs`/`hbbr` to get there first.
+## Constraint (do not skip)
+
+CT 100 (Wazuh) and CT 101 (Portainer / Omada / NetBox / RustDesk *server*) are **headless**. RustDesk attaches to a desktop session. Putting XFCE on the SIEM CT is rejected.
+
+**Pattern:** one small GUI guest on the M715q (“jump” / ops workstation) runs the RustDesk *client* against the on-prem server. After P0, the path is:
+
+`laptop → L3 tunnel → RustDesk → jump guest → SSH (or equivalent) into CT 100, CT 101, later CTs`
+
+That is the easy hop into each container. It is not RustDesk-inside-Wazuh.
+
+## Jump guest rules
+
+- New CT or small KVM VM. Do not install a desktop on the PVE host.
+- ~1–2 GiB RAM unless measured otherwise. Host is already ~14.6 GiB with two 6G CTs.
+- Desktop is enough to run RustDesk + a terminal + bookmarks. Not a media box.
+- SSH from jump → each CT; keys stay off this public repo.
+- Optional later: add a new GUI guest to the hop list by name. Do not retro-GUI CT 100.
+- Do **not** WAN-publish hbbs/hbbr so this works before P0.
+
+## P0-next exit requirements
+
+- [ ] Jump guest live (desktop + on-prem RustDesk client)
+- [ ] Off-LAN RustDesk to the jump works over the P0 path
+- [ ] From that session, shells open to CT 100 and CT 101 without the laptop being the SSH client of record
+- [ ] No desktop stack on CT 100; hbbs/hbbr unpublished on WAN
+- [ ] Dated note + RAM impact
+- [ ] #36 closed or reduced to “add next CT to the hop list”
+
+---
+
+# P1 — Family desktop fleet (parallel, lower priority)
+
+**Exit criterion:** From Jacob's laptop, a real-time RustDesk session opens to each in-scope *family* desktop.
+
+This is not the datacenter hop. Install on-LAN anytime. Off-LAN rides P0.
 
 ## In-scope first cohort
-
-Desktop OS only. Named hosts, not “every IP in NetBox.”
 
 - Jacob laptop (viewer; host optional)
 - Christine laptop
 - BazzitePC
 
-Add other GUI hosts later by name in this list. **Out of scope:** IoT, APs, switches, ONT, phones-as-IoT, headless CTs (no useful desktop on Wazuh / Portainer / NetBox containers).
+**Out of scope here:** IoT, APs, switches, ONT, headless CTs. Datacenter hop is #36.
 
 ## Hard rules (P1)
 
@@ -93,7 +126,7 @@ Add other GUI hosts later by name in this list. **Out of scope:** IoT, APs, swit
 - Do **not** WAN-publish hbbs/hbbr.
 - Do **not** put RustDesk IDs, passwords, or unattended keys in this public repo.
 - Unattended access on family endpoints is an explicit decision per host (Christine's laptop especially). Default: attended unless written otherwise.
-- P1 green on-LAN does not close #34.
+- P1 green on-LAN does not close #34 or #36.
 
 ## P1 exit requirements
 
@@ -102,12 +135,7 @@ Add other GUI hosts later by name in this list. **Out of scope:** IoT, APs, swit
 - [ ] Off-LAN: session works over the P0 path, **or** off-LAN is explicitly deferred until #34 is green
 - [ ] hbbs/hbbr remain unpublished on WAN
 - [ ] Dated note (hostnames only, no IDs)
-- [ ] #35 closed or reduced to a follow-on list of extra GUI hosts
-
-## Parallelism
-
-Safe to do now, before P0: install clients, set the custom server, test on-LAN.
-Wait for P0 (or accept “LAN-only”) before calling off-LAN RustDesk done.
+- [ ] #35 closed or reduced to extra GUI hosts
 
 ---
 
