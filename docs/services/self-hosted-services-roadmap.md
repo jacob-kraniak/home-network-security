@@ -285,9 +285,10 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 
 ## Compute Sizing & Hardware Acquisition (2026-10-01)
 
-> Proposal only — no deploy. Detail: [jacob-kraniak/Project-ideas `two-host-proxmox-plane`](https://github.com/jacob-kraniak/Project-ideas/blob/main/two-host-proxmox-plane/README.md). Headroom: Lab Watch RO + `lab-status` **2026-09-30T21:20:01-04:00**.
+> **Canonical** for estate compute / host-count / Host B / acquisition (this repo). Proposal only — no deploy. Headroom: Lab Watch RO + `lab-status` **2026-09-30T21:20:01-04:00**. Plane *product* architecture (family UX, MCP, SuperProductivity): [Project-ideas `unified-task-tracking-system`](https://github.com/jacob-kraniak/Project-ideas/blob/main/unified-task-tracking-system/README.md).
 
 ### Current stack (Host A — M715q)
+
 
 | Asset | Spec / role |
 |-------|-------------|
@@ -299,6 +300,7 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 
 ### Second Proxmox host (Host B — family / apps)
 
+
 | Item | Recommendation |
 |------|----------------|
 | Hardware | Lightweight **SFF / Tiny**, **~32 GB RAM**, **512 GB–1 TB** NVMe, wired NIC |
@@ -307,6 +309,7 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 | Placement | Plane on **Host B**; CT 100/101 stay on M715q |
 
 ### Full roadmap host-count
+
 
 | Role | Count | Notes |
 |------|-------|-------|
@@ -321,6 +324,7 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 ### Host B (~32 GB) — what fits with lasting Plane
 
 Practical budgets (leave ~25–30% headroom; PVE ~2–3 GiB):
+
 
 | Service | RAM budget | Fits? |
 |---------|------------|-------|
@@ -363,4 +367,5 @@ Do **not** put Plane volumes on the Seagate 3TB USB2 (media/backup only).
 
 **Next Steps for Workspace:** Expand issues in GitHub Project Board and track decisions. Let me know which area to deep-dive or generate configs for next. This keeps everything documented, privacy-aligned, and actionable per your guidelines.
 - 2026-09-15 (M715q SoT): Scrubbed residual OptiPlex / “Dell Proxmox” draft wording; live Phase 2 host is Lenovo ThinkCentre M715q Tiny; Omada Controller on CT 101.
-- 2026-10-01: Added Compute Sizing & Hardware Acquisition (two-host Plane proposal, Host B fit table, acquisition list, open decisions). Cross-link Project-ideas `two-host-proxmox-plane`.
+- 2026-10-01: Added Compute Sizing & Hardware Acquisition (Host B / Plane placement, fit table, acquisition list, open decisions).
+- 2026-10-01 (later): Marked this section canonical for estate sizing; Project-ideas `two-host-proxmox-plane` stub points here.

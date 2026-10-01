@@ -1,7 +1,7 @@
 # Phase Artifacts & Documentation Map
 
 **Canonical reference** for which documents, diagrams, configs, and inventories belong to each project phase.  
-**Last Updated:** 2026-09-24  
+**Last Updated:** 2026-10-01  
 **Authoritative Timeline:** GitHub Project Board + Issues (see bottom)
 
 > **Usage:** When working on a phase, start here. Update this file whenever a new artifact is created or an existing one is promoted/demoted between phases.
@@ -98,10 +98,13 @@ Close gates (including LinkedIn): [phase-2-close-linkedin.md](phase-2-close-link
 
 | Category | File / Location | Description |
 |----------|-----------------|-------------|
-| **Remote access** | [docs/phases/phase-3-remote-access.md](phase-3-remote-access.md) | P0 L3 exit + P1 RustDesk fleet |
+| **Remote access** | [docs/phases/phase-3-remote-access.md](phase-3-remote-access.md) | P0 L3 exit + P0-next jump + P1 RustDesk fleet |
 | **Roadmap** | [docs/ROADMAP.md](../ROADMAP.md) | Phase 3 bullets |
-| **Research** | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) §4–5 | DDNS / VPN / RustDesk decision log |
+| **Services & hardware** | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) § Compute Sizing | **SoT** — Host B, host-count, fit table, acquisition, open decisions |
+| | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) §4–5 | DDNS / VPN / RustDesk decision log |
+| | [docs/services/document-digitization.md](../services/document-digitization.md) | Paperless-ngx (planned Host B with Plane) |
 | **Board** | [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) | P0 Layer 3 |
+| | [#36](https://github.com/jacob-kraniak/home-network-security/issues/36) | P0-next datacenter RustDesk |
 | | [#35](https://github.com/jacob-kraniak/home-network-security/issues/35) | P1 RustDesk clients |
 | | [#29](https://github.com/jacob-kraniak/home-network-security/issues/29) | RustDesk *server* (Phase 2) |
 | | [#13](https://github.com/jacob-kraniak/home-network-security/issues/13) | Older DDNS + VPN research |
@@ -125,22 +128,27 @@ RustDesk sessions do **not** satisfy P0. Cloudflare Tunnel (#25) is the voice-ag
 
 Can be installed on-LAN in parallel with P0. Does not block P0.
 
-### Phase 3 — Other tracks (not specified here)
-- OPNsense on dedicated hardware
-- Hybrid NAS
+### Phase 3 — Other tracks (planned services & hardware)
+
+Detail and open decisions live in [self-hosted-services-roadmap.md § Compute Sizing](../services/self-hosted-services-roadmap.md#compute-sizing--hardware-acquisition-2026-10-01). Do not duplicate that section here.
+
+- **Host B** (~32 GB SFF Proxmox): Plane CE lasting 4/8/50 + light apps (Paperless, Vaultwarden, AdGuard, reverse proxy); prefer PDM over 2-node cluster
+- **OPNsense** on dedicated hardware
+- **Hybrid NAS** (Aoostar WTR Pro) for Immich / Jellyfin / Nextcloud / MinIO / Frigate
+- Optional **HA** Green/mini (else HA Container on Host B)
 - Advanced privacy hardening & monitoring
-- AdGuard / Plane.so / media unless pulled forward
 
 ---
 
 ## Related Links
-- Project Board: https://github.com/users/jacob-kraniak/projects/1
-- Current checkpoint: [phase-2-checkpoint-2026-09-16.md](phase-2-checkpoint-2026-09-16.md)
-- Close / LinkedIn gates: [phase-2-close-linkedin.md](phase-2-close-linkedin.md)
-- Phase 3 remote access: [phase-3-remote-access.md](phase-3-remote-access.md) · [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) · [#35](https://github.com/jacob-kraniak/home-network-security/issues/35)
-- Cloud → local: [netbox-cloud-to-local.md](netbox-cloud-to-local.md)
-- Prior checkpoint: [phase-2-checkpoint-2026-09-14.md](phase-2-checkpoint-2026-09-14.md)
-- Wazuh repair baseline: [phase-2-baseline-2026-08-29.md](phase-2-baseline-2026-08-29.md)
-- NetBox deploy issue: [#28](https://github.com/jacob-kraniak/home-network-security/issues/28) (closed; import/reconcile still documented as open)
+|- Project Board: https://github.com/users/jacob-kraniak/projects/1
+|- Current checkpoint: [phase-2-checkpoint-2026-09-16.md](phase-2-checkpoint-2026-09-16.md)
+|- Close / LinkedIn gates: [phase-2-close-linkedin.md](phase-2-close-linkedin.md)
+|- Phase 3 remote access: [phase-3-remote-access.md](phase-3-remote-access.md)
+|- Phase 3 compute / Host B: [self-hosted-services-roadmap.md § Compute Sizing](../services/self-hosted-services-roadmap.md#compute-sizing--hardware-acquisition-2026-10-01) · [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) · [#35](https://github.com/jacob-kraniak/home-network-security/issues/35)
+|- Cloud → local: [netbox-cloud-to-local.md](netbox-cloud-to-local.md)
+|- Prior checkpoint: [phase-2-checkpoint-2026-09-14.md](phase-2-checkpoint-2026-09-14.md)
+|- Wazuh repair baseline: [phase-2-baseline-2026-08-29.md](phase-2-baseline-2026-08-29.md)
+|- NetBox deploy issue: [#28](https://github.com/jacob-kraniak/home-network-security/issues/28) (closed; import/reconcile still documented as open)
 
 *Keep this map current when adding artifacts.*

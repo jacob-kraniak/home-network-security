@@ -32,7 +32,7 @@
 - **Omada:** `mbentley/omada-controller:6.3` (6.3.0.45). Inform / Controller Hostname **`192.168.0.200`**. Cloud CBC closed.
 - **NetBox:** `netboxcommunity/netbox:v4.7-5.1.1` at `http://192.168.0.200:8000`. Local UI healthy; Cloud archive pending reconcile. Issue [#28](https://github.com/jacob-kraniak/home-network-security/issues/28) closed as platform deploy; import still open in docs.
 - **USB:** Seagate Backup+ Desk 3TB exFAT at `/mnt/seagate3tb`.
-- **Remote desktop:** RustDesk *server* on CT 101 is the Phase 2 line. Family clients = Phase 3 P1 ([#35](https://github.com/jacob-kraniak/home-network-security/issues/35)). Datacenter hop = Phase 3 P0-next after L3 ([#36](https://github.com/jacob-kraniak/home-network-security/issues/36)).
+- **Remote desktop:** RustDesk *server* on CT 101 is the Phase 2 line. Family clients = Phase 3 P1 ([#35](https://github.com/jacob-kraniak/home-network-security/issues/35)). Datacenter hop = Phase 3 P0-next after L3 ([#36](https://github.com/jacob-kraniak/home-network-security/issues/36).
 
 **Immediate Next Steps (still Phase 2):**
 1. Import Cloud inventory into local NetBox; dual-run; keep on-prem as SoT; document count deltas
@@ -48,7 +48,7 @@ AdGuard, WireGuard/Tailscale, Plane.so, RustDesk clients / jump guest — **Phas
 - **P0 Remote network access:** VPN / WireGuard / Tailscale so the laptop reaches the datacenter from anywhere. [#34](https://github.com/jacob-kraniak/home-network-security/issues/34).
 - **P0-next Datacenter RustDesk (after P0):** jump guest on the M715q; off-LAN RustDesk into the rack; hop into each CT from that desktop. Not XFCE on Wazuh. [#36](https://github.com/jacob-kraniak/home-network-security/issues/36).
 - **P1 Family RustDesk fleet (parallel, lower priority):** Jacob laptop, Christine laptop, BazzitePC. [#35](https://github.com/jacob-kraniak/home-network-security/issues/35).
-- **Second Proxmox host (Host B):** ~32 GB SFF for Plane CE lasting **4 vCPU / 8 GiB / 50 GiB** + light apps (Paperless, Vaultwarden, AdGuard, reverse proxy). M715q stays Wazuh + CT 101. Prefer **PDM** over 2-node cluster. Proposal: [Project-ideas/two-host-proxmox-plane](https://github.com/jacob-kraniak/Project-ideas/blob/main/two-host-proxmox-plane/README.md).
+- **Second Proxmox host (Host B):** ~32 GB SFF for Plane CE lasting **4 vCPU / 8 GiB / 50 GiB** + light apps (Paperless, Vaultwarden, AdGuard, reverse proxy). M715q stays Wazuh + CT 101. Prefer **PDM** over 2-node cluster. Detail: [self-hosted-services-roadmap.md § Compute Sizing](services/self-hosted-services-roadmap.md#compute-sizing--hardware-acquisition-2026-10-01).
 - OPNsense on dedicated hardware.
 - Hybrid NAS (Aoostar WTR Pro) for Immich/Jellyfin/Nextcloud/MinIO — not on Host B.
 - Optional HA Green/mini (else HA Container on Host B).
@@ -63,4 +63,4 @@ See [phase-3-remote-access.md](phases/phase-3-remote-access.md).
 **Risk Note:** Keep CT 100 disk well under 80% or vuln feeds will kill Wazuh again. Omada Controller Hostname must stay `192.168.0.200` (not Docker `172.19.0.2`). One fstab line only for the Seagate UUID. Do not WAN-publish NetBox `:8000`. Host RAM is tight (~14.6 GiB, two 6G CTs) — size the jump guest small; lasting Plane/media go on Host B / NAS, not the M715q.  
 **Project Board:** https://github.com/users/jacob-kraniak/projects/1
 
-*Last updated: 2026-10-01 — Phase 3 Host B / Plane sizing + acquisition pointer; P0 L3 still first network exit.*
+*Last updated: 2026-10-01 — Phase 3 Host B / Plane sizing lives in SSR Compute Sizing (SoT); P0 L3 still first network exit.*

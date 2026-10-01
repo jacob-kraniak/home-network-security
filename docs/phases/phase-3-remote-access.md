@@ -144,6 +144,7 @@ This is not the datacenter hop. Install on-LAN anytime. Off-LAN rides P0.
 - Phase 2 close: [phase-2-close-linkedin.md](phase-2-close-linkedin.md)
 - Phase map: [PHASE-ARTIFACTS.md](PHASE-ARTIFACTS.md)
 - Roadmap: [../ROADMAP.md](../ROADMAP.md)
+- Planned Phase 3 services & Host B hardware: [self-hosted-services-roadmap.md § Compute Sizing](../services/self-hosted-services-roadmap.md#compute-sizing--hardware-acquisition-2026-10-01) (Plane / OPNsense / NAS — not P0 exit criteria)
 - Server deploy (Phase 2): [#29](https://github.com/jacob-kraniak/home-network-security/issues/29)
 - OPNsense track: [#9](https://github.com/jacob-kraniak/home-network-security/issues/9)
 - Voice-agent tunnel (not these exits): [#25](https://github.com/jacob-kraniak/home-network-security/issues/25)
