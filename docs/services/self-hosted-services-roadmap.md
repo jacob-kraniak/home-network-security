@@ -289,7 +289,6 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 
 ### Current stack (Host A — M715q)
 
-
 | Asset | Spec / role |
 |-------|-------------|
 | Host `debian` / `.176` | PVE **9.2.4**, AMD PRO **A12-9800E (4C)**, **~14.58 GiB** RAM (2×8 GB), KingSpec NVMe (~**335 GiB** free on `local` at last collect) |
@@ -300,7 +299,6 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 
 ### Second Proxmox host (Host B — family / apps)
 
-
 | Item | Recommendation |
 |------|----------------|
 | Hardware | Lightweight **SFF / Tiny**, **~32 GB RAM**, **512 GB–1 TB** NVMe, wired NIC |
@@ -309,7 +307,6 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 | Placement | Plane on **Host B**; CT 100/101 stay on M715q |
 
 ### Full roadmap host-count
-
 
 | Role | Count | Notes |
 |------|-------|-------|
@@ -324,7 +321,6 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 ### Host B (~32 GB) — what fits with lasting Plane
 
 Practical budgets (leave ~25–30% headroom; PVE ~2–3 GiB):
-
 
 | Service | RAM budget | Fits? |
 |---------|------------|-------|
