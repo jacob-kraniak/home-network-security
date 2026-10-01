@@ -141,14 +141,14 @@ Detail and open decisions live in [self-hosted-services-roadmap.md § Compute Si
 ---
 
 ## Related Links
-|- Project Board: https://github.com/users/jacob-kraniak/projects/1
-|- Current checkpoint: [phase-2-checkpoint-2026-09-16.md](phase-2-checkpoint-2026-09-16.md)
-|- Close / LinkedIn gates: [phase-2-close-linkedin.md](phase-2-close-linkedin.md)
-|- Phase 3 remote access: [phase-3-remote-access.md](phase-3-remote-access.md)
-|- Phase 3 compute / Host B: [self-hosted-services-roadmap.md § Compute Sizing](../services/self-hosted-services-roadmap.md#compute-sizing--hardware-acquisition-2026-10-01) · [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) · [#35](https://github.com/jacob-kraniak/home-network-security/issues/35)
-|- Cloud → local: [netbox-cloud-to-local.md](netbox-cloud-to-local.md)
-|- Prior checkpoint: [phase-2-checkpoint-2026-09-14.md](phase-2-checkpoint-2026-09-14.md)
-|- Wazuh repair baseline: [phase-2-baseline-2026-08-29.md](phase-2-baseline-2026-08-29.md)
-|- NetBox deploy issue: [#28](https://github.com/jacob-kraniak/home-network-security/issues/28) (closed; import/reconcile still documented as open)
+- Project Board: https://github.com/users/jacob-kraniak/projects/1
+- Current checkpoint: [phase-2-checkpoint-2026-09-16.md](phase-2-checkpoint-2026-09-16.md)
+- Close / LinkedIn gates: [phase-2-close-linkedin.md](phase-2-close-linkedin.md)
+- Phase 3 remote access: [phase-3-remote-access.md](phase-3-remote-access.md)
+- Phase 3 compute / Host B: [self-hosted-services-roadmap.md § Compute Sizing](../services/self-hosted-services-roadmap.md#compute-sizing--hardware-acquisition-2026-10-01) · [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) · [#35](https://github.com/jacob-kraniak/home-network-security/issues/35)
+- Cloud → local: [netbox-cloud-to-local.md](netbox-cloud-to-local.md)
+- Prior checkpoint: [phase-2-checkpoint-2026-09-14.md](phase-2-checkpoint-2026-09-14.md)
+- Wazuh repair baseline: [phase-2-baseline-2026-08-29.md](phase-2-baseline-2026-08-29.md)
+- NetBox deploy issue: [#28](https://github.com/jacob-kraniak/home-network-security/issues/28) (closed; import/reconcile still documented as open)
 
 *Keep this map current when adding artifacts.*

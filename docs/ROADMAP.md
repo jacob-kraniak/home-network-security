@@ -32,7 +32,7 @@
 - **Omada:** `mbentley/omada-controller:6.3` (6.3.0.45). Inform / Controller Hostname **`192.168.0.200`**. Cloud CBC closed.
 - **NetBox:** `netboxcommunity/netbox:v4.7-5.1.1` at `http://192.168.0.200:8000`. Local UI healthy; Cloud archive pending reconcile. Issue [#28](https://github.com/jacob-kraniak/home-network-security/issues/28) closed as platform deploy; import still open in docs.
 - **USB:** Seagate Backup+ Desk 3TB exFAT at `/mnt/seagate3tb`.
-- **Remote desktop:** RustDesk *server* on CT 101 is the Phase 2 line. Family clients = Phase 3 P1 ([#35](https://github.com/jacob-kraniak/home-network-security/issues/35)). Datacenter hop = Phase 3 P0-next after L3 ([#36](https://github.com/jacob-kraniak/home-network-security/issues/36).
+- **Remote desktop:** RustDesk *server* on CT 101 is the Phase 2 line. Family clients = Phase 3 P1 ([#35](https://github.com/jacob-kraniak/home-network-security/issues/35)). Datacenter hop = Phase 3 P0-next after L3 ([#36](https://github.com/jacob-kraniak/home-network-security/issues/36)).
 
 **Immediate Next Steps (still Phase 2):**
 1. Import Cloud inventory into local NetBox; dual-run; keep on-prem as SoT; document count deltas
