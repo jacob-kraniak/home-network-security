@@ -302,9 +302,26 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 | Item | Recommendation |
 |------|----------------|
 | Hardware | Lightweight **SFF / Tiny**, **~32 GB RAM**, **512 GB–1 TB** NVMe, wired NIC |
-| Management | **PDM** over two independent nodes preferred vs 2-node PVE cluster (cluster needs QDevice; Plane does not need HA day one) |
+| Management | See **Multi-host management** below — **PDM** (or bookmarks) preferred vs 2-node cluster + QDevice |
 | Plane CE | Dedicated **nesting LXC**: trial **2 vCPU / 4 GiB / 40 GiB**; lasting **4 vCPU / 8 GiB / 50 GiB+** (official CE: 4 GB min, **8 GB** prod recommend) |
 | Placement | Plane on **Host B**; CT 100/101 stay on M715q |
+
+
+### Multi-host management (PDM vs cluster)
+
+Two Proxmox nodes need a management choice. **Proposal only** — pick before joining any cluster.
+
+| | **Independent nodes + PDM** (preferred default) | **Native 2-node PVE cluster** |
+|--|--------------------------------------------------|-------------------------------|
+| Single pane | PDM (or bookmarks) over separate remotes | One Datacenter UI / shared `/etc/pve` |
+| Quorum | None between remotes | **QDevice required** on 2 nodes or survivor can go read-only |
+| HA / fencing | Not cluster HA; each node keeps running if PDM is down | Possible with caveats on 2 nodes |
+| Migrate | Cold / remote copy; live migrate across CPU families is messy | Live migrate + ZFS replication when pools match |
+| Fit for this estate | Plane does **not** need HA day one; Host B CPU will differ from M715q A12; keep Wazuh/Omada/NetBox manageable if Host B is down | Worth it only when you want automated HA or shared config domain |
+
+**Default:** two independent PVE nodes + **Proxmox Datacenter Manager (PDM)** (bookmarks-only is fine at first). Do **not** form a 2-node cluster without a QDevice.
+
+**Revisit a real cluster** only if you explicitly want automated HA restart across nodes, ZFS replication as first-class DR, or one shared datacenter config — ideally wait for a **third** PVE vote or accept QDevice ops. Until then: local storage per node; cold or remote migrate when needed. Corosync (if ever) is **wired only**.
 
 ### Full roadmap host-count
 
@@ -365,3 +382,4 @@ Do **not** put Plane volumes on the Seagate 3TB USB2 (media/backup only).
 - 2026-09-15 (M715q SoT): Scrubbed residual OptiPlex / “Dell Proxmox” draft wording; live Phase 2 host is Lenovo ThinkCentre M715q Tiny; Omada Controller on CT 101.
 - 2026-10-01: Added Compute Sizing & Hardware Acquisition (Host B / Plane placement, fit table, acquisition list, open decisions).
 - 2026-10-01 (later): Marked this section canonical for estate sizing; Project-ideas `two-host-proxmox-plane` stub points here.
+- 2026-10-01 (later): Expanded multi-host management — PDM vs 2-node cluster + QDevice (discussed options; PDM default).

@@ -48,7 +48,7 @@ AdGuard, WireGuard/Tailscale, Plane.so, RustDesk clients / jump guest — **Phas
 - **P0 Remote network access:** VPN / WireGuard / Tailscale so the laptop reaches the datacenter from anywhere. [#34](https://github.com/jacob-kraniak/home-network-security/issues/34).
 - **P0-next Datacenter RustDesk (after P0):** jump guest on the M715q; off-LAN RustDesk into the rack; hop into each CT from that desktop. Not XFCE on Wazuh. [#36](https://github.com/jacob-kraniak/home-network-security/issues/36).
 - **P1 Family RustDesk fleet (parallel, lower priority):** Jacob laptop, Christine laptop, BazzitePC. [#35](https://github.com/jacob-kraniak/home-network-security/issues/35).
-- **Second Proxmox host (Host B):** ~32 GB SFF for Plane CE lasting **4 vCPU / 8 GiB / 50 GiB** + light apps (Paperless, Vaultwarden, AdGuard, reverse proxy). M715q stays Wazuh + CT 101. Prefer **PDM** over 2-node cluster. Detail: [self-hosted-services-roadmap.md § Compute Sizing](services/self-hosted-services-roadmap.md#compute-sizing--hardware-acquisition-2026-10-01).
+- **Second Proxmox host (Host B):** ~32 GB SFF for Plane CE lasting **4 vCPU / 8 GiB / 50 GiB** + light apps (Paperless, Vaultwarden, AdGuard, reverse proxy). M715q stays Wazuh + CT 101. Multi-host: prefer **PDM** (or bookmarks) over 2-node cluster + QDevice — see [Compute Sizing § Multi-host management](services/self-hosted-services-roadmap.md#multi-host-management-pdm-vs-cluster).
 - OPNsense on dedicated hardware.
 - Hybrid NAS (Aoostar WTR Pro) for Immich/Jellyfin/Nextcloud/MinIO — not on Host B.
 - Optional HA Green/mini (else HA Container on Host B).

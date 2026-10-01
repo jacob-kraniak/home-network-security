@@ -132,7 +132,7 @@ Can be installed on-LAN in parallel with P0. Does not block P0.
 
 Detail and open decisions live in [self-hosted-services-roadmap.md § Compute Sizing](../services/self-hosted-services-roadmap.md#compute-sizing--hardware-acquisition-2026-10-01). Do not duplicate that section here.
 
-- **Host B** (~32 GB SFF Proxmox): Plane CE lasting 4/8/50 + light apps (Paperless, Vaultwarden, AdGuard, reverse proxy); prefer PDM over 2-node cluster
+- **Host B** (~32 GB SFF Proxmox): Plane CE lasting 4/8/50 + light apps; multi-host management **PDM vs cluster** — see [Compute Sizing § Multi-host management](../services/self-hosted-services-roadmap.md#multi-host-management-pdm-vs-cluster)
 - **OPNsense** on dedicated hardware
 - **Hybrid NAS** (Aoostar WTR Pro) for Immich / Jellyfin / Nextcloud / MinIO / Frigate
 - Optional **HA** Green/mini (else HA Container on Host B)
