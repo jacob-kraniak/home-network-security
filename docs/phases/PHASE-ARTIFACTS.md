@@ -1,7 +1,7 @@
 # Phase Artifacts & Documentation Map
 
 **Canonical reference** for which documents, diagrams, configs, and inventories belong to each project phase.  
-**Last Updated:** 2026-10-01  
+**Last Updated:** 2026-10-04  
 **Authoritative Timeline:** GitHub Project Board + Issues (see bottom)
 
 > **Usage:** When working on a phase, start here. Update this file whenever a new artifact is created or an existing one is promoted/demoted between phases.
@@ -57,6 +57,7 @@ Unchanged. See prior revision for the Phase 1 tables.
 | | [docs/NetBox-Inventory-Progress.md](../NetBox-Inventory-Progress.md) | Phase 2 NetBox entries |
 | **Services** | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) | Planned apps |
 | | [docs/services/document-digitization.md](../services/document-digitization.md) | Paperless-ngx |
+| | [docs/services/wazuh-omada-syslog.md](../services/wazuh-omada-syslog.md) | Wazuh data source: Omada syslog (2026-10-04) |
 | **Hardware** | [docs/inventory/devices-summary.md](../inventory/devices-summary.md) | M715q + Seagate USB + Omada kit |
 | | [docs/hardware/DECISIONS.md](../hardware/DECISIONS.md) | Acquisition notes |
 
