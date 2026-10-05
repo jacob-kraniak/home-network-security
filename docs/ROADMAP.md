@@ -40,7 +40,7 @@
 3. Optional PVE Directory storage on `/mnt/seagate3tb/pve-backup`
 4. Model hypervisor + CTs + USB + Omada controller in NetBox
 5. One restore path written (vzdump / volume copy)
-6. Omada syslog → Wazuh only after SIEM noise is down
+6. Omada syslog → Wazuh — **onboarded 2026-10-04** (AP traffic decode-only; WIDS rule still open): [wazuh-omada-syslog.md](services/wazuh-omada-syslog.md)
 
 AdGuard, WireGuard/Tailscale, Plane.so, RustDesk clients / jump guest — **Phase 3** unless already live. See [phase-3-remote-access.md](phases/phase-3-remote-access.md).
 
