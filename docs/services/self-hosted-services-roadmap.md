@@ -382,6 +382,6 @@ Do **not** put Plane volumes on the Seagate 3TB USB2 (media/backup only).
 **Next Steps for Workspace:** Expand issues in GitHub Project Board and track decisions. Let me know which area to deep-dive or generate configs for next. This keeps everything documented, privacy-aligned, and actionable per your guidelines.
 - 2026-09-15 (M715q SoT): Scrubbed residual OptiPlex / “Dell Proxmox” draft wording; live Phase 2 host is Lenovo ThinkCentre M715q Tiny; Omada Controller on CT 101.
 - 2026-10-01: Added Compute Sizing & Hardware Acquisition (Host B / Plane placement, fit table, acquisition list, open decisions).
-- 2026-10-01 (later): Marked this section canonical for estate compute sizing; Project-ideas `two-host-proxmox-plane` stub points here.
+- 2026-10-01 (later): Marked this section canonical for estate sizing; Project-ideas `two-host-proxmox-plane` stub points here.
 - 2026-10-01 (later): Expanded multi-host management — PDM vs 2-node cluster + QDevice (discussed options; PDM default).
 - 2026-10-06: Added conditional acquisition item 6 (Wi-Fi 6/7 EAPs for Omada WIDS/WIPS → Wazuh); details in wazuh-omada-syslog.md.
