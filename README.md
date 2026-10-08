@@ -29,7 +29,7 @@ This repository is **public**. Keep credentials, WAN IPs, full MACs, and unredac
 
 **Design notes**
 - 802.1Q tagging at the ER605; L2 distribution via managed switch + patch panel
-- Foundation for Wazuh + Portainer + NetBox on the M715q; AdGuard / WireGuard next
+- Foundation for Wazuh + Portainer + NetBox on the M715q; Pi-hole (Phase 2) / WireGuard next
 
 ## Key Documents
 

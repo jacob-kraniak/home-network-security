@@ -42,13 +42,15 @@
 5. One restore path written (vzdump / volume copy)
 6. Omada syslog → Wazuh — **onboarded 2026-10-04** (AP traffic decode-only; WIDS rule blocked until Wi-Fi 6/7 APs replace the EAP225s, see [hardware limitation](services/wazuh-omada-syslog.md#omada-wireless-idsips--hardware-limitation-verified-2026-10-06)): [wazuh-omada-syslog.md](services/wazuh-omada-syslog.md)
 
-AdGuard, WireGuard/Tailscale, Plane.so, RustDesk clients / jump guest — **Phase 3** unless already live. See [phase-3-remote-access.md](phases/phase-3-remote-access.md).
+7. Pi-hole DNS query logging → Wazuh — **moved up to Phase 2 (2026-10-08)**. Small LXC on the M715q (1 vCPU / 512 MiB / 4 GB). Plan: [wazuh-network-telemetry-plan.md](services/wazuh-network-telemetry-plan.md)
+
+WireGuard/Tailscale, Plane.so, RustDesk clients / jump guest — **Phase 3** unless already live. See [phase-3-remote-access.md](phases/phase-3-remote-access.md).
 
 ## Phase 3: Open Source Routing & Expansion (Future 🔵)
 - **P0 Remote network access:** VPN / WireGuard / Tailscale so the laptop reaches the datacenter from anywhere. [#34](https://github.com/jacob-kraniak/home-network-security/issues/34).
 - **P0-next Datacenter RustDesk (after P0):** jump guest on the M715q; off-LAN RustDesk into the rack; hop into each CT from that desktop. Not XFCE on Wazuh. [#36](https://github.com/jacob-kraniak/home-network-security/issues/36).
 - **P1 Family RustDesk fleet (parallel, lower priority):** Jacob laptop, Christine laptop, BazzitePC. [#35](https://github.com/jacob-kraniak/home-network-security/issues/35).
-- **Second Proxmox host (Host B):** ~32 GB SFF for Plane CE lasting **4 vCPU / 8 GiB / 50 GiB** + light apps (Paperless, Vaultwarden, AdGuard, reverse proxy). M715q stays Wazuh + CT 101. Multi-host: prefer **PDM** (or bookmarks) over 2-node cluster + QDevice — see [Compute Sizing § Multi-host management](services/self-hosted-services-roadmap.md#multi-host-management-pdm-vs-cluster).
+- **Second Proxmox host (Host B):** ~32 GB SFF for Plane CE lasting **4 vCPU / 8 GiB / 50 GiB** + light apps (Paperless, Vaultwarden, reverse proxy). M715q stays Wazuh + CT 101 + the small Pi-hole LXC. Multi-host: **single Proxmox host today; cluster when Host B joins** (QDevice or third node for quorum). Proxmox only — no mixed-hypervisor management, no separate PDM layer — see [Compute Sizing § Multi-host management](services/self-hosted-services-roadmap.md#multi-host-management-cluster).
 - OPNsense on dedicated hardware.
 - Hybrid NAS (Aoostar WTR Pro) for Immich/Jellyfin/Nextcloud/MinIO — not on Host B.
 - Optional HA Green/mini (else HA Container on Host B).

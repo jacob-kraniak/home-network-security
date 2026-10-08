@@ -59,7 +59,7 @@ Research already on file: [self-hosted-services-roadmap.md §4](../services/self
 - [ ] Short dated checkpoint in `docs/phases/` (no keys, no WAN IPs)
 - [ ] #34 closed or moved to a follow-on only after the test is recorded
 
-**Not required for P0:** OPNsense live, site-to-site, family devices on the mesh, AdGuard, Plane.so, media stack, RustDesk fleet (#35), jump guest (#36).
+**Not required for P0:** OPNsense live, site-to-site, family devices on the mesh, Plane.so, media stack, RustDesk fleet (#35), jump guest (#36).
 
 ## P0 acceptance test (copy into the checkpoint)
 

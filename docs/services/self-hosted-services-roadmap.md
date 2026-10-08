@@ -272,9 +272,9 @@ See dedicated page: [docs/services/document-digitization.md](document-digitizati
 
 **Phase 1 (Completed June 2026)**: TP-Link Omada SDN (ER605 V2 + SG2008P v3.20 K108-MSW-1 + 2x EAP225 APs) + early compute on BazzitePC desktop. 21 clients (2 wired, 19 wireless; smartHome 10 Kasa, camera 2 Wyze, office 4 incl. Lenovo Clock + BazzitePC desktop, vid 10/20/1 SSIDs). Per final controller JSON data. Document Digitization POC started.
 
-**Phase 2 (In Progress)**: Self-hosted services on **Lenovo ThinkCentre M715q Tiny** Proxmox (PVE 9.2.4 node `debian`, ~14.6 GiB RAM). CT 100 Wazuh / CT 101 Portainer + **Omada Controller on-prem** + NetBox + RustDesk *server*. Keep M715q for Wazuh + CT 101 only. Keep TP-Link Omada primary (ER605 V2 gateway).
+**Phase 2 (In Progress)**: Self-hosted services on **Lenovo ThinkCentre M715q Tiny** Proxmox (PVE 9.2.4 node `debian`, ~14.6 GiB RAM). CT 100 Wazuh / CT 101 Portainer + **Omada Controller on-prem** + NetBox + RustDesk *server*. Keep M715q for Wazuh + CT 101 + a small Pi-hole LXC (DNS query logging → Wazuh, added 2026-10-08). Keep TP-Link Omada primary (ER605 V2 gateway).
 
-**Phase 3 (Future)**: Second Proxmox host for Plane CE + light apps; OPNsense on dedicated hardware; hybrid NAS (Aoostar WTR Pro); AdGuard / Vaultwarden / Paperless on Host B; media (Jellyfin/Immich) on NAS; VPN P0; optional HA mini. See **Compute Sizing & Hardware Acquisition** below.
+**Phase 3 (Future)**: Second Proxmox host for Plane CE + light apps; OPNsense on dedicated hardware; hybrid NAS (Aoostar WTR Pro); Vaultwarden / Paperless on Host B; media (Jellyfin/Immich) on NAS; VPN P0; optional HA mini. See **Compute Sizing & Hardware Acquisition** below.
 
 **Final Buildout Stats (from Omada JSON)**: clientStat total 21 (wired 2, wireless 19, ipc 2, noData 19); clientType smartHome 10, camera 2, office 4, audioVideo 1, mobile 1, other 3; devices: 2 APs (EAP225 v4 fw5.2.2), 1 switch (SG2008P v3.20), 1 gateway (ER605 V2); APs on 192.168.0.x, clients on 192.168.10/20/0 with rssi/traffic/vid details (e.g. Wyze d0:3f:27:2b:2b:53 Baby Cam on IoT, HS220 on IoT, BazzitePC e0:d5:5e:e3:98:97 wired Management, Lenovo bc:df:58:b3:b2:c0 Bedroom Clock on Secure).
 
@@ -295,33 +295,25 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 | CT 100 Wazuh | **2 vCPU / 6 GiB** (+1G swap) / ~81G — **co-location constraint**; keep here |
 | CT 101 Portainer stack | **4 vCPU / 6 GiB** (+1G swap) / ~100G — Portainer + Omada + RustDesk server + NetBox; keep here |
 
-**Rule:** M715q stays **Wazuh + CT 101 only** for lasting workloads. Do not place lasting Plane (8 GiB), media, or heavy OCR/NVR on this host. Config RAM already ~12 GiB of ~14.58 GiB (~2.6 GiB before host+new-guest overcommit).
+**Rule:** M715q stays **Wazuh + CT 101 + the Pi-hole LXC (1 vCPU / 512 MiB / 4 GB, Phase 2)** for lasting workloads. Do not place lasting Plane (8 GiB), media, or heavy OCR/NVR on this host. Config RAM already ~12 GiB of ~14.58 GiB (~2.6 GiB before host+new-guest overcommit; ~2.1 GiB after Pi-hole).
 
 ### Second Proxmox host (Host B — family / apps)
 
 | Item | Recommendation |
 |------|----------------|
 | Hardware | Lightweight **SFF / Tiny**, **~32 GB RAM**, **512 GB–1 TB** NVMe, wired NIC |
-| Management | See **Multi-host management** below — **PDM** (or bookmarks) preferred vs 2-node cluster + QDevice |
+| Management | **Proxmox cluster** when Host B joins (single host today); QDevice or third node for quorum. Proxmox only — no mixed hypervisors, no separate PDM layer (decided 2026-10-08) |
 | Plane CE | Dedicated **nesting LXC**: trial **2 vCPU / 4 GiB / 40 GiB**; lasting **4 vCPU / 8 GiB / 50 GiB+** (official CE: 4 GB min, **8 GB** prod recommend) |
 | Placement | Plane on **Host B**; CT 100/101 stay on M715q |
 
 
-### Multi-host management (PDM vs cluster)
+### Multi-host management (cluster)
 
-Two Proxmox nodes need a management choice. **Proposal only** — pick before joining any cluster.
-
-| | **Independent nodes + PDM** (preferred default) | **Native 2-node PVE cluster** |
-|--|--------------------------------------------------|-------------------------------|
-| Single pane | PDM (or bookmarks) over separate remotes | One Datacenter UI / shared `/etc/pve` |
-| Quorum | None between remotes | **QDevice required** on 2 nodes or survivor can go read-only |
-| HA / fencing | Not cluster HA; each node keeps running if PDM is down | Possible with caveats on 2 nodes |
-| Migrate | Cold / remote copy; live migrate across CPU families is messy | Live migrate + ZFS replication when pools match |
-| Fit for this estate | Plane does **not** need HA day one; Host B CPU will differ from M715q A12; keep Wazuh/Omada/NetBox manageable if Host B is down | Worth it only when you want automated HA or shared config domain |
-
-**Default:** two independent PVE nodes + **Proxmox Datacenter Manager (PDM)** (bookmarks-only is fine at first). Do **not** form a 2-node cluster without a QDevice.
-
-**Revisit a real cluster** only if you explicitly want automated HA restart across nodes, ZFS replication as first-class DR, or one shared datacenter config — ideally wait for a **third** PVE vote or accept QDevice ops. Until then: local storage per node; cold or remote migrate when needed. Corosync (if ever) is **wired only**.
+- **Now:** single Proxmox host (M715q).
+- **When Host B joins:** form a **Proxmox cluster** (one Datacenter UI). Proxmox only — no mixed hypervisors, no separate PDM layer (decided 2026-10-08).
+- **Quorum:** a 2-node cluster needs a **QDevice** or a **third node**, or the survivor goes read-only.
+- **Corosync:** wired links only.
+- **Migration:** local storage per node; live migration across different CPU families is messy, so prefer CPU parity.
 
 ### Full roadmap host-count
 
@@ -344,13 +336,12 @@ Practical budgets (leave ~25–30% headroom; PVE ~2–3 GiB):
 | Plane CE lasting (4/8/50) | 8 GiB | **Y** — primary |
 | Paperless-ngx | 2 min / **4 GiB** rec (OCR spikes) | **Y** |
 | Vaultwarden | ~0.3 GiB | **Y** |
-| AdGuard Home | ~0.5 GiB | **Y** |
 | Reverse proxy (NPM/Caddy/Traefik) | ~0.3–0.5 GiB | **Y** |
 | Portainer (optional) | ~0.3 GiB | **Y** |
 | Home Assistant **Container** | ~2 GiB | **Y** (optional) |
 | Immich / Jellyfin / Nextcloud / MinIO bulk / Frigate | heavy | **N** — NAS or dedicated |
 
-**Comfortable max set on Host B:** Plane lasting + Paperless + Vaultwarden + AdGuard + reverse proxy (+ optional Portainer / HA Container) ≈ **~19–20 GiB** app+host budget — fine on 32 GB. HA OS/Supervisor path still prefers **dedicated** hardware per earlier recommendation in this doc.
+**Comfortable max set on Host B:** Plane lasting + Paperless + Vaultwarden + reverse proxy (+ optional Portainer / HA Container) ≈ **~18.5–19.5 GiB** app+host budget — fine on 32 GB. HA OS/Supervisor path still prefers **dedicated** hardware per earlier recommendation in this doc.
 
 ### Hardware acquisition list (Phase 3 trigger tied to Plane)
 
@@ -363,9 +354,25 @@ Practical budgets (leave ~25–30% headroom; PVE ~2–3 GiB):
 
 Do **not** put Plane volumes on the Seagate 3TB USB2 (media/backup only).
 
+### Expansion research — start now (2026-10-08)
+
+**Decision (2026-10-08):** Proxmox is a **single host today**. When the second host joins, the two **form a Proxmox cluster**. Proxmox only: no mixed-hypervisor management, and no Proxmox Datacenter Manager as a separate management layer. This replaces the earlier PDM-first default. **Status:** research only — nothing purchased.
+
+**Next actions:**
+
+1. Shortlist 2–3 candidates for one more box:
+   - another **Lenovo ThinkCentre M715q** (matches Host A), or
+   - a lightweight **Lenovo ThinkCentre Tiny** (newer M-series), or
+   - a comparable 1L mini PC.
+2. For each candidate, record CPU, max RAM, NVMe slots, NIC count and speed, power draw, and price.
+3. Check each against the Host B spec above (~32 GB RAM, 512 GB–1 TB NVMe, wired NIC).
+4. Plan quorum before joining: a 2-node cluster needs a **QDevice** or a **third node** (see table above). Corosync on wired links only.
+5. Prefer CPU parity with the M715q where practical; mixed CPU families make live migration messy.
+6. Favor a model with a second-NIC option; it also covers the capture NIC needed for the mirrored-port sensor ([telemetry plan](wazuh-network-telemetry-plan.md#prerequisites-and-constraints)).
+
 ### Open decisions
 
-1. PDM-first vs 2-node cluster + QDevice  
+1. ~~PDM-first vs 2-node cluster~~ **Decided 2026-10-08: cluster.** Still open: QDevice vs third node  
 2. Exact Host B BOM / budget  
 3. Plane CT VLAN (Mgmt `.0` vs Trusted `.10`)  
 4. Reverse-proxy home (Host B CT vs reuse CT 101 path)  
@@ -385,3 +392,6 @@ Do **not** put Plane volumes on the Seagate 3TB USB2 (media/backup only).
 - 2026-10-01 (later): Marked this section canonical for estate sizing; Project-ideas `two-host-proxmox-plane` stub points here.
 - 2026-10-01 (later): Expanded multi-host management — PDM vs 2-node cluster + QDevice (discussed options; PDM default).
 - 2026-10-06: Added conditional acquisition item 6 (Wi-Fi 6/7 EAPs for Omada WIDS/WIPS → Wazuh); details in wazuh-omada-syslog.md.
+- 2026-10-08: Added Expansion research note: Proxmox clustering chosen for capacity; shopping for one more M715q / ThinkCentre Tiny-class box (research only).
+- 2026-10-08 (later): Clarified: single Proxmox host now, cluster when Host B joins, Proxmox only (no mixed hypervisors, no separate PDM). Updated Host B Management row and ROADMAP.md.
+- 2026-10-08 (later): Trimmed the PDM-vs-cluster comparison and its PDM default; Multi-host management now states the cluster decision only.
