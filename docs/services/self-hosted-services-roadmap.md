@@ -359,6 +359,7 @@ Practical budgets (leave ~25–30% headroom; PVE ~2–3 GiB):
 3. **Hybrid NAS** — Aoostar WTR Pro (or equivalent) for Jellyfin/Immich/Nextcloud/MinIO.
 4. **Optional:** HA Green / mini-PC if not using HA Container on Host B.
 5. **Optional:** M715q RAM upgrade **2×16 GB → 32 GB** for lab headroom (jump guest, tuning) — independent of Plane; not a substitute for Host B.
+6. **Conditional (if staying on TP-Link Omada):** replace the EAP225 v4 APs (Wi-Fi 5) with Wi-Fi 6/7 EAPs that ship AP firmware ≥1.10 with WIDS/WIPS, so Omada wireless IDS can feed Wazuh. Candidate families from TP-Link beta threads: EAP650/653 (Wi-Fi 6) and EAP77x (Wi-Fi 7). **Not purchased; decision pending.** Details: [wazuh-omada-syslog.md § Omada Wireless IDS/IPS hardware limitation](wazuh-omada-syslog.md#omada-wireless-idsips--hardware-limitation-verified-2026-10-06).
 
 Do **not** put Plane volumes on the Seagate 3TB USB2 (media/backup only).
 
@@ -383,3 +384,4 @@ Do **not** put Plane volumes on the Seagate 3TB USB2 (media/backup only).
 - 2026-10-01: Added Compute Sizing & Hardware Acquisition (Host B / Plane placement, fit table, acquisition list, open decisions).
 - 2026-10-01 (later): Marked this section canonical for estate sizing; Project-ideas `two-host-proxmox-plane` stub points here.
 - 2026-10-01 (later): Expanded multi-host management — PDM vs 2-node cluster + QDevice (discussed options; PDM default).
+- 2026-10-06: Added conditional acquisition item 6 (Wi-Fi 6/7 EAPs for Omada WIDS/WIPS → Wazuh); details in wazuh-omada-syslog.md.
