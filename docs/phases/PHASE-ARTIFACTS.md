@@ -74,7 +74,8 @@ Unchanged. See prior revision for the Phase 1 tables.
 - [ ] Import Cloud inventory into local NetBox; then flip SoT
 - [ ] One restore path (vzdump / volume copy to Seagate)
 - [ ] PVE Directory storage / vzdump onto the Seagate
-- [ ] AdGuard / WireGuard / Plane.so — **Phase 3 unless already live**
+- [ ] Pi-hole DNS query logging → Wazuh — **Phase 2** ([plan](../services/wazuh-network-telemetry-plan.md))
+- [ ] WireGuard / Plane.so — **Phase 3 unless already live**
 - [ ] Wazuh noise reduction (`local_rules.xml` / group agent.conf)
 - [ ] `pve-edk2-firmware` only if UEFI VMs needed
 
@@ -133,7 +134,7 @@ Can be installed on-LAN in parallel with P0. Does not block P0.
 
 Detail and open decisions live in [self-hosted-services-roadmap.md § Compute Sizing](../services/self-hosted-services-roadmap.md#compute-sizing--hardware-acquisition-2026-10-01). Do not duplicate that section here.
 
-- **Host B** (~32 GB SFF Proxmox): Plane CE lasting 4/8/50 + light apps; multi-host management **PDM vs cluster** — see [Compute Sizing § Multi-host management](../services/self-hosted-services-roadmap.md#multi-host-management-pdm-vs-cluster)
+- **Host B** (~32 GB SFF Proxmox): Plane CE lasting 4/8/50 + light apps; multi-host: **Proxmox cluster when Host B joins** — see [Compute Sizing § Multi-host management](../services/self-hosted-services-roadmap.md#multi-host-management-cluster)
 - **OPNsense** on dedicated hardware
 - **Hybrid NAS** (Aoostar WTR Pro) for Immich / Jellyfin / Nextcloud / MinIO / Frigate
 - Optional **HA** Green/mini (else HA Container on Host B)
