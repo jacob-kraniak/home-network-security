@@ -44,4 +44,6 @@ Admin password: set with `pihole setpassword` inside the container (not an `FTLC
 - [ ] Choose upstream resolvers (Quad9 recommended; not decided).
 - [ ] Verify Pi-hole sees real client IPs, not Docker NAT `172.21.0.1`. If NATed, consider host or macvlan networking.
 - [ ] Ship `/var/log/pihole` to Wazuh (step 4 of the [telemetry plan](wazuh-network-telemetry-plan.md)).
+- [ ] Explore: sync client hostnames into Pi-hole from NetBox IPAM or the Omada client list (depends on the real-client-IP check above).
+- [ ] Explore: validate current blocklists and identify additions from observed traffic (Pi-hole query logs + Omada application/DPI reporting).
 - [ ] Optional: Omada LAN DNS record `pihole.home` → `192.168.0.200`.

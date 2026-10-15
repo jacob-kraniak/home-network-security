@@ -43,6 +43,9 @@
 6. Omada syslog → Wazuh — **onboarded 2026-10-04** (AP traffic decode-only; WIDS rule blocked until Wi-Fi 6/7 APs replace the EAP225s, see [hardware limitation](services/wazuh-omada-syslog.md#omada-wireless-idsips--hardware-limitation-verified-2026-10-06)): [wazuh-omada-syslog.md](services/wazuh-omada-syslog.md)
 
 7. Pi-hole DNS query logging → Wazuh — **in progress 🟡**. Moved up to Phase 2 (2026-10-08). **Pi-hole deployed 2026-10-14** as Portainer stack on CT 101 (`192.168.0.200`), live on Trusted VLAN 10; remaining VLANs, upstream choice and Wazuh log shipping open: [pihole-dns.md](services/pihole-dns.md) · Plan: [wazuh-network-telemetry-plan.md](services/wazuh-network-telemetry-plan.md)
+   - *Explore:* sync client hostnames into Pi-hole from NetBox IPAM or the Omada client list (depends on Pi-hole seeing real client IPs, not Docker NAT — open item in [pihole-dns.md](services/pihole-dns.md)).
+   - *Planned:* forward Pi-hole logs to Wazuh for detection rules — already [telemetry plan step 4](services/wazuh-network-telemetry-plan.md#planned-additions-in-order).
+   - *Explore:* validate current blocklists and identify additions from observed traffic (Pi-hole query logs + Omada application/DPI reporting).
 
 8. LAN DNS records for datacenter consoles — **planned**. Friendly hostnames via Omada LAN DNS (Network Config → LAN DNS) or Pi-hole Local DNS records. Naming pattern `<service>.<local-domain>` (domain TBD). Targets as documented: Proxmox `192.168.0.176` · Portainer `https://192.168.0.200:9443` · Omada controller `https://192.168.0.200:8043` · Pi-hole `http://192.168.0.200:8081/admin` · NetBox `http://192.168.0.200:8000` · Wazuh dashboard `192.168.0.178` (ports not documented for Proxmox/Wazuh; no console URL documented for the RustDesk server on CT 101).
 
