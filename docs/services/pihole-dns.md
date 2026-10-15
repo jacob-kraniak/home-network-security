@@ -26,7 +26,7 @@ Volumes:
 
 Admin password: set with `pihole setpassword` inside the container (not an `FTLCONF_webserver_api_password` env var, which would expose it in Portainer inspect and lock `setpassword`). Credential is kept in Bitwarden, never in this repo.
 
-> **Deviation from plan:** the 2026-10-08 plan sized a dedicated LXC on the M715q. Pi-hole was instead deployed as a Docker stack on existing CT 101, so no new CT/RAM was allocated.
+> **Decision (2026-10-14):** keep Pi-hole on the Portainer Docker host (CT 101). The 2026-10-08 plan sized a dedicated LXC on the M715q; that is no longer planned. CT 101 showed no significant resource spike after deployment. Revisit only if resources become an issue.
 
 ## Network enablement
 
