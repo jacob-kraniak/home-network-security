@@ -1,6 +1,6 @@
 # Network telemetry → Wazuh: detection plan (2026-10-08)
 
-> **Status:** Plan only. Nothing deployed. Builds on [wazuh-omada-syslog.md](wazuh-omada-syslog.md).
+> **Status:** Plan. Step 4 in progress: Pi-hole deployed 2026-10-14 ([pihole-dns.md](pihole-dns.md)); Wazuh ingestion not started. Builds on [wazuh-omada-syslog.md](wazuh-omada-syslog.md).
 
 ## Goal
 
@@ -23,7 +23,7 @@ Enough telemetry in Wazuh (`192.168.0.178`) to write rules for:
 1. **Fix the ER605 DHCP decoder first** (`omada-er605`, `omada-er605-dhcp`, test rule 100500). Everything else correlates on leases.
 2. **Known-MAC / known-IP CDB lists generated from NetBox** (on-prem SoT at `192.168.0.200:8000`). Rules alert on any lease or `srcip` not on the list.
 3. **Wazuh agents (or forwarded auth logs) on targets**: Proxmox `.176`, Omada controller / NetBox CT 101, SSH hosts. Built-in failed-login rules, correlated to the DHCP lease for the source MAC.
-4. **Pi-hole DNS query logging (Phase 2)**: Pi-hole handed out as the resolver on every VLAN via DHCP, query log shipped to Wazuh. Covers bad-domain detection.
+4. **Pi-hole DNS query logging (Phase 2, in progress)**: Pi-hole handed out as the resolver on every VLAN via DHCP, query log shipped to Wazuh. Covers bad-domain detection.
 5. **Suricata or Zeek on a mirrored port** between the ER605 and the LAN switch, `eve.json` read by a Wazuh agent. Covers wired traffic, outbound flows, and static-IP hosts.
 
 ## DNS resolver decision: Pi-hole (2026-10-08)

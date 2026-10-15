@@ -58,6 +58,7 @@ Unchanged. See prior revision for the Phase 1 tables.
 | **Services** | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) | Planned apps |
 | | [docs/services/document-digitization.md](../services/document-digitization.md) | Paperless-ngx |
 | | [docs/services/wazuh-omada-syslog.md](../services/wazuh-omada-syslog.md) | Wazuh data source: Omada syslog (2026-10-04) |
+| | [docs/services/pihole-dns.md](../services/pihole-dns.md) | Pi-hole DNS deployment + VLAN enablement (2026-10-14) |
 | **Hardware** | [docs/inventory/devices-summary.md](../inventory/devices-summary.md) | M715q + Seagate USB + Omada kit |
 | | [docs/hardware/DECISIONS.md](../hardware/DECISIONS.md) | Acquisition notes |
 
@@ -74,7 +75,7 @@ Unchanged. See prior revision for the Phase 1 tables.
 - [ ] Import Cloud inventory into local NetBox; then flip SoT
 - [ ] One restore path (vzdump / volume copy to Seagate)
 - [ ] PVE Directory storage / vzdump onto the Seagate
-- [ ] Pi-hole DNS query logging → Wazuh — **Phase 2** ([plan](../services/wazuh-network-telemetry-plan.md))
+- [ ] Pi-hole DNS query logging → Wazuh — **Phase 2, in progress**: Pi-hole live on CT 101 + Trusted VLAN 2026-10-14; Wazuh ingestion open ([pihole-dns.md](../services/pihole-dns.md) · [plan](../services/wazuh-network-telemetry-plan.md))
 - [ ] WireGuard / Plane.so — **Phase 3 unless already live**
 - [ ] Wazuh noise reduction (`local_rules.xml` / group agent.conf)
 - [ ] `pve-edk2-firmware` only if UEFI VMs needed

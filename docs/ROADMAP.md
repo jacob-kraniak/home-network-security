@@ -42,7 +42,7 @@
 5. One restore path written (vzdump / volume copy)
 6. Omada syslog → Wazuh — **onboarded 2026-10-04** (AP traffic decode-only; WIDS rule blocked until Wi-Fi 6/7 APs replace the EAP225s, see [hardware limitation](services/wazuh-omada-syslog.md#omada-wireless-idsips--hardware-limitation-verified-2026-10-06)): [wazuh-omada-syslog.md](services/wazuh-omada-syslog.md)
 
-7. Pi-hole DNS query logging → Wazuh — **moved up to Phase 2 (2026-10-08)**. Small LXC on the M715q (1 vCPU / 512 MiB / 4 GB). Plan: [wazuh-network-telemetry-plan.md](services/wazuh-network-telemetry-plan.md)
+7. Pi-hole DNS query logging → Wazuh — **in progress 🟡**. Moved up to Phase 2 (2026-10-08). **Pi-hole deployed 2026-10-14** as Portainer stack on CT 101 (`192.168.0.200`), live on Trusted VLAN 10; remaining VLANs, upstream choice and Wazuh log shipping open: [pihole-dns.md](services/pihole-dns.md) · Plan: [wazuh-network-telemetry-plan.md](services/wazuh-network-telemetry-plan.md)
 
 WireGuard/Tailscale, Plane.so, RustDesk clients / jump guest — **Phase 3** unless already live. See [phase-3-remote-access.md](phases/phase-3-remote-access.md).
 
