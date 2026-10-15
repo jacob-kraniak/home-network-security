@@ -44,6 +44,8 @@
 
 7. Pi-hole DNS query logging → Wazuh — **in progress 🟡**. Moved up to Phase 2 (2026-10-08). **Pi-hole deployed 2026-10-14** as Portainer stack on CT 101 (`192.168.0.200`), live on Trusted VLAN 10; remaining VLANs, upstream choice and Wazuh log shipping open: [pihole-dns.md](services/pihole-dns.md) · Plan: [wazuh-network-telemetry-plan.md](services/wazuh-network-telemetry-plan.md)
 
+8. LAN DNS records for datacenter consoles — **planned**. Friendly hostnames via Omada LAN DNS (Network Config → LAN DNS) or Pi-hole Local DNS records. Naming pattern `<service>.<local-domain>` (domain TBD). Targets as documented: Proxmox `192.168.0.176` · Portainer `https://192.168.0.200:9443` · Omada controller `https://192.168.0.200:8043` · Pi-hole `http://192.168.0.200:8081/admin` · NetBox `http://192.168.0.200:8000` · Wazuh dashboard `192.168.0.178` (ports not documented for Proxmox/Wazuh; no console URL documented for the RustDesk server on CT 101).
+
 WireGuard/Tailscale, Plane.so, RustDesk clients / jump guest — **Phase 3** unless already live. See [phase-3-remote-access.md](phases/phase-3-remote-access.md).
 
 ## Phase 3: Open Source Routing & Expansion (Future 🔵)
