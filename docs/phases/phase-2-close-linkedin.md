@@ -4,7 +4,9 @@
 **Created:** 2026-09-16  
 **Depends on:** [netbox-cloud-to-local.md](netbox-cloud-to-local.md), [phase-2-checkpoint-2026-09-16.md](phase-2-checkpoint-2026-09-16.md)
 
-This is the close definition for Phase 2 and the public-article gate. AdGuard, WireGuard/Tailscale as a product, Plane.so, media, and OPNsense stay **Phase 3** unless already live.
+This is the close definition for Phase 2 and the public-article gate. WireGuard/Tailscale as a product, Plane.so, media, and OPNsense stay **Phase 3** unless already live.
+
+Phase 3 remote-access exit (laptop → datacenter from anywhere): [phase-3-remote-access.md](phase-3-remote-access.md) · [#34](https://github.com/jacob-kraniak/home-network-security/issues/34).
 
 ---
 
@@ -16,7 +18,7 @@ This is the close definition for Phase 2 and the public-article gate. AdGuard, W
 | SIEM | Wazuh 4.8.2 on CT 100 |
 | App host | Portainer on CT 101 |
 | Network controller | Omada 6.3 on-prem (cloud closed) |
-| Remote access | RustDesk on CT 101 |
+| Remote access | RustDesk on CT 101 (**desktop only** — not off-LAN VPN) |
 | IPAM/DCIM | NetBox v4.7 on CT 101 (**on-prem SoT**); Cloud archive reconcile still open |
 
 Wazuh agents to cite internally: `003` pve-debian, `004` ct101-portainer, `005` bazzite, `006` Christines_Laptop. Public wording: hypervisor + Portainer CT + two workstation endpoints. Do not count disconnected Kali `002` as coverage.
@@ -33,7 +35,7 @@ Wazuh agents to cite internally: `003` pve-debian, `004` ct101-portainer, `005` 
 - [ ] #28 closed after import; leftover Phase 2 issues closed or relabeled `phase:3`; #23 closed or explicitly deferred
 - [ ] No WAN publish of PVE / Wazuh / Portainer / Omada / NetBox
 
-**Explicitly not required to close Phase 2:** SanDisk Z400, Proxbox, Diode/Orb, Wazuh `local_rules` polish, power/cable completeness, AdGuard, mesh VPN product, Plane.so.
+**Explicitly not required to close Phase 2:** SanDisk Z400, Proxbox, Diode/Orb, Wazuh `local_rules` polish, power/cable completeness, mesh VPN product, Plane.so.
 
 ---
 

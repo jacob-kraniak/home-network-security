@@ -1,7 +1,7 @@
 # Phase Artifacts & Documentation Map
 
 **Canonical reference** for which documents, diagrams, configs, and inventories belong to each project phase.  
-**Last Updated:** 2026-09-16  
+**Last Updated:** 2026-10-04  
 **Authoritative Timeline:** GitHub Project Board + Issues (see bottom)
 
 > **Usage:** When working on a phase, start here. Update this file whenever a new artifact is created or an existing one is promoted/demoted between phases.
@@ -57,6 +57,7 @@ Unchanged. See prior revision for the Phase 1 tables.
 | | [docs/NetBox-Inventory-Progress.md](../NetBox-Inventory-Progress.md) | Phase 2 NetBox entries |
 | **Services** | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) | Planned apps |
 | | [docs/services/document-digitization.md](../services/document-digitization.md) | Paperless-ngx |
+| | [docs/services/wazuh-omada-syslog.md](../services/wazuh-omada-syslog.md) | Wazuh data source: Omada syslog (2026-10-04) |
 | **Hardware** | [docs/inventory/devices-summary.md](../inventory/devices-summary.md) | M715q + Seagate USB + Omada kit |
 | | [docs/hardware/DECISIONS.md](../hardware/DECISIONS.md) | Acquisition notes |
 
@@ -73,7 +74,8 @@ Unchanged. See prior revision for the Phase 1 tables.
 - [ ] Import Cloud inventory into local NetBox; then flip SoT
 - [ ] One restore path (vzdump / volume copy to Seagate)
 - [ ] PVE Directory storage / vzdump onto the Seagate
-- [ ] AdGuard / WireGuard / Plane.so — **Phase 3 unless already live**
+- [ ] Pi-hole DNS query logging → Wazuh — **Phase 2** ([plan](../services/wazuh-network-telemetry-plan.md))
+- [ ] WireGuard / Plane.so — **Phase 3 unless already live**
 - [ ] Wazuh noise reduction (`local_rules.xml` / group agent.conf)
 - [ ] `pve-edk2-firmware` only if UEFI VMs needed
 
@@ -91,7 +93,52 @@ Close gates (including LinkedIn): [phase-2-close-linkedin.md](phase-2-close-link
 
 ## Phase 3: Open Source Routing & Expansion (Future)
 
-**Status:** 🔵 Planned
+**Status:** 🔵 Planned  
+**Remote-access slice is specified (P0 L3 + P1 RustDesk fleet).** Routing/NAS/hardening remain stubs.
+
+### Associated Artifacts / Documents
+
+| Category | File / Location | Description |
+|----------|-----------------|-------------|
+| **Remote access** | [docs/phases/phase-3-remote-access.md](phase-3-remote-access.md) | P0 L3 exit + P0-next jump + P1 RustDesk fleet |
+| **Roadmap** | [docs/ROADMAP.md](../ROADMAP.md) | Phase 3 bullets |
+| **Services & hardware** | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) § Compute Sizing | **SoT** — Host B, host-count, fit table, acquisition, open decisions |
+| | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) §4–5 | DDNS / VPN / RustDesk decision log |
+| | [docs/services/document-digitization.md](../services/document-digitization.md) | Paperless-ngx (planned Host B with Plane) |
+| **Board** | [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) | P0 Layer 3 |
+| | [#36](https://github.com/jacob-kraniak/home-network-security/issues/36) | P0-next datacenter RustDesk |
+| | [#35](https://github.com/jacob-kraniak/home-network-security/issues/35) | P1 RustDesk clients |
+| | [#29](https://github.com/jacob-kraniak/home-network-security/issues/29) | RustDesk *server* (Phase 2) |
+| | [#13](https://github.com/jacob-kraniak/home-network-security/issues/13) | Older DDNS + VPN research |
+| | [#9](https://github.com/jacob-kraniak/home-network-security/issues/9) | OPNsense (separate track) |
+
+### Phase 3 — P0 Remote access exit (network path)
+
+- [ ] Encrypted path from Jacob's laptop off-LAN into the rack (WireGuard and/or Tailscale / Headscale)
+- [ ] Off-LAN test: PVE + one CT 101 admin UI load over the tunnel
+- [ ] Admin UIs still not WAN-published
+- [ ] Dated checkpoint written
+
+RustDesk sessions do **not** satisfy P0. Cloudflare Tunnel (#25) is the voice-agent inbound path, not this gate.
+
+### Phase 3 — P1 RustDesk fleet (parallel, lower priority)
+
+- [ ] Clients on first-cohort desktops (Jacob laptop, Christine laptop, BazzitePC) pointed at on-prem server
+- [ ] On-LAN session from Jacob's laptop to each
+- [ ] Off-LAN over P0, or explicitly deferred until #34 is green
+- [ ] hbbs/hbbr not WAN-published
+
+Can be installed on-LAN in parallel with P0. Does not block P0.
+
+### Phase 3 — Other tracks (planned services & hardware)
+
+Detail and open decisions live in [self-hosted-services-roadmap.md § Compute Sizing](../services/self-hosted-services-roadmap.md#compute-sizing--hardware-acquisition-2026-10-01). Do not duplicate that section here.
+
+- **Host B** (~32 GB SFF Proxmox): Plane CE lasting 4/8/50 + light apps; multi-host: **Proxmox cluster when Host B joins** — see [Compute Sizing § Multi-host management](../services/self-hosted-services-roadmap.md#multi-host-management-cluster)
+- **OPNsense** on dedicated hardware
+- **Hybrid NAS** (Aoostar WTR Pro) for Immich / Jellyfin / Nextcloud / MinIO / Frigate
+- Optional **HA** Green/mini (else HA Container on Host B)
+- Advanced privacy hardening & monitoring
 
 ---
 
@@ -99,9 +146,11 @@ Close gates (including LinkedIn): [phase-2-close-linkedin.md](phase-2-close-link
 - Project Board: https://github.com/users/jacob-kraniak/projects/1
 - Current checkpoint: [phase-2-checkpoint-2026-09-16.md](phase-2-checkpoint-2026-09-16.md)
 - Close / LinkedIn gates: [phase-2-close-linkedin.md](phase-2-close-linkedin.md)
+- Phase 3 remote access: [phase-3-remote-access.md](phase-3-remote-access.md)
+- Phase 3 compute / Host B: [self-hosted-services-roadmap.md § Compute Sizing](../services/self-hosted-services-roadmap.md#compute-sizing--hardware-acquisition-2026-10-01) · [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) · [#35](https://github.com/jacob-kraniak/home-network-security/issues/35)
 - Cloud → local: [netbox-cloud-to-local.md](netbox-cloud-to-local.md)
 - Prior checkpoint: [phase-2-checkpoint-2026-09-14.md](phase-2-checkpoint-2026-09-14.md)
 - Wazuh repair baseline: [phase-2-baseline-2026-08-29.md](phase-2-baseline-2026-08-29.md)
-- NetBox deploy issue: [#28](https://github.com/jacob-kraniak/home-network-security/issues/28)
+- NetBox deploy issue: [#28](https://github.com/jacob-kraniak/home-network-security/issues/28) (closed; import/reconcile still documented as open)
 
 *Keep this map current when adding artifacts.*

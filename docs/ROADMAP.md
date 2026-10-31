@@ -1,10 +1,12 @@
-# Home Network Security Roadmap (Revised September 16, 2026)
+# Home Network Security Roadmap (Revised September 24, 2026)
 
 > **Phase Artifacts Map:** See [docs/phases/PHASE-ARTIFACTS.md](phases/PHASE-ARTIFACTS.md).
 >
 > **Current live state:** [docs/phases/phase-2-checkpoint-2026-09-16.md](phases/phase-2-checkpoint-2026-09-16.md)  
 > **Prior checkpoints:** [2026-09-14](phases/phase-2-checkpoint-2026-09-14.md) (Omada on-prem) · [2026-09-05](phases/phase-2-checkpoint-2026-09-05.md)  
 > **Wazuh outage narrative:** [docs/phases/phase-2-baseline-2026-08-29.md](phases/phase-2-baseline-2026-08-29.md)
+>
+> **Phase 3 remote access:** [docs/phases/phase-3-remote-access.md](phases/phase-3-remote-access.md) · P0 [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) · P0-next [#36](https://github.com/jacob-kraniak/home-network-security/issues/36) · P1 [#35](https://github.com/jacob-kraniak/home-network-security/issues/35)
 
 ## Phase 1: Network Build — Stable Family Foundation (Completed ✅)
 **Timeline:** June 2026  
@@ -28,25 +30,39 @@
 - **CT 100 wazuh:** 6G RAM / 81G disk / `192.168.0.178`. Agents 003–006.
 - **CT 101 portainer:** 6G / 100G / `192.168.0.200`. Portainer + RustDesk + Omada 6.3 + NetBox.
 - **Omada:** `mbentley/omada-controller:6.3` (6.3.0.45). Inform / Controller Hostname **`192.168.0.200`**. Cloud CBC closed.
-- **NetBox:** `netboxcommunity/netbox:v4.7-5.1.1` at `http://192.168.0.200:8000`. Local UI healthy; **Cloud still SoT** until import. Issue [#28](https://github.com/jacob-kraniak/home-network-security/issues/28).
+- **NetBox:** `netboxcommunity/netbox:v4.7-5.1.1` at `http://192.168.0.200:8000`. Local UI healthy; Cloud archive pending reconcile. Issue [#28](https://github.com/jacob-kraniak/home-network-security/issues/28) closed as platform deploy; import still open in docs.
 - **USB:** Seagate Backup+ Desk 3TB exFAT at `/mnt/seagate3tb`.
+- **Remote desktop:** RustDesk *server* on CT 101 is the Phase 2 line. Family clients = Phase 3 P1 ([#35](https://github.com/jacob-kraniak/home-network-security/issues/35)). Datacenter hop = Phase 3 P0-next after L3 ([#36](https://github.com/jacob-kraniak/home-network-security/issues/36)).
 
-**Immediate Next Steps:**
-1. Import Cloud inventory into local NetBox; dual-run; flip SoT only after counts match
+**Immediate Next Steps (still Phase 2):**
+1. Import Cloud inventory into local NetBox; dual-run; keep on-prem as SoT; document count deltas
 2. Wazuh tuning (group `agent.conf` + `local_rules.xml`)
 3. Optional PVE Directory storage on `/mnt/seagate3tb/pve-backup`
 4. Model hypervisor + CTs + USB + Omada controller in NetBox
-5. Small next apps: AdGuard → WireGuard/Tailscale; Plane.so
-6. Omada syslog → Wazuh only after SIEM noise is down
+5. One restore path written (vzdump / volume copy)
+6. Omada syslog → Wazuh — **onboarded 2026-10-04** (AP traffic decode-only; WIDS rule blocked until Wi-Fi 6/7 APs replace the EAP225s, see [hardware limitation](services/wazuh-omada-syslog.md#omada-wireless-idsips--hardware-limitation-verified-2026-10-06)): [wazuh-omada-syslog.md](services/wazuh-omada-syslog.md)
+
+7. Pi-hole DNS query logging → Wazuh — **moved up to Phase 2 (2026-10-08)**. Small LXC on the M715q (1 vCPU / 512 MiB / 4 GB). Plan: [wazuh-network-telemetry-plan.md](services/wazuh-network-telemetry-plan.md)
+
+WireGuard/Tailscale, Plane.so, RustDesk clients / jump guest — **Phase 3** unless already live. See [phase-3-remote-access.md](phases/phase-3-remote-access.md).
 
 ## Phase 3: Open Source Routing & Expansion (Future 🔵)
+- **P0 Remote network access:** VPN / WireGuard / Tailscale so the laptop reaches the datacenter from anywhere. [#34](https://github.com/jacob-kraniak/home-network-security/issues/34).
+- **P0-next Datacenter RustDesk (after P0):** jump guest on the M715q; off-LAN RustDesk into the rack; hop into each CT from that desktop. Not XFCE on Wazuh. [#36](https://github.com/jacob-kraniak/home-network-security/issues/36).
+- **P1 Family RustDesk fleet (parallel, lower priority):** Jacob laptop, Christine laptop, BazzitePC. [#35](https://github.com/jacob-kraniak/home-network-security/issues/35).
+- **Second Proxmox host (Host B):** ~32 GB SFF for Plane CE lasting **4 vCPU / 8 GiB / 50 GiB** + light apps (Paperless, Vaultwarden, reverse proxy). M715q stays Wazuh + CT 101 + the small Pi-hole LXC. Multi-host: **single Proxmox host today; cluster when Host B joins** (QDevice or third node for quorum). Proxmox only — no mixed-hypervisor management, no separate PDM layer — see [Compute Sizing § Multi-host management](services/self-hosted-services-roadmap.md#multi-host-management-cluster).
 - OPNsense on dedicated hardware.
-- Hybrid NAS.
+- Hybrid NAS (Aoostar WTR Pro) for Immich/Jellyfin/Nextcloud/MinIO — not on Host B.
+- Optional HA Green/mini (else HA Container on Host B).
 - Advanced privacy hardening & monitoring.
+
+**Estate sizing:** See [self-hosted-services-roadmap.md § Compute Sizing](services/self-hosted-services-roadmap.md#compute-sizing--hardware-acquisition-2026-10-01) — full roadmap ≈ **2 Proxmox + 1 OPNsense + 1 NAS** (+ optional HA).
+
+See [phase-3-remote-access.md](phases/phase-3-remote-access.md).
 
 ---
 
-**Risk Note:** Keep CT 100 disk well under 80% or vuln feeds will kill Wazuh again. Omada Controller Hostname must stay `192.168.0.200` (not Docker `172.19.0.2`). One fstab line only for the Seagate UUID. Do not WAN-publish NetBox `:8000`.  
+**Risk Note:** Keep CT 100 disk well under 80% or vuln feeds will kill Wazuh again. Omada Controller Hostname must stay `192.168.0.200` (not Docker `172.19.0.2`). One fstab line only for the Seagate UUID. Do not WAN-publish NetBox `:8000`. Host RAM is tight (~14.6 GiB, two 6G CTs) — size the jump guest small; lasting Plane/media go on Host B / NAS, not the M715q.  
 **Project Board:** https://github.com/users/jacob-kraniak/projects/1
 
-*Last updated: 2026-09-16 — NetBox v4.7 active on CT 101.*
+*Last updated: 2026-10-01 — Phase 3 Host B / Plane sizing lives in SSR Compute Sizing (SoT); P0 L3 still first network exit.*

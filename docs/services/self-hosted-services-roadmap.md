@@ -272,9 +272,9 @@ See dedicated page: [docs/services/document-digitization.md](document-digitizati
 
 **Phase 1 (Completed June 2026)**: TP-Link Omada SDN (ER605 V2 + SG2008P v3.20 K108-MSW-1 + 2x EAP225 APs) + early compute on BazzitePC desktop. 21 clients (2 wired, 19 wireless; smartHome 10 Kasa, camera 2 Wyze, office 4 incl. Lenovo Clock + BazzitePC desktop, vid 10/20/1 SSIDs). Per final controller JSON data. Document Digitization POC started.
 
-**Phase 2 (In Progress)**: Self-hosted services on **Lenovo ThinkCentre M715q Tiny** Proxmox (PVE 9.2.4 node `debian`, ~14.6 GiB RAM). CT 100 Wazuh / CT 101 Portainer + **Omada Controller on-prem**. Expand services (AdGuard, WireGuard, Vaultwarden, Jellyfin, Immich, HA, Paperless-ngx, RustDesk). Keep TP-Link Omada primary (ER605 V2 gateway).
+**Phase 2 (In Progress)**: Self-hosted services on **Lenovo ThinkCentre M715q Tiny** Proxmox (PVE 9.2.4 node `debian`, ~14.6 GiB RAM). CT 100 Wazuh / CT 101 Portainer + **Omada Controller on-prem** + NetBox + RustDesk *server*. Keep M715q for Wazuh + CT 101 + a small Pi-hole LXC (DNS query logging → Wazuh, added 2026-10-08). Keep TP-Link Omada primary (ER605 V2 gateway).
 
-**Phase 3 (Future)**: OPNsense migration + hybrid NAS (Aoostar WTR Pro). Full open-source routing.
+**Phase 3 (Future)**: Second Proxmox host for Plane CE + light apps; OPNsense on dedicated hardware; hybrid NAS (Aoostar WTR Pro); Vaultwarden / Paperless on Host B; media (Jellyfin/Immich) on NAS; VPN P0; optional HA mini. See **Compute Sizing & Hardware Acquisition** below.
 
 **Final Buildout Stats (from Omada JSON)**: clientStat total 21 (wired 2, wireless 19, ipc 2, noData 19); clientType smartHome 10, camera 2, office 4, audioVideo 1, mobile 1, other 3; devices: 2 APs (EAP225 v4 fw5.2.2), 1 switch (SG2008P v3.20), 1 gateway (ER605 V2); APs on 192.168.0.x, clients on 192.168.10/20/0 with rssi/traffic/vid details (e.g. Wyze d0:3f:27:2b:2b:53 Baby Cam on IoT, HS220 on IoT, BazzitePC e0:d5:5e:e3:98:97 wired Management, Lenovo bc:df:58:b3:b2:c0 Bedroom Clock on Secure).
 
@@ -282,6 +282,105 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 
 ---
 
+
+## Compute Sizing & Hardware Acquisition (2026-10-01)
+
+> **Canonical** for estate compute / host-count / Host B / acquisition (this repo). Proposal only — no deploy. Headroom: Lab Watch RO + `lab-status` **2026-09-30T21:20:01-04:00**. Plane *product* architecture (family UX, MCP, SuperProductivity): [Project-ideas `unified-task-tracking-system`](https://github.com/jacob-kraniak/Project-ideas/blob/main/unified-task-tracking-system/README.md).
+
+### Current stack (Host A — M715q)
+
+| Asset | Spec / role |
+|-------|-------------|
+| Host `debian` / `.176` | PVE **9.2.4**, AMD PRO **A12-9800E (4C)**, **~14.58 GiB** RAM (2×8 GB), KingSpec NVMe (~**335 GiB** free on `local` at last collect) |
+| CT 100 Wazuh | **2 vCPU / 6 GiB** (+1G swap) / ~81G — **co-location constraint**; keep here |
+| CT 101 Portainer stack | **4 vCPU / 6 GiB** (+1G swap) / ~100G — Portainer + Omada + RustDesk server + NetBox; keep here |
+
+**Rule:** M715q stays **Wazuh + CT 101 + the Pi-hole LXC (1 vCPU / 512 MiB / 4 GB, Phase 2)** for lasting workloads. Do not place lasting Plane (8 GiB), media, or heavy OCR/NVR on this host. Config RAM already ~12 GiB of ~14.58 GiB (~2.6 GiB before host+new-guest overcommit; ~2.1 GiB after Pi-hole).
+
+### Second Proxmox host (Host B — family / apps)
+
+| Item | Recommendation |
+|------|----------------|
+| Hardware | Lightweight **SFF / Tiny**, **~32 GB RAM**, **512 GB–1 TB** NVMe, wired NIC |
+| Management | **Proxmox cluster** when Host B joins (single host today); QDevice or third node for quorum. Proxmox only — no mixed hypervisors, no separate PDM layer (decided 2026-10-08) |
+| Plane CE | Dedicated **nesting LXC**: trial **2 vCPU / 4 GiB / 40 GiB**; lasting **4 vCPU / 8 GiB / 50 GiB+** (official CE: 4 GB min, **8 GB** prod recommend) |
+| Placement | Plane on **Host B**; CT 100/101 stay on M715q |
+
+
+### Multi-host management (cluster)
+
+- **Now:** single Proxmox host (M715q).
+- **When Host B joins:** form a **Proxmox cluster** (one Datacenter UI). Proxmox only — no mixed hypervisors, no separate PDM layer (decided 2026-10-08).
+- **Quorum:** a 2-node cluster needs a **QDevice** or a **third node**, or the survivor goes read-only.
+- **Corosync:** wired links only.
+- **Migration:** local storage per node; live migration across different CPU families is messy, so prefer CPU parity.
+
+### Full roadmap host-count
+
+| Role | Count | Notes |
+|------|-------|-------|
+| Proxmox compute | **2** | M715q (lab/security) + Host B (Plane + light apps) |
+| OPNsense | **1** | Dedicated appliance (Phase 3 routing) — not a PVE guest |
+| Hybrid NAS | **1** | Aoostar WTR Pro (or equivalent) for media / bulk object storage |
+| Home Assistant | **0–1 optional** | Prefer HA OS on Green/mini; HA Container optional on Host B |
+| BazzitePC / JKALI01 | Clients / lab | Not always-on roadmap capacity |
+
+**Verdict:** Entire service roadmap → **2 Proxmox + 1 OPNsense + 1 NAS** (+ optional HA mini). Plane + Phase 3 VPN alone → **2 Proxmox** is enough (VPN can land before OPNsense/NAS).
+
+### Host B (~32 GB) — what fits with lasting Plane
+
+Practical budgets (leave ~25–30% headroom; PVE ~2–3 GiB):
+
+| Service | RAM budget | Fits? |
+|---------|------------|-------|
+| Plane CE lasting (4/8/50) | 8 GiB | **Y** — primary |
+| Paperless-ngx | 2 min / **4 GiB** rec (OCR spikes) | **Y** |
+| Vaultwarden | ~0.3 GiB | **Y** |
+| Reverse proxy (NPM/Caddy/Traefik) | ~0.3–0.5 GiB | **Y** |
+| Portainer (optional) | ~0.3 GiB | **Y** |
+| Home Assistant **Container** | ~2 GiB | **Y** (optional) |
+| Immich / Jellyfin / Nextcloud / MinIO bulk / Frigate | heavy | **N** — NAS or dedicated |
+
+**Comfortable max set on Host B:** Plane lasting + Paperless + Vaultwarden + reverse proxy (+ optional Portainer / HA Container) ≈ **~18.5–19.5 GiB** app+host budget — fine on 32 GB. HA OS/Supervisor path still prefers **dedicated** hardware per earlier recommendation in this doc.
+
+### Hardware acquisition list (Phase 3 trigger tied to Plane)
+
+1. **Second SFF Proxmox host** — ~32 GB RAM, 512 GB–1 TB NVMe (required for lasting Plane).
+2. **OPNsense appliance** — dedicated (Protectli-class or equivalent).
+3. **Hybrid NAS** — Aoostar WTR Pro (or equivalent) for Jellyfin/Immich/Nextcloud/MinIO.
+4. **Optional:** HA Green / mini-PC if not using HA Container on Host B.
+5. **Optional:** M715q RAM upgrade **2×16 GB → 32 GB** for lab headroom (jump guest, tuning) — independent of Plane; not a substitute for Host B.
+6. **Conditional (if staying on TP-Link Omada):** replace the EAP225 v4 APs (Wi-Fi 5) with Wi-Fi 6/7 EAPs that ship AP firmware ≥1.10 with WIDS/WIPS, so Omada wireless IDS can feed Wazuh. Candidate families from TP-Link beta threads: EAP650/653 (Wi-Fi 6) and EAP77x (Wi-Fi 7). **Not purchased; decision pending.** Details: [wazuh-omada-syslog.md § Omada Wireless IDS/IPS hardware limitation](wazuh-omada-syslog.md#omada-wireless-idsips--hardware-limitation-verified-2026-10-06).
+
+Do **not** put Plane volumes on the Seagate 3TB USB2 (media/backup only).
+
+### Expansion research — start now (2026-10-08)
+
+**Decision (2026-10-08):** Proxmox is a **single host today**. When the second host joins, the two **form a Proxmox cluster**. Proxmox only: no mixed-hypervisor management, and no Proxmox Datacenter Manager as a separate management layer. This replaces the earlier PDM-first default. **Status:** research only — nothing purchased.
+
+**Next actions:**
+
+1. Shortlist 2–3 candidates for one more box:
+   - another **Lenovo ThinkCentre M715q** (matches Host A), or
+   - a lightweight **Lenovo ThinkCentre Tiny** (newer M-series), or
+   - a comparable 1L mini PC.
+2. For each candidate, record CPU, max RAM, NVMe slots, NIC count and speed, power draw, and price.
+3. Check each against the Host B spec above (~32 GB RAM, 512 GB–1 TB NVMe, wired NIC).
+4. Plan quorum before joining: a 2-node cluster needs a **QDevice** or a **third node** (see table above). Corosync on wired links only.
+5. Prefer CPU parity with the M715q where practical; mixed CPU families make live migration messy.
+6. Favor a model with a second-NIC option; it also covers the capture NIC needed for the mirrored-port sensor ([telemetry plan](wazuh-network-telemetry-plan.md#prerequisites-and-constraints)).
+
+### Open decisions
+
+1. ~~PDM-first vs 2-node cluster~~ **Decided 2026-10-08: cluster.** Still open: QDevice vs third node  
+2. Exact Host B BOM / budget  
+3. Plane CT VLAN (Mgmt `.0` vs Trusted `.10`)  
+4. Reverse-proxy home (Host B CT vs reuse CT 101 path)  
+5. Trial 2/4/40 then grow vs lasting 4/8/50 day one  
+6. HA dedicated vs Container on Host B  
+7. Community vs Commercial Plane (mobile apps)
+
+---
 **Changelog / Version Notes:**
 - 2026-06-03: Added condensed core decisions summary (Block 1). Promoted Document Digitization project from /project-ideas into active services documentation with dedicated page using Paperless-ngx stack. Updated GitHub issues for board. Maintained consistent formatting and privacy focus.
 - 2026-06-03 (refinement): Incorporated exact user-provided content for Status, Recommended Stack (including Grok API, Nginx+Auth+VPN), and Action Items into document-digitization.md and linked section in roadmap.
@@ -289,3 +388,10 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 
 **Next Steps for Workspace:** Expand issues in GitHub Project Board and track decisions. Let me know which area to deep-dive or generate configs for next. This keeps everything documented, privacy-aligned, and actionable per your guidelines.
 - 2026-09-15 (M715q SoT): Scrubbed residual OptiPlex / “Dell Proxmox” draft wording; live Phase 2 host is Lenovo ThinkCentre M715q Tiny; Omada Controller on CT 101.
+- 2026-10-01: Added Compute Sizing & Hardware Acquisition (Host B / Plane placement, fit table, acquisition list, open decisions).
+- 2026-10-01 (later): Marked this section canonical for estate sizing; Project-ideas `two-host-proxmox-plane` stub points here.
+- 2026-10-01 (later): Expanded multi-host management — PDM vs 2-node cluster + QDevice (discussed options; PDM default).
+- 2026-10-06: Added conditional acquisition item 6 (Wi-Fi 6/7 EAPs for Omada WIDS/WIPS → Wazuh); details in wazuh-omada-syslog.md.
+- 2026-10-08: Added Expansion research note: Proxmox clustering chosen for capacity; shopping for one more M715q / ThinkCentre Tiny-class box (research only).
+- 2026-10-08 (later): Clarified: single Proxmox host now, cluster when Host B joins, Proxmox only (no mixed hypervisors, no separate PDM). Updated Host B Management row and ROADMAP.md.
+- 2026-10-08 (later): Trimmed the PDM-vs-cluster comparison and its PDM default; Multi-host management now states the cluster decision only.
