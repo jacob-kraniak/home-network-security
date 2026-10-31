@@ -73,6 +73,51 @@ Oct  4 22:12:09 192.168.0.101 [<epoch.nanos>] AP MAC=<ap-mac> MAC SRC=<client-ma
 
 ---
 
+## Omada controller 6.3.x decoders and rules
+
+**Status:** drafted 2026-10-30, tested on a disposable Wazuh 4.14.9 manager (not CT 100). Not deployed.
+**Files:** [`omada_controller_decoders.xml`](../configs/wazuh/omada_controller_decoders.xml) · [`omada_controller_rules.xml`](../configs/wazuh/omada_controller_rules.xml) · [samples](../configs/wazuh/omada_controller_samples.log) (placeholder MACs) · [logtest output](../configs/wazuh/omada_controller_logtest.txt)
+
+The controller (`192.168.0.200`) sends `1 2026-10-30 22:40:47 Omada <site> - - - <message>`. Wazuh's pre-decoder leaves this header alone (space, not `T`, in the timestamp), so the parent decoder `omada-controller` matches it directly. The ER605 decoders (`omada-er605`, `omada-er605-dhcp`), rule 100500, and `omada-ap-traffic` are not changed.
+
+| Rule | Level | Event | Fields |
+|------|-------|-------|--------|
+| 100600 | 0 | Any controller event (base) | `omada_site` |
+| 100601 | 3 | Client roaming | `client_name`, `client_mac`, `from_ap_name`, `from_ap_mac`, `from_channel`, `to_ap_name`, `to_ap_mac`, `to_channel`, `ssid` |
+| 100602 / 100603 | — | Reserved: client online / offline (TODO, no samples yet) | — |
+| 100604 | 0 | Controller copy of a DHCP allocation (no alert, so it doesn't double up with 100500) | `client_ip`, `client_mac` |
+| 100605 | 3 | Audit entry with a JSON body | `operation`, `details.newValue`, `details.oldValue` (JSON strings) |
+| 100606 | 5 | Same `client_mac` roaming 3+ times in 10 min | as 100601 |
+
+AP flow lines from `192.168.0.101` are already handled by `omada-ap-traffic` (level 0); no new decoder.
+
+### Deploy and test (run on CT 100 yourself)
+
+```bash
+# 1. Collision check: both commands must print nothing.
+grep -rn 'id="10060[0-9]"' /var/ossec/etc/rules/
+grep -rn 'name="omada-controller' /var/ossec/etc/decoders/
+
+# 2. Copy the two files from this repo (docs/configs/wazuh/) onto CT 100, then:
+cp omada_controller_decoders.xml /var/ossec/etc/decoders/
+cp omada_controller_rules.xml /var/ossec/etc/rules/
+chown wazuh:wazuh /var/ossec/etc/decoders/omada_controller_decoders.xml /var/ossec/etc/rules/omada_controller_rules.xml
+chmod 660 /var/ossec/etc/decoders/omada_controller_decoders.xml /var/ossec/etc/rules/omada_controller_rules.xml
+
+# 3. Config check (prints nothing on success)
+/var/ossec/bin/wazuh-analysisd -t
+
+# 4. Test with the samples (expect 100604, 100601, 100605, omada-ap-traffic, 100601, 100601, 100606)
+/var/ossec/bin/wazuh-logtest < omada_controller_samples.log
+
+# 5. Apply
+systemctl restart wazuh-manager
+```
+
+Rollback: delete the two files and restart `wazuh-manager`.
+
+---
+
 ## Known issue — AP timestamps 1 hour behind
 
 AP-embedded syslog timestamps run 1 hour behind (UTC-5 instead of EDT UTC-4), even though the Omada site timezone is Eastern with DST Auto and NTP is `129.6.15.28` (NIST). Likely AP firmware lacking DST support; firmware update pending. Cosmetic for Wazuh, which uses receive time.

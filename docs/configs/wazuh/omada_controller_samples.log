@@ -1,0 +1,7 @@
+1 2026-10-30 20:20:01 Omada Network_000000-Example-Home - - - DHCP Server allocated IP address 192.168.20.103 for the [client:00-00-5E-00-53-01 ].
+1 2026-10-30 22:40:47 Omada Network_000000-Example-Home - - - [client:ExampleCam:00-00-5E-00-53-02] is roaming from [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-A1][Channel 11] to [ap:K108_WAP2_Office:00-00-5E-00-53-A2][Channel 1] with SSID "K108-Home-IoT"
+1 2026-10-30 20:19:29 Omada Network_000000-Example-Home - - - {"details":{"newValue":"{...client JSON, clientLockToApSetting enable:true...}","oldValue":"{...enable:false...}"},"operation":"00-00-5E-00-53-01 configured successfully."}
+Oct 30 21:40:31 192.168.0.101 [1793414430.169551097] AP MAC=00:00:5e:00:53:a1 MAC SRC=00:00:5e:00:53:01 IP SRC=192.168.20.103 IP DST=255.255.255.255 IP proto=17 SPT=9487 DPT=9478
+1 2026-10-30 22:42:10 Omada Network_000000-Example-Home - - - [client:Other Phone:00-00-5E-00-53-03] is roaming from [ap:K108_WAP2_Office:00-00-5E-00-53-A2][Channel 1] to [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-A1][Channel 11] with SSID "K108-Home-Secure"
+1 2026-10-30 22:43:05 Omada Network_000000-Example-Home - - - [client:ExampleCam:00-00-5E-00-53-02] is roaming from [ap:K108_WAP2_Office:00-00-5E-00-53-A2][Channel 1] to [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-A1][Channel 11] with SSID "K108-Home-IoT"
+1 2026-10-30 22:45:30 Omada Network_000000-Example-Home - - - [client:ExampleCam:00-00-5E-00-53-02] is roaming from [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-A1][Channel 11] to [ap:K108_WAP2_Office:00-00-5E-00-53-A2][Channel 1] with SSID "K108-Home-IoT"
