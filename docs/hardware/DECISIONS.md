@@ -25,6 +25,7 @@
 - Omada (ER605 + SG2008P + EAP225) chosen for warranty, UI, VLAN isolation, and family-network priority (Phase 1 complete).
 - M715q acquired free for Proxmox (low power, Tiny form factor). Cost $0 vs planned refurb.
 - **Constraint updated 2026-09-16:** host ~14.6 GiB; CT split 6G Wazuh / 6G Portainer. NetBox added to CT 101 instead of a new CT 102 so all app containers stay in Portainer. Do not WAN-publish `:8000`.
+- **2026-10-14:** Pi-hole kept on CT 101 as a Portainer stack rather than a dedicated LXC (no significant CT 101 resource spike). Revisit only if resources become an issue. See [pihole-dns.md](../services/pihole-dns.md).
 - Single NIC on the services host is acceptable (downstream of router/switch).
 
 **Links**

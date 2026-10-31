@@ -42,7 +42,12 @@
 5. One restore path written (vzdump / volume copy)
 6. Omada syslog → Wazuh — **onboarded 2026-10-04** (AP traffic decode-only; WIDS rule blocked until Wi-Fi 6/7 APs replace the EAP225s, see [hardware limitation](services/wazuh-omada-syslog.md#omada-wireless-idsips--hardware-limitation-verified-2026-10-06)): [wazuh-omada-syslog.md](services/wazuh-omada-syslog.md)
 
-7. Pi-hole DNS query logging → Wazuh — **moved up to Phase 2 (2026-10-08)**. Small LXC on the M715q (1 vCPU / 512 MiB / 4 GB). Plan: [wazuh-network-telemetry-plan.md](services/wazuh-network-telemetry-plan.md)
+7. Pi-hole DNS query logging → Wazuh — **in progress 🟡**. Moved up to Phase 2 (2026-10-08). **Pi-hole deployed 2026-10-14** as Portainer stack on CT 101 (`192.168.0.200`), live on Trusted VLAN 10; remaining VLANs, upstream choice and Wazuh log shipping open: [pihole-dns.md](services/pihole-dns.md) · Plan: [wazuh-network-telemetry-plan.md](services/wazuh-network-telemetry-plan.md)
+   - *Explore:* sync client hostnames into Pi-hole from NetBox IPAM or the Omada client list (depends on Pi-hole seeing real client IPs, not Docker NAT — open item in [pihole-dns.md](services/pihole-dns.md)).
+   - *Planned:* forward Pi-hole logs to Wazuh for detection rules — already [telemetry plan step 4](services/wazuh-network-telemetry-plan.md#planned-additions-in-order).
+   - *Explore:* validate current blocklists and identify additions from observed traffic (Pi-hole query logs + Omada application/DPI reporting).
+
+8. LAN DNS records for datacenter consoles — **planned**. Friendly hostnames via Omada LAN DNS (Network Config → LAN DNS) or Pi-hole Local DNS records. Naming pattern `<service>.<local-domain>` (domain TBD). Targets as documented: Proxmox `192.168.0.176` · Portainer `https://192.168.0.200:9443` · Omada controller `https://192.168.0.200:8043` · Pi-hole `http://192.168.0.200:8081/admin` · NetBox `http://192.168.0.200:8000` · Wazuh dashboard `192.168.0.178` (ports not documented for Proxmox/Wazuh; no console URL documented for the RustDesk server on CT 101).
 
 WireGuard/Tailscale, Plane.so, RustDesk clients / jump guest — **Phase 3** unless already live. See [phase-3-remote-access.md](phases/phase-3-remote-access.md).
 
@@ -50,7 +55,7 @@ WireGuard/Tailscale, Plane.so, RustDesk clients / jump guest — **Phase 3** unl
 - **P0 Remote network access:** VPN / WireGuard / Tailscale so the laptop reaches the datacenter from anywhere. [#34](https://github.com/jacob-kraniak/home-network-security/issues/34).
 - **P0-next Datacenter RustDesk (after P0):** jump guest on the M715q; off-LAN RustDesk into the rack; hop into each CT from that desktop. Not XFCE on Wazuh. [#36](https://github.com/jacob-kraniak/home-network-security/issues/36).
 - **P1 Family RustDesk fleet (parallel, lower priority):** Jacob laptop, Christine laptop, BazzitePC. [#35](https://github.com/jacob-kraniak/home-network-security/issues/35).
-- **Second Proxmox host (Host B):** ~32 GB SFF for Plane CE lasting **4 vCPU / 8 GiB / 50 GiB** + light apps (Paperless, Vaultwarden, reverse proxy). M715q stays Wazuh + CT 101 + the small Pi-hole LXC. Multi-host: **single Proxmox host today; cluster when Host B joins** (QDevice or third node for quorum). Proxmox only — no mixed-hypervisor management, no separate PDM layer — see [Compute Sizing § Multi-host management](services/self-hosted-services-roadmap.md#multi-host-management-cluster).
+- **Second Proxmox host (Host B):** ~32 GB SFF for Plane CE lasting **4 vCPU / 8 GiB / 50 GiB** + light apps (Paperless, Vaultwarden, reverse proxy). M715q stays Wazuh + CT 101 (Pi-hole runs as a Docker stack on CT 101; no dedicated LXC — decision 2026-10-14). Multi-host: **single Proxmox host today; cluster when Host B joins** (QDevice or third node for quorum). Proxmox only — no mixed-hypervisor management, no separate PDM layer — see [Compute Sizing § Multi-host management](services/self-hosted-services-roadmap.md#multi-host-management-cluster).
 - OPNsense on dedicated hardware.
 - Hybrid NAS (Aoostar WTR Pro) for Immich/Jellyfin/Nextcloud/MinIO — not on Host B.
 - Optional HA Green/mini (else HA Container on Host B).
