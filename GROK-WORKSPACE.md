@@ -59,4 +59,4 @@ This repository documents the transition from consumer-grade networking to a sec
 ## GitHub Project Integration
 Main board: https://github.com/users/jacob-kraniak/projects/1
 
-Last Updated: 2026-09-24 (Phase 3 P0 L3 + P1 RustDesk fleet)
+Last Updated: 2026-09-21 (on-prem NetBox IPAM SoT; Cloud archive)
