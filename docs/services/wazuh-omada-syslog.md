@@ -42,26 +42,14 @@ On 2026-10-04 `logall` was meant to be on only briefly for verification, but the
 
 - `archives.log` showed lines from `192.168.0.100` and `192.168.0.101` (while `logall` was temporarily on).
 - `wazuh-analysisd.state` showed events received with **0 dropped**.
-- `wazuh-logtest` decoded a sample AP traffic line with the custom decoder below.
+- `wazuh-logtest` decoded a sample AP traffic line with the [AP traffic decoder](../configs/wazuh/omada_ap_traffic_decoders.xml).
 
 ---
 
 ## Custom decoder
 
-**File:** `/var/ossec/etc/decoders/local_decoder.xml` on CT 100.  
+**File:** [`docs/configs/wazuh/omada_ap_traffic_decoders.xml`](../configs/wazuh/omada_ap_traffic_decoders.xml). On CT 100 this decoder is in `/var/ossec/etc/decoders/local_decoder.xml`.  
 Decode only — **no rule**, so traffic lines stay level 0 and do not alert or reach the dashboard.
-
-```xml
-<decoder name="omada-ap-traffic">
-  <prematch>^[\d+.\d+] AP MAC=</prematch>
-</decoder>
-
-<decoder name="omada-ap-traffic-fields">
-  <parent>omada-ap-traffic</parent>
-  <regex>AP MAC=(\S+) MAC SRC=(\S+) IP SRC=(\S+) IP DST=(\S+) IP proto=(\d+) SPT=(\d+) DPT=(\d+)</regex>
-  <order>ap_mac, srcmac, srcip, dstip, protocol, srcport, dstport</order>
-</decoder>
-```
 
 **Fields:** `ap_mac`, `srcmac`, `srcip`, `dstip`, `protocol`, `srcport`, `dstport`
 
