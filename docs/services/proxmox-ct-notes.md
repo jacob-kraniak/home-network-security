@@ -1,7 +1,7 @@
 # Proxmox CT Notes auto-updater
 
 **Status:** drafted 2026-11-01. **Not run on the rack yet.** Jacob installs it on the PVE host himself.
-**Script:** [`scripts/proxmox/pve-ct-notes.sh`](../../scripts/proxmox/pve-ct-notes.sh)
+**Script:** [`docs/configs/proxmox/pve-ct-notes.sh`](../configs/proxmox/pve-ct-notes.sh)
 **Host:** PVE node `debian` `192.168.0.176` (Proxmox VE 9.2)
 **Related:** [Services index](README.md) · [Wazuh Omada syslog](wazuh-omada-syslog.md)
 
@@ -56,7 +56,7 @@ for id in $(pct list | awk 'NR>1 {print $1}'); do
   pvesh get /nodes/$(hostname -s)/lxc/$id/config --output-format json | jq -r '.description // ""' > /root/ct-notes-backup/$id.md
 done
 
-# 2. Copy the script from this repo (scripts/proxmox/pve-ct-notes.sh).
+# 2. Copy the script from this repo (docs/configs/proxmox/pve-ct-notes.sh).
 install -o root -g root -m 0755 pve-ct-notes.sh /usr/local/sbin/pve-ct-notes.sh
 
 # 3. Dry run: writes nothing. Check the tables and the diff.
