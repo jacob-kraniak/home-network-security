@@ -1,0 +1,24 @@
+1 2026-10-30 20:20:01 Omada Network_000000-Example-Home - - - DHCP Server allocated IP address 192.168.20.103 for the [client:00-00-5E-00-53-01 ].
+1 2026-10-30 22:40:47 Omada Network_000000-Example-Home - - - [client:ExampleCam:00-00-5E-00-53-02] is roaming from [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-A1][Channel 11] to [ap:K108_WAP2_Office:00-00-5E-00-53-A2][Channel 1] with SSID "K108-Home-IoT"
+1 2026-10-30 20:19:29 Omada Network_000000-Example-Home - - - {"details":{"newValue":"{...client JSON, clientLockToApSetting enable:true...}","oldValue":"{...enable:false...}"},"operation":"00-00-5E-00-53-01 configured successfully."}
+Oct 30 21:40:31 192.168.0.101 [1793414430.169551097] AP MAC=00:00:5e:00:53:a1 MAC SRC=00:00:5e:00:53:01 IP SRC=192.168.20.103 IP DST=255.255.255.255 IP proto=17 SPT=9487 DPT=9478
+1 2026-10-30 22:42:10 Omada Network_000000-Example-Home - - - [client:Other Phone:00-00-5E-00-53-03] is roaming from [ap:K108_WAP2_Office:00-00-5E-00-53-A2][Channel 1] to [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-A1][Channel 11] with SSID "K108-Home-Secure"
+1 2026-10-30 22:43:05 Omada Network_000000-Example-Home - - - [client:ExampleCam:00-00-5E-00-53-02] is roaming from [ap:K108_WAP2_Office:00-00-5E-00-53-A2][Channel 1] to [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-A1][Channel 11] with SSID "K108-Home-IoT"
+1 2026-10-30 22:45:30 Omada Network_000000-Example-Home - - - [client:ExampleCam:00-00-5E-00-53-02] is roaming from [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-A1][Channel 11] to [ap:K108_WAP2_Office:00-00-5E-00-53-A2][Channel 1] with SSID "K108-Home-IoT"
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] (IP: 192.168.0.50) went online on [ap:K108_WAP2_Office:00-00-5E-00-53-10] with SSID "K108-Home-Secure" on channel 36.
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01]  went online on [ap:K108_WAP2_Office:00-00-5E-00-53-10] with SSID "K108-Home-Secure" on channel 36.
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:00-00-5E-00-53-02:00-00-5E-00-53-02] (IP: 192.168.0.51) went online on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] with SSID "K108-Home-IoT" on channel 1.
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExamplePhone:00-00-5E-00-53-03] (IP: 192.168.0.52) went offline from SSID "K108-Home-Secure" on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] (1h7m connected, 373.25MB).
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExamplePhone:00-00-5E-00-53-03]  went offline from SSID "K108-Home-Secure" on [ap:K108_WAP2_Office:00-00-5E-00-53-10] (12s connected, 0.1MB).
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - DHCP Server rejected the request of the [client:00-00-5E-00-53-04](IP: 192.168.0.53 ).
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - {"details":{},"operation":"j*********n logged in successfully."}
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - {"details":{},"operation":"Log Notifications of Site configured successfully."}
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11][Channel 11] to [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11][Channel 36] with SSID "K108-Home-Secure"
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11][Channel 36] to [ap:K108_WAP2_Office:00-00-5E-00-53-10][Channel 1] with SSID "K108-Home-Secure"
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - DHCP Server allocated IP address 192.168.0.50 for the [client:00-00-5E-00-53-01 ].
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [gateway:Router_ER605:00-00-5E-00-53-20] A suspicious Rogue DHCP server (ip:192.168.5.1) is detected in Network Guests.
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:A:00-00-5E-00-53-11][Channel 11] to [ap:A:00-00-5E-00-53-11][Channel 36] with SSID "S"
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:A:00-00-5E-00-53-11][Channel 11] to [ap:A:00-00-5E-00-53-11][Channel 36] with SSID "S"
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:A:00-00-5E-00-53-11][Channel 36] to [ap:B:00-00-5E-00-53-10][Channel 1] with SSID "S"
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:A:00-00-5E-00-53-11][Channel 36] to [ap:B:00-00-5E-00-53-10][Channel 1] with SSID "S"
+1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:A:00-00-5E-00-53-11][Channel 36] to [ap:B:00-00-5E-00-53-10][Channel 1] with SSID "S"

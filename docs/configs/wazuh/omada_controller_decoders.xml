@@ -1,0 +1,85 @@
+<!--
+  Omada Software Controller 6.3.x syslog decoders (controller on CT 101, 192.168.0.200).
+  Deploy to: /var/ossec/etc/decoders/omada_controller_decoders.xml on CT 100.
+  Deploy steps and wazuh-logtest results: docs/services/wazuh-omada-syslog.md#omada-controller-63x-decoders-and-rules
+
+  Header sent by the controller (RFC5424-style, but a space instead of "T" in the timestamp,
+  so the Wazuh pre-decoder does not split it):
+    1 2026-10-30 22:40:47 Omada <site-name> - - - <message>
+
+  Scope: controller header only. Does not touch the ER605 decoders (omada-er605, omada-er605-dhcp)
+  or the AP traffic decoder (omada-ap-traffic) in local_decoder.xml.
+  Requires Wazuh 4.3+ (PCRE2 regex in decoders).
+  MAC format: dashed uppercase (AA-BB-CC-DD-EE-FF).
+-->
+
+<decoder name="omada-controller">
+  <prematch type="pcre2">^1 \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} Omada \S+ - - - </prematch>
+</decoder>
+
+<!-- Audit log entry with a JSON body:
+  {"details":{"newValue":"<json string>","oldValue":"<json string>"},"operation":"..."}
+  Yields fields operation, details.newValue, details.oldValue (values stay JSON strings;
+  the controller hashes MAC/IP/name fields inside them).
+  Separate child (not a sibling) so it can carry a prematch; it must stay ABOVE the
+  sibling blocks, because the first matching child wins.
+-->
+<decoder name="omada-controller-audit">
+  <parent>omada-controller</parent>
+  <prematch type="pcre2" offset="after_parent">^\{</prematch>
+  <plugin_decoder offset="after_parent">JSON_Decoder</plugin_decoder>
+</decoder>
+
+<!-- Siblings below share one name, so every matching block adds its fields. -->
+
+<!-- Header: site name (all controller events). -->
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2">^1 \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} Omada (\S+) - - - </regex>
+  <order>omada_site</order>
+</decoder>
+
+<!-- Roaming:
+  [client:<name>:<MAC>] is roaming from [ap:<name>:<MAC>][Channel N] to [ap:<name>:<MAC>][Channel N] with SSID "<ssid>"
+-->
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2" offset="after_parent">^\[client:(.+?):([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\] is roaming from \[ap:(.+?):([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\]\[Channel (\d+)\] to \[ap:(.+?):([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\]\[Channel (\d+)\] with SSID "(.*)"</regex>
+  <order>client_name, client_mac, from_ap_name, from_ap_mac, from_channel, to_ap_name, to_ap_mac, to_channel, ssid</order>
+</decoder>
+
+<!-- Controller copy of a DHCP allocation:
+  DHCP Server allocated IP address <ip> for the [client:<MAC> ].
+  The ER605 decoders (omada-er605*) never see this line: this parent only matches the controller header.
+-->
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2" offset="after_parent">^DHCP Server allocated IP address (\S+) for the \[client:([0-9A-F]{2}(?:-[0-9A-F]{2}){5}) ?\]</regex>
+  <order>client_ip, client_mac</order>
+</decoder>
+
+<!-- Wireless client online:
+  [client:<name>:<MAC>] (IP: <ip>) went online on [ap:<name>:<MAC>] with SSID "<ssid>" on channel N.
+  "(IP: ...)" is sometimes missing (two spaces instead). -->
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2" offset="after_parent">^\[client:(.+?):([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\]\s+(?:\(IP: (\S+)\) )?went online on \[ap:(.+?):([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\] with SSID "(.*)" on channel (\d+)</regex>
+  <order>client_name, client_mac, client_ip, to_ap_name, to_ap_mac, ssid, to_channel</order>
+</decoder>
+
+<!-- Wireless client offline:
+  [client:<name>:<MAC>] (IP: <ip>) went offline from SSID "<ssid>" on [ap:<name>:<MAC>] (1h2m connected, 3.4MB). -->
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2" offset="after_parent">^\[client:(.+?):([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\]\s+(?:\(IP: (\S+)\) )?went offline from SSID "(.*)" on \[ap:(.+?):([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\] \((\S+) connected, ([^)]*)\)</regex>
+  <order>client_name, client_mac, client_ip, ssid, from_ap_name, from_ap_mac, connected_time, traffic</order>
+</decoder>
+
+<!-- DHCP rejected: DHCP Server rejected the request of the [client:<MAC>](IP: <ip> ). -->
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2" offset="after_parent">^DHCP Server rejected the request of the \[client:([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\]\(IP: (\S+) ?\)</regex>
+  <order>client_mac, client_ip</order>
+</decoder>
+
+<!-- TODO: wired client online/offline ([switch:...] wording) once real samples exist. -->
