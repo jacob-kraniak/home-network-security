@@ -42,13 +42,13 @@ On 2026-10-04 `logall` was meant to be on only briefly for verification, but the
 
 - `archives.log` showed lines from `192.168.0.100` and `192.168.0.101` (while `logall` was temporarily on).
 - `wazuh-analysisd.state` showed events received with **0 dropped**.
-- `wazuh-logtest` decoded a sample AP traffic line with the [AP traffic decoder](../configs/wazuh/omada_ap_traffic_decoders.xml).
+- `wazuh-logtest` decoded a sample AP traffic line with the [AP traffic decoder](../configs/wazuh/decoders/omada_ap_traffic_decoders.xml).
 
 ---
 
 ## Custom decoder
 
-**File:** [`docs/configs/wazuh/omada_ap_traffic_decoders.xml`](../configs/wazuh/omada_ap_traffic_decoders.xml). On CT 100 this decoder is in `/var/ossec/etc/decoders/local_decoder.xml`.  
+**File:** [`docs/configs/wazuh/decoders/omada_ap_traffic_decoders.xml`](../configs/wazuh/decoders/omada_ap_traffic_decoders.xml). On CT 100 this decoder is in `/var/ossec/etc/decoders/local_decoder.xml`.  
 Decode only — **no rule**, so traffic lines stay level 0 and do not alert or reach the dashboard.
 
 **Fields:** `ap_mac`, `srcmac`, `srcip`, `dstip`, `protocol`, `srcport`, `dstport`
@@ -64,7 +64,7 @@ Oct  4 22:12:09 192.168.0.101 [<epoch.nanos>] AP MAC=<ap-mac> MAC SRC=<client-ma
 ## Omada controller 6.3.x decoders and rules
 
 **Status:** drafted 2026-10-30 and revised 2026-10-31. On 2026-10-31 Jacob deployed an earlier version on CT 100 by copying it from chat, and the first level-5 alert (100606) came in that day. This repo holds the latest revision sent to him: it adds online/offline, DHCP rejected, admin login, band steer, and the catch-all. Deploying that revision on CT 100 is still pending. If CT 100 differs from this repo, CT 100 is the live copy, so reconcile the two. Every sample line was tested on a disposable Wazuh 4.14.9 manager, not on CT 100.
-**Files:** [`omada_controller_decoders.xml`](../configs/wazuh/omada_controller_decoders.xml) · [`omada_controller_rules.xml`](../configs/wazuh/omada_controller_rules.xml) · [samples](../configs/wazuh/omada_controller_samples.log) (placeholder MACs, site, and client names) · [logtest output](../configs/wazuh/omada_controller_logtest.txt)
+**Files:** [`omada_controller_decoders.xml`](../configs/wazuh/decoders/omada_controller_decoders.xml) · [`omada_controller_rules.xml`](../configs/wazuh/rules/omada_controller_rules.xml) · [samples](../configs/wazuh/tests/omada_controller_samples.log) (placeholder MACs, site, and client names) · [logtest output](../configs/wazuh/tests/omada_controller_logtest.txt)
 
 ### Data source
 
@@ -104,7 +104,7 @@ Not covered yet: wired client online/offline (`[switch:...]` wording). The decod
 ### `omada_unclassified` workflow
 
 1. In the Wazuh dashboard, filter alerts on `rule.groups: omada_unclassified` (rule 100619).
-2. For each new message shape, take the full line from `archives.log` or the alert's `full_log`. Before committing it to `omada_controller_samples.log`, replace MACs with placeholders (`00-00-5E-00-53-xx`) and use placeholder site and client names.
+2. For each new message shape, take the full line from `archives.log` or the alert's `full_log`. Before committing it to `docs/configs/wazuh/tests/omada_controller_samples.log`, replace MACs with placeholders (`00-00-5E-00-53-xx`) and use placeholder site and client names.
 3. Add a decoder sibling block if fields are needed. Add a rule in 100610–100618 **above** 100619, and add the new message's text to 100619's `negate` regex so the catch-all stops claiming it.
 4. Re-run `wazuh-analysisd -t` and `wazuh-logtest` with the samples, then deploy.
 
@@ -116,7 +116,9 @@ Not covered yet: wired client online/offline (`[switch:...]` wording). The decod
 grep -rn 'id="1006[01][0-9]"' /var/ossec/etc/rules/
 grep -rn 'name="omada-controller' /var/ossec/etc/decoders/
 
-# 2. Copy the two files from this repo (docs/configs/wazuh/) onto CT 100, then:
+# 2. Copy these repo files onto CT 100, then install them:
+#    docs/configs/wazuh/decoders/omada_controller_decoders.xml
+#    docs/configs/wazuh/rules/omada_controller_rules.xml
 cp omada_controller_decoders.xml /var/ossec/etc/decoders/
 cp omada_controller_rules.xml /var/ossec/etc/rules/
 chown wazuh:wazuh /var/ossec/etc/decoders/omada_controller_decoders.xml /var/ossec/etc/rules/omada_controller_rules.xml
@@ -125,10 +127,12 @@ chmod 660 /var/ossec/etc/decoders/omada_controller_decoders.xml /var/ossec/etc/r
 # 3. Config check (prints nothing on success)
 /var/ossec/bin/wazuh-analysisd -t
 
-# 4. Test with the samples. Expected rule per line, in order:
+# 4. Test with docs/configs/wazuh/tests/omada_controller_samples.log.
+#    Expected rule per line, in order:
 #    100604, 100601, 100605, (omada-ap-traffic, no rule), 100601, 100601, 100606,
 #    100602, 100602, 100602, 100603, 100603, 100608, 100609, 100605,
 #    100607, 100601, 100604, 100619, 100607, 100607, 100601, 100606, 100601
+#    Saved output: docs/configs/wazuh/tests/omada_controller_logtest.txt
 /var/ossec/bin/wazuh-logtest < omada_controller_samples.log
 
 # 5. Apply

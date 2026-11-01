@@ -1,5 +1,5 @@
 <!--
-  Omada Software Controller 6.3.x rules. Pairs with omada_controller_decoders.xml.
+  Omada Software Controller 6.3.x rules. Pairs with ../decoders/omada_controller_decoders.xml.
   IDs 100600-100619 reserved for this file. 100500 (ER605) untouched.
   Order matters: children of 100600 are tried top to bottom; 100619 catch-all must stay last.
 -->
