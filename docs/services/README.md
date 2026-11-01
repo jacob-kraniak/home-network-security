@@ -31,5 +31,6 @@ All decisions prioritize **security, privacy, reliability, and scalability**. Do
   - **Phase 2 (in progress):** PVE services host — Wazuh, Portainer, Omada controller, NetBox, RustDesk.
   - **Phase 3:** Off-LAN VPN/WireGuard/Tailscale exit + OPNsense + expansion (HA, cameras, media).
 - Full research, pros/cons, action items, and risks are in the linked documents.
+- **Proxmox CT Notes:** a nightly script rewrites each LXC container's Notes as Markdown tables. See [proxmox-ct-notes.md](proxmox-ct-notes.md).
 
 See [self-hosted-services-roadmap.md](self-hosted-services-roadmap.md) for complete details, research summaries, and overall roadmap.
