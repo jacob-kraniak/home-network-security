@@ -1,7 +1,8 @@
 # Proxmox CT Notes auto-updater
 
 **Status:** drafted 2026-11-01. **Not run on the rack yet.** Jacob installs it on the PVE host himself.
-**Script:** [`docs/configs/proxmox/pve-ct-notes.sh`](../configs/proxmox/pve-ct-notes.sh)
+**Script:** [`docs/configs/proxmox/host-scripts/pve-ct-notes.sh`](../configs/proxmox/host-scripts/pve-ct-notes.sh)
+**Cron:** [`docs/configs/proxmox/cron/pve-ct-notes.cron`](../configs/proxmox/cron/pve-ct-notes.cron)
 **Host:** PVE node `debian` `192.168.0.176` (Proxmox VE 9.2)
 **Related:** [Services index](README.md) · [Wazuh Omada syslog](wazuh-omada-syslog.md)
 
@@ -56,7 +57,7 @@ for id in $(pct list | awk 'NR>1 {print $1}'); do
   pvesh get /nodes/$(hostname -s)/lxc/$id/config --output-format json | jq -r '.description // ""' > /root/ct-notes-backup/$id.md
 done
 
-# 2. Copy the script from this repo (docs/configs/proxmox/pve-ct-notes.sh).
+# 2. Copy the script from this repo (docs/configs/proxmox/host-scripts/pve-ct-notes.sh).
 install -o root -g root -m 0755 pve-ct-notes.sh /usr/local/sbin/pve-ct-notes.sh
 
 # 3. Dry run: writes nothing. Check the tables and the diff.
@@ -66,11 +67,8 @@ install -o root -g root -m 0755 pve-ct-notes.sh /usr/local/sbin/pve-ct-notes.sh
 # 4. One real run on one CT, then look at its Summary > Notes in the PVE UI.
 /usr/local/sbin/pve-ct-notes.sh --ct 101
 
-# 5. Nightly cron at 03:15.
-cat > /etc/cron.d/pve-ct-notes <<'CRON'
-# Rewrite LXC Notes nightly. See home-network-security docs/services/proxmox-ct-notes.md
-15 3 * * * root /usr/local/sbin/pve-ct-notes.sh >> /var/log/pve-ct-notes.log 2>&1
-CRON
+# 5. Nightly cron at 03:15. Copy docs/configs/proxmox/cron/pve-ct-notes.cron.
+install -o root -g root -m 0644 pve-ct-notes.cron /etc/cron.d/pve-ct-notes
 ```
 
 **Cron timing:**

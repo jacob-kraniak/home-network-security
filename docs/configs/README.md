@@ -1,11 +1,32 @@
 # Config files
 
-Scripts, decoders, and rules live in this tree as files. Docs under `docs/services/` and `docs/phases/` link here instead of pasting those files in full.
+Files under `docs/configs/` are organized by platform, then by process:
 
-Each system has its own subfolder. `.gitkeep` stays so the directory exists even when a clone has no system files yet.
+```
+docs/configs/<platform>/<process>/
+```
+
+Docs under `docs/services/` and `docs/phases/` link to these files. Secrets are never committed: no keys, passwords, `authd.pass`, or `client.keys`.
+
+`.gitkeep` is added only in a directory that would otherwise be empty.
 
 ## proxmox
 
-| File | Purpose |
+| Path | Purpose |
 |------|---------|
-| [pve-ct-notes.sh](proxmox/pve-ct-notes.sh) | Nightly rewrite of each LXC container's Proxmox Notes. Install and cron steps: [proxmox-ct-notes.md](../services/proxmox-ct-notes.md). |
+| [host-scripts/pve-ct-notes.sh](proxmox/host-scripts/pve-ct-notes.sh) | Nightly rewrite of each LXC container's Notes. |
+| [cron/pve-ct-notes.cron](proxmox/cron/pve-ct-notes.cron) | Cron line for that script (`15 3 * * *`). |
+| [sync/](proxmox/sync/README.md) | Placeholder for future synchronization jobs. |
+
+Install and behavior: [proxmox-ct-notes.md](../services/proxmox-ct-notes.md).
+
+## wazuh
+
+These subfolders land with #43. They are not in this branch yet.
+
+| Path | Purpose |
+|------|---------|
+| `wazuh/decoders/` | Wazuh decoder XML. |
+| `wazuh/rules/` | Wazuh rule XML. |
+| `wazuh/tests/` | Sample logs and `wazuh-logtest` output. |
+| `wazuh/ossec-conf/` | Sanitized `ossec.conf` backups only. No keys, passwords, `authd.pass`, or `client.keys`. |
