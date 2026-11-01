@@ -1,0 +1,57 @@
+#!/bin/sh
+# Require Assisted-by and Approved-by trailers on ordinary commits.
+# Merge commits and fixup!/squash! commits are skipped.
+
+set -eu
+
+if [ "${1-}" = "" ]; then
+    echo "error: commit-msg hook requires the commit message file" >&2
+    exit 1
+fi
+msgfile=$1
+
+merge_head=$(git rev-parse --git-path MERGE_HEAD 2>/dev/null || true)
+if [ -n "$merge_head" ] && [ -f "$merge_head" ]; then
+    exit 0
+fi
+
+# Subject is the first non-blank line git will store. -m/-F keep '#' lines.
+subject=$(sed '/^[[:space:]]*$/d' "$msgfile" | sed -n '1p')
+case "$subject" in
+    fixup!*|squash!*)
+        exit 0
+        ;;
+esac
+
+has_line() {
+    grep -E -q "$1" "$msgfile"
+}
+
+if has_line '^Approved-by: .+' && {
+    has_line '^Assisted-by: .+' || has_line '^Assisted-by: none$'
+}; then
+    exit 0
+fi
+
+cat >&2 <<'EOF'
+error: commit rejected by .githooks/commit-msg
+
+The message must contain a line matching:
+    ^Approved-by: .+
+and either a line matching:
+    ^Assisted-by: .+
+or, when the commit was written entirely by a person, a line matching:
+    ^Assisted-by: none$
+
+Example (one Assisted-by line per bot; several bots means several lines):
+    Assisted-by: Grok Bot (Ship Desk)
+    Approved-by: Jacob Kraniak <jacob-kraniak@users.noreply.github.com>
+
+Example (written entirely by a person):
+    Assisted-by: none
+    Approved-by: Jacob Kraniak <jacob-kraniak@users.noreply.github.com>
+
+Bots do not use Co-authored-by.
+Merge commits and fixup!/squash! commits are not checked.
+EOF
+exit 1
