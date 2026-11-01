@@ -12,6 +12,7 @@
 #
 # Usage: pve-ct-notes.sh [--dry-run] [--ct <vmid>]... [--local-only]
 # Docs:  docs/services/proxmox-ct-notes.md
+# Cron:  docs/configs/proxmox/cron/pve-ct-notes.cron
 set -euo pipefail
 shopt -u patsub_replacement 2>/dev/null || true   # bash 5.2: keep "&" literal in ${v//x/y}
 

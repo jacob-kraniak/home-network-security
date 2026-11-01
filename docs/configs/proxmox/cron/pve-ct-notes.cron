@@ -1,0 +1,2 @@
+# Rewrite LXC Notes nightly. See home-network-security docs/services/proxmox-ct-notes.md
+15 3 * * * root /usr/local/sbin/pve-ct-notes.sh >> /var/log/pve-ct-notes.log 2>&1
