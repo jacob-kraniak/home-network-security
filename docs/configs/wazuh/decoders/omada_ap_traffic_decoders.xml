@@ -1,0 +1,16 @@
+<!--
+  Omada AP per-connection traffic decoder.
+  On CT 100 this block lives in /var/ossec/etc/decoders/local_decoder.xml.
+  Decode only: no rule, so these lines stay level 0.
+  Doc: docs/services/wazuh-omada-syslog.md#custom-decoder
+-->
+
+<decoder name="omada-ap-traffic">
+  <prematch>^[\d+.\d+] AP MAC=</prematch>
+</decoder>
+
+<decoder name="omada-ap-traffic-fields">
+  <parent>omada-ap-traffic</parent>
+  <regex>AP MAC=(\S+) MAC SRC=(\S+) IP SRC=(\S+) IP DST=(\S+) IP proto=(\d+) SPT=(\d+) DPT=(\d+)</regex>
+  <order>ap_mac, srcmac, srcip, dstip, protocol, srcport, dstport</order>
+</decoder>
