@@ -153,10 +153,400 @@ Type one log per line
 **Phase 3: Completed filtering (rules).
 	id: '100606'
 	level: '5'
-	description: 'Omada controller: client ExampleCam (00-00-5E-00-53-02) roamed 3+ times in 10 minutes.'
+	description: 'Omada controller: client ExampleCam (00-00-5E-00-53-02) roamed between APs 3+ times in 10 minutes.'
 	groups: '['omada', 'omada_controller', 'syslog', 'omada_roaming']'
 	firedtimes: '1'
 	frequency: '3'
+	mail: 'False'
+**Alert to be generated.
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] (IP: 192.168.0.50) went online on [ap:K108_WAP2_Office:00-00-5E-00-53-10] with SSID "K108-Home-Secure" on channel 36.'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_ip: '192.168.0.50'
+	client_mac: '00-00-5E-00-53-01'
+	client_name: 'ExampleCar'
+	omada_site: 'Network_000000-Example-Home'
+	ssid: 'K108-Home-Secure'
+	to_ap_mac: '00-00-5E-00-53-10'
+	to_ap_name: 'K108_WAP2_Office'
+	to_channel: '36'
+
+**Phase 3: Completed filtering (rules).
+	id: '100602'
+	level: '3'
+	description: 'Omada controller: wireless client ExampleCar (00-00-5E-00-53-01) online on K108_WAP2_Office, SSID K108-Home-Secure.'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_client']'
+	firedtimes: '1'
+	mail: 'False'
+**Alert to be generated.
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01]  went online on [ap:K108_WAP2_Office:00-00-5E-00-53-10] with SSID "K108-Home-Secure" on channel 36.'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_mac: '00-00-5E-00-53-01'
+	client_name: 'ExampleCar'
+	omada_site: 'Network_000000-Example-Home'
+	ssid: 'K108-Home-Secure'
+	to_ap_mac: '00-00-5E-00-53-10'
+	to_ap_name: 'K108_WAP2_Office'
+	to_channel: '36'
+
+**Phase 3: Completed filtering (rules).
+	id: '100602'
+	level: '3'
+	description: 'Omada controller: wireless client ExampleCar (00-00-5E-00-53-01) online on K108_WAP2_Office, SSID K108-Home-Secure.'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_client']'
+	firedtimes: '2'
+	mail: 'False'
+**Alert to be generated.
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:00-00-5E-00-53-02:00-00-5E-00-53-02] (IP: 192.168.0.51) went online on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] with SSID "K108-Home-IoT" on channel 1.'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_ip: '192.168.0.51'
+	client_mac: '00-00-5E-00-53-02'
+	client_name: '00-00-5E-00-53-02'
+	omada_site: 'Network_000000-Example-Home'
+	ssid: 'K108-Home-IoT'
+	to_ap_mac: '00-00-5E-00-53-11'
+	to_ap_name: 'K108_WAP1_LivingRoom'
+	to_channel: '1'
+
+**Phase 3: Completed filtering (rules).
+	id: '100602'
+	level: '3'
+	description: 'Omada controller: wireless client 00-00-5E-00-53-02 (00-00-5E-00-53-02) online on K108_WAP1_LivingRoom, SSID K108-Home-IoT.'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_client']'
+	firedtimes: '3'
+	mail: 'False'
+**Alert to be generated.
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExamplePhone:00-00-5E-00-53-03] (IP: 192.168.0.52) went offline from SSID "K108-Home-Secure" on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] (1h7m connected, 373.25MB).'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_ip: '192.168.0.52'
+	client_mac: '00-00-5E-00-53-03'
+	client_name: 'ExamplePhone'
+	connected_time: '1h7m'
+	from_ap_mac: '00-00-5E-00-53-11'
+	from_ap_name: 'K108_WAP1_LivingRoom'
+	omada_site: 'Network_000000-Example-Home'
+	ssid: 'K108-Home-Secure'
+	traffic: '373.25MB'
+
+**Phase 3: Completed filtering (rules).
+	id: '100603'
+	level: '3'
+	description: 'Omada controller: wireless client ExamplePhone (00-00-5E-00-53-03) offline from K108_WAP1_LivingRoom, SSID K108-Home-Secure (1h7m).'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_client']'
+	firedtimes: '1'
+	mail: 'False'
+**Alert to be generated.
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExamplePhone:00-00-5E-00-53-03]  went offline from SSID "K108-Home-Secure" on [ap:K108_WAP2_Office:00-00-5E-00-53-10] (12s connected, 0.1MB).'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_mac: '00-00-5E-00-53-03'
+	client_name: 'ExamplePhone'
+	connected_time: '12s'
+	from_ap_mac: '00-00-5E-00-53-10'
+	from_ap_name: 'K108_WAP2_Office'
+	omada_site: 'Network_000000-Example-Home'
+	ssid: 'K108-Home-Secure'
+	traffic: '0.1MB'
+
+**Phase 3: Completed filtering (rules).
+	id: '100603'
+	level: '3'
+	description: 'Omada controller: wireless client ExamplePhone (00-00-5E-00-53-03) offline from K108_WAP2_Office, SSID K108-Home-Secure (12s).'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_client']'
+	firedtimes: '2'
+	mail: 'False'
+**Alert to be generated.
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - DHCP Server rejected the request of the [client:00-00-5E-00-53-04](IP: 192.168.0.53 ).'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_ip: '192.168.0.53'
+	client_mac: '00-00-5E-00-53-04'
+	omada_site: 'Network_000000-Example-Home'
+
+**Phase 3: Completed filtering (rules).
+	id: '100608'
+	level: '5'
+	description: 'Omada controller: DHCP rejected request from 00-00-5E-00-53-04 for 192.168.0.53.'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_dhcp']'
+	firedtimes: '1'
+	mail: 'False'
+**Alert to be generated.
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - {"details":{},"operation":"j*********n logged in successfully."}'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	parent: 'omada-controller'
+	operation: 'j*********n logged in successfully.'
+
+**Phase 3: Completed filtering (rules).
+	id: '100609'
+	level: '5'
+	description: 'Omada controller: admin login: j*********n logged in successfully.'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_audit', 'authentication_success']'
+	firedtimes: '1'
+	mail: 'False'
+**Alert to be generated.
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - {"details":{},"operation":"Log Notifications of Site configured successfully."}'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	parent: 'omada-controller'
+	operation: 'Log Notifications of Site configured successfully.'
+
+**Phase 3: Completed filtering (rules).
+	id: '100605'
+	level: '3'
+	description: 'Omada controller audit: Log Notifications of Site configured successfully.'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_audit']'
+	firedtimes: '2'
+	mail: 'False'
+**Alert to be generated.
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11][Channel 11] to [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11][Channel 36] with SSID "K108-Home-Secure"'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_mac: '00-00-5E-00-53-01'
+	client_name: 'ExampleCar'
+	from_ap_mac: '00-00-5E-00-53-11'
+	from_ap_name: 'K108_WAP1_LivingRoom'
+	from_channel: '11'
+	omada_site: 'Network_000000-Example-Home'
+	ssid: 'K108-Home-Secure'
+	to_ap_mac: '00-00-5E-00-53-11'
+	to_ap_name: 'K108_WAP1_LivingRoom'
+	to_channel: '36'
+
+**Phase 3: Completed filtering (rules).
+	id: '100607'
+	level: '0'
+	description: 'Omada controller: client ExampleCar changed band/channel on K108_WAP1_LivingRoom (same AP).'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_roaming']'
+	firedtimes: '1'
+	mail: 'False'
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11][Channel 36] to [ap:K108_WAP2_Office:00-00-5E-00-53-10][Channel 1] with SSID "K108-Home-Secure"'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_mac: '00-00-5E-00-53-01'
+	client_name: 'ExampleCar'
+	from_ap_mac: '00-00-5E-00-53-11'
+	from_ap_name: 'K108_WAP1_LivingRoom'
+	from_channel: '36'
+	omada_site: 'Network_000000-Example-Home'
+	ssid: 'K108-Home-Secure'
+	to_ap_mac: '00-00-5E-00-53-10'
+	to_ap_name: 'K108_WAP2_Office'
+	to_channel: '1'
+
+**Phase 3: Completed filtering (rules).
+	id: '100601'
+	level: '3'
+	description: 'Omada controller: client ExampleCar (00-00-5E-00-53-01) roamed from K108_WAP1_LivingRoom to K108_WAP2_Office on SSID K108-Home-Secure.'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_roaming']'
+	firedtimes: '4'
+	mail: 'False'
+**Alert to be generated.
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - DHCP Server allocated IP address 192.168.0.50 for the [client:00-00-5E-00-53-01 ].'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_ip: '192.168.0.50'
+	client_mac: '00-00-5E-00-53-01'
+	omada_site: 'Network_000000-Example-Home'
+
+**Phase 3: Completed filtering (rules).
+	id: '100604'
+	level: '0'
+	description: 'Omada controller: DHCP allocated 192.168.0.50 to 00-00-5E-00-53-01 (controller copy).'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_dhcp']'
+	firedtimes: '2'
+	mail: 'False'
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [gateway:Router_ER605:00-00-5E-00-53-20] A suspicious Rogue DHCP server (ip:192.168.5.1) is detected in Network Guests.'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	omada_site: 'Network_000000-Example-Home'
+
+**Phase 3: Completed filtering (rules).
+	id: '100619'
+	level: '5'
+	description: 'Omada controller: unclassified event (review and add a rule).'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_unclassified']'
+	firedtimes: '1'
+	mail: 'False'
+**Alert to be generated.
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:A:00-00-5E-00-53-11][Channel 11] to [ap:A:00-00-5E-00-53-11][Channel 36] with SSID "S"'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_mac: '00-00-5E-00-53-01'
+	client_name: 'ExampleCar'
+	from_ap_mac: '00-00-5E-00-53-11'
+	from_ap_name: 'A'
+	from_channel: '11'
+	omada_site: 'Network_000000-Example-Home'
+	ssid: 'S'
+	to_ap_mac: '00-00-5E-00-53-11'
+	to_ap_name: 'A'
+	to_channel: '36'
+
+**Phase 3: Completed filtering (rules).
+	id: '100607'
+	level: '0'
+	description: 'Omada controller: client ExampleCar changed band/channel on A (same AP).'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_roaming']'
+	firedtimes: '2'
+	mail: 'False'
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:A:00-00-5E-00-53-11][Channel 11] to [ap:A:00-00-5E-00-53-11][Channel 36] with SSID "S"'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_mac: '00-00-5E-00-53-01'
+	client_name: 'ExampleCar'
+	from_ap_mac: '00-00-5E-00-53-11'
+	from_ap_name: 'A'
+	from_channel: '11'
+	omada_site: 'Network_000000-Example-Home'
+	ssid: 'S'
+	to_ap_mac: '00-00-5E-00-53-11'
+	to_ap_name: 'A'
+	to_channel: '36'
+
+**Phase 3: Completed filtering (rules).
+	id: '100607'
+	level: '0'
+	description: 'Omada controller: client ExampleCar changed band/channel on A (same AP).'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_roaming']'
+	firedtimes: '3'
+	mail: 'False'
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:A:00-00-5E-00-53-11][Channel 36] to [ap:B:00-00-5E-00-53-10][Channel 1] with SSID "S"'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_mac: '00-00-5E-00-53-01'
+	client_name: 'ExampleCar'
+	from_ap_mac: '00-00-5E-00-53-11'
+	from_ap_name: 'A'
+	from_channel: '36'
+	omada_site: 'Network_000000-Example-Home'
+	ssid: 'S'
+	to_ap_mac: '00-00-5E-00-53-10'
+	to_ap_name: 'B'
+	to_channel: '1'
+
+**Phase 3: Completed filtering (rules).
+	id: '100601'
+	level: '3'
+	description: 'Omada controller: client ExampleCar (00-00-5E-00-53-01) roamed from A to B on SSID S.'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_roaming']'
+	firedtimes: '5'
+	mail: 'False'
+**Alert to be generated.
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:A:00-00-5E-00-53-11][Channel 36] to [ap:B:00-00-5E-00-53-10][Channel 1] with SSID "S"'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_mac: '00-00-5E-00-53-01'
+	client_name: 'ExampleCar'
+	from_ap_mac: '00-00-5E-00-53-11'
+	from_ap_name: 'A'
+	from_channel: '36'
+	omada_site: 'Network_000000-Example-Home'
+	ssid: 'S'
+	to_ap_mac: '00-00-5E-00-53-10'
+	to_ap_name: 'B'
+	to_channel: '1'
+
+**Phase 3: Completed filtering (rules).
+	id: '100606'
+	level: '5'
+	description: 'Omada controller: client ExampleCar (00-00-5E-00-53-01) roamed between APs 3+ times in 10 minutes.'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_roaming']'
+	firedtimes: '2'
+	frequency: '3'
+	mail: 'False'
+**Alert to be generated.
+
+
+**Phase 1: Completed pre-decoding.
+	full event: '1 2026-10-31 13:40:34 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] is roaming from [ap:A:00-00-5E-00-53-11][Channel 36] to [ap:B:00-00-5E-00-53-10][Channel 1] with SSID "S"'
+
+**Phase 2: Completed decoding.
+	name: 'omada-controller'
+	client_mac: '00-00-5E-00-53-01'
+	client_name: 'ExampleCar'
+	from_ap_mac: '00-00-5E-00-53-11'
+	from_ap_name: 'A'
+	from_channel: '36'
+	omada_site: 'Network_000000-Example-Home'
+	ssid: 'S'
+	to_ap_mac: '00-00-5E-00-53-10'
+	to_ap_name: 'B'
+	to_channel: '1'
+
+**Phase 3: Completed filtering (rules).
+	id: '100601'
+	level: '3'
+	description: 'Omada controller: client ExampleCar (00-00-5E-00-53-01) roamed from A to B on SSID S.'
+	groups: '['omada', 'omada_controller', 'syslog', 'omada_roaming']'
+	firedtimes: '6'
 	mail: 'False'
 **Alert to be generated.
 

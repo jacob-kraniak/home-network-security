@@ -58,8 +58,28 @@
   <order>client_ip, client_mac</order>
 </decoder>
 
-<!-- TODO(omada-6.3 samples): client online/offline, wired and wireless.
-  No real samples captured yet (2026-10-30). Capture lines from archives.log, then add
-  sibling blocks here that set client_name, client_mac, and ap/switch name, MAC, and port.
-  Rules 100602/100603 are reserved for them in omada_controller_rules.xml.
--->
+<!-- Wireless client online:
+  [client:<name>:<MAC>] (IP: <ip>) went online on [ap:<name>:<MAC>] with SSID "<ssid>" on channel N.
+  "(IP: ...)" is sometimes missing (two spaces instead). -->
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2" offset="after_parent">^\[client:(.+?):([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\]\s+(?:\(IP: (\S+)\) )?went online on \[ap:(.+?):([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\] with SSID "(.*)" on channel (\d+)</regex>
+  <order>client_name, client_mac, client_ip, to_ap_name, to_ap_mac, ssid, to_channel</order>
+</decoder>
+
+<!-- Wireless client offline:
+  [client:<name>:<MAC>] (IP: <ip>) went offline from SSID "<ssid>" on [ap:<name>:<MAC>] (1h2m connected, 3.4MB). -->
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2" offset="after_parent">^\[client:(.+?):([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\]\s+(?:\(IP: (\S+)\) )?went offline from SSID "(.*)" on \[ap:(.+?):([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\] \((\S+) connected, ([^)]*)\)</regex>
+  <order>client_name, client_mac, client_ip, ssid, from_ap_name, from_ap_mac, connected_time, traffic</order>
+</decoder>
+
+<!-- DHCP rejected: DHCP Server rejected the request of the [client:<MAC>](IP: <ip> ). -->
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2" offset="after_parent">^DHCP Server rejected the request of the \[client:([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\]\(IP: (\S+) ?\)</regex>
+  <order>client_mac, client_ip</order>
+</decoder>
+
+<!-- TODO: wired client online/offline ([switch:...] wording) once real samples exist. -->

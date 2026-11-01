@@ -32,9 +32,9 @@ RFC1918 only. No PSKs, tokens, passwords, or MAC addresses. APs are referenced b
 | Listener | Native `wazuh-remoted` syslog on `0.0.0.0:514/udp` — no separate rsyslog collector |
 | `ossec.conf` `<remote>` syslog `allowed-ips` | `192.168.0.0/24`, `192.168.10.0/24`, `192.168.20.0/24` |
 | Not allowed (intentional) | Guest `192.168.30.0/24` and Lab VLAN 40. Do not widen to a `/16`. |
-| `logall` / `logall_json` | **Off** |
+| `logall` / `logall_json` | **On** (confirmed in CT 100 `ossec.conf` on 2026-10-31) |
 
-`logall` was enabled only briefly for verification. With it on, archives grew ~0.2 MB per 30 s (~500 MB/day), mostly AP per-connection traffic records. Keep it off (CT 100 disk headroom — see the ROADMAP risk note).
+On 2026-10-04 `logall` was meant to be on only briefly for verification, but the `ossec.conf` global block checked on 2026-10-31 shows it still on. With it on, archives grew ~0.2 MB per 30 s (~500 MB/day), mostly AP per-connection traffic records. Watch CT 100 disk headroom (see the ROADMAP risk note), and turn it off when archive samples are no longer needed for rule work.
 
 ---
 
@@ -75,27 +75,57 @@ Oct  4 22:12:09 192.168.0.101 [<epoch.nanos>] AP MAC=<ap-mac> MAC SRC=<client-ma
 
 ## Omada controller 6.3.x decoders and rules
 
-**Status:** drafted 2026-10-30, tested on a disposable Wazuh 4.14.9 manager (not CT 100). Not deployed.
-**Files:** [`omada_controller_decoders.xml`](../configs/wazuh/omada_controller_decoders.xml) · [`omada_controller_rules.xml`](../configs/wazuh/omada_controller_rules.xml) · [samples](../configs/wazuh/omada_controller_samples.log) (placeholder MACs) · [logtest output](../configs/wazuh/omada_controller_logtest.txt)
+**Status:** drafted 2026-10-30 and revised 2026-10-31. On 2026-10-31 Jacob deployed an earlier version on CT 100 by copying it from chat, and the first level-5 alert (100606) came in that day. This repo holds the latest revision sent to him: it adds online/offline, DHCP rejected, admin login, band steer, and the catch-all. Deploying that revision on CT 100 is still pending. If CT 100 differs from this repo, CT 100 is the live copy, so reconcile the two. Every sample line was tested on a disposable Wazuh 4.14.9 manager, not on CT 100.
+**Files:** [`omada_controller_decoders.xml`](../configs/wazuh/omada_controller_decoders.xml) · [`omada_controller_rules.xml`](../configs/wazuh/omada_controller_rules.xml) · [samples](../configs/wazuh/omada_controller_samples.log) (placeholder MACs, site, and client names) · [logtest output](../configs/wazuh/omada_controller_logtest.txt)
 
-The controller (`192.168.0.200`) sends `1 2026-10-30 22:40:47 Omada <site> - - - <message>`. Wazuh's pre-decoder leaves this header alone (space, not `T`, in the timestamp), so the parent decoder `omada-controller` matches it directly. The ER605 decoders (`omada-er605`, `omada-er605-dhcp`), rule 100500, and `omada-ap-traffic` are not changed.
+### Data source
 
-| Rule | Level | Event | Fields |
-|------|-------|-------|--------|
+There is no Wazuh agent on the Omada controller. The data source is **agentless syslog**:
+
+- The controller on CT 101 (`192.168.0.200`) sends Remote Logging over UDP 514 to `wazuh-remoted` on the CT 100 manager (`192.168.0.178`). The listener and `allowed-ips` are listed under [Ingest](#ingest-wazuh).
+- Lines arrive as `1 2026-10-30 22:40:47 Omada <site> - - - <message>`.
+- Wazuh's pre-decoder leaves this header alone because the timestamp has a space, not a `T`. So the parent decoder `omada-controller` matches it directly.
+- With `logall` on, raw lines also land in `/var/ossec/logs/archives/archives.log`. That is where new samples come from.
+
+The controller's syslog only carries event types that it records. Types switched off under the controller's alert and event settings are probably never sent.
+
+**Not in this repo:** the ER605 decoders (`omada-er605`, `omada-er605-dhcp`) and rule 100500 exist only on CT 100 in `local_decoder.xml` and `local_rules.xml`. These files do not change them. The AP flow lines from `192.168.0.101` are already handled by `omada-ap-traffic` (level 0), so they get no new decoder.
+
+### Rules
+
+Rules are listed in file order. Children of 100600 are tried top to bottom, so 100619 must stay last.
+
+| Rule | Level | Event | Key fields |
+|------|-------|-------|------------|
 | 100600 | 0 | Any controller event (base) | `omada_site` |
-| 100601 | 3 | Client roaming | `client_name`, `client_mac`, `from_ap_name`, `from_ap_mac`, `from_channel`, `to_ap_name`, `to_ap_mac`, `to_channel`, `ssid` |
-| 100602 / 100603 | — | Reserved: client online / offline (TODO, no samples yet) | — |
-| 100604 | 0 | Controller copy of a DHCP allocation (no alert, so it doesn't double up with 100500) | `client_ip`, `client_mac` |
-| 100605 | 3 | Audit entry with a JSON body | `operation`, `details.newValue`, `details.oldValue` (JSON strings) |
-| 100606 | 5 | Same `client_mac` roaming 3+ times in 10 min | as 100601 |
+| 100601 | 3 | Client roamed between APs | `client_name`, `client_mac`, `from_ap_name`, `from_ap_mac`, `from_channel`, `to_ap_name`, `to_ap_mac`, `to_channel`, `ssid` |
+| 100607 | 0 | Band or channel steer on the same AP (both AP MACs match). Not counted by 100606. | as 100601 |
+| 100602 | 3 | Wireless client online (`(IP: ...)` is optional) | `client_name`, `client_mac`, `client_ip`, `to_ap_name`, `to_ap_mac`, `ssid`, `to_channel` |
+| 100603 | 3 | Wireless client offline | `client_name`, `client_mac`, `client_ip`, `ssid`, `from_ap_name`, `from_ap_mac`, `connected_time`, `traffic` |
+| 100604 | 0 | Controller copy of a DHCP allocation (no alert, so it doesn't double up with ER605 rule 100500) | `client_ip`, `client_mac` |
+| 100608 | 5 | DHCP server rejected a request | `client_mac`, `client_ip` |
+| 100605 | 3 | Audit entry with a JSON body (config change and similar) | `operation`, `details.newValue`, `details.oldValue` |
+| 100609 | 5 | Audit: admin login succeeded (child of 100605) | `operation` |
+| 100606 | 5 | Same `client_mac` roams between APs 3+ times in 10 min | as 100601 |
+| 100619 | 5 | **Catch-all:** a controller line no rule above claimed, such as a new or rare type like a rogue DHCP server or an attack alert. Group `omada_unclassified`. | `omada_site` |
 
-AP flow lines from `192.168.0.101` are already handled by `omada-ap-traffic` (level 0); no new decoder.
+IDs 100600–100619 are reserved for this file. 100610–100618 are free for new types.
+
+Not covered yet: wired client online/offline (`[switch:...]` wording). The decoder file has a TODO for it, to fill in once real samples exist.
+
+### `omada_unclassified` workflow
+
+1. In the Wazuh dashboard, filter alerts on `rule.groups: omada_unclassified` (rule 100619).
+2. For each new message shape, take the full line from `archives.log` or the alert's `full_log`. Before committing it to `omada_controller_samples.log`, replace MACs with placeholders (`00-00-5E-00-53-xx`) and use placeholder site and client names.
+3. Add a decoder sibling block if fields are needed. Add a rule in 100610–100618 **above** 100619, and add the new message's text to 100619's `negate` regex so the catch-all stops claiming it.
+4. Re-run `wazuh-analysisd -t` and `wazuh-logtest` with the samples, then deploy.
 
 ### Deploy and test (run on CT 100 yourself)
 
 ```bash
-# 1. Collision check: both commands must print nothing.
-grep -rn 'id="10060[0-9]"' /var/ossec/etc/rules/
+# 1. Collision check. On a fresh install both commands must print nothing.
+#    If this file is already deployed, only it should match.
+grep -rn 'id="1006[01][0-9]"' /var/ossec/etc/rules/
 grep -rn 'name="omada-controller' /var/ossec/etc/decoders/
 
 # 2. Copy the two files from this repo (docs/configs/wazuh/) onto CT 100, then:
@@ -107,7 +137,10 @@ chmod 660 /var/ossec/etc/decoders/omada_controller_decoders.xml /var/ossec/etc/r
 # 3. Config check (prints nothing on success)
 /var/ossec/bin/wazuh-analysisd -t
 
-# 4. Test with the samples (expect 100604, 100601, 100605, omada-ap-traffic, 100601, 100601, 100606)
+# 4. Test with the samples. Expected rule per line, in order:
+#    100604, 100601, 100605, (omada-ap-traffic, no rule), 100601, 100601, 100606,
+#    100602, 100602, 100602, 100603, 100603, 100608, 100609, 100605,
+#    100607, 100601, 100604, 100619, 100607, 100607, 100601, 100606, 100601
 /var/ossec/bin/wazuh-logtest < omada_controller_samples.log
 
 # 5. Apply
@@ -176,4 +209,4 @@ Caveats:
 
 ---
 
-*Written 2026-10-04 from CT 100 verification. Updated 2026-10-06 with the Omada WIDS/WIPS hardware limitation (from the Omada controller UI and TP-Link sources). Secrets stay on the guest.*
+*Written 2026-10-04 from CT 100 verification. Updated 2026-10-06 with the Omada WIDS/WIPS hardware limitation (from the Omada controller UI and TP-Link sources). Updated 2026-11-01 with the controller 6.3.x rule set (online/offline, DHCP rejected, admin login, band steer, catch-all) and the `logall` status. Secrets stay on the guest.*

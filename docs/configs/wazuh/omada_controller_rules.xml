@@ -1,11 +1,10 @@
 <!--
   Omada Software Controller 6.3.x rules. Pairs with omada_controller_decoders.xml.
-  Deploy to: /var/ossec/etc/rules/omada_controller_rules.xml on CT 100.
-  IDs 100600-100609 are reserved for this file. 100500 (ER605 DHCP test rule) is untouched.
+  IDs 100600-100619 reserved for this file. 100500 (ER605) untouched.
+  Order matters: children of 100600 are tried top to bottom; 100619 catch-all must stay last.
 -->
 <group name="omada,omada_controller,syslog,">
 
-  <!-- Base: any controller event. Level 0 so unknown messages stay off the dashboard. -->
   <rule id="100600" level="0">
     <decoded_as>omada-controller</decoded_as>
     <description>Omada controller: event from site $(omada_site).</description>
@@ -18,15 +17,39 @@
     <group>omada_roaming,</group>
   </rule>
 
-  <!-- 100602 / 100603 reserved: client online / offline (wired and wireless).
-       TODO: add once real samples and decoder blocks exist. -->
+  <!-- Band steer: same AP MAC on both sides. Level 0 and does not count toward 100606. -->
+  <rule id="100607" level="0">
+    <if_sid>100601</if_sid>
+    <regex type="pcre2">\[ap:[^\]]+:([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\]\[Channel \d+\] to \[ap:[^\]]+:\1\]</regex>
+    <description>Omada controller: client $(client_name) changed band/channel on $(from_ap_name) (same AP).</description>
+    <group>omada_roaming,</group>
+  </rule>
 
-  <!-- Controller copy of a DHCP lease. Level 0 so it does not alert twice next to the
-       ER605 lease rule (100500). Kept as a rule so later CDB lookups can use if_sid 100604. -->
+  <rule id="100602" level="3">
+    <if_sid>100600</if_sid>
+    <match>went online on [ap:</match>
+    <description>Omada controller: wireless client $(client_name) ($(client_mac)) online on $(to_ap_name), SSID $(ssid).</description>
+    <group>omada_client,</group>
+  </rule>
+
+  <rule id="100603" level="3">
+    <if_sid>100600</if_sid>
+    <match>went offline from SSID</match>
+    <description>Omada controller: wireless client $(client_name) ($(client_mac)) offline from $(from_ap_name), SSID $(ssid) ($(connected_time)).</description>
+    <group>omada_client,</group>
+  </rule>
+
   <rule id="100604" level="0">
     <if_sid>100600</if_sid>
     <match>DHCP Server allocated IP address</match>
     <description>Omada controller: DHCP allocated $(client_ip) to $(client_mac) (controller copy).</description>
+    <group>omada_dhcp,</group>
+  </rule>
+
+  <rule id="100608" level="5">
+    <if_sid>100600</if_sid>
+    <match>DHCP Server rejected the request</match>
+    <description>Omada controller: DHCP rejected request from $(client_mac) for $(client_ip).</description>
     <group>omada_dhcp,</group>
   </rule>
 
@@ -37,12 +60,26 @@
     <group>omada_audit,</group>
   </rule>
 
-  <!-- Same client roaming 3+ times in 10 minutes. -->
+  <rule id="100609" level="5">
+    <if_sid>100605</if_sid>
+    <field name="operation" type="pcre2">logged in successfully</field>
+    <description>Omada controller: admin login: $(operation)</description>
+    <group>omada_audit,authentication_success,</group>
+  </rule>
+
   <rule id="100606" level="5" frequency="3" timeframe="600">
     <if_matched_sid>100601</if_matched_sid>
     <same_field>client_mac</same_field>
-    <description>Omada controller: client $(client_name) ($(client_mac)) roamed 3+ times in 10 minutes.</description>
+    <description>Omada controller: client $(client_name) ($(client_mac)) roamed between APs 3+ times in 10 minutes.</description>
     <group>omada_roaming,</group>
+  </rule>
+
+  <!-- Catch-all: controller line no rule above claimed (new or rare type, e.g. attack, rogue DHCP). Keep last. -->
+  <rule id="100619" level="5">
+    <if_sid>100600</if_sid>
+    <regex type="pcre2" negate="yes">is roaming from \[ap:|went online on \[ap:|went offline from SSID|DHCP Server (?:allocated|rejected)|"operation":</regex>
+    <description>Omada controller: unclassified event (review and add a rule).</description>
+    <group>omada_unclassified,</group>
   </rule>
 
 </group>
