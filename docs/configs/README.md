@@ -22,11 +22,10 @@ Install and behavior: [proxmox-ct-notes.md](../services/proxmox-ct-notes.md).
 
 ## wazuh
 
-These subfolders land with #43. They are not in this branch yet.
-
 | Path | Purpose |
 |------|---------|
 | `wazuh/decoders/` | Wazuh decoder XML. |
 | `wazuh/rules/` | Wazuh rule XML. |
 | `wazuh/tests/` | Sample logs and `wazuh-logtest` output. |
 | `wazuh/ossec-conf/` | Sanitized `ossec.conf` backups only. No keys, passwords, `authd.pass`, or `client.keys`. |
+| [wazuh/ossec-conf/groups/endpoints_Windows.agent.conf](wazuh/ossec-conf/groups/endpoints_Windows.agent.conf) | Group `endpoints_Windows` shared `agent.conf` (reference copy; Jacob applies changes on the manager). |
