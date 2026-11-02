@@ -27,7 +27,7 @@
 
 - **Host:** Lenovo M715q Tiny, node `debian`, PVE 9.2.4, `192.168.0.176`.
 - **RAM:** 2×8 GB DDR4 SO-DIMM (~14.6 GiB).
-- **CT 100 wazuh:** 6G RAM / 81G disk / `192.168.0.178`. Agents 003–006.
+- **CT 100 wazuh:** 6G RAM / 81G disk / `192.168.0.178`. Wazuh **4.8.2**; upgrade to 4.14.x not started ([#44](https://github.com/jacob-kraniak/home-network-security/issues/44)). Agents 003, 004, 005, 007; `006` is a stale duplicate of `007` ([#57](https://github.com/jacob-kraniak/home-network-security/issues/57)).
 - **CT 101 portainer:** 6G / 100G / `192.168.0.200`. Portainer + RustDesk + Omada 6.3 + NetBox.
 - **Omada:** `mbentley/omada-controller:6.3` (6.3.0.45). Inform / Controller Hostname **`192.168.0.200`**. Cloud CBC closed.
 - **NetBox:** `netboxcommunity/netbox:v4.7-5.1.1` at `http://192.168.0.200:8000`. Local UI healthy; Cloud archive pending reconcile. Issue [#28](https://github.com/jacob-kraniak/home-network-security/issues/28) closed as platform deploy; import still open in docs.
@@ -39,8 +39,9 @@
 2. Wazuh tuning (group `agent.conf` + `local_rules.xml`)
 3. Optional PVE Directory storage on `/mnt/seagate3tb/pve-backup`
 4. Model hypervisor + CTs + USB + Omada controller in NetBox
-5. One restore path written (vzdump / volume copy)
+5. One restore path written (vzdump / volume copy). Backup steps: [#48](https://github.com/jacob-kraniak/home-network-security/issues/48)
 6. Omada syslog → Wazuh — **onboarded 2026-10-04** (AP traffic decode-only; WIDS rule blocked until Wi-Fi 6/7 APs replace the EAP225s, see [hardware limitation](services/wazuh-omada-syslog.md#omada-wireless-idsips--hardware-limitation-verified-2026-10-06)): [wazuh-omada-syslog.md](services/wazuh-omada-syslog.md)
+   - Omada 6.3 controller decoders and rules **merged 2026-11-01** ([#43](https://github.com/jacob-kraniak/home-network-security/pull/43), [#54](https://github.com/jacob-kraniak/home-network-security/pull/54)): [docs/configs/wazuh/](configs/wazuh/)
 
 7. Pi-hole DNS query logging → Wazuh — **in progress 🟡**. Moved up to Phase 2 (2026-10-08). **Pi-hole deployed 2026-10-14** as Portainer stack on CT 101 (`192.168.0.200`), live on Trusted VLAN 10; remaining VLANs, upstream choice and Wazuh log shipping open: [pihole-dns.md](services/pihole-dns.md) · Plan: [wazuh-network-telemetry-plan.md](services/wazuh-network-telemetry-plan.md)
    - *Explore:* sync client hostnames into Pi-hole from NetBox IPAM or the Omada client list (depends on Pi-hole seeing real client IPs, not Docker NAT — open item in [pihole-dns.md](services/pihole-dns.md)).
@@ -48,6 +49,8 @@
    - *Explore:* validate current blocklists and identify additions from observed traffic (Pi-hole query logs + Omada application/DPI reporting).
 
 8. LAN DNS records for datacenter consoles — **planned**. Friendly hostnames via Omada LAN DNS (Network Config → LAN DNS) or Pi-hole Local DNS records. Naming pattern `<service>.<local-domain>` (domain TBD). Targets as documented: Proxmox `192.168.0.176` · Portainer `https://192.168.0.200:9443` · Omada controller `https://192.168.0.200:8043` · Pi-hole `http://192.168.0.200:8081/admin` · NetBox `http://192.168.0.200:8000` · Wazuh dashboard `192.168.0.178` (ports not documented for Proxmox/Wazuh; no console URL documented for the RustDesk server on CT 101).
+
+9. Proxmox CT Notes updater — **merged 2026-11-01, not installed** on the host ([#50](https://github.com/jacob-kraniak/home-network-security/issues/50)): [docs/configs/proxmox/](configs/proxmox/) · [proxmox-ct-notes.md](services/proxmox-ct-notes.md)
 
 WireGuard/Tailscale, Plane.so, RustDesk clients / jump guest — **Phase 3** unless already live. See [phase-3-remote-access.md](phases/phase-3-remote-access.md).
 
@@ -70,4 +73,4 @@ See [phase-3-remote-access.md](phases/phase-3-remote-access.md).
 **Risk Note:** Keep CT 100 disk well under 80% or vuln feeds will kill Wazuh again. Omada Controller Hostname must stay `192.168.0.200` (not Docker `172.19.0.2`). One fstab line only for the Seagate UUID. Do not WAN-publish NetBox `:8000`. Host RAM is tight (~14.6 GiB, two 6G CTs) — size the jump guest small; lasting Plane/media go on Host B / NAS, not the M715q.  
 **Project Board:** https://github.com/users/jacob-kraniak/projects/1
 
-*Last updated: 2026-10-01 — Phase 3 Host B / Plane sizing lives in SSR Compute Sizing (SoT); P0 L3 still first network exit.*
+*Last updated: 2026-11-02 — reconcile: Omada 6.3 decoders merged, Wazuh upgrade not started (#44), CT Notes updater merged but not installed (#50), agent list (#57). Phase 3 Host B / Plane sizing lives in SSR Compute Sizing (SoT); P0 L3 still first network exit.*
