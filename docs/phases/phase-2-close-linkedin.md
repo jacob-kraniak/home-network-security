@@ -21,7 +21,7 @@ Phase 3 remote-access exit (laptop → datacenter from anywhere): [phase-3-remot
 | Remote access | RustDesk on CT 101 (**desktop only** — not off-LAN VPN) |
 | IPAM/DCIM | NetBox v4.7 on CT 101 (**on-prem SoT**); Cloud archive reconcile still open |
 
-Wazuh agents to cite internally: `003` pve-debian, `004` ct101-portainer, `005` bazzite, `006` Christines_Laptop. Public wording: hypervisor + Portainer CT + two workstation endpoints. Do not count disconnected Kali `002` as coverage.
+Wazuh agents to cite internally: `003` pve-debian (connection status pending confirmation, [#57](https://github.com/jacob-kraniak/home-network-security/issues/57)), `004` ct101-portainer, `005` bazzite, `007` Christine's laptop (replaces stale duplicate `006`, [#57](https://github.com/jacob-kraniak/home-network-security/issues/57)). Public wording: hypervisor + Portainer CT + two workstation endpoints. Do not count disconnected Kali `002` as coverage.
 
 ---
 
