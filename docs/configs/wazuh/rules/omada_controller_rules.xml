@@ -1,13 +1,14 @@
 <!--
   Omada Software Controller 6.3.x rules. Pairs with ../decoders/omada_controller_decoders.xml.
   IDs 100600-100619 reserved for this file. 100500 (ER605) untouched.
+  100620-100649: omada_realtime_rules.xml (children of 100603, 100605 and 100619).
   Order matters: children of 100600 are tried top to bottom; 100619 catch-all must stay last.
 -->
 <group name="omada,omada_controller,syslog,">
 
   <rule id="100600" level="0">
     <decoded_as>omada-controller</decoded_as>
-    <description>Omada controller: event from site $(omada_site).</description>
+    <description>Omada controller event ($(omada_site)).</description>
   </rule>
 
   <rule id="100601" level="3">
@@ -36,7 +37,8 @@
     <if_sid>100600</if_sid>
     <match>went offline from SSID</match>
     <description>Omada controller: wireless client $(client_name) ($(client_mac)) offline from $(from_ap_name), SSID $(ssid) ($(connected_time)).</description>
-    <group>omada_client,</group>
+    <!-- omada_client_offline: counted by the disconnect frequency rules in omada_realtime_rules.xml -->
+    <group>omada_client,omada_client_offline,</group>
   </rule>
 
   <rule id="100604" level="0">

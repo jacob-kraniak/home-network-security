@@ -1,0 +1,26 @@
+<!--
+  Add inside <ossec_config> in /var/ossec/etc/ossec.conf on CT 100 (Jacob, by hand).
+  No URL or key here: custom-grokbot reads /var/ossec/etc/grokbot-webhook.env (root:wazuh 640).
+  Name must start with "custom-" and match the file in /var/ossec/integrations/.
+  Filters in one block are ANDed (group AND level). Two blocks never overlap here because no
+  Omada rule is level 12+ yet; if one ever is, drop block B's level or add <rule_id> filters.
+-->
+
+<!-- Block A: Omada events that need attention (level 6+): device down, disconnect storms,
+     channel churn, rogue DHCP, attacks, controller node/cloud/backup failures,
+     audit login failures, admin/integration changes. -->
+<integration>
+  <name>custom-grokbot</name>
+  <group>omada,</group>
+  <level>6</level>
+  <alert_format>json</alert_format>
+</integration>
+
+<!-- Block B (optional): anything else at level 12+ (matches the Lab Watch attention threshold). -->
+<!--
+<integration>
+  <name>custom-grokbot</name>
+  <level>12</level>
+  <alert_format>json</alert_format>
+</integration>
+-->

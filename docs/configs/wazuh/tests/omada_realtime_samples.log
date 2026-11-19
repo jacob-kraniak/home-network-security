@@ -1,0 +1,37 @@
+1 2026-11-17 21:00:01 Omada Network_000000-Example-Home - - - [client:ExamplePhone:00-00-5E-00-53-03] (IP: 192.0.2.52) went offline from SSID "K108-Home-Secure" on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] (12s connected, 0.1MB).
+1 2026-11-17 21:01:01 Omada Network_000000-Example-Home - - - [client:ExamplePhone:00-00-5E-00-53-03] (IP: 192.0.2.52) went offline from SSID "K108-Home-Secure" on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] (1m2s connected, 0.4MB).
+1 2026-11-17 21:02:01 Omada Network_000000-Example-Home - - - [client:ExamplePhone:00-00-5E-00-53-03] (IP: 192.0.2.52) went offline from SSID "K108-Home-Secure" on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] (40s connected, 0.2MB).
+1 2026-11-17 21:03:01 Omada Network_000000-Example-Home - - - [client:ExamplePhone:00-00-5E-00-53-03]  went offline from SSID "K108-Home-Secure" on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] (2m connected, 1.1MB).
+1 2026-11-17 21:04:01 Omada Network_000000-Example-Home - - - [client:ExamplePhone:00-00-5E-00-53-03] (IP: 192.0.2.52) went offline from SSID "K108-Home-Secure" on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] (5s connected, 0.0MB).
+1 2026-11-17 21:05:01 Omada Network_000000-Example-Home - - - [client:ExampleTV:00-00-5E-00-53-04] (IP: 192.0.2.53) went offline from SSID "K108-Home-IoT" on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] (3h1m connected, 900.5MB).
+1 2026-11-17 21:05:11 Omada Network_000000-Example-Home - - - [client:ExampleCam:00-00-5E-00-53-02] (IP: 192.0.2.51) went offline from SSID "K108-Home-IoT" on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] (20m connected, 40.0MB).
+1 2026-11-17 21:05:21 Omada Network_000000-Example-Home - - - [client:ExampleCar:00-00-5E-00-53-01] (IP: 192.0.2.50) went offline from SSID "K108-Home-Secure" on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] (8m connected, 3.2MB).
+1 2026-11-17 21:05:31 Omada Network_000000-Example-Home - - - [client:ExampleLaptop:00-00-5E-00-53-05] (IP: 192.0.2.54) went offline from SSID "K108-Home-Secure" on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] (45m connected, 120.0MB).
+1 2026-11-17 21:05:41 Omada Network_000000-Example-Home - - - [client:ExampleSpeaker:00-00-5E-00-53-06] (IP: 192.0.2.55) went offline from SSID "K108-Home-IoT" on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] (2h connected, 10.0MB).
+1 2026-11-17 21:06:00 Omada Network_000000-Example-Home - - - [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] was disconnected.
+1 2026-11-17 21:06:30 Omada Network_000000-Example-Home - - - [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] was connected.
+1 2026-11-17 21:07:00 Omada Network_000000-Example-Home - - - [ap:K108_WAP2_Office:00-00-5E-00-53-10] changed 2.4GHz channel from 1 to 6 due to interference.
+1 2026-11-17 21:07:10 Omada Network_000000-Example-Home - - - [ap:K108_WAP2_Office:00-00-5E-00-53-10] changed 2.4GHz channel from 6 to 11 due to interference.
+1 2026-11-17 21:07:20 Omada Network_000000-Example-Home - - - [ap:K108_WAP2_Office:00-00-5E-00-53-10] changed 2.4GHz channel from 11 to 1 due to interference.
+1 2026-11-17 21:08:00 Omada Network_000000-Example-Home - - - [ap:K108_WAP2_Office:00-00-5E-00-53-10] detected radar on 5GHz channel 52 and switched to channel 36.
+1 2026-11-17 21:09:00 Omada Network_000000-Example-Home - - - [ap:K108_WAP2_Office:00-00-5E-00-53-10] is isolated.
+1 2026-11-17 21:10:00 Omada Network_000000-Example-Home - - - [gateway:Router_ER605:00-00-5E-00-53-20] A suspicious Rogue DHCP server (ip:192.0.2.1) is detected in Network Guests.
+1 2026-11-17 21:11:00 Omada Network_000000-Example-Home - - - [gateway:Router_ER605:00-00-5E-00-53-20] detected TCP SYN flood attack from 198.51.100.7.
+1 2026-11-17 21:12:00 Omada Network_000000-Example-Home - - - [client:ExampleTablet:00-00-5E-00-53-07] failed to connect to [ap:K108_WAP2_Office:00-00-5E-00-53-10] with SSID "K108-Home-Secure" (reason: authentication timeout, RSSI: -82).
+1 2026-11-17 21:13:00 Omada Controller - - - {"details":{},"operation":"j*********n failed to log in to the controller."}
+1 2026-11-17 21:14:00 Omada Network_000000-Example-Home - - - {"details":{},"operation":"Remote Logging of Site configured successfully."}
+1 2026-11-17 21:14:30 Omada Network_000000-Example-Home - - - {"details":{"newValue":"{\"radioSetting2g\":{\"channel\":\"6\",\"txPower\":20}}","oldValue":"{\"radioSetting2g\":{\"channel\":\"1\",\"txPower\":20}}"},"operation":"K108_WAP2_Office configured successfully."}
+1 2026-11-17 21:15:00 Omada Network_000000-Example-Home - - - {"details":{},"operation":"Upgrade device K108_WAP2_Office failed."}
+1 2026-11-17 21:16:00 Omada Network_000000-Example-Home - - - [switch:K108-MSW-1:00-00-5E-00-53-30] detected loops on port 5.
+1 2026-11-17 21:13:20 Omada Controller - - - {"details":{},"operation":"j*********n failed to log in to the controller."}
+1 2026-11-17 21:13:40 Omada Controller - - - {"details":{},"operation":"j*********n failed to log in to the controller."}
+1 2026-11-17 21:17:00 Omada Controller - - - Node controller-node-2 was disconnected.
+1 2026-11-17 21:17:30 Omada Controller - - - Primary-Second Switching: switched to the secondary node.
+1 2026-11-17 21:18:00 Omada Controller - - - Cloud Access connection failed: network disconnection.
+1 2026-11-17 21:18:30 Omada Controller - - - Too many incidents. The incident list is full.
+1 2026-11-17 21:19:00 Omada Controller - - - Backup Schedule Failed.
+1 2026-11-18 08:00:00 Omada Home Lab Controller - - - [client:ExamplePhone:00-00-5E-00-53-03] (IP: 192.0.2.52) went online on [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] with SSID "K108-Home-Secure" on channel 36.
+1 2026-11-18 08:01:00 Omada Home Lab Controller - - - Backup Schedule Failed.
+1 2026-11-18 08:02:00 Omada Home Lab Controller - - - {"details":{},"operation":"Remote Logging of Controller configured successfully."}
+1 2026-11-18 08:03:00 Omada Network_000000-Example-Home - - - [ap:K108_WAP1_LivingRoom:00-00-5E-00-53-11] was reconnected.
+1 2026-11-18 08:04:00 Omada Network_000000-Example-Home - - - [gateway:Router_ER605:00-00-5E-00-53-20] LAN IP 192.0.2.1 is conflict with other interfaces.

@@ -1,0 +1,707 @@
+{
+ "_source": "TP-Link Omada Open API Access Guide, appendix 5.6.1 'Log Notification Key', embedded in https://use1-omada-northbound.tplinkcloud.com/v3/api-docs (retrieved 2026-11-17). Columns kept: category, key, name.",
+ "global": [
+  {
+   "category": "Operation",
+   "key": "LOGIN_OK",
+   "name": "User Logged In"
+  },
+  {
+   "category": "Operation",
+   "key": "LOGIN_FL",
+   "name": "User Login Failed"
+  },
+  {
+   "category": "Operation",
+   "key": "HS_LOGIN_OK",
+   "name": "Hotspot Operator Logged In"
+  },
+  {
+   "category": "Operation",
+   "key": "HS_LOGIN_FL",
+   "name": "Hotspot Operator Login Failed"
+  },
+  {
+   "category": "Operation",
+   "key": "SITE_ADD",
+   "name": "Site Created"
+  },
+  {
+   "category": "Operation",
+   "key": "SITE_MIGR",
+   "name": "Site Migrated"
+  },
+  {
+   "category": "System",
+   "key": "AUTO_BK_OK",
+   "name": "Auto Backup Executed"
+  },
+  {
+   "category": "System",
+   "key": "AUTO_BK_FL",
+   "name": "Auto Backup Failed"
+  },
+  {
+   "category": "System",
+   "key": "RO_O_SS",
+   "name": "Running Out Of Storage Space"
+  },
+  {
+   "category": "System",
+   "key": "GLOBAL_LOG_MAIL_OK",
+   "name": "Global Logs Mailed Automatically"
+  },
+  {
+   "category": "System",
+   "key": "GLOBAL_LOG_MAIL_FL",
+   "name": "Automatic Global Logs Mail Failed"
+  },
+  {
+   "category": "System",
+   "key": "DEVICE_LIST_MAIL_FL",
+   "name": "Device List Schedule Mail Failed"
+  },
+  {
+   "category": "System",
+   "key": "NETWORK_CHECK_MAIL_FL",
+   "name": "Network check Mail Failed"
+  },
+  {
+   "category": "System",
+   "key": "DEVICE_LIST_SCHEDULE_EXECUTED",
+   "name": "Device List Schedule Executed"
+  },
+  {
+   "category": "System",
+   "key": "GLOBAL_LOG_SRV_OK",
+   "name": "Global Logs Sent to Log Server"
+  },
+  {
+   "category": "System",
+   "key": "GLOBAL_LOG_SRV_FL",
+   "name": "Sending Global Logs to Log Server Failed"
+  },
+  {
+   "category": "Device",
+   "key": "DEV_DISCOVER",
+   "name": "Device Discovered"
+  },
+  {
+   "category": "System",
+   "key": "MNG_PORT_C",
+   "name": "Controller Access Port Changed"
+  },
+  {
+   "category": "System",
+   "key": "PRT_PORT_C",
+   "name": "Portal Port Changed"
+  },
+  {
+   "category": "System",
+   "key": "LOG_FULL",
+   "name": "Log Full"
+  },
+  {
+   "category": "System",
+   "key": "EMAIL_LIMIT_REACHED",
+   "name": "Email Limit Reached"
+  },
+  {
+   "category": "System",
+   "key": "CONNECTED_CLOUD_ACCESS_SUCCESS",
+   "name": "Cloud Access Success"
+  },
+  {
+   "category": "System",
+   "key": "CLOUD_ACCESS_CONNECTION_FAILED",
+   "name": "Network Disconnection"
+  },
+  {
+   "category": "System",
+   "key": "CLOSE_CLOUD_ACCESS_SUCCESS",
+   "name": "Cloud Access Closed"
+  }
+ ],
+ "site": [
+  {
+   "category": "Operation",
+   "key": "ADV_FEA_EN",
+   "name": "Advanced Features Enabled"
+  },
+  {
+   "category": "Operation",
+   "key": "MVLAN_CH",
+   "name": "Management VLAN Changed"
+  },
+  {
+   "category": "Operation",
+   "key": "VOCH_ADD",
+   "name": "Voucher Created"
+  },
+  {
+   "category": "Operation",
+   "key": "VOCH_DEL",
+   "name": "Voucher Deleted"
+  },
+  {
+   "category": "Operation",
+   "key": "FORM_ADD",
+   "name": "Form Auth Created"
+  },
+  {
+   "category": "Operation",
+   "key": "FORM_DEL",
+   "name": "Form Auth Deleted"
+  },
+  {
+   "category": "Operation",
+   "key": "AP_ROLL_UP",
+   "name": "Rolling Upgrade Triggered"
+  },
+  {
+   "category": "Operation",
+   "key": "DEV_ADOPT_OK",
+   "name": "Device Adopted"
+  },
+  {
+   "category": "Operation",
+   "key": "DEV_ADOPT_FL",
+   "name": "Device Adoption Failed"
+  },
+  {
+   "category": "Operation",
+   "key": "DEV_ADOPT_BATCH",
+   "name": "Device Adoption in Batch"
+  },
+  {
+   "category": "Operation",
+   "key": "DEV_REBOOT",
+   "name": "Device Rebooted"
+  },
+  {
+   "category": "Operation",
+   "key": "DEV_REBOOT_FL",
+   "name": "Device Reboot Failed"
+  },
+  {
+   "category": "Operation",
+   "key": "DEV_FORGET_OK",
+   "name": "Device Forgotten"
+  },
+  {
+   "category": "Operation",
+   "key": "DEV_FORGET_FL",
+   "name": "Device Forgotten Failed"
+  },
+  {
+   "category": "Operation",
+   "key": "STACK_FORGET_OK",
+   "name": "Switch Stack Forgotten"
+  },
+  {
+   "category": "Operation",
+   "key": "STACK_FORGET_FL",
+   "name": "Switch Stack Forgotten Failed"
+  },
+  {
+   "category": "Operation",
+   "key": "STACK_OPT",
+   "name": "Switch Stack Created/ Deleted"
+  },
+  {
+   "category": "Operation",
+   "key": "DEV_FORGET_BATCH",
+   "name": "Device Forgotten in Batch"
+  },
+  {
+   "category": "Operation",
+   "key": "DEV_MOVED_OK",
+   "name": "Device Moved"
+  },
+  {
+   "category": "Operation",
+   "key": "DEV_MOVED_FL",
+   "name": "Device Move Failed"
+  },
+  {
+   "category": "Operation",
+   "key": "WLAN_OPT",
+   "name": "WLAN Group Added/ Deleted"
+  },
+  {
+   "category": "Operation",
+   "key": "SSID_OPT",
+   "name": "Wireless Network Created/Deleted"
+  },
+  {
+   "category": "Operation",
+   "key": "DEV_MAN_UP_OK",
+   "name": "Device Upgraded Manually"
+  },
+  {
+   "category": "Operation",
+   "key": "DEV_MAN_UP_FL",
+   "name": "Device Manual Upgrade Failed"
+  },
+  {
+   "category": "Operation",
+   "key": "STACK_MAN_UP_OK",
+   "name": "Switch Stack Upgraded Manually"
+  },
+  {
+   "category": "Operation",
+   "key": "STACK_MAN_UP_FL",
+   "name": "Switch Stack Manual Upgrade Failed"
+  },
+  {
+   "category": "Operation",
+   "key": "DEV_UP_CANCEL",
+   "name": "Device Upgrade Cancelled"
+  },
+  {
+   "category": "Operation",
+   "key": "C_BLOCK",
+   "name": "Client Blocked"
+  },
+  {
+   "category": "Operation",
+   "key": "C_UNBLOCK",
+   "name": "Client Unblocked"
+  },
+  {
+   "category": "System",
+   "key": "REBOOT_SC_OK",
+   "name": "Reboot Schedule Executed"
+  },
+  {
+   "category": "System",
+   "key": "REBOOT_SC_FL",
+   "name": "Reboot Schedule Execution Failed"
+  },
+  {
+   "category": "System",
+   "key": "POE_SC_OK",
+   "name": "PoE Schedule Executed"
+  },
+  {
+   "category": "System",
+   "key": "POE_SC_FL",
+   "name": "PoE Schedule Execution Failed"
+  },
+  {
+   "category": "System",
+   "key": "PORT_SC_OK",
+   "name": "Port Schedule Executed"
+  },
+  {
+   "category": "System",
+   "key": "PORT_SC_FL",
+   "name": "Port Schedule Execution Failed"
+  },
+  {
+   "category": "System",
+   "key": "LOG_MAIL_OK",
+   "name": "Logs Mailed Automatically"
+  },
+  {
+   "category": "System",
+   "key": "LOG_MAIL_FL",
+   "name": "Automatic Logs Mail Failed"
+  },
+  {
+   "category": "System",
+   "key": "SITE_DEVICE_LIST_MAIL_FL",
+   "name": "Site Device List Schedule Mail Failed"
+  },
+  {
+   "category": "System",
+   "key": "SITE_NETWORK_CHECK_MAIL_FL",
+   "name": "Site Network check Mail Failed"
+  },
+  {
+   "category": "System",
+   "key": "TERMINAL_MAIL_FL",
+   "name": "Site Terminal Mail Failed"
+  },
+  {
+   "category": "System",
+   "key": "SITE_DEVICE_LIST_SCHEDULE_EXECUTED",
+   "name": "Site Device List Schedule Executed"
+  },
+  {
+   "category": "System",
+   "key": "LOG_SRV_OK",
+   "name": "Site Logs Sent to Log Server"
+  },
+  {
+   "category": "System",
+   "key": "LOG_SRV_FL",
+   "name": "Sending Site Logs to Log Server Failed"
+  },
+  {
+   "category": "Device",
+   "key": "DEV_DISCONN",
+   "name": "Device Disconnected"
+  },
+  {
+   "category": "Device",
+   "key": "DEV_CONN",
+   "name": "Device Connected"
+  },
+  {
+   "category": "Device",
+   "key": "AP_ISOLATE",
+   "name": "EAP Isolated"
+  },
+  {
+   "category": "Device",
+   "key": "DEV_IP_C",
+   "name": "Device IP Changed"
+  },
+  {
+   "category": "Device",
+   "key": "AP_RADAR",
+   "name": "EAP Detected Radar"
+  },
+  {
+   "category": "Device",
+   "key": "DEV_UP_OL_OK",
+   "name": "Device Upgrade Online"
+  },
+  {
+   "category": "Device",
+   "key": "DEV_UP_OL_FL",
+   "name": "Device Upgrade Online Failed"
+  },
+  {
+   "category": "Device",
+   "key": "STACK_UP_OL_OK",
+   "name": "Switch Stack Upgrade Online"
+  },
+  {
+   "category": "Device",
+   "key": "STACK_UP_OL_FL",
+   "name": "Switch Stack Upgrade Online No Support"
+  },
+  {
+   "category": "Device",
+   "key": "DEV_READOPT_OK",
+   "name": "Device Readopted Automatically"
+  },
+  {
+   "category": "Device",
+   "key": "DEV_READOPT_FL",
+   "name": "Automatic Device Readopt Failed"
+  },
+  {
+   "category": "Device",
+   "key": "AP_CH_C",
+   "name": "EAP Channel Changed"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_WAN_UP",
+   "name": "WAN is up"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_WAN_DOWN",
+   "name": "WAN is down"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_BK_WAN_UP",
+   "name": "Backup WAN Takes Effect"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_PRI_WAN_UP",
+   "name": "Primary WAN Recovered"
+  },
+  {
+   "category": "Device",
+   "key": "WAN_ONLINE_DETECTION",
+   "name": "WAN Online Detection"
+  },
+  {
+   "category": "Device",
+   "key": "WAN_LINK_BACKUP",
+   "name": "WAN Link Backup"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_ATK",
+   "name": "Gateway Detected Attack"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_SF_ATK",
+   "name": "Gateway Detected Stationary Flood Attack"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_ARP_ATK",
+   "name": "Gateway Detected ARP Conflicts"
+  },
+  {
+   "category": "Device",
+   "key": "OSW_DET_STORM",
+   "name": "Switch Detected Storm"
+  },
+  {
+   "category": "Device",
+   "key": "OSW_DET_LOOP",
+   "name": "Detected Loops"
+  },
+  {
+   "category": "Device",
+   "key": "OSW_PB",
+   "name": "Port Blocked"
+  },
+  {
+   "category": "Device",
+   "key": "OSW_LOOP_C",
+   "name": "Loop Cleared"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_IPSEC_OK",
+   "name": "IPsec Connection Established"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_IPSEC_FL",
+   "name": "IPsec Connection Disconnected"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_IPSEC_FO",
+   "name": "IPsec failover took effect"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_C_VPN_OK",
+   "name": "PPTP/L2TP Client Connected"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_C_VPN_FL",
+   "name": "PPTP/L2TP Client Connection Failed"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_RC_VPN_OK",
+   "name": "Remote PPTP/L2TP Client Connected"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_RC_VPN_FL",
+   "name": "Remote PPTP/L2TP Client Connection Failed"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_RC_VPN_LO",
+   "name": "Remote PPTP/L2TP Client Logged Out"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_PPPOE_OK",
+   "name": "PPPoE Connection Established"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_PPPOE_FL",
+   "name": "PPPoE Connection Failed"
+  },
+  {
+   "category": "Device",
+   "key": "OSW_TOPO_C",
+   "name": "STP Topology Changed"
+  },
+  {
+   "category": "Client",
+   "key": "AP_C_FL",
+   "name": "Client Connection Failed (Wireless)"
+  },
+  {
+   "category": "Client",
+   "key": "AP_C_OK",
+   "name": "Client Online (Wireless)"
+  },
+  {
+   "category": "Client",
+   "key": "W_C_PRT_OK",
+   "name": "Client Authenticated with Portal (Wireless)"
+  },
+  {
+   "category": "Client",
+   "key": "W_C_PRT_FL",
+   "name": "Portal Authentication Failed (Wireless)"
+  },
+  {
+   "category": "Client",
+   "key": "W_C_PRT_EXP",
+   "name": "Client Authentication Expired (Wireless)"
+  },
+  {
+   "category": "Client",
+   "key": "W_C_DISCONN",
+   "name": "Client Offline (Wireless)"
+  },
+  {
+   "category": "Client",
+   "key": "W_C_ROAM",
+   "name": "Client Roaming (Wireless)"
+  },
+  {
+   "category": "Client",
+   "key": "L_C_CONN",
+   "name": "Client Online (Wired)"
+  },
+  {
+   "category": "Client",
+   "key": "L_C_PTR_OK",
+   "name": "Client Authenticated with Portal (Wired)"
+  },
+  {
+   "category": "Client",
+   "key": "L_C_PTR_FL",
+   "name": "Portal Authentication Failed (Wired)"
+  },
+  {
+   "category": "Client",
+   "key": "L_C_AUTH_EXP",
+   "name": "Client Authenticated Expired (Wired)"
+  },
+  {
+   "category": "Client",
+   "key": "L_C_DISCONN",
+   "name": "Client Offline (Wired)"
+  },
+  {
+   "category": "Client",
+   "key": "C_AUTH_OPT",
+   "name": "Client Authorized/Unauthorized by Admin"
+  },
+  {
+   "category": "Client",
+   "key": "C_PRT_EXT",
+   "name": "Client Authentication Extended by Admin"
+  },
+  {
+   "category": "Client",
+   "key": "OSW_C_1X_OK",
+   "name": "Client Authenticated with 802.1X"
+  },
+  {
+   "category": "Client",
+   "key": "OSW_C_1X_FL",
+   "name": "802.1X Authentication Failed"
+  },
+  {
+   "category": "Device",
+   "key": "DEV_C_DSYNC",
+   "name": "Device Configurations Desynchronized"
+  },
+  {
+   "category": "Device",
+   "key": "WAN_IP_O_F",
+   "name": "WAN IP address Obtaining Failed"
+  },
+  {
+   "category": "System",
+   "key": "REPORT_GENERATION_FAILED",
+   "name": "Report Generation Failed"
+  },
+  {
+   "category": "System",
+   "key": "REPORT_SENDING_FAILED",
+   "name": "Report Sending Failed"
+  },
+  {
+   "category": "System",
+   "key": "REPORT_SCHEDULE_EXECUTED",
+   "name": "Report Schedule Executed"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_LARGE_PING_ATTACK",
+   "name": "Large Ping Attack"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_DDNS",
+   "name": "Gateway DDNS Module Information"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_IPSEC",
+   "name": "Gateway IPsec Module Information"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_IPV6",
+   "name": "Gateway IPv6 Module Information"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_PPP",
+   "name": "Gateway PPP Module Information"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_PPPOE",
+   "name": "Gateway PPPoE Module Information"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_SSL_VPN",
+   "name": "Gateway SSL VPN Module Information"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_DHCP_C",
+   "name": "Gateway DHCP Client Module Information"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_DHCP_S",
+   "name": "Gateway DHCP Server Module Information"
+  },
+  {
+   "category": "System",
+   "key": "INCIDENT_MAILED_FAILED",
+   "name": "Incidents auto mailed failed"
+  },
+  {
+   "category": "System",
+   "key": "DST_C_FAIL",
+   "name": "DST configuration error."
+  },
+  {
+   "category": "Device",
+   "key": "OSG_DHCP_LEASE_POOL_EXHAUSTED",
+   "name": "The DHCP lease pool is exhausted"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_ROGUE_DHCP_SERVER_DETECTED",
+   "name": "A rogue DHCP server is detected"
+  },
+  {
+   "category": "Device",
+   "key": "OSG_IP_CONFLICT_DETECTED",
+   "name": "An IP conflict is detected"
+  },
+  {
+   "category": "Device",
+   "key": "OSW_OUI_BASED_VLAN_EFFECT",
+   "name": "Switch OUI Based VLAN rule applied"
+  },
+  {
+   "category": "Device",
+   "key": "OSW_OUI_BASED_VLAN_NUM_LIMIT_EXCEED",
+   "name": "Switch OUI Based VLAN rules exceeded the maximum simultaneous entry limit"
+  }
+ ]
+}

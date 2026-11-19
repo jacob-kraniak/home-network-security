@@ -5,7 +5,13 @@
 
   Header sent by the controller (RFC5424-style, but a space instead of "T" in the timestamp,
   so the Wazuh pre-decoder does not split it):
-    1 2026-10-30 22:40:47 Omada <site-name> - - - <message>
+    1 2026-10-30 22:40:47 Omada <name...> - - - <message>
+
+  2026-11-18: the text between the timestamp and " - - - " is the controller DISPLAY NAME
+  (Jacob's starts with "Omada " and has at least one more word), not the site name. The old
+  parent took exactly one token after "Omada". It now accepts 1 to 6 words, so a longer or
+  renamed controller name still decodes. The field keeps its old name, omada_site (rules on
+  CT 100 already reference it), but it holds the display name without the leading "Omada ".
 
   Scope: controller header only. Does not touch the ER605 decoders (omada-er605, omada-er605-dhcp)
   or the AP traffic decoder (omada-ap-traffic) in local_decoder.xml.
@@ -14,7 +20,7 @@
 -->
 
 <decoder name="omada-controller">
-  <prematch type="pcre2">^1 \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} Omada \S+ - - - </prematch>
+  <prematch type="pcre2">^1 \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} Omada(?: \S+){1,6}? - - - </prematch>
 </decoder>
 
 <!-- Audit log entry with a JSON body:
@@ -32,10 +38,10 @@
 
 <!-- Siblings below share one name, so every matching block adds its fields. -->
 
-<!-- Header: site name (all controller events). -->
+<!-- Header: controller display name minus "Omada " (all controller events). One or more words. -->
 <decoder name="omada-controller-fields">
   <parent>omada-controller</parent>
-  <regex type="pcre2">^1 \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} Omada (\S+) - - - </regex>
+  <regex type="pcre2">^1 \d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2} Omada ((?:\S+ ){0,5}?\S+) - - - </regex>
   <order>omada_site</order>
 </decoder>
 
@@ -80,6 +86,46 @@
   <parent>omada-controller</parent>
   <regex type="pcre2" offset="after_parent">^DHCP Server rejected the request of the \[client:([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\]\(IP: (\S+) ?\)</regex>
   <order>client_mac, client_ip</order>
+</decoder>
+
+<!-- ===== Added 2026-11 (feat/omada-wazuh-realtime). Rules: ../rules/omada_realtime_rules.xml ===== -->
+
+<!-- Device-tagged line (AP, switch or gateway at the start of the message):
+  [ap:<name>:<MAC>] ...   [switch:<name>:<MAC>] ...   [gateway:<name>:<MAC>] ...
+  Confirmed shape: the rogue DHCP sample in ../tests/omada_controller_samples.log.
+  Message text after the tag is GUESSED for device connect/disconnect, channel change,
+  radar, isolation and attack types (no real sample yet). -->
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2" offset="after_parent">^\[(ap|switch|gateway):(.+?):([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\]</regex>
+  <order>device_type, device_name, device_mac</order>
+</decoder>
+
+<!-- Client-tagged line that none of the blocks above claims (connection failed, auth, block).
+  The lookahead keeps it from double-decoding online/offline/roaming lines. GUESSED wording. -->
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2" offset="after_parent">^\[client:(.+?):([0-9A-F]{2}(?:-[0-9A-F]{2}){5})\](?!\s+(?:\(IP: \S+\) )?(?:went online|went offline|is roaming))</regex>
+  <order>client_name, client_mac</order>
+</decoder>
+
+<!-- Optional extras, only if present anywhere in the message (GUESSED keywords). -->
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2" offset="after_parent">(?i)channel (?:changed )?from (\d+) to (\d+)</regex>
+  <order>from_channel, to_channel</order>
+</decoder>
+
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2" offset="after_parent">(?i)\brssi[:= ]+(-?\d+)</regex>
+  <order>rssi</order>
+</decoder>
+
+<decoder name="omada-controller-fields">
+  <parent>omada-controller</parent>
+  <regex type="pcre2" offset="after_parent">(?i)\breason(?: code)?[:= ]+([^,;)\]]+)</regex>
+  <order>reason</order>
 </decoder>
 
 <!-- TODO: wired client online/offline ([switch:...] wording) once real samples exist. -->
