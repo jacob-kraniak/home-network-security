@@ -101,6 +101,14 @@ IDs 100600–100619 are reserved for this file. 100610–100618 are free for new
 
 Not covered yet: wired client online/offline (`[switch:...]` wording). The decoder file has a TODO for it, to fill in once real samples exist.
 
+### Real-time additions (2026-11, branch `feat/omada-wazuh-realtime`)
+
+- **Rules 100620–100649** (100640 unused) in [`omada_realtime_rules.xml`](../configs/wazuh/rules/omada_realtime_rules.xml) cover device up/down, AP isolated, channel change, radar, rogue DHCP, gateway attacks, failed client connects, global controller events (node down, primary/secondary switch, cloud access failure, too many incidents, backup/log-server/mail failures), audit login failures (100648/100649), and audit refinements. Two frequency rules: **100636**, the same client disconnecting 5+ times in 10 minutes (level 8), and **100637**, the same AP dropping 10+ sessions in 10 minutes (level 10).
+- New types are children of 100619, so anything they don't claim still lands in `omada_unclassified`. Rule 100603 gained the group `omada_client_offline`. Two sample lines now resolve differently: line 12 → 100635 (short session) and line 19 → 100625 (rogue DHCP).
+- Tested on a disposable Wazuh **4.8.2** manager: [`omada_realtime_logtest.txt`](../configs/wazuh/tests/omada_realtime_logtest.txt).
+- The parent decoder `omada-controller` now accepts a multi-word controller display name. The header field after the timestamp is the **controller name** (`Omada Network_<suffix>`), not the site, even though the field is still called `omada_site`.
+- Which Omada alert/event types exist (from a live capture): the public [Omada alert/event dictionary](omada-log-inventory/README.md). Every type mapped to syslog, webhook and Wazuh rules: [omada-event-inventory.md](omada-event-inventory.md). Real-time delivery uses `custom-grokbot` ([`integrations/`](../configs/wazuh/integrations/custom-grokbot)).
+
 ### `omada_unclassified` workflow
 
 1. In the Wazuh dashboard, filter alerts on `rule.groups: omada_unclassified` (rule 100619).

@@ -1,0 +1,279 @@
+<!--
+  Omada real-time rules (feat/omada-wazuh-realtime, drafted 2026-11-17).
+  Pairs with ../decoders/omada_controller_decoders.xml (2026-11 sibling blocks) and
+  ./omada_controller_rules.xml (100600-100619). IDs 100620-100649 are reserved for this file.
+
+  How it attaches without reordering the existing file:
+    * New message types are children of the catch-all 100619, so they refine it.
+      Anything still unmatched stays 100619 (omada_unclassified, level 5).
+    * Disconnect logic hangs off 100603 (wireless client offline) through the
+      omada_client_offline group added to 100603.
+    * Audit refinements are children of 100605 (JSON audit body).
+  Tested target: Wazuh manager 4.8.2 (CT 100, issue #44). same_field, if_matched_group and
+  pcre2 in rules are all available in 4.8 (100606 already uses same_field on CT 100).
+
+  GUESSED = message wording not seen in a real sample yet. Those rules key on loose words so
+  that a slightly different wording still lands; replace them with exact text once
+  archives.log has a real line (workflow: docs/services/wazuh-omada-syslog.md#omada_unclassified-workflow).
+
+  Severity map (Wazuh level -> meaning here):
+    3  normal activity worth keeping (online, roam, config saved)
+    4-5 notable single event (short session, channel change, failed connect)
+    6-8 needs a look (device down, repeated client disconnects, audit login failure, controller node switch)
+    10 security or site-wide problem (attack, rogue DHCP, AP-wide disconnect storm, controller node down)
+    12+ reserved for confirmed Omada WIDS events once the AP hardware supports it
+-->
+<group name="omada,omada_controller,syslog,omada_realtime,">
+
+  <!-- ===================== Device events (children of catch-all 100619) ===================== -->
+
+  <!-- DEV_DISCONN "Device Disconnected" (site Device module). GUESSED wording. -->
+  <rule id="100620" level="8">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">- - - \[(?:ap|switch|gateway):[^\]]+\].*\b(?:disconnected|heartbeat missed|went offline)\b</regex>
+    <description>Omada: $(device_type) $(device_name) disconnected from the controller.</description>
+    <group>omada_device,omada_device_down,</group>
+  </rule>
+
+  <!-- AP_ISOLATE "EAP Isolated". GUESSED wording. -->
+  <rule id="100621" level="8">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">- - - \[ap:[^\]]+\].*\bisolated\b</regex>
+    <description>Omada: AP $(device_name) is isolated (lost its uplink).</description>
+    <group>omada_device,omada_device_down,</group>
+  </rule>
+
+  <!-- DEV_CONN "Device Connected", DEV_RECONN "Device Reconnected", DEV_CONN_REMEMBER
+       "Remembered Device Readopted After Factory Reset" (live site list, 2026-11-18).
+       DEV_ADOPT_OK / DEV_READOPT_OK from TP-Link's guide are not on this controller.
+       GUESSED wording. -->
+  <rule id="100622" level="3">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">- - - \[(?:ap|switch|gateway):[^\]]+\].*\b(?:connected|reconnected|adopted|readopted|re-adopted)\b</regex>
+    <description>Omada: $(device_type) $(device_name) connected or adopted.</description>
+    <group>omada_device,omada_device_up,</group>
+  </rule>
+
+  <!-- AP_CH_C "EAP Channel Changed". GUESSED wording. -->
+  <rule id="100623" level="5">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">(?i)- - - \[ap:[^\]]+\].*channel.*chang|- - - \[ap:[^\]]+\].*chang.*channel</regex>
+    <description>Omada: AP $(device_name) changed channel ($(from_channel) to $(to_channel)).</description>
+    <group>omada_device,omada_rf,omada_channel_change,</group>
+  </rule>
+
+  <!-- AP_RADAR "EAP Detected Radar" (DFS: the AP must leave the channel, clients drop). GUESSED wording. -->
+  <rule id="100624" level="6">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">(?i)- - - \[ap:[^\]]+\].*\bradar\b</regex>
+    <description>Omada: AP $(device_name) detected radar (DFS channel move).</description>
+    <group>omada_device,omada_rf,omada_radar,</group>
+  </rule>
+
+  <!-- OSG_ROGUE_DHCP_SERVER_DETECTED. Exact wording from a real line (samples file, line 19). -->
+  <rule id="100625" level="10">
+    <if_sid>100619</if_sid>
+    <match>Rogue DHCP server</match>
+    <description>Omada: gateway $(device_name) detected a rogue DHCP server.</description>
+    <group>omada_device,omada_security,</group>
+  </rule>
+
+  <!-- OSG_ATK / OSG_SF_ATK / OSG_ARP_ATK / OSG_LARGE_PING_ATTACK. GUESSED wording. -->
+  <rule id="100626" level="10">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">(?i)- - - \[gateway:[^\]]+\].*\b(?:attack|flood|arp conflict|arp spoof)</regex>
+    <description>Omada: gateway $(device_name) detected an attack.</description>
+    <group>omada_device,omada_security,attack,</group>
+  </rule>
+
+  <!-- Rogue AP / Wireless IDS. No log key for these in the Open API Access Guide (5.6.1);
+       WIDS is blocked on EAP225 v4 hardware. Placeholder so a future line is not lost. GUESSED. -->
+  <rule id="100627" level="10">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">(?i)\brogue ap\b|\bwids\b|wireless ids|\bspoof|impersonat|deauth(?:entication)? (?:flood|attack)</regex>
+    <description>Omada: possible rogue AP or wireless intrusion event (review full_log).</description>
+    <group>omada_security,omada_wids,</group>
+  </rule>
+
+  <!-- OSG_IP_CONFLICT_DETECTED "An IP conflict is detected", OSG_DHCP_LEASE_POOL_EXHAUSTED
+       "The DHCP lease pool is exhausted", OSG_LAN_IP_CONFLICT "LAN IP Is Conflict With Other
+       Interfaces". GUESSED wording. -->
+  <rule id="100628" level="8">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">(?i)\bip\b.{0,40}?\bconflict|lease pool (?:is )?exhausted</regex>
+    <description>Omada: IP conflict or DHCP pool exhausted.</description>
+    <group>omada_device,omada_dhcp,</group>
+  </rule>
+
+  <!-- AP_C_FL "Client Connection Failed (Wireless)" (name confirmed in the live site list). GUESSED wording. -->
+  <rule id="100629" level="4">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">(?i)- - - \[client:[^\]]+\].*\b(?:failed to connect|connection failed|failed to associate|association failed|authentication failed|auth(?:entication)? fail)</regex>
+    <description>Omada: wireless client $(client_name) ($(client_mac)) failed to connect.</description>
+    <group>omada_client,omada_client_conn_fail,</group>
+  </rule>
+
+  <!-- Global (controller-level) types below. The global list on Jacob's controller
+       (live JSON, 2026-11-18) has 19 types and no LOGIN_FL / RO_O_SS / LOG_FULL, so the old
+       100630 (login failed), 100631 (storage) and 100640 (login burst) were repurposed on
+       2026-11-18. Controller login monitoring now comes from Global Audit Logs (100648/100649),
+       which is an inference, not confirmed. NODE_* and PRIMARY_SECOND_SWITCHING are probably
+       about controller cluster / primary-secondary nodes (also an inference), so on a single
+       controller they may never fire. -->
+
+  <!-- NODE_DISCONNECT "Node was disconnected" (global Alert, level Warning). GUESSED wording. -->
+  <rule id="100630" level="10">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">(?i)\bnode\b.*\b(?:was )?disconnected\b</regex>
+    <description>Omada controller: node was disconnected.</description>
+    <group>omada_global,omada_controller_node,</group>
+  </rule>
+
+  <!-- PRIMARY_SECOND_SWITCHING "Primary-Second Switching" (global Alert, level Warning). GUESSED wording. -->
+  <rule id="100631" level="8">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">(?i)primary.{0,3}second(?:ary)?\b.{0,30}switch|switch(?:ed|ing)? (?:over )?to (?:the )?(?:primary|second(?:ary)?)\b</regex>
+    <description>Omada controller: primary/secondary switchover.</description>
+    <group>omada_global,omada_controller_node,</group>
+  </rule>
+
+  <!-- CLOUD_ACCESS_CONNECTION_FAILED "Network Disconnection" (global Event). GUESSED wording. -->
+  <rule id="100645" level="7">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">(?i)cloud access.{0,40}(?:fail|disconnect)|\bnetwork disconnection\b</regex>
+    <description>Omada controller: cloud access connection failed (network disconnection).</description>
+    <group>omada_global,omada_cloud,</group>
+  </rule>
+
+  <!-- ANOMALY_EVENT_FULL "Too Many Incidents" (global Event). GUESSED wording. -->
+  <rule id="100646" level="8">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">(?i)too many incidents|incidents? (?:list |storage )?(?:is )?full</regex>
+    <description>Omada controller: too many incidents (Insight incident store full).</description>
+    <group>omada_global,omada_system,</group>
+  </rule>
+
+  <!-- AUTO_BK_FL "Backup Schedule Failed", GLOBAL_LOG_SRV_FL, LOG_SRV_FL, and the global mail
+       failures (GLOBAL_LOG_MAIL_FL, DEVICE_LIST_MAIL_FL). GUESSED wording. -->
+  <rule id="100632" level="7">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">(?i)backup.{0,30}fail|log server failed|sending .*logs? to log server failed|mail(?:ed)? failed</regex>
+    <description>Omada: backup, log-server or mail delivery failed.</description>
+    <group>omada_global,omada_system,</group>
+  </rule>
+
+  <!-- OSG_WAN_DOWN, OSG_IPSEC_FL. GUESSED wording. -->
+  <rule id="100633" level="6">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">(?i)\bwan\b.*\bdown\b|ipsec connection disconnected</regex>
+    <description>Omada: WAN or VPN link down.</description>
+    <group>omada_device,omada_wan,</group>
+  </rule>
+
+  <!-- OSW_DET_STORM "Switch Detected Storm", OSW_DET_LOOP "Detected Loops", OSW_PB "Port Blocked",
+       and by the same words OSW_STORM_SHUTDOWN "Switch Storm Shutdown" and OSW_STP_BLOCK
+       "STP Port Blocked". GUESSED wording. -->
+  <rule id="100634" level="6">
+    <if_sid>100619</if_sid>
+    <regex type="pcre2">(?i)\bstorm\b|loop(?:s)? detected|detected loop|port blocked</regex>
+    <description>Omada: switch detected a storm or loop.</description>
+    <group>omada_device,omada_switch,</group>
+  </rule>
+
+  <!-- ===================== Client disconnect analysis ===================== -->
+
+  <!-- Short session: client left under 60 s after joining (child of 100603).
+       Must stay ABOVE 100636/100637: they list it in if_sid, and a parent has to load first. -->
+  <rule id="100635" level="4">
+    <if_sid>100603</if_sid>
+    <field name="connected_time" type="pcre2">^\d+s$</field>
+    <description>Omada: client $(client_name) ($(client_mac)) dropped after $(connected_time) on $(from_ap_name).</description>
+    <group>omada_client,omada_client_offline,omada_short_session,</group>
+  </rule>
+
+  <!-- Same client, 5 wireless disconnects in 10 minutes. Counts 100603 and 100635 (shared group).
+       if_sid is required: without it the rule sits at the root and never sees these events (verified on 4.8.2). -->
+  <rule id="100636" level="8" frequency="5" timeframe="600">
+    <if_sid>100603, 100635</if_sid>
+    <if_matched_group>omada_client_offline</if_matched_group>
+    <same_field>client_mac</same_field>
+    <description>Omada: client $(client_name) ($(client_mac)) disconnected 5+ times in 10 minutes (last AP $(from_ap_name)).</description>
+    <group>omada_client,omada_flap,omada_client_flap,</group>
+  </rule>
+
+  <!-- Same AP, 10 wireless disconnects (any clients) in 10 minutes: points at RF or the AP itself. -->
+  <rule id="100637" level="10" frequency="10" timeframe="600">
+    <if_sid>100603, 100635</if_sid>
+    <if_matched_group>omada_client_offline</if_matched_group>
+    <same_field>from_ap_mac</same_field>
+    <description>Omada: AP $(from_ap_name) dropped 10+ client sessions in 10 minutes (possible channel crowding or interference).</description>
+    <group>omada_rf,omada_flap,omada_ap_flap,</group>
+  </rule>
+
+  <!-- ===================== RF / device frequency ===================== -->
+
+  <rule id="100638" level="8" frequency="3" timeframe="3600">
+    <if_matched_sid>100623</if_matched_sid>
+    <same_field>device_mac</same_field>
+    <description>Omada: AP $(device_name) changed channel 3+ times in 1 hour.</description>
+    <group>omada_rf,omada_channel_change,</group>
+  </rule>
+
+  <rule id="100639" level="7" frequency="5" timeframe="600">
+    <if_matched_sid>100629</if_matched_sid>
+    <same_field>client_mac</same_field>
+    <description>Omada: client $(client_name) ($(client_mac)) failed to connect 5+ times in 10 minutes.</description>
+    <group>omada_client,omada_client_conn_fail,</group>
+  </rule>
+
+  <rule id="100641" level="10" frequency="3" timeframe="3600">
+    <if_matched_sid>100620</if_matched_sid>
+    <same_field>device_mac</same_field>
+    <description>Omada: $(device_type) $(device_name) disconnected 3+ times in 1 hour.</description>
+    <group>omada_device,omada_device_down,omada_flap,</group>
+  </rule>
+
+  <!-- ===================== Audit refinements (children of 100605) ===================== -->
+
+  <!-- Controller login failure as an audit entry (Global Audit Logs: ACCOUNT / USER_ACTIVITY).
+       Replaces the LOGIN_FL event, which this controller no longer lists. GUESSED wording:
+       the only real login audit line is the success one (100609). Must stay above 100642. -->
+  <rule id="100648" level="8">
+    <if_sid>100605</if_sid>
+    <field name="operation" type="pcre2">(?i)log(?:ged)? ?in.{0,20}fail|fail\w* to log ?in|login fail|wrong password|incorrect password</field>
+    <description>Omada audit: controller login failed: $(operation)</description>
+    <group>omada_audit,omada_global,authentication_failed,</group>
+  </rule>
+
+  <!-- 3+ audit login failures in 5 minutes (replaces old 100640). -->
+  <rule id="100649" level="10" frequency="3" timeframe="300">
+    <if_matched_sid>100648</if_matched_sid>
+    <description>Omada audit: 3+ failed controller logins in 5 minutes.</description>
+    <group>omada_audit,omada_global,authentication_failures,</group>
+  </rule>
+
+  <!-- Audit entry that reports a failed operation. -->
+  <rule id="100642" level="6">
+    <if_sid>100605</if_sid>
+    <field name="operation" type="pcre2">(?i)\bfail</field>
+    <description>Omada audit: operation failed: $(operation)</description>
+    <group>omada_audit,omada_audit_fail,</group>
+  </rule>
+
+  <!-- Admin, account, API or webhook changes. -->
+  <rule id="100643" level="7">
+    <if_sid>100605</if_sid>
+    <field name="operation" type="pcre2">(?i)\b(?:account|admin|administrator|password|role|open api|platform integration|webhook|remote logging|log notification|cloud access)\b</field>
+    <description>Omada audit: admin or integration change: $(operation)</description>
+    <group>omada_audit,omada_audit_admin,</group>
+  </rule>
+
+  <!-- Wi-Fi / radio configuration change (channel, power, width, SSID). Matches operation or the new value. -->
+  <rule id="100644" level="5">
+    <if_sid>100605</if_sid>
+    <regex type="pcre2">(?i)\b(?:channel|channelWidth|txPower|tx power|radio|wlan|ssid|band steering|mesh|roaming)\b</regex>
+    <description>Omada audit: Wi-Fi configuration change: $(operation)</description>
+    <group>omada_audit,omada_audit_wifi,</group>
+  </rule>
+
+</group>

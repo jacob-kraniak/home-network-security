@@ -1,0 +1,182 @@
+level,kind,key,shortMsg,module,alertLevel,deviceTypes,clientTypes,webhookCapable,inBothLists,tplinkGuide,note
+global,alert,PRIMARY_SECOND_SWITCHING,Primary-Second Switching,System,Warning,,,True,False,not listed,
+global,alert,NODE_DISCONNECT,Node was disconnected,System,Warning,,,True,False,not listed,
+global,event,AUTO_BK_OK,Backup Schedule Executed,System,,,,True,False,name differs: 'Auto Backup Executed',
+global,event,AUTO_BK_FL,Backup Schedule Failed,System,,,,True,False,name differs: 'Auto Backup Failed',
+global,event,EMAIL_LIMIT_REACHED,Email Limit Reached,System,,,,True,False,same name,
+global,event,MNG_PORT_C,Controller Access Port Changed,System,,,,True,False,same name,
+global,event,PRT_PORT_C,Portal Port Changed,System,,,,True,False,same name,
+global,event,DEVICE_LIST_MAIL_FL,Device List Schedule Mail Failed,System,,,,True,False,same name,
+global,event,DEVICE_LIST_SCHEDULE_EXECUTED,Device List Schedule Executed,System,,,,True,False,same name,
+global,event,GLOBAL_LOG_MAIL_OK,Global Logs Mailed Automatically,System,,,,True,False,same name,
+global,event,GLOBAL_LOG_MAIL_FL,Automatic Global Logs Mail Failed,System,,,,True,False,same name,
+global,event,GLOBAL_LOG_SRV_OK,Global Logs Sent to Log Server,System,,,,True,False,same name,
+global,event,GLOBAL_LOG_SRV_FL,Sending Global Logs to Log Server Failed,System,,,,True,False,same name,
+global,event,CONNECTED_CLOUD_ACCESS_SUCCESS,Cloud Access Success,System,,,,True,False,same name,
+global,event,CLOUD_ACCESS_CONNECTION_FAILED,Network Disconnection,System,,,,True,False,same name,
+global,event,CLOSE_CLOUD_ACCESS_SUCCESS,Cloud Access Closed,System,,,,True,False,same name,
+global,event,DEV_DISCOVER,Device Discovered,Device,,olt;gateway;ap;switch,,True,False,same name,
+global,event,NODE_CONNECT,Node was connected,System,,,,True,False,not listed,
+global,event,ANOMALY_EVENT_FULL,Too Many Incidents,System,,,,True,False,not listed,
+site,alert,OSW_DET_STORM,Switch Detected Storm,Device,Warning,switch,,True,False,same name,A broadcast/multicast storm crossed the storm-control threshold.
+site,alert,OSW_DET_LOOP,Detected Loops,Device,Warning,switch,,True,False,same name,Switch loop detection fired. Loops can take down the whole LAN.
+site,alert,OSW_PB,Port Blocked,Device,Warning,switch,,True,False,same name,A switch port was blocked (loop prevention).
+site,alert,OSW_TOPO_C,STP Topology Changed,Device,Information,switch,,True,False,same name,STP topology change (alert list). Shares its shortMsg with OSW_STP_FWD.
+site,alert,OSG_WAN_DOWN,WAN is down,Device,Warning,gateway,,True,False,same name,A WAN link went down.
+site,alert,WAN_LINK_BACKUP,WAN Link Backup,Device,Information,gateway,,True,False,same name,
+site,alert,WAN_ONLINE_DETECTION,WAN Online Detection,Device,Information,gateway,,True,False,same name,
+site,alert,PHYSICAL_PORT_CONNECTION,Physical Port Connection,Device,Information,gateway,,True,False,not listed,
+site,alert,OSG_PPPOE_FL,PPPoE Connection Failed,Device,Error,gateway,,True,False,same name,PPPoE session to the ISP failed.
+site,alert,WAN_IP_O_F,WAN IP address Obtaining Failed,Device,Error,gateway,,True,False,same name,The gateway could not obtain a WAN IP (DHCP/PPPoE upstream problem).
+site,alert,OSG_IPSEC_FL,IPsec Connection Disconnected,Device,Warning,gateway,,True,False,same name,Site-to-site IPsec tunnel went down.
+site,alert,OSG_C_VPN_FL,PPTP/L2TP Client Connection Failed,Device,Warning,gateway,,True,False,same name,
+site,alert,ADOPTED_ACCOUNT_DELETED,OLT Adopted Account Deleted,Device,Warning,olt,,True,False,not listed,
+site,alert,PASSWORD_CHANGE_OF_ADOPTED_ACCOUNT,OLT Adopted Account Password Changed,Device,Warning,olt,,True,False,not listed,
+site,alert,LEVEL_CHANGE_OF_ADOPTED_ACCOUNT,OLT Adopted Account Level Changed,Device,Warning,olt,,True,False,not listed,
+site,alert,LOG_ONU_IS_OFFLINE,ONU Disconnected,Device,Warning,,,True,True,not listed,ONU (fiber terminal) went offline. Appears in both lists. Only relevant with an Omada OLT.
+site,alert,LOG_ONU_LOSS_OF_SIGNAL,ONU Loss of Signal,Device,Warning,,,True,False,not listed,
+site,alert,LOG_ONU_LOSS_OF_FRAME,ONU Loss of Frames,Device,Warning,,,True,False,not listed,
+site,alert,LOG_ONU_LOSS_OF_PLOAM,ONU Loss of PLOAM,Device,Warning,,,True,False,not listed,
+site,alert,LOG_ONU_SIGNAL_FAILED,ONU Signal Transmission Failed,Device,Warning,,,True,False,not listed,
+site,alert,LOG_ONU_STARTUP_FAILED,ONU Startup Failed,Device,Warning,,,True,False,not listed,
+site,alert,LOG_ONU_DYING_GASP,ONU Dying Gasp,Device,Warning,,,True,False,not listed,ONU reported loss of power before going offline. Only relevant with an Omada OLT.
+site,alert,DST_C_FAIL,DST configuration error.,System,Error,,,True,False,same name,Daylight-saving-time configuration error; timestamps may be off.
+site,alert,DEV_DISCONN,Device Disconnected,Device,Error,olt;gateway;ap;switch,,True,True,same name,"The controller lost contact with an adopted device (AP, switch, gateway, OLT). Appears in both the alert and the event list."
+site,alert,AP_ISOLATE,EAP Isolated,Device,Error,ap,,True,True,same name,The AP lost its wired uplink (often a mesh fallback). Clients on it may lose connectivity.
+site,alert,DEV_C_DSYNC,Device Configurations Desynchronized,Device,Error,gateway;ap;switch,,True,True,same name,Device config no longer matches what the controller pushed. Appears in both lists.
+site,alert,OSG_ATK,Gateway Detected Attack,Device,Warning,gateway,,True,False,same name,"The gateway's attack defense detected an attack (flood, scan and similar)."
+site,alert,OSG_SF_ATK,Gateway Detected Stationary Flood Attack,Device,Warning,gateway,,True,False,same name,Gateway detected a stationary flood attack.
+site,alert,OSG_ARP_ATK,Gateway Detected ARP Conflicts,Device,Warning,gateway,,True,False,same name,Gateway detected ARP conflicts (possible spoofing or a duplicate IP).
+site,alert,OSG_LARGE_PING_ATTACK,Large Ping Attack,Device,Warning,gateway,,True,False,same name,Gateway detected oversized ICMP (ping) traffic.
+site,alert,OSG_DHCP_LEASE_POOL_EXHAUSTED,The DHCP lease pool is exhausted,Device,Warning,gateway,,True,False,same name,A DHCP pool has no free leases; new clients can't get an address.
+site,alert,OSG_ROGUE_DHCP_SERVER_DETECTED,A rogue DHCP server is detected,Device,Warning,gateway,,True,False,same name,Another DHCP server is answering on a gateway network. Common cause: a consumer router plugged in as a client.
+site,alert,OSG_IP_CONFLICT_DETECTED,An IP conflict is detected,Device,Warning,gateway,,True,False,same name,Two hosts are using the same IP address.
+site,alert,MANAGE_INTERFACE_CHANGED,OLT Manage Interface Changed,Device,Warning,olt,,True,False,not listed,
+site,alert,LOG_CPU_LOAD_EXCEED,OLT CPU Load Exceed,Device,Warning,olt,,True,False,not listed,
+site,alert,LOG_MEM_LOAD_EXCEED,OLT Memory Load Exceed,Device,Warning,olt,,True,False,not listed,
+site,alert,LOG_ONU_SIGNAL_DEGRADE,ONU Signal Degrade,Device,Warning,,,True,False,not listed,
+site,alert,LOG_ONU_PHYSICAL_EQUIP_ERR_RECEIVED,ONU Fault PLOAM Received,Device,Warning,,,True,False,not listed,
+site,alert,LOG_ONU_PST_PLOAM_RECEIVED,ONU PST PLOAM Received,Device,Warning,,,True,False,not listed,
+site,alert,LOG_ONU_UNKNOWN_PLOAM_RECEIVED,ONU Unknown PLOAM Received,Device,Warning,,,True,False,not listed,
+site,alert,LOG_ONU_TRANSMISSION_INTERFERENCE_THRESHOLD,ONU TIW Exceed,Device,Warning,,,True,False,not listed,
+site,alert,LOG_ONT_REMOTE_ERROR_INDICATION,ONU Error Reported(Downstream),Device,Warning,,,True,False,not listed,
+site,alert,LOG_ONT_ONU_ERROR_INDICATION,ONU Error Reported(Upstream),Device,Warning,,,True,False,not listed,
+site,alert,LOG_SERVICE_PROFILE_CAPABILITY_MATCH_FAILED,ONU Capability Failed to Match Profile,Device,Warning,,,True,False,not listed,
+site,alert,LOG_PORT_INGRESS_REACH,OLT Limitation of ingress bandwidth,Device,Warning,olt,,True,False,not listed,
+site,alert,LOG_PORT_EGRESS_REACH,OLT Limitation of egress bandwidth,Device,Warning,olt,,True,False,not listed,
+site,alert,LOG_BCSTORM_CONTROL_REACH,OLT Broadcast Storm,Device,Warning,olt,,True,False,not listed,
+site,alert,LOG_MCSTORM_CONTROL_REACH,OLT Multicast Storm,Device,Warning,olt,,True,False,not listed,
+site,alert,LOG_UNKSTORM_CONTROL_REACH,OLT Unicast Storm,Device,Warning,olt,,True,False,not listed,
+site,alert,LOG_PORT_STORM_CONTROL_SHUTDOWN,OLT Port Shutdown (Storm Control),Device,Warning,olt,,True,False,not listed,
+site,alert,AUTO_ADD_MAC_FILTER_FL,Automatic Add MAC Filtering Allow List Failed,Device,Warning,gateway,,True,False,not listed,
+site,alert,REBOOT_RECOVERY,IntelliRecover - Reboot Recovery Initiated,System,Information,ap,,True,False,not listed,IntelliRecover started an automatic reboot to recover an AP.
+site,alert,REBOOT_RECOVERY_FAIL,IntelliRecover - Reboot Recovery Failed,System,Error,,,True,False,not listed,IntelliRecover reboot did not bring the device back.
+site,alert,REBOOT_RECOVERY_EXCEED_LIMIT,IntelliRecover - Retry Limit Exceeded,System,Error,,,True,False,not listed,
+site,alert,DEVICE_MONITOR_STATUS_LINK_DOWN,Device informed monitor link down,Device,Warning,gateway;ap;switch,,True,False,not listed,A device reported a monitored link down.
+site,alert,DEVICE_MONITOR_STATUS_LINK_ERROR,Device informed monitor link error,Device,Warning,gateway;ap;switch,,True,False,not listed,
+site,alert,DEVICE_MONITOR_STATUS_DEVICE_ERROR,Device informed monitor link internal error,Device,Warning,gateway;ap;switch,,True,False,not listed,
+site,alert,LAN_CONFLICT_AVOIDANCE,Gateway’s LAN segment is modified,System,Warning,,,True,False,not listed,The gateway changed a LAN segment to avoid a conflict (for example with the WAN subnet).
+site,alert,REPORT_SCHEDULE_REACH_RATE_LIMIT,Report export Schedule Failure,System,Warning,,,True,False,not listed,
+site,alert,MDNS_RULE_NOT_EFFECT,The mDNS rules are not working,System,Error,gateway,,True,False,not listed,Configured mDNS reflection rules are not working.
+site,alert,REPLACE_FAILED,Replace action failed,Device,Error,ap;switch,,True,False,not listed,
+site,alert,OSW_STORM_SHUTDOWN,Switch Storm Shutdown,Device,Warning,switch,,True,False,not listed,A switch port was shut down by storm control.
+site,alert,OSW_QOS_VLAN_EXCEED,Switch Qos for Vlan Rule Exceeded,Device,Warning,switch,,True,False,not listed,
+site,alert,OSW_QOS_RULE_EXCEED,Switch Qos Rule Exceeded,Device,Warning,switch,,True,False,not listed,
+site,alert,OSW_PWR_ERR,Switch Redundant Power Supply Failure,Device,Warning,switch,,True,False,not listed,Switch redundant power supply failure.
+site,alert,OSW_FAN_ERR,Switch Fan Failure,Device,Warning,switch,,True,False,not listed,Switch fan failure.
+site,alert,OSW_KEY_HEALING_MGMTVLAN_DNSV4_CLEAR_FAILED,Mgmt Vlan DnsV4 Cleared Failed Alert.,Device,Warning,switch,,True,False,not listed,
+site,alert,OSW_KEY_HEALING_MGMTVLAN_DNSV6_CLEAR_FAILED,Mgmt Vlan DnsV6 Cleared Failed Alert.,Device,Warning,switch,,True,False,not listed,
+site,alert,OSW_KEY_HEALING_MGMTVLAN_CREATE_FAILED,Mgmt Vlan Create Failed Alert.,Device,Critial,switch,,True,False,not listed,Switch self-healing could not recreate the management VLAN. The only alert with level 'Critial' (sic) in the capture.
+site,alert,OSW_KEY_HEALING_MGMTVLAN_CFG_FAILED,Mgmt Vlan Configured Failed Alert.,Device,Warning,switch,,True,False,not listed,
+site,alert,OSW_KEY_HEALING_SYSTEMIP_CFG_FAILED,System Ip Configured Failed Alert.,Device,Warning,switch,,True,False,not listed,
+site,alert,OSW_KEY_HEALING_MGMTVLAN_SET_FAILED,Mgmt Vlan Set Failed Alert.,Device,Warning,switch,,True,False,not listed,
+site,alert,OSW_DHCP_SNOOP_ALERT,Dhcp snoop alert,Device,Warning,switch,,True,False,not listed,DHCP snooping on a switch flagged an untrusted DHCP server or packet.
+site,alert,OSW_ARP_DETECTION_ALERT,Arp detection alert,Device,Warning,switch,,True,False,not listed,ARP inspection on a switch flagged a suspicious ARP packet.
+site,alert,OSW_INTERFACE_VLANIF_DOWN,Switch VLAN interface Down Event,Device,Information,switch,,True,False,not listed,
+site,alert,OSW_KEY_HEALING_INTF_RECOVER_FAILED,Netif Healing Recover Failed Alert.,Device,Warning,switch,,True,False,not listed,
+site,alert,OSW_KEY_HEALING_GATE_RECOVER_FAILED,Netif Healing Gate Recover Failed Alert.,Device,Warning,switch,,True,False,not listed,
+site,alert,OSW_OUI_BASED_VLAN_NUM_LIMIT_EXCEED,Switch OUI Based VLAN rules exceeded the maximum simultaneous entry limit,Device,Information,switch,,True,False,same name,
+site,alert,OSW_INSTALL_ROLLBACK,Failed To Upgrade,Device,Warning,switch,,True,False,not listed,A switch firmware upgrade failed.
+site,alert,OSG_OVPN_OP_ERR,OpenVPN Operation Failed,Device,Error,gateway,,True,False,not listed,
+site,alert,OSG_LAN_IP_CONFLICT,LAN IP Is Conflict With Other Interfaces,Device,Warning,gateway,,True,False,not listed,A gateway LAN IP overlaps another interface.
+site,alert,WAN_IP_OBTAIN,WAN IP address Obtaining,Device,Error,gateway,,True,False,not listed,
+site,event,DEV_IP_C,Device IP Changed,Device,,switch;gateway,,True,False,same name,A switch or gateway changed its IP address.
+site,event,AP_RADAR,EAP Detected Radar,Device,,ap,,True,False,same name,"DFS radar detected on a 5 GHz channel. The AP must vacate the channel, and connected clients drop or move."
+site,event,AP_CH_C,EAP Channel Changed,Device,,ap,,True,False,same name,"An AP changed channel, usually auto-channel reacting to interference. Several in an hour on one AP suggests a crowded band."
+site,event,AP_C_FL,Client Connection Failed (Wireless),Client,,,wireless,True,False,same name,"A wireless client tried and failed to connect (wrong key, auth timeout, RADIUS, and similar). Bursts from one client often mean a saved wrong password or a weak-signal edge."
+site,event,OSW_C_1X_OK,Client Authenticated with 802.1X,Client,,switch,wired,True,False,same name,
+site,event,OSW_C_1X_FL,802.1X Authentication Failed,Client,,switch,wired,True,False,same name,802.1X authentication failed on a switch port.
+site,event,OSG_BK_WAN_UP,Backup WAN Takes Effect,Device,,gateway,,True,False,same name,Traffic failed over to the backup WAN.
+site,event,OSG_IPSEC_FO,IPsec failover took effect,Device,,gateway,,True,False,same name,
+site,event,OSG_RC_VPN_OK,Remote PPTP/L2TP Client Connected,Device,,gateway,,True,False,same name,
+site,event,OSG_RC_VPN_FL,Remote PPTP/L2TP Client Connection Failed,Device,,gateway,,True,False,same name,
+site,event,OSG_RC_VPN_LO,Remote PPTP/L2TP Client Logged Out,Device,,gateway,,True,False,same name,
+site,event,OSG_DDNS,Gateway DDNS Module Information,Device,,gateway,,True,False,same name,
+site,event,OSG_IPSEC,Gateway IPsec Module Information,Device,,gateway,,True,False,same name,
+site,event,OSG_IPV6,Gateway IPv6 Module Information,Device,,gateway,,True,False,same name,
+site,event,OSG_PPP,Gateway PPP Module Information,Device,,gateway,,True,False,same name,
+site,event,OSG_PPPOE,Gateway PPPoE Module Information,Device,,gateway,,True,False,same name,
+site,event,OSG_SSL_VPN,Gateway SSL VPN Module Information,Device,,gateway,,True,False,same name,
+site,event,OSG_DHCP_C,Gateway DHCP Client Module Information,Device,,gateway,,True,False,same name,
+site,event,OSG_DHCP_S,Gateway DHCP Server Module Information,Device,,gateway,,True,False,same name,Gateway DHCP server messages (lease allocated/rejected). High volume.
+site,event,LOG_TRAFFIC_CLEAR,OLT Traffic Cleared,Device,,olt,,True,False,not listed,
+site,event,LOG_SRV_OK,Site Logs Sent to Log Server,System,,,,True,False,same name,
+site,event,LOG_SRV_FL,Sending Site Logs to Log Server Failed,System,,,,True,False,same name,The controller failed to send site logs to the remote log server. Worth alerting on if syslog is your pipeline.
+site,event,LOG_MAIL_OK,Logs Mailed Automatically,System,,,,True,False,same name,
+site,event,LOG_MAIL_FL,Automatic Logs Mail Failed,System,,,,True,False,same name,
+site,event,REBOOT_SC_OK,Reboot Schedule Executed,System,,,,True,False,same name,
+site,event,REBOOT_SC_FL,Reboot Schedule Execution Failed,System,,,,True,False,same name,
+site,event,POE_SC_OK,PoE Schedule Executed,System,,,,True,False,same name,
+site,event,POE_SC_FL,PoE Schedule Execution Failed,System,,,,True,False,same name,
+site,event,REPORT_SENDING_FAILED,Report Sending Failed,System,,,,True,False,same name,
+site,event,REPORT_SCHEDULE_EXECUTED,Report Schedule Executed,System,,,,True,False,same name,
+site,event,REPORT_GENERATION_FAILED,Report Generation Failed,System,,,,True,False,same name,
+site,event,SITE_DEVICE_LIST_MAIL_FL,Site Device List Schedule Mail Failed,System,,,,True,False,same name,
+site,event,SITE_DEVICE_LIST_SCHEDULE_EXECUTED,Site Device List Schedule Executed,System,,,,True,False,same name,
+site,event,INCIDENT_MAILED_FAILED,Incidents auto mailed failed,System,,,,True,False,same name,
+site,event,PORT_SC_OK,Port Schedule Executed,System,,,,True,False,same name,
+site,event,PORT_SC_FL,Port Schedule Execution Failed,System,,,,True,False,same name,
+site,event,SITE_NETWORK_CHECK_MAIL_FL,Site Network check Mail Failed,System,,,,True,False,same name,
+site,event,TERMINAL_MAIL_FL,Site Terminal Mail Failed,System,,,,True,False,same name,
+site,event,DEV_CONN,Device Connected,Device,,olt;gateway;ap;switch,,True,False,same name,A device connected to the controller.
+site,event,DEV_RECONN,Device Reconnected,Device,,olt;gateway;ap;switch,,True,False,not listed,A device reconnected after a disconnect. Useful for measuring outage length with DEV_DISCONN.
+site,event,DEV_DISCONN,Device Disconnected,Device,,olt;gateway;ap;switch,,True,True,same name,"The controller lost contact with an adopted device (AP, switch, gateway, OLT). Appears in both the alert and the event list."
+site,event,LOG_ONU_IS_ONLINE,ONU Connected,Device,,,,True,False,not listed,
+site,event,LOG_ONU_IS_OFFLINE,ONU Disconnected,Device,,,,True,True,not listed,ONU (fiber terminal) went offline. Appears in both lists. Only relevant with an Omada OLT.
+site,event,AP_ISOLATE,EAP Isolated,Device,,ap,,True,True,same name,The AP lost its wired uplink (often a mesh fallback). Clients on it may lose connectivity.
+site,event,DEV_C_DSYNC,Device Configurations Desynchronized,Device,,gateway;ap;switch,,True,True,same name,Device config no longer matches what the controller pushed. Appears in both lists.
+site,event,DEV_READOPT_FL,Automatic Device Readopt Failed,Device,,olt;gateway;ap;switch,,True,False,same name,The controller could not re-adopt a device automatically.
+site,event,W_C_ROAM,Client Roaming (Wireless),Client,,,wireless,True,False,same name,A client moved between APs; the line includes both APs and channels. Frequent back-and-forth roams point at overlapping coverage or a sticky client.
+site,event,W_C_DISCONN,Client Offline (Wireless),Client,,,wireless,True,False,same name,"A wireless client left. The syslog line carries the SSID, AP, connected time and traffic, but no reason code or RSSI. Repeats in a short window are the main signal of flapping clients."
+site,event,AP_C_OK,Client Online (Wireless),Client,,,wireless,True,False,same name,"A wireless client joined (SSID, AP, channel). Pair it with W_C_DISCONN to measure session length."
+site,event,L_C_DISCONN,Client Offline (Wired),Client,,,wired,True,False,same name,A wired client went offline.
+site,event,L_C_CONN,Client Online (Wired),Client,,,wired,True,False,same name,A wired client came online on a switch or gateway port.
+site,event,W_C_PRT_OK,Client Authenticated with Portal (Wireless),Client,,,wireless,True,False,same name,
+site,event,W_C_PRT_FL,Portal Authentication Failed (Wireless),Client,,,wireless,True,False,same name,Captive-portal authentication failed (wireless).
+site,event,W_C_PRT_EXP,Client Authentication Expired (Wireless),Client,,,wireless,True,False,same name,
+site,event,L_C_PTR_OK,Client Authenticated with Portal (Wired),Client,,,wired,True,False,same name,
+site,event,L_C_PTR_FL,Portal Authentication Failed (Wired),Client,,,wired,True,False,same name,
+site,event,L_C_AUTH_EXP,Client Authenticated Expired (Wired),Client,,,wired,True,False,same name,
+site,event,C_AUTH_OPT,Client Authorized/Unauthorized by Admin,Client,,,wired;wireless,True,False,same name,
+site,event,C_PRT_EXT,Client Authentication Extended by Admin,Client,,,wired;wireless,True,False,same name,
+site,event,DEV_CONN_REMEMBER,Remembered Device Readopted After Factory Reset,Device,,gateway;ap;switch,,True,False,not listed,A previously known device was re-adopted after a factory reset.
+site,event,REBOOT_RECOVERY_SUCCESS,IntelliRecover - Device Back Online,System,,,,True,False,not listed,IntelliRecover: the device is back online.
+site,event,NAT_TRAVERSAL_CLOSED,NAT Traversal Tunnel Closed,System,,,,True,False,not listed,
+site,event,REPLACE_SUCCEED,Replace action succeed,Device,,ap;switch,,True,False,not listed,
+site,event,OSW_LOOP_C,Loop Cleared,Device,,ap;switch,,True,False,same name,A previously detected loop has cleared.
+site,event,OSW_DEPEND_INFO,Ecs Info,Device,,switch,,True,False,not listed,
+site,event,OSW_STP_FWD,STP Topology Changed,Device,,switch,,True,False,not listed,STP port moved to forwarding (event list). Shares its shortMsg 'STP Topology Changed' with OSW_TOPO_C.
+site,event,OSW_STP_BLOCK,STP Port Blocked,Device,,switch,,True,False,not listed,STP put a port into blocking.
+site,event,OSW_VLAN_8021Q_CFG_FAIL,VLAN Configuration Fail,Device,,switch,,True,False,not listed,
+site,event,OSW_LAG_PORT_UP,LAG Member Port Up Event,Device,,switch,,True,False,not listed,
+site,event,OSW_LAG_PORT_DOWN,LAG Member Port Down Event,Device,,switch,,True,False,not listed,
+site,event,OSW_KEY_HEALING_INTF_CHECK_FAILED,Netif Healing Check Failed Alert.,Device,,switch,,True,False,not listed,
+site,event,OSW_KEY_HEALING_INTF_RECOVER_NOT_EXEC,Netif Healing Not Exec Failed Alert.,Device,,switch,,True,False,not listed,
+site,event,OSW_OUI_BASED_VLAN_EFFECT,Switch OUI Based VLAN rule applied,Device,,switch,,True,False,same name,
+site,event,OSW_INSTALL_REBOOT,Device Automatically Rebooted,Device,,switch,,True,False,not listed,A switch rebooted itself (for example after an upgrade).
+site,event,OSW_INSTALL_ROLLBACK_FAILED,Failed To Rollback,Device,,switch,,True,False,not listed,
+site,event,OSG_PRI_WAN_UP,Primary WAN Takes Effect,Device,,gateway,,True,False,name differs: 'Primary WAN Recovered',Traffic is back on the primary WAN. TP-Link's guide calls this 'Primary WAN Recovered'.
+site,event,OSG_NHRP,Gateway SDWAN Module Information,Device,,gateway,,True,False,not listed,
+site,event,OSG_OPENVPN,Gateway OpenVPN Module Information,Device,,gateway,,True,False,not listed,
+site,event,OSG_MAPE,Gateway MAP-E Module Information,Device,,gateway,,True,False,not listed,
+site,event,OSG_DSLITE,Gateway DS-Lite Module Information,Device,,gateway,,True,False,not listed,

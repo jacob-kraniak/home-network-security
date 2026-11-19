@@ -1,0 +1,2899 @@
+{
+  "meta": {
+    "name": "Omada alert/event dictionary",
+    "captured": "2026-11-18",
+    "controller": "Omada Software Controller (version: <fill in>)",
+    "method": "Notification-settings JSON (Global and Site), read-only. Per-instance fields (enable, email, webhook on/off) removed.",
+    "webhookCapable": "true when the controller exposes a per-type webhook flag for the key. TP-Link's Open API says that flag applies to Omada Pro controllers only; behaviour on software controllers is unverified.",
+    "counts": {
+      "global_alerts": 2,
+      "global_events": 17,
+      "site_alerts": 82,
+      "site_events": 80,
+      "site_in_both_lists": [
+        "AP_ISOLATE",
+        "DEV_C_DSYNC",
+        "DEV_DISCONN",
+        "LOG_ONU_IS_OFFLINE"
+      ],
+      "site_unique_keys": 158,
+      "rows": 181,
+      "site_in_guide_not_captured": [
+        "ADV_FEA_EN",
+        "AP_ROLL_UP",
+        "C_BLOCK",
+        "C_UNBLOCK",
+        "DEV_ADOPT_BATCH",
+        "DEV_ADOPT_FL",
+        "DEV_ADOPT_OK",
+        "DEV_FORGET_BATCH",
+        "DEV_FORGET_FL",
+        "DEV_FORGET_OK",
+        "DEV_MAN_UP_FL",
+        "DEV_MAN_UP_OK",
+        "DEV_MOVED_FL",
+        "DEV_MOVED_OK",
+        "DEV_READOPT_OK",
+        "DEV_REBOOT",
+        "DEV_REBOOT_FL",
+        "DEV_UP_CANCEL",
+        "DEV_UP_OL_FL",
+        "DEV_UP_OL_OK",
+        "FORM_ADD",
+        "FORM_DEL",
+        "MVLAN_CH",
+        "OSG_C_VPN_OK",
+        "OSG_IPSEC_OK",
+        "OSG_PPPOE_OK",
+        "OSG_WAN_UP",
+        "SSID_OPT",
+        "STACK_FORGET_FL",
+        "STACK_FORGET_OK",
+        "STACK_MAN_UP_FL",
+        "STACK_MAN_UP_OK",
+        "STACK_OPT",
+        "STACK_UP_OL_FL",
+        "STACK_UP_OL_OK",
+        "VOCH_ADD",
+        "VOCH_DEL",
+        "WLAN_OPT"
+      ],
+      "site_captured_not_in_guide": 80,
+      "global_in_guide_not_captured": [
+        "HS_LOGIN_FL",
+        "HS_LOGIN_OK",
+        "LOGIN_FL",
+        "LOGIN_OK",
+        "LOG_FULL",
+        "NETWORK_CHECK_MAIL_FL",
+        "RO_O_SS",
+        "SITE_ADD",
+        "SITE_MIGR"
+      ],
+      "global_captured_not_in_guide": [
+        "ANOMALY_EVENT_FULL",
+        "NODE_CONNECT",
+        "NODE_DISCONNECT",
+        "PRIMARY_SECOND_SWITCHING"
+      ]
+    }
+  },
+  "entries": [
+    {
+      "level": "global",
+      "kind": "alert",
+      "key": "PRIMARY_SECOND_SWITCHING",
+      "shortMsg": "Primary-Second Switching",
+      "module": "System",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "alert",
+      "key": "NODE_DISCONNECT",
+      "shortMsg": "Node was disconnected",
+      "module": "System",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "AUTO_BK_OK",
+      "shortMsg": "Backup Schedule Executed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "name differs: 'Auto Backup Executed'",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "AUTO_BK_FL",
+      "shortMsg": "Backup Schedule Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "name differs: 'Auto Backup Failed'",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "EMAIL_LIMIT_REACHED",
+      "shortMsg": "Email Limit Reached",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "MNG_PORT_C",
+      "shortMsg": "Controller Access Port Changed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "PRT_PORT_C",
+      "shortMsg": "Portal Port Changed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "DEVICE_LIST_MAIL_FL",
+      "shortMsg": "Device List Schedule Mail Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "DEVICE_LIST_SCHEDULE_EXECUTED",
+      "shortMsg": "Device List Schedule Executed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "GLOBAL_LOG_MAIL_OK",
+      "shortMsg": "Global Logs Mailed Automatically",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "GLOBAL_LOG_MAIL_FL",
+      "shortMsg": "Automatic Global Logs Mail Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "GLOBAL_LOG_SRV_OK",
+      "shortMsg": "Global Logs Sent to Log Server",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "GLOBAL_LOG_SRV_FL",
+      "shortMsg": "Sending Global Logs to Log Server Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "CONNECTED_CLOUD_ACCESS_SUCCESS",
+      "shortMsg": "Cloud Access Success",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "CLOUD_ACCESS_CONNECTION_FAILED",
+      "shortMsg": "Network Disconnection",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "CLOSE_CLOUD_ACCESS_SUCCESS",
+      "shortMsg": "Cloud Access Closed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "DEV_DISCOVER",
+      "shortMsg": "Device Discovered",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "olt",
+        "gateway",
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "NODE_CONNECT",
+      "shortMsg": "Node was connected",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "global",
+      "kind": "event",
+      "key": "ANOMALY_EVENT_FULL",
+      "shortMsg": "Too Many Incidents",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_DET_STORM",
+      "shortMsg": "Switch Detected Storm",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "A broadcast/multicast storm crossed the storm-control threshold."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_DET_LOOP",
+      "shortMsg": "Detected Loops",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "Switch loop detection fired. Loops can take down the whole LAN."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_PB",
+      "shortMsg": "Port Blocked",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "A switch port was blocked (loop prevention)."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_TOPO_C",
+      "shortMsg": "STP Topology Changed",
+      "module": "Device",
+      "alertLevel": "Information",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "STP topology change (alert list). Shares its shortMsg with OSW_STP_FWD."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSG_WAN_DOWN",
+      "shortMsg": "WAN is down",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "A WAN link went down."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "WAN_LINK_BACKUP",
+      "shortMsg": "WAN Link Backup",
+      "module": "Device",
+      "alertLevel": "Information",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "WAN_ONLINE_DETECTION",
+      "shortMsg": "WAN Online Detection",
+      "module": "Device",
+      "alertLevel": "Information",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "PHYSICAL_PORT_CONNECTION",
+      "shortMsg": "Physical Port Connection",
+      "module": "Device",
+      "alertLevel": "Information",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSG_PPPOE_FL",
+      "shortMsg": "PPPoE Connection Failed",
+      "module": "Device",
+      "alertLevel": "Error",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "PPPoE session to the ISP failed."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "WAN_IP_O_F",
+      "shortMsg": "WAN IP address Obtaining Failed",
+      "module": "Device",
+      "alertLevel": "Error",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "The gateway could not obtain a WAN IP (DHCP/PPPoE upstream problem)."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSG_IPSEC_FL",
+      "shortMsg": "IPsec Connection Disconnected",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "Site-to-site IPsec tunnel went down."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSG_C_VPN_FL",
+      "shortMsg": "PPTP/L2TP Client Connection Failed",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "ADOPTED_ACCOUNT_DELETED",
+      "shortMsg": "OLT Adopted Account Deleted",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "olt"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "PASSWORD_CHANGE_OF_ADOPTED_ACCOUNT",
+      "shortMsg": "OLT Adopted Account Password Changed",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "olt"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LEVEL_CHANGE_OF_ADOPTED_ACCOUNT",
+      "shortMsg": "OLT Adopted Account Level Changed",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "olt"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONU_IS_OFFLINE",
+      "shortMsg": "ONU Disconnected",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": true,
+      "tplinkGuide": "not listed",
+      "note": "ONU (fiber terminal) went offline. Appears in both lists. Only relevant with an Omada OLT."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONU_LOSS_OF_SIGNAL",
+      "shortMsg": "ONU Loss of Signal",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONU_LOSS_OF_FRAME",
+      "shortMsg": "ONU Loss of Frames",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONU_LOSS_OF_PLOAM",
+      "shortMsg": "ONU Loss of PLOAM",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONU_SIGNAL_FAILED",
+      "shortMsg": "ONU Signal Transmission Failed",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONU_STARTUP_FAILED",
+      "shortMsg": "ONU Startup Failed",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONU_DYING_GASP",
+      "shortMsg": "ONU Dying Gasp",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "ONU reported loss of power before going offline. Only relevant with an Omada OLT."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "DST_C_FAIL",
+      "shortMsg": "DST configuration error.",
+      "module": "System",
+      "alertLevel": "Error",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "Daylight-saving-time configuration error; timestamps may be off."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "DEV_DISCONN",
+      "shortMsg": "Device Disconnected",
+      "module": "Device",
+      "alertLevel": "Error",
+      "deviceTypes": [
+        "olt",
+        "gateway",
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": true,
+      "tplinkGuide": "same name",
+      "note": "The controller lost contact with an adopted device (AP, switch, gateway, OLT). Appears in both the alert and the event list."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "AP_ISOLATE",
+      "shortMsg": "EAP Isolated",
+      "module": "Device",
+      "alertLevel": "Error",
+      "deviceTypes": [
+        "ap"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": true,
+      "tplinkGuide": "same name",
+      "note": "The AP lost its wired uplink (often a mesh fallback). Clients on it may lose connectivity."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "DEV_C_DSYNC",
+      "shortMsg": "Device Configurations Desynchronized",
+      "module": "Device",
+      "alertLevel": "Error",
+      "deviceTypes": [
+        "gateway",
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": true,
+      "tplinkGuide": "same name",
+      "note": "Device config no longer matches what the controller pushed. Appears in both lists."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSG_ATK",
+      "shortMsg": "Gateway Detected Attack",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "The gateway's attack defense detected an attack (flood, scan and similar)."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSG_SF_ATK",
+      "shortMsg": "Gateway Detected Stationary Flood Attack",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "Gateway detected a stationary flood attack."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSG_ARP_ATK",
+      "shortMsg": "Gateway Detected ARP Conflicts",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "Gateway detected ARP conflicts (possible spoofing or a duplicate IP)."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSG_LARGE_PING_ATTACK",
+      "shortMsg": "Large Ping Attack",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "Gateway detected oversized ICMP (ping) traffic."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSG_DHCP_LEASE_POOL_EXHAUSTED",
+      "shortMsg": "The DHCP lease pool is exhausted",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "A DHCP pool has no free leases; new clients can't get an address."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSG_ROGUE_DHCP_SERVER_DETECTED",
+      "shortMsg": "A rogue DHCP server is detected",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "Another DHCP server is answering on a gateway network. Common cause: a consumer router plugged in as a client."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSG_IP_CONFLICT_DETECTED",
+      "shortMsg": "An IP conflict is detected",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "Two hosts are using the same IP address."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "MANAGE_INTERFACE_CHANGED",
+      "shortMsg": "OLT Manage Interface Changed",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "olt"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_CPU_LOAD_EXCEED",
+      "shortMsg": "OLT CPU Load Exceed",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "olt"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_MEM_LOAD_EXCEED",
+      "shortMsg": "OLT Memory Load Exceed",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "olt"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONU_SIGNAL_DEGRADE",
+      "shortMsg": "ONU Signal Degrade",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONU_PHYSICAL_EQUIP_ERR_RECEIVED",
+      "shortMsg": "ONU Fault PLOAM Received",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONU_PST_PLOAM_RECEIVED",
+      "shortMsg": "ONU PST PLOAM Received",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONU_UNKNOWN_PLOAM_RECEIVED",
+      "shortMsg": "ONU Unknown PLOAM Received",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONU_TRANSMISSION_INTERFERENCE_THRESHOLD",
+      "shortMsg": "ONU TIW Exceed",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONT_REMOTE_ERROR_INDICATION",
+      "shortMsg": "ONU Error Reported(Downstream)",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_ONT_ONU_ERROR_INDICATION",
+      "shortMsg": "ONU Error Reported(Upstream)",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_SERVICE_PROFILE_CAPABILITY_MATCH_FAILED",
+      "shortMsg": "ONU Capability Failed to Match Profile",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_PORT_INGRESS_REACH",
+      "shortMsg": "OLT Limitation of ingress bandwidth",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "olt"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_PORT_EGRESS_REACH",
+      "shortMsg": "OLT Limitation of egress bandwidth",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "olt"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_BCSTORM_CONTROL_REACH",
+      "shortMsg": "OLT Broadcast Storm",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "olt"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_MCSTORM_CONTROL_REACH",
+      "shortMsg": "OLT Multicast Storm",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "olt"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_UNKSTORM_CONTROL_REACH",
+      "shortMsg": "OLT Unicast Storm",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "olt"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LOG_PORT_STORM_CONTROL_SHUTDOWN",
+      "shortMsg": "OLT Port Shutdown (Storm Control)",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "olt"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "AUTO_ADD_MAC_FILTER_FL",
+      "shortMsg": "Automatic Add MAC Filtering Allow List Failed",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "REBOOT_RECOVERY",
+      "shortMsg": "IntelliRecover - Reboot Recovery Initiated",
+      "module": "System",
+      "alertLevel": "Information",
+      "deviceTypes": [
+        "ap"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "IntelliRecover started an automatic reboot to recover an AP."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "REBOOT_RECOVERY_FAIL",
+      "shortMsg": "IntelliRecover - Reboot Recovery Failed",
+      "module": "System",
+      "alertLevel": "Error",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "IntelliRecover reboot did not bring the device back."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "REBOOT_RECOVERY_EXCEED_LIMIT",
+      "shortMsg": "IntelliRecover - Retry Limit Exceeded",
+      "module": "System",
+      "alertLevel": "Error",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "DEVICE_MONITOR_STATUS_LINK_DOWN",
+      "shortMsg": "Device informed monitor link down",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway",
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "A device reported a monitored link down."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "DEVICE_MONITOR_STATUS_LINK_ERROR",
+      "shortMsg": "Device informed monitor link error",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway",
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "DEVICE_MONITOR_STATUS_DEVICE_ERROR",
+      "shortMsg": "Device informed monitor link internal error",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway",
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "LAN_CONFLICT_AVOIDANCE",
+      "shortMsg": "Gateway’s LAN segment is modified",
+      "module": "System",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "The gateway changed a LAN segment to avoid a conflict (for example with the WAN subnet)."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "REPORT_SCHEDULE_REACH_RATE_LIMIT",
+      "shortMsg": "Report export Schedule Failure",
+      "module": "System",
+      "alertLevel": "Warning",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "MDNS_RULE_NOT_EFFECT",
+      "shortMsg": "The mDNS rules are not working",
+      "module": "System",
+      "alertLevel": "Error",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "Configured mDNS reflection rules are not working."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "REPLACE_FAILED",
+      "shortMsg": "Replace action failed",
+      "module": "Device",
+      "alertLevel": "Error",
+      "deviceTypes": [
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_STORM_SHUTDOWN",
+      "shortMsg": "Switch Storm Shutdown",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "A switch port was shut down by storm control."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_QOS_VLAN_EXCEED",
+      "shortMsg": "Switch Qos for Vlan Rule Exceeded",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_QOS_RULE_EXCEED",
+      "shortMsg": "Switch Qos Rule Exceeded",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_PWR_ERR",
+      "shortMsg": "Switch Redundant Power Supply Failure",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "Switch redundant power supply failure."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_FAN_ERR",
+      "shortMsg": "Switch Fan Failure",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "Switch fan failure."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_KEY_HEALING_MGMTVLAN_DNSV4_CLEAR_FAILED",
+      "shortMsg": "Mgmt Vlan DnsV4 Cleared Failed Alert.",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_KEY_HEALING_MGMTVLAN_DNSV6_CLEAR_FAILED",
+      "shortMsg": "Mgmt Vlan DnsV6 Cleared Failed Alert.",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_KEY_HEALING_MGMTVLAN_CREATE_FAILED",
+      "shortMsg": "Mgmt Vlan Create Failed Alert.",
+      "module": "Device",
+      "alertLevel": "Critial",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "Switch self-healing could not recreate the management VLAN. The only alert with level 'Critial' (sic) in the capture."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_KEY_HEALING_MGMTVLAN_CFG_FAILED",
+      "shortMsg": "Mgmt Vlan Configured Failed Alert.",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_KEY_HEALING_SYSTEMIP_CFG_FAILED",
+      "shortMsg": "System Ip Configured Failed Alert.",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_KEY_HEALING_MGMTVLAN_SET_FAILED",
+      "shortMsg": "Mgmt Vlan Set Failed Alert.",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_DHCP_SNOOP_ALERT",
+      "shortMsg": "Dhcp snoop alert",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "DHCP snooping on a switch flagged an untrusted DHCP server or packet."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_ARP_DETECTION_ALERT",
+      "shortMsg": "Arp detection alert",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "ARP inspection on a switch flagged a suspicious ARP packet."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_INTERFACE_VLANIF_DOWN",
+      "shortMsg": "Switch VLAN interface Down Event",
+      "module": "Device",
+      "alertLevel": "Information",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_KEY_HEALING_INTF_RECOVER_FAILED",
+      "shortMsg": "Netif Healing Recover Failed Alert.",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_KEY_HEALING_GATE_RECOVER_FAILED",
+      "shortMsg": "Netif Healing Gate Recover Failed Alert.",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_OUI_BASED_VLAN_NUM_LIMIT_EXCEED",
+      "shortMsg": "Switch OUI Based VLAN rules exceeded the maximum simultaneous entry limit",
+      "module": "Device",
+      "alertLevel": "Information",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSW_INSTALL_ROLLBACK",
+      "shortMsg": "Failed To Upgrade",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "A switch firmware upgrade failed."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSG_OVPN_OP_ERR",
+      "shortMsg": "OpenVPN Operation Failed",
+      "module": "Device",
+      "alertLevel": "Error",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "OSG_LAN_IP_CONFLICT",
+      "shortMsg": "LAN IP Is Conflict With Other Interfaces",
+      "module": "Device",
+      "alertLevel": "Warning",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "A gateway LAN IP overlaps another interface."
+    },
+    {
+      "level": "site",
+      "kind": "alert",
+      "key": "WAN_IP_OBTAIN",
+      "shortMsg": "WAN IP address Obtaining",
+      "module": "Device",
+      "alertLevel": "Error",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "DEV_IP_C",
+      "shortMsg": "Device IP Changed",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch",
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "A switch or gateway changed its IP address."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "AP_RADAR",
+      "shortMsg": "EAP Detected Radar",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "ap"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "DFS radar detected on a 5 GHz channel. The AP must vacate the channel, and connected clients drop or move."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "AP_CH_C",
+      "shortMsg": "EAP Channel Changed",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "ap"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "An AP changed channel, usually auto-channel reacting to interference. Several in an hour on one AP suggests a crowded band."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "AP_C_FL",
+      "shortMsg": "Client Connection Failed (Wireless)",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wireless"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "A wireless client tried and failed to connect (wrong key, auth timeout, RADIUS, and similar). Bursts from one client often mean a saved wrong password or a weak-signal edge."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_C_1X_OK",
+      "shortMsg": "Client Authenticated with 802.1X",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [
+        "wired"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_C_1X_FL",
+      "shortMsg": "802.1X Authentication Failed",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [
+        "wired"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "802.1X authentication failed on a switch port."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_BK_WAN_UP",
+      "shortMsg": "Backup WAN Takes Effect",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "Traffic failed over to the backup WAN."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_IPSEC_FO",
+      "shortMsg": "IPsec failover took effect",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_RC_VPN_OK",
+      "shortMsg": "Remote PPTP/L2TP Client Connected",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_RC_VPN_FL",
+      "shortMsg": "Remote PPTP/L2TP Client Connection Failed",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_RC_VPN_LO",
+      "shortMsg": "Remote PPTP/L2TP Client Logged Out",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_DDNS",
+      "shortMsg": "Gateway DDNS Module Information",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_IPSEC",
+      "shortMsg": "Gateway IPsec Module Information",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_IPV6",
+      "shortMsg": "Gateway IPv6 Module Information",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_PPP",
+      "shortMsg": "Gateway PPP Module Information",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_PPPOE",
+      "shortMsg": "Gateway PPPoE Module Information",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_SSL_VPN",
+      "shortMsg": "Gateway SSL VPN Module Information",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_DHCP_C",
+      "shortMsg": "Gateway DHCP Client Module Information",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_DHCP_S",
+      "shortMsg": "Gateway DHCP Server Module Information",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "Gateway DHCP server messages (lease allocated/rejected). High volume."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "LOG_TRAFFIC_CLEAR",
+      "shortMsg": "OLT Traffic Cleared",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "olt"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "LOG_SRV_OK",
+      "shortMsg": "Site Logs Sent to Log Server",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "LOG_SRV_FL",
+      "shortMsg": "Sending Site Logs to Log Server Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "The controller failed to send site logs to the remote log server. Worth alerting on if syslog is your pipeline."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "LOG_MAIL_OK",
+      "shortMsg": "Logs Mailed Automatically",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "LOG_MAIL_FL",
+      "shortMsg": "Automatic Logs Mail Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "REBOOT_SC_OK",
+      "shortMsg": "Reboot Schedule Executed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "REBOOT_SC_FL",
+      "shortMsg": "Reboot Schedule Execution Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "POE_SC_OK",
+      "shortMsg": "PoE Schedule Executed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "POE_SC_FL",
+      "shortMsg": "PoE Schedule Execution Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "REPORT_SENDING_FAILED",
+      "shortMsg": "Report Sending Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "REPORT_SCHEDULE_EXECUTED",
+      "shortMsg": "Report Schedule Executed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "REPORT_GENERATION_FAILED",
+      "shortMsg": "Report Generation Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "SITE_DEVICE_LIST_MAIL_FL",
+      "shortMsg": "Site Device List Schedule Mail Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "SITE_DEVICE_LIST_SCHEDULE_EXECUTED",
+      "shortMsg": "Site Device List Schedule Executed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "INCIDENT_MAILED_FAILED",
+      "shortMsg": "Incidents auto mailed failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "PORT_SC_OK",
+      "shortMsg": "Port Schedule Executed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "PORT_SC_FL",
+      "shortMsg": "Port Schedule Execution Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "SITE_NETWORK_CHECK_MAIL_FL",
+      "shortMsg": "Site Network check Mail Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "TERMINAL_MAIL_FL",
+      "shortMsg": "Site Terminal Mail Failed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "DEV_CONN",
+      "shortMsg": "Device Connected",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "olt",
+        "gateway",
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "A device connected to the controller."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "DEV_RECONN",
+      "shortMsg": "Device Reconnected",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "olt",
+        "gateway",
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "A device reconnected after a disconnect. Useful for measuring outage length with DEV_DISCONN."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "DEV_DISCONN",
+      "shortMsg": "Device Disconnected",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "olt",
+        "gateway",
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": true,
+      "tplinkGuide": "same name",
+      "note": "The controller lost contact with an adopted device (AP, switch, gateway, OLT). Appears in both the alert and the event list."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "LOG_ONU_IS_ONLINE",
+      "shortMsg": "ONU Connected",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "LOG_ONU_IS_OFFLINE",
+      "shortMsg": "ONU Disconnected",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": true,
+      "tplinkGuide": "not listed",
+      "note": "ONU (fiber terminal) went offline. Appears in both lists. Only relevant with an Omada OLT."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "AP_ISOLATE",
+      "shortMsg": "EAP Isolated",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "ap"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": true,
+      "tplinkGuide": "same name",
+      "note": "The AP lost its wired uplink (often a mesh fallback). Clients on it may lose connectivity."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "DEV_C_DSYNC",
+      "shortMsg": "Device Configurations Desynchronized",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway",
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": true,
+      "tplinkGuide": "same name",
+      "note": "Device config no longer matches what the controller pushed. Appears in both lists."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "DEV_READOPT_FL",
+      "shortMsg": "Automatic Device Readopt Failed",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "olt",
+        "gateway",
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "The controller could not re-adopt a device automatically."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "W_C_ROAM",
+      "shortMsg": "Client Roaming (Wireless)",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wireless"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "A client moved between APs; the line includes both APs and channels. Frequent back-and-forth roams point at overlapping coverage or a sticky client."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "W_C_DISCONN",
+      "shortMsg": "Client Offline (Wireless)",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wireless"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "A wireless client left. The syslog line carries the SSID, AP, connected time and traffic, but no reason code or RSSI. Repeats in a short window are the main signal of flapping clients."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "AP_C_OK",
+      "shortMsg": "Client Online (Wireless)",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wireless"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "A wireless client joined (SSID, AP, channel). Pair it with W_C_DISCONN to measure session length."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "L_C_DISCONN",
+      "shortMsg": "Client Offline (Wired)",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wired"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "A wired client went offline."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "L_C_CONN",
+      "shortMsg": "Client Online (Wired)",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wired"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "A wired client came online on a switch or gateway port."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "W_C_PRT_OK",
+      "shortMsg": "Client Authenticated with Portal (Wireless)",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wireless"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "W_C_PRT_FL",
+      "shortMsg": "Portal Authentication Failed (Wireless)",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wireless"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "Captive-portal authentication failed (wireless)."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "W_C_PRT_EXP",
+      "shortMsg": "Client Authentication Expired (Wireless)",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wireless"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "L_C_PTR_OK",
+      "shortMsg": "Client Authenticated with Portal (Wired)",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wired"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "L_C_PTR_FL",
+      "shortMsg": "Portal Authentication Failed (Wired)",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wired"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "L_C_AUTH_EXP",
+      "shortMsg": "Client Authenticated Expired (Wired)",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wired"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "C_AUTH_OPT",
+      "shortMsg": "Client Authorized/Unauthorized by Admin",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wired",
+        "wireless"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "C_PRT_EXT",
+      "shortMsg": "Client Authentication Extended by Admin",
+      "module": "Client",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [
+        "wired",
+        "wireless"
+      ],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "DEV_CONN_REMEMBER",
+      "shortMsg": "Remembered Device Readopted After Factory Reset",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway",
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "A previously known device was re-adopted after a factory reset."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "REBOOT_RECOVERY_SUCCESS",
+      "shortMsg": "IntelliRecover - Device Back Online",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "IntelliRecover: the device is back online."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "NAT_TRAVERSAL_CLOSED",
+      "shortMsg": "NAT Traversal Tunnel Closed",
+      "module": "System",
+      "alertLevel": "",
+      "deviceTypes": [],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "REPLACE_SUCCEED",
+      "shortMsg": "Replace action succeed",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_LOOP_C",
+      "shortMsg": "Loop Cleared",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "ap",
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": "A previously detected loop has cleared."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_DEPEND_INFO",
+      "shortMsg": "Ecs Info",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_STP_FWD",
+      "shortMsg": "STP Topology Changed",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "STP port moved to forwarding (event list). Shares its shortMsg 'STP Topology Changed' with OSW_TOPO_C."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_STP_BLOCK",
+      "shortMsg": "STP Port Blocked",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "STP put a port into blocking."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_VLAN_8021Q_CFG_FAIL",
+      "shortMsg": "VLAN Configuration Fail",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_LAG_PORT_UP",
+      "shortMsg": "LAG Member Port Up Event",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_LAG_PORT_DOWN",
+      "shortMsg": "LAG Member Port Down Event",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_KEY_HEALING_INTF_CHECK_FAILED",
+      "shortMsg": "Netif Healing Check Failed Alert.",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_KEY_HEALING_INTF_RECOVER_NOT_EXEC",
+      "shortMsg": "Netif Healing Not Exec Failed Alert.",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_OUI_BASED_VLAN_EFFECT",
+      "shortMsg": "Switch OUI Based VLAN rule applied",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "same name",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_INSTALL_REBOOT",
+      "shortMsg": "Device Automatically Rebooted",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": "A switch rebooted itself (for example after an upgrade)."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSW_INSTALL_ROLLBACK_FAILED",
+      "shortMsg": "Failed To Rollback",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "switch"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_PRI_WAN_UP",
+      "shortMsg": "Primary WAN Takes Effect",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "name differs: 'Primary WAN Recovered'",
+      "note": "Traffic is back on the primary WAN. TP-Link's guide calls this 'Primary WAN Recovered'."
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_NHRP",
+      "shortMsg": "Gateway SDWAN Module Information",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_OPENVPN",
+      "shortMsg": "Gateway OpenVPN Module Information",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_MAPE",
+      "shortMsg": "Gateway MAP-E Module Information",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    },
+    {
+      "level": "site",
+      "kind": "event",
+      "key": "OSG_DSLITE",
+      "shortMsg": "Gateway DS-Lite Module Information",
+      "module": "Device",
+      "alertLevel": "",
+      "deviceTypes": [
+        "gateway"
+      ],
+      "clientTypes": [],
+      "webhookCapable": true,
+      "inBothLists": false,
+      "tplinkGuide": "not listed",
+      "note": ""
+    }
+  ]
+}

@@ -58,6 +58,12 @@ Unchanged. See prior revision for the Phase 1 tables.
 | **Services** | [docs/services/self-hosted-services-roadmap.md](../services/self-hosted-services-roadmap.md) | Planned apps |
 | | [docs/services/document-digitization.md](../services/document-digitization.md) | Paperless-ngx |
 | | [docs/services/wazuh-omada-syslog.md](../services/wazuh-omada-syslog.md) | Wazuh data source: Omada syslog (2026-10-04) |
+| | [docs/services/omada-log-inventory/](../services/omada-log-inventory/README.md) | Public Omada alert/event dictionary from a live capture (2026-11-18): site, global, audit categories, JSON/CSV |
+| | [docs/services/omada-event-inventory.md](../services/omada-event-inventory.md) | HNS mapping of Omada types to syslog, webhook and Wazuh rules (2026-11-18) |
+| | [docs/services/omada-webhook-evaluation.md](../services/omada-webhook-evaluation.md) | Direct Omada webhook evaluation (2026-11-17) |
+| | [docs/services/omada-wazuh-realtime-INSTALL-STEPS.md](../services/omada-wazuh-realtime-INSTALL-STEPS.md) | Manual install steps: rules, Grok Bot integration, collector/push (2026-11-18) |
+| | [docs/configs/wazuh/rules/omada_realtime_rules.xml](../configs/wazuh/rules/omada_realtime_rules.xml) · [integrations/custom-grokbot](../configs/wazuh/integrations/custom-grokbot) | Wazuh rules 100620–100649 and real-time integration |
+| | [docs/configs/lab-watch/](../configs/lab-watch/lab-status-collect.py) · [docs/configs/omada/](../configs/omada/build-omada-dictionary.py) | Lab status collector/push, Omada read-only checker and dictionary generator |
 | | [docs/services/pihole-dns.md](../services/pihole-dns.md) | Pi-hole DNS deployment + VLAN enablement (2026-10-14) |
 | **Hardware** | [docs/inventory/devices-summary.md](../inventory/devices-summary.md) | M715q + Seagate USB + Omada kit |
 | | [docs/hardware/DECISIONS.md](../hardware/DECISIONS.md) | Acquisition notes |

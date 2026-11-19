@@ -1,0 +1,190 @@
+#!/var/ossec/framework/python/bin/python3
+"""Wazuh custom integration: POST selected alerts to a Grok Bot webhook in near real time.
+
+Install (CT 100, as root; see docs/services/omada-wazuh-realtime-INSTALL-STEPS.md):
+  install -o root -g wazuh -m 750 custom-grokbot /var/ossec/integrations/custom-grokbot
+  Secrets file (Jacob creates it; never committed):
+    /var/ossec/etc/grokbot-webhook.env   owner root:wazuh, mode 640
+      GROKBOT_WEBHOOK_URL=<webhook URL from the Grok Bot routine>
+      GROKBOT_WEBHOOK_KEY=<key/secret for that webhook>
+      # optional:
+      # GROKBOT_AUTH_HEADER=Authorization      (header name used for the key)
+      # GROKBOT_AUTH_SCHEME=Bearer             (prefix; set empty for a raw key)
+      # GROKBOT_DEDUP_SECONDS=300              (same rule + same client/AP sent once per window)
+      # GROKBOT_MAX_PER_MINUTE=20              (hard cap on posts per minute)
+
+wazuh-integratord calls: custom-grokbot <alert_file> [api_key] [hook_url] ...
+The api_key / hook_url arguments are accepted as a fallback only, so ossec.conf can stay
+free of secrets. Exit code is always 0 for "suppressed"; non-zero only on a real failure,
+which integratord logs to /var/ossec/logs/integrations.log. Never prints the key or URL.
+Python stdlib only (urllib), so it runs on the Wazuh-bundled interpreter.
+"""
+from __future__ import annotations
+
+import fcntl
+import json
+import os
+import stat
+import sys
+import time
+import urllib.error
+import urllib.request
+from pathlib import Path
+from typing import Any
+
+ENV_FILE = Path(os.environ.get("GROKBOT_ENV_FILE", "/var/ossec/etc/grokbot-webhook.env"))
+STATE_FILE = Path(os.environ.get("GROKBOT_STATE_FILE", "/var/ossec/var/run/grokbot-dedup.json"))
+LOG_FILE = Path("/var/ossec/logs/integrations.log")
+TIMEOUT = 10
+FULL_LOG_MAX = 2000
+# Decoded Omada fields worth forwarding (see omada_controller_decoders.xml).
+DATA_KEYS = (
+    "omada_site", "client_name", "client_mac", "client_ip", "ssid",
+    "from_ap_name", "from_ap_mac", "to_ap_name", "to_ap_mac", "from_channel", "to_channel",
+    "connected_time", "traffic", "device_type", "device_name", "device_mac",
+    "rssi", "reason", "operation",
+)
+# Field used to tell "the same thing again" apart, per rule group.
+DEDUP_FIELDS = ("client_mac", "from_ap_mac", "device_mac", "operation")
+
+
+def log(msg: str) -> None:
+    try:
+        with LOG_FILE.open("a", encoding="utf-8") as fh:
+            fh.write(f"{time.strftime('%Y/%m/%d %H:%M:%S')} custom-grokbot: {msg}\n")
+    except OSError:
+        pass
+
+
+def load_env(path: Path) -> dict[str, str]:
+    st = path.stat()
+    if st.st_mode & stat.S_IROTH or st.st_mode & stat.S_IWOTH:
+        raise PermissionError(f"{path} is world-accessible; chmod 640 it")
+    kv: dict[str, str] = {}
+    for raw in path.read_text(encoding="utf-8").splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        if line.startswith("export "):
+            line = line[7:].strip()
+        k, v = line.split("=", 1)
+        v = v.strip()
+        if len(v) >= 2 and v[0] == v[-1] and v[0] in "'\"":
+            v = v[1:-1]
+        kv[k.strip()] = v
+    return kv
+
+
+def build_payload(alert: dict[str, Any]) -> dict[str, Any]:
+    rule = alert.get("rule") or {}
+    data = alert.get("data") or {}
+    fields = {k: data[k] for k in DATA_KEYS if k in data and data[k] not in ("", None)}
+    full_log = str(alert.get("full_log") or "")
+    return {
+        "source": "wazuh",
+        "kind": "wazuh_alert",
+        "timestamp": alert.get("timestamp"),
+        "alert_id": alert.get("id"),
+        "rule": {
+            "id": rule.get("id"),
+            "level": rule.get("level"),
+            "description": rule.get("description"),
+            "groups": rule.get("groups") or [],
+            "firedtimes": rule.get("firedtimes"),
+            "frequency": rule.get("frequency"),
+        },
+        "manager": (alert.get("manager") or {}).get("name"),
+        "agent": (alert.get("agent") or {}).get("name"),
+        "location": alert.get("location"),
+        "decoder": (alert.get("decoder") or {}).get("name"),
+        "fields": fields,
+        "full_log": full_log[:FULL_LOG_MAX],
+    }
+
+
+def should_send(payload: dict[str, Any], dedup_s: int, max_per_min: int) -> tuple[bool, str]:
+    """Shared, locked state so parallel integratord children do not double-post."""
+    rule_id = str(payload["rule"].get("id"))
+    fields = payload["fields"]
+    order = ("from_ap_mac",) + DEDUP_FIELDS if "omada_ap_flap" in payload["rule"]["groups"] else DEDUP_FIELDS
+    subject = next((str(fields[f]) for f in order if f in fields), "-")
+    key = f"{rule_id}|{subject}"
+    now = time.time()
+    STATE_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with STATE_FILE.open("a+", encoding="utf-8") as fh:
+        fcntl.flock(fh, fcntl.LOCK_EX)
+        fh.seek(0)
+        try:
+            state = json.loads(fh.read() or "{}")
+        except json.JSONDecodeError:
+            state = {}
+        seen = {k: t for k, t in (state.get("seen") or {}).items() if now - t < max(dedup_s, 60)}
+        sent = [t for t in (state.get("sent") or []) if now - t < 60]
+        if dedup_s > 0 and key in seen and now - seen[key] < dedup_s:
+            return False, f"dedup {key}"
+        if len(sent) >= max_per_min:
+            return False, f"rate cap {max_per_min}/min"
+        seen[key] = now
+        sent.append(now)
+        fh.seek(0)
+        fh.truncate()
+        fh.write(json.dumps({"seen": seen, "sent": sent}))
+    return True, key
+
+
+def post(url: str, key: str, header: str, scheme: str, payload: dict[str, Any]) -> int:
+    body = json.dumps(payload).encode("utf-8")
+    headers = {"Content-Type": "application/json", "User-Agent": "wazuh-custom-grokbot/1"}
+    if key:
+        headers[header] = f"{scheme} {key}".strip() if scheme else key
+    req = urllib.request.Request(url, data=body, headers=headers, method="POST")
+    with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+        return resp.status
+
+
+def main(argv: list[str]) -> int:
+    if len(argv) < 2:
+        log("usage: custom-grokbot <alert_file> [api_key] [hook_url]")
+        return 2
+    try:
+        alert = json.loads(Path(argv[1]).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as e:
+        log(f"cannot read alert file: {type(e).__name__}")
+        return 1
+
+    kv: dict[str, str] = {}
+    if ENV_FILE.is_file():
+        try:
+            kv = load_env(ENV_FILE)
+        except (OSError, PermissionError) as e:
+            log(f"env file rejected: {e}")
+            return 1
+    url = kv.get("GROKBOT_WEBHOOK_URL") or (argv[3] if len(argv) > 3 else "")
+    key = kv.get("GROKBOT_WEBHOOK_KEY") or (argv[2] if len(argv) > 2 else "")
+    if not url.startswith("https://"):
+        log("GROKBOT_WEBHOOK_URL missing or not https; nothing sent")
+        return 1
+    header = kv.get("GROKBOT_AUTH_HEADER", "Authorization") or "Authorization"
+    scheme = kv.get("GROKBOT_AUTH_SCHEME", "Bearer")
+    dedup_s = int(kv.get("GROKBOT_DEDUP_SECONDS", "300") or 0)
+    max_per_min = int(kv.get("GROKBOT_MAX_PER_MINUTE", "20") or 20)
+
+    payload = build_payload(alert)
+    ok, why = should_send(payload, dedup_s, max_per_min)
+    if not ok:
+        log(f"suppressed rule {payload['rule'].get('id')}: {why}")
+        return 0
+    try:
+        status = post(url, key, header, scheme, payload)
+    except urllib.error.HTTPError as e:
+        log(f"HTTP {e.code} for rule {payload['rule'].get('id')}")
+        return 1
+    except Exception as e:  # network errors: never echo URL or key
+        log(f"post failed for rule {payload['rule'].get('id')}: {type(e).__name__}")
+        return 1
+    log(f"sent rule {payload['rule'].get('id')} level {payload['rule'].get('level')} -> HTTP {status}")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))
