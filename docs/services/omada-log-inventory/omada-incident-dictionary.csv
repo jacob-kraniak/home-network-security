@@ -1,0 +1,104 @@
+anomalyCode,inControllerList,category,categoryName,objectType,level,levelName,paramsObserved,name,definition
+01003014,True,11,Access,wirelessClient,2,Warning,{},Client failed to connect,The client connection failed.
+01003016,True,11,Access,wirelessClient,2,Warning,{},Client failed to obtain IP,The client failed to obtain an IP address.
+03003008,True,11,Access,switch,2,Warning,{},Interface IP address conflict,An Interface IP address conflict was detected.
+03003009,True,11,Access,switch,2,Warning,{},DHCP server conflicted,A DHCP server conflict was detected.
+02003001,True,11,Access,gateway,3,Info,{},Gateway client limit reached,The number of connected clients has reached the device's limit.
+03003003,True,12,Authentication,wiredClient,1,Error,{},Switch 802.1X authentication failure,Switch 802.1X authentication failed.
+04003001,True,12,Authentication,wirelessClient,2,Warning,{},Client Portal authentication failure,Client Portal authentication failed.
+04003002,True,12,Authentication,wirelessClient,2,Warning,"{""threshold"":2}",Client Portal authentication too slow,The client takes ≥ %threshold% s to communicate with a device/external service during portal authentication.
+03003006,True,12,Authentication,wiredClient,3,Info,"{""threshold"":3000}",Switch 802.1X authentication took too long,Switch 802.1X authentication took too long.
+01004002,True,13,Roaming,wirelessClient,3,Info,"{""threshold"":4}",Client ping-pong roaming,"Within 5 min, the client roams between different bands of one AP or different APs %threshold% or more times."
+01004005,True,13,Roaming,wirelessClient,3,Info,{},Client sticky roaming,The client is unable to roam.
+01009002,True,14,Wireless Network,ap,2,Warning,"{""count"":80,""threshold"":70}",AP channel utilization too high,"Within 15 min, the percentage of channel utilization samples exceeding %threshold%% is ≥ %count%%."
+01009009,True,14,Wireless Network,ap,2,Warning,"{""count"":80,""threshold"":-85}",AP noise floor too high,"Within 15 min, the percentage of noise floor samples exceeding %threshold% dBm is ≥ %count%%."
+01009010,True,14,Wireless Network,ap,2,Warning,"{""count"":80,""threshold"":50}",AP wireless interference rate too high,"Within 15 min, the percentage of interference rate samples exceeding %threshold%% is ≥ %count%%."
+01009001,True,14,Wireless Network,wirelessClient,3,Info,"{""count"":80,""threshold"":20}",Client SNR exception,"Within 15 min, the percentage of SNR samples below %threshold% dB is ≥ %count%%."
+01009003,True,14,Wireless Network,wirelessClient,3,Info,"{""count"":80}",Client negotiation rate exception,"Within 15 min, the percentage of abnormal negotiation rate samples is ≥ %count%%."
+03005010,True,15,Wired Network,switch,1,Error,{},Illegal multicast packet,Illegal multicast packet was detected.
+03005006,True,15,Wired Network,switch,2,Warning,{},Host routing entry overflow,Host routing entry overflow was detected.
+03005007,True,15,Wired Network,switch,2,Warning,{},ARP table overflow,ARP table overflow was detected.
+03005009,True,15,Wired Network,switch,2,Warning,{},Multicast table overflow was detected,Multicast table overflow was detected.
+03009001,True,15,Wired Network,switch,2,Warning,"{""count"":80,""threshold"":90}",Switch port traffic too high,"Within 15 min, %count%% of the port traffic rate samples exceed %threshold%% of the maximum bandwidth of the port."
+03009002,True,15,Wired Network,switch,2,Warning,"{""count"":80,""threshold"":50}",Switch LAG Group member port load too different,"Within 15 min, the difference between the highest and lowest member port rates exceeds %threshold%% in %count%% of the samples."
+03009003,True,15,Wired Network,switch,2,Warning,"{""count"":80,""threshold"":50}",Switch port packet loss rate too high,"Within 15 min, %count%% of packet loss rate samples of a single port exceed %threshold%%."
+03009004,True,15,Wired Network,switch,2,Warning,{},Storm control event,A storm control event occurred.
+03001001,True,16,Link,switch,1,Error,{},Loop detected,A loop was detected.
+03005005,True,16,Link,switch,1,Error,{},LACP convergence failure,LACP convergence failed.
+03007013,True,16,Link,switch,1,Error,"{""count"":80,""threshold"":90}",Switch port detects error packets,The port detected error packets.
+03005004,True,16,Link,switch,2,Warning,"{""timeRange_s"":30,""changedTimes"":10}",Repeated address migrations,"Within %timeRange_s% s, the same MAC address migrated between different ports in the same VLAN %changedTimes% times."
+03007015,True,16,Link,switch,2,Warning,"{""changedTimes"":4,""timeRange"":1}",Switch Port goes up/down frequently,"Within %timeRange% min, the port up/down status changed %changedTimes% times or more."
+02005003,True,17,WAN & Services,gateway,0,Critical,{},DDNS service abnormal,DDNS service is abnormal.
+02009001,True,17,WAN & Services,gateway,2,Warning,"{""count"":80,""threshold"":90}",Gateway WAN port bandwidth utilization rate too high,"Within 15 min, %count%% of WAN port traffic samples exceed %threshold%% of the Bandwidth Control value or %threshold%% of the WAN port physical bandwidth."
+02009003,True,17,WAN & Services,gateway,2,Warning,"{""count"":80,""threshold"":3000}",Gateway WAN port latency too high,"Within 15 min, %count%% of the WAN port latency samples exceed %threshold% ms."
+02005002,True,17,WAN & Services,gateway,3,Info,{},VPN connection failure,VPN connection failed.
+01001001,True,18,Device Status,ap,0,Critical,"{""offlineCount"":2}",AP frequently offline,"Within 1 hour, the AP goes offline %offlineCount% or more times."
+01001003,True,18,Device Status,ap,0,Critical,"{""disconnectApPercent"":60,""disconnectCount"":5,""avgDisconnectCount"":2}",APs on site going offline in batches,"When the total number of online APs is ≥ 6, the average number of APs going offline within 1 hour is ≥ %avgDisconnectCount%, the percentage of offline APs is ≥ %disconnectApPercent%%, or the number of offline APs is ≥ %disconnectCount%."
+02001001,True,18,Device Status,gateway,0,Critical,"{""offlineCount"":4}",Gateway goes offline from the controller frequently,"Within 1 hour, the gateway goes offline %offlineCount% or more times."
+01007001,True,18,Device Status,ap,2,Warning,"{""count"":80,""threshold"":90}",AP CPU utilization rate too high,"Within 10 min, the percentage of CPU samples at or above %threshold%% is ≥ %count%%."
+02007002,True,18,Device Status,gateway,2,Warning,"{""count"":80,""threshold"":90}",Gateway CPU utilization rate too high,"Within 10 min, the percentage of CPU samples at %threshold%% or higher is ≥ %count%%."
+03001002,True,18,Device Status,switch,2,Warning,"{""offlineCount"":4}",Switch goes offline frequently,"Within 1 hour, the switch goes offline %offlineCount% or more times."
+03007009,True,18,Device Status,switch,2,Warning,{},Excessive PoE power,PoE power exceeds limit.
+03007011,True,18,Device Status,switch,2,Warning,"{""count"":80,""threshold"":90}",Switch CPU utilization rate too high,"Within 10 min, the percentage of CPU samples at %threshold%% or higher is ≥ %count%%."
+03007016,True,18,Device Status,switch,2,Warning,{},Abnormal optical module DDM,The optical module has abnormal parameters.
+02008001,True,19,Security,gateway,2,Warning,{},Unauthorized log in from a gateway,"Within 10 min, an unauthorized user attempted to log in to the device via the serial port/TELNET/SSH/WEB."
+02008002,True,19,Security,gateway,2,Warning,{},Gateway WAN or LAN port detected attack packets,Gateway WAN or LAN port detected attack packets.
+03008001,True,19,Security,switch,2,Warning,"{""retryCnt"":1}",Unauthorized log in from a switch,"Within 10 min, an unauthorized user attempted to log in to the device via the serial port/TELNET/SSH/WEB %retryCnt% or more times."
+01002001,False,,,,,,{},AP receiving weak mesh signals,"Within 15 min, the percentage of AP RSSI samples at or below %threshold% dBm is ≥ %count%%."
+01002003,False,,,,,,{},Uplink AP offline,Uplink AP is offline.
+01002004,False,,,,,,{},Uplink AP disconnected and device out of range of other APs,"The uplink AP is disconnected, and the device is not within the detection range of other APs."
+01002005,False,,,,,,{},Mesh AP isolated,Mesh AP is in the Isolated state.
+01003001,False,,,,,,{},Client association failure,The client association failed.
+01003002,False,,,,,,{},Client frequently offline,"Within 15 min, the client goes offline %offlineCount% or more times."
+01003004,False,,,,,,{},Low client association success rate,"Within 1 hour, the number of client associations is ≥ 8, and the association success rate is ≤ %threshold%%."
+01003005,False,,,,,,{},Client authentication failure,The client authentication failed.
+01003007,False,,,,,,{},Low client authentication success rate,"Within 1 hour, the number of client authentications is ≥ 8, and the authentication success rate is ≤ %threshold%%."
+01003010,False,,,,,,{},Low AP client association success rate,"Within 1 hour, the number of associated clients under the AP is ≥ 8, the total number of associations is ≥ 8, and the success rate of all association events is ≤ %threshold%%."
+01003011,False,,,,,,{},Low AP client authentication success rate,"Within 1 hour, the number of authenticated clients under the AP is ≥ 8, the total number of authentications is ≥ 8, and the success rate of all authentication events is ≤ %threshold%%."
+01003013,False,,,,,,{},Abnormal client disconnection,The client disconnected abnormally.
+01003015,False,,,,,,{},Client slow to connect,The client takes ≥ %threshold% ms to complete association and authentication.
+01003017,False,,,,,,{},Client slow to obtain IP,The client takes ≥ %threshold% ms to obtain an IP address.
+01004001,False,,,,,,{},Low AP client roaming success rate,"Within 1 hour, the successful roaming rate is ≤ %threshold%%."
+01004003,False,,,,,,{},Client roams frequently,"Within 1 hour, the client roams %threshold% or more times."
+01004004,False,,,,,,{},Client roams slowly,"Within 1 hour, the percentage of all client roaming times exceeding %duration% s is > %threshold%%."
+01006001,False,,,,,,{},Abnormal AP reboot,The AP rebooted abnormally.
+01007003,False,,,,,,{},AP temperature too high,"Within 10 min, the device's temperature is too high."
+01009004,False,,,,,,{},Client negotiation rate distribution exception,"Within 15 min, on the 2.4 GHz band, the percentage of the samples of the client's normal negotiation rate under the AP is ≤ %count2g%%.
+Within 15 min, on the 5 GHz band, the percentage of the samples of the client's normal negotiation rate under the AP is ≤ %count5g%%.
+Within 15 min, on the 5 GHz-2 band, the percentage of the samples of the client's normal negotiation rate under the AP is ≤ %count5g2%%.
+Within 15 min, on the 6 GHz band, the percentage of the samples of the client's normal negotiation rate under the AP is ≤ %count6g%%."
+01009006,False,,,,,,{},Client interferes with low negotiation rate,"Within 15 min, on the 2.4 GHz band, the client negotiation rate is abnormal, the throughput is ≥ %throughput2g% Mb, and the channel utilization rate of this band is ≥ %util2g%%.
+Within 15 min, on the 5 GHz band, the client negotiation rate is abnormal, the throughput is ≥ %throughput5g% Mb, and the channel utilization rate of this band is ≥ %util5g%%.
+Within 15 min, on the 5 GHz-2 band, the client negotiation rate is abnormal, the throughput is ≥ %throughput5g2% Mb, and the channel utilization rate of this band is ≥ %util5g2%%.
+Within 15 min, on the 6 GHz band, the client negotiation rate is abnormal, the throughput is ≥ %throughput6g% Mb, and the channel utilization rate of this band is ≥ %util6g%%."
+01009007,False,,,,,,{},Client retransmission rate too high,"Within 15 min, the percentage of the client retransmission rate samples exceeding %threshold%% is ≥ %count%%."
+01009008,False,,,,,,{},Client packet loss rate too high,"Within 15 min, the percentage of the client packet loss rate samples exceeding %threshold%% is ≥ %count%%."
+01009011,False,,,,,,{},AP retransmission rate too high,"Within 15 min, on the 2.4 GHz band, the percentage of the AP retransmission rate samples exceeding %threshold2g%% is ≥ %count2g%%.
+Within 15 min, on the 5 GHz band, the percentage of the AP retransmission rate samples exceeding %threshold5g%% is ≥ %count5g%%.
+Within 15 min, on the 5 GHz-2 band, the percentage of the AP retransmission rate samples exceeding %threshold5g2%% is ≥ %count5g2%%.
+Within 15 min, on the 6 GHz band, the percentage of the AP retransmission rate samples exceeding %threshold6g%% is ≥ %count6g%%."
+01009012,False,,,,,,{},AP packet loss rate too high,"Within 15 min, on the 2.4 GHz band, the percentage of the AP packet loss rate samples exceeding %threshold2g%% is ≥ %count2g%%.
+Within 15 min, on the 5 GHz band, the percentage of the AP packet loss rate samples exceeding %threshold5g%% is ≥ %count5g%%.
+Within 15 min, on the 5 GHz-2 band, the percentage of the AP packet loss rate samples exceeding %threshold5g2%% is ≥ %count5g2%%.
+Within 15 min, on the 6 GHz band, the percentage of the AP packet loss rate samples exceeding %threshold6g%% is ≥ %count6g%%."
+01010001,False,,,,,,{},Client signal strength distribution exception,"Within 15 min, less than %ratio2g%% of clients on the 2.4 GHz band have a signal strength between %lowerThreshold2g% dBm and %upperThreshold2g% dBm.
+Within 15 min, less than %ratio5g%% of clients on the 5 GHz band have a signal strength between %lowerThreshold5g% dBm and %upperThreshold5g% dBm.
+Within 15 min, less than %ratio5g2%% of clients on the 5 GHz-2 band have a signal strength between %lowerThreshold5g2% dBm and %upperThreshold5g2% dBm.
+Within 15 min, less than %ratio6g%% of clients on the 6 GHz band have a signal strength between %lowerThreshold6g% dBm and %upperThreshold6g% dBm."
+03003005,False,,,,,,{},Layer 3 interface down,Layer 3 interface is down.
+03003010,False,,,,,,{},DHCP address pool warning,More than %addressPoolRate%% of the address pool’s available resources have been allocated.
+03003011,False,,,,,,{},DHCP address pool exhausted,The DHCP address pool is exhausted.
+03005003,False,,,,,,{},Address table overflow alarm,The number of MAC addresses reached 99% of the maximum value that the device can learn.
+03007001,False,,,,,,{},Switch temperature too high,"Within 10 min, switch temperature is too high."
+03007006,False,,,,,,{},PoE power supply disruption,The PoE stopped supplying power.
+03007008,False,,,,,,{},PoE short circuit,The PoE short circuited.
+03007017,False,,,,,,{},Optical module DDM below threshold,The optical module DDM is below the threshold.
+03007018,False,,,,,,{},Optical module not recognized,The optical module cannot be recognized.
+03003001,False,,,,,,{},802.1X authentication success rate too low,"Within 1 hour, the 802.1X authentication success rate is lower than %successRate%%."
+03003002,False,,,,,,{},802.1X authentication takes too long,"Within 1 hour, %count%% of the sampling data exceeds %threshold% ms."
+02005004,False,,,,,,{},DNS service abnormal,DNS service is abnormal.
+02007001,False,,,,,,{},Gateway fan abnormal,Gateway fan is abnormal.
+02007003,False,,,,,,{},Gateway temperature too high,"Within 10 min, the device's temperature is too high."
+02009002,False,,,,,,{},Gateway WAN port packet loss rate too high,"Within 15 min, %count%% of the WAN port packet loss rate samples exceed %threshold%%."
+06003001,False,,,,,,{},site's successful portal authentication rate too low,"Within 1 hour, in the site, the clients' portal authentication success rate is less than or equal to %threshold%%."
+02005001,False,,,,,,{},WAN port dial-up failed,WAN port dial-up failed.

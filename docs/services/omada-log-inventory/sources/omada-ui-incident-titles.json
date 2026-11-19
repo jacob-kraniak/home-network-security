@@ -1,0 +1,450 @@
+{
+  "meta": {
+    "name": "Omada incident type titles and definitions",
+    "source": "Omada controller web UI bundle (version per README). Extracted from the Settings-page incident dictionary (title + content), not from the longer analysis-view templates.",
+    "note": "{SITE} and {SITE_LOWER} are UI i18n placeholders for the word “site”, not a site name or ID.",
+    "count": 88
+  },
+  "entries": [
+    {
+      "anomalyCode": "01001001",
+      "title": "AP frequently offline",
+      "content": "Within 1 hour, the AP goes offline %offlineCount% or more times."
+    },
+    {
+      "anomalyCode": "01001003",
+      "title": "APs on {SITE_LOWER} going offline in batches",
+      "content": "When the total number of online APs is ≥ 6, the average number of APs going offline within 1 hour is ≥ %avgDisconnectCount%, the percentage of offline APs is ≥ %disconnectApPercent%%, or the number of offline APs is ≥ %disconnectCount%."
+    },
+    {
+      "anomalyCode": "01002001",
+      "title": "AP receiving weak mesh signals",
+      "content": "Within 15 min, the percentage of AP RSSI samples at or below %threshold% dBm is ≥ %count%%."
+    },
+    {
+      "anomalyCode": "01002003",
+      "title": "Uplink AP offline",
+      "content": "Uplink AP is offline."
+    },
+    {
+      "anomalyCode": "01002004",
+      "title": "Uplink AP disconnected and device out of range of other APs",
+      "content": "The uplink AP is disconnected, and the device is not within the detection range of other APs."
+    },
+    {
+      "anomalyCode": "01002005",
+      "title": "Mesh AP isolated",
+      "content": "Mesh AP is in the Isolated state."
+    },
+    {
+      "anomalyCode": "01003001",
+      "title": "Client association failure",
+      "content": "The client association failed."
+    },
+    {
+      "anomalyCode": "01003002",
+      "title": "Client frequently offline",
+      "content": "Within 15 min, the client goes offline %offlineCount% or more times."
+    },
+    {
+      "anomalyCode": "01003004",
+      "title": "Low client association success rate",
+      "content": "Within 1 hour, the number of client associations is ≥ 8, and the association success rate is ≤ %threshold%%."
+    },
+    {
+      "anomalyCode": "01003005",
+      "title": "Client authentication failure",
+      "content": "The client authentication failed."
+    },
+    {
+      "anomalyCode": "01003007",
+      "title": "Low client authentication success rate",
+      "content": "Within 1 hour, the number of client authentications is ≥ 8, and the authentication success rate is ≤ %threshold%%."
+    },
+    {
+      "anomalyCode": "01003010",
+      "title": "Low AP client association success rate",
+      "content": "Within 1 hour, the number of associated clients under the AP is ≥ 8, the total number of associations is ≥ 8, and the success rate of all association events is ≤ %threshold%%."
+    },
+    {
+      "anomalyCode": "01003011",
+      "title": "Low AP client authentication success rate",
+      "content": "Within 1 hour, the number of authenticated clients under the AP is ≥ 8, the total number of authentications is ≥ 8, and the success rate of all authentication events is ≤ %threshold%%."
+    },
+    {
+      "anomalyCode": "01003013",
+      "title": "Abnormal client disconnection",
+      "content": "The client disconnected abnormally."
+    },
+    {
+      "anomalyCode": "01003014",
+      "title": "Client failed to connect",
+      "content": "The client connection failed."
+    },
+    {
+      "anomalyCode": "01003015",
+      "title": "Client slow to connect",
+      "content": "The client takes ≥ %threshold% ms to complete association and authentication."
+    },
+    {
+      "anomalyCode": "01003016",
+      "title": "Client failed to obtain IP",
+      "content": "The client failed to obtain an IP address."
+    },
+    {
+      "anomalyCode": "01003017",
+      "title": "Client slow to obtain IP",
+      "content": "The client takes ≥ %threshold% ms to obtain an IP address."
+    },
+    {
+      "anomalyCode": "01004001",
+      "title": "Low AP client roaming success rate",
+      "content": "Within 1 hour, the successful roaming rate is ≤ %threshold%%."
+    },
+    {
+      "anomalyCode": "01004002",
+      "title": "Client ping-pong roaming",
+      "content": "Within 5 min, the client roams between different bands of one AP or different APs %threshold% or more times."
+    },
+    {
+      "anomalyCode": "01004003",
+      "title": "Client roams frequently",
+      "content": "Within 1 hour, the client roams %threshold% or more times."
+    },
+    {
+      "anomalyCode": "01004004",
+      "title": "Client roams slowly",
+      "content": "Within 1 hour, the percentage of all client roaming times exceeding %duration% s is > %threshold%%."
+    },
+    {
+      "anomalyCode": "01004005",
+      "title": "Client sticky roaming",
+      "content": "The client is unable to roam."
+    },
+    {
+      "anomalyCode": "01006001",
+      "title": "Abnormal AP reboot",
+      "content": "The AP rebooted abnormally."
+    },
+    {
+      "anomalyCode": "01007001",
+      "title": "AP CPU utilization rate too high",
+      "content": "Within 10 min, the percentage of CPU samples at or above %threshold%% is ≥ %count%%."
+    },
+    {
+      "anomalyCode": "01007003",
+      "title": "AP temperature too high",
+      "content": "Within 10 min, the device's temperature is too high."
+    },
+    {
+      "anomalyCode": "01009001",
+      "title": "Client SNR exception",
+      "content": "Within 15 min, the percentage of SNR samples below %threshold% dB is ≥ %count%%."
+    },
+    {
+      "anomalyCode": "01009002",
+      "title": "AP channel utilization too high",
+      "content": "Within 15 min, the percentage of channel utilization samples exceeding %threshold%% is ≥ %count%%."
+    },
+    {
+      "anomalyCode": "01009003",
+      "title": "Client negotiation rate exception",
+      "content": "Within 15 min, the percentage of abnormal negotiation rate samples is ≥ %count%%."
+    },
+    {
+      "anomalyCode": "01009004",
+      "title": "Client negotiation rate distribution exception",
+      "content": "Within 15 min, on the 2.4 GHz band, the percentage of the samples of the client's normal negotiation rate under the AP is ≤ %count2g%%.\nWithin 15 min, on the 5 GHz band, the percentage of the samples of the client's normal negotiation rate under the AP is ≤ %count5g%%.\nWithin 15 min, on the 5 GHz-2 band, the percentage of the samples of the client's normal negotiation rate under the AP is ≤ %count5g2%%.\nWithin 15 min, on the 6 GHz band, the percentage of the samples of the client's normal negotiation rate under the AP is ≤ %count6g%%."
+    },
+    {
+      "anomalyCode": "01009006",
+      "title": "Client interferes with low negotiation rate",
+      "content": "Within 15 min, on the 2.4 GHz band, the client negotiation rate is abnormal, the throughput is ≥ %throughput2g% Mb, and the channel utilization rate of this band is ≥ %util2g%%.\nWithin 15 min, on the 5 GHz band, the client negotiation rate is abnormal, the throughput is ≥ %throughput5g% Mb, and the channel utilization rate of this band is ≥ %util5g%%.\nWithin 15 min, on the 5 GHz-2 band, the client negotiation rate is abnormal, the throughput is ≥ %throughput5g2% Mb, and the channel utilization rate of this band is ≥ %util5g2%%.\nWithin 15 min, on the 6 GHz band, the client negotiation rate is abnormal, the throughput is ≥ %throughput6g% Mb, and the channel utilization rate of this band is ≥ %util6g%%."
+    },
+    {
+      "anomalyCode": "01009007",
+      "title": "Client retransmission rate too high",
+      "content": "Within 15 min, the percentage of the client retransmission rate samples exceeding %threshold%% is ≥ %count%%."
+    },
+    {
+      "anomalyCode": "01009008",
+      "title": "Client packet loss rate too high",
+      "content": "Within 15 min, the percentage of the client packet loss rate samples exceeding %threshold%% is ≥ %count%%."
+    },
+    {
+      "anomalyCode": "01009009",
+      "title": "AP noise floor too high",
+      "content": "Within 15 min, the percentage of noise floor samples exceeding %threshold% dBm is ≥ %count%%."
+    },
+    {
+      "anomalyCode": "01009010",
+      "title": "AP wireless interference rate too high",
+      "content": "Within 15 min, the percentage of interference rate samples exceeding %threshold%% is ≥ %count%%."
+    },
+    {
+      "anomalyCode": "01009011",
+      "title": "AP retransmission rate too high",
+      "content": "Within 15 min, on the 2.4 GHz band, the percentage of the AP retransmission rate samples exceeding %threshold2g%% is ≥ %count2g%%.\nWithin 15 min, on the 5 GHz band, the percentage of the AP retransmission rate samples exceeding %threshold5g%% is ≥ %count5g%%.\nWithin 15 min, on the 5 GHz-2 band, the percentage of the AP retransmission rate samples exceeding %threshold5g2%% is ≥ %count5g2%%.\nWithin 15 min, on the 6 GHz band, the percentage of the AP retransmission rate samples exceeding %threshold6g%% is ≥ %count6g%%."
+    },
+    {
+      "anomalyCode": "01009012",
+      "title": "AP packet loss rate too high",
+      "content": "Within 15 min, on the 2.4 GHz band, the percentage of the AP packet loss rate samples exceeding %threshold2g%% is ≥ %count2g%%.\nWithin 15 min, on the 5 GHz band, the percentage of the AP packet loss rate samples exceeding %threshold5g%% is ≥ %count5g%%.\nWithin 15 min, on the 5 GHz-2 band, the percentage of the AP packet loss rate samples exceeding %threshold5g2%% is ≥ %count5g2%%.\nWithin 15 min, on the 6 GHz band, the percentage of the AP packet loss rate samples exceeding %threshold6g%% is ≥ %count6g%%."
+    },
+    {
+      "anomalyCode": "01010001",
+      "title": "Client signal strength distribution exception",
+      "content": "Within 15 min, less than %ratio2g%% of clients on the 2.4 GHz band have a signal strength between %lowerThreshold2g% dBm and %upperThreshold2g% dBm.\nWithin 15 min, less than %ratio5g%% of clients on the 5 GHz band have a signal strength between %lowerThreshold5g% dBm and %upperThreshold5g% dBm.\nWithin 15 min, less than %ratio5g2%% of clients on the 5 GHz-2 band have a signal strength between %lowerThreshold5g2% dBm and %upperThreshold5g2% dBm.\nWithin 15 min, less than %ratio6g%% of clients on the 6 GHz band have a signal strength between %lowerThreshold6g% dBm and %upperThreshold6g% dBm."
+    },
+    {
+      "anomalyCode": "03001001",
+      "title": "Loop detected",
+      "content": "A loop was detected."
+    },
+    {
+      "anomalyCode": "03001002",
+      "title": "Switch goes offline frequently",
+      "content": "Within 1 hour, the switch goes offline %offlineCount% or more times."
+    },
+    {
+      "anomalyCode": "03003005",
+      "title": "Layer 3 interface down",
+      "content": "Layer 3 interface is down."
+    },
+    {
+      "anomalyCode": "03003006",
+      "title": "Switch 802.1X authentication took too long",
+      "content": "Switch 802.1X authentication took too long."
+    },
+    {
+      "anomalyCode": "03003008",
+      "title": "Interface IP address conflict",
+      "content": "An Interface IP address conflict was detected."
+    },
+    {
+      "anomalyCode": "03003009",
+      "title": "DHCP server conflicted",
+      "content": "A DHCP server conflict was detected."
+    },
+    {
+      "anomalyCode": "03003010",
+      "title": "DHCP address pool warning",
+      "content": "More than %addressPoolRate%% of the address pool’s available resources have been allocated."
+    },
+    {
+      "anomalyCode": "03003011",
+      "title": "DHCP address pool exhausted",
+      "content": "The DHCP address pool is exhausted."
+    },
+    {
+      "anomalyCode": "03005003",
+      "title": "Address table overflow alarm",
+      "content": "The number of MAC addresses reached 99% of the maximum value that the device can learn."
+    },
+    {
+      "anomalyCode": "03005004",
+      "title": "Repeated address migrations",
+      "content": "Within %timeRange_s% s, the same MAC address migrated between different ports in the same VLAN %changedTimes% times."
+    },
+    {
+      "anomalyCode": "03005005",
+      "title": "LACP convergence failure",
+      "content": "LACP convergence failed."
+    },
+    {
+      "anomalyCode": "03005006",
+      "title": "Host routing entry overflow",
+      "content": "Host routing entry overflow was detected."
+    },
+    {
+      "anomalyCode": "03005007",
+      "title": "ARP table overflow",
+      "content": "ARP table overflow was detected."
+    },
+    {
+      "anomalyCode": "03005009",
+      "title": "Multicast table overflow was detected",
+      "content": "Multicast table overflow was detected."
+    },
+    {
+      "anomalyCode": "03005010",
+      "title": "Illegal multicast packet",
+      "content": "Illegal multicast packet was detected."
+    },
+    {
+      "anomalyCode": "03007001",
+      "title": "Switch temperature too high",
+      "content": "Within 10 min, switch temperature is too high."
+    },
+    {
+      "anomalyCode": "03007006",
+      "title": "PoE power supply disruption",
+      "content": "The PoE stopped supplying power."
+    },
+    {
+      "anomalyCode": "03007008",
+      "title": "PoE short circuit",
+      "content": "The PoE short circuited."
+    },
+    {
+      "anomalyCode": "03007009",
+      "title": "Excessive PoE power",
+      "content": "PoE power exceeds limit."
+    },
+    {
+      "anomalyCode": "03007011",
+      "title": "Switch CPU utilization rate too high",
+      "content": "Within 10 min, the percentage of CPU samples at %threshold%% or higher is ≥ %count%%."
+    },
+    {
+      "anomalyCode": "03007013",
+      "title": "Switch port detects error packets",
+      "content": "The port detected error packets."
+    },
+    {
+      "anomalyCode": "03007015",
+      "title": "Switch Port goes up/down frequently",
+      "content": "Within %timeRange% min, the port up/down status changed %changedTimes% times or more."
+    },
+    {
+      "anomalyCode": "03007016",
+      "title": "Abnormal optical module DDM",
+      "content": "The optical module has abnormal parameters."
+    },
+    {
+      "anomalyCode": "03007017",
+      "title": "Optical module DDM below threshold",
+      "content": "The optical module DDM is below the threshold."
+    },
+    {
+      "anomalyCode": "03007018",
+      "title": "Optical module not recognized",
+      "content": "The optical module cannot be recognized."
+    },
+    {
+      "anomalyCode": "03008001",
+      "title": "Unauthorized log in from a switch",
+      "content": "Within 10 min, an unauthorized user attempted to log in to the device via the serial port/TELNET/SSH/WEB %retryCnt% or more times."
+    },
+    {
+      "anomalyCode": "03009001",
+      "title": "Switch port traffic too high",
+      "content": "Within 15 min, %count%% of the port traffic rate samples exceed %threshold%% of the maximum bandwidth of the port."
+    },
+    {
+      "anomalyCode": "03009002",
+      "title": "Switch LAG Group member port load too different",
+      "content": "Within 15 min, the difference between the highest and lowest member port rates exceeds %threshold%% in %count%% of the samples."
+    },
+    {
+      "anomalyCode": "03009003",
+      "title": "Switch port packet loss rate too high",
+      "content": "Within 15 min, %count%% of packet loss rate samples of a single port exceed %threshold%%."
+    },
+    {
+      "anomalyCode": "03009004",
+      "title": "Storm control event",
+      "content": "A storm control event occurred."
+    },
+    {
+      "anomalyCode": "03003001",
+      "title": "802.1X authentication success rate too low",
+      "content": "Within 1 hour, the 802.1X authentication success rate is lower than %successRate%%."
+    },
+    {
+      "anomalyCode": "03003002",
+      "title": "802.1X authentication takes too long",
+      "content": "Within 1 hour, %count%% of the sampling data exceeds %threshold% ms."
+    },
+    {
+      "anomalyCode": "03003003",
+      "title": "Switch 802.1X authentication failure",
+      "content": "Switch 802.1X authentication failed."
+    },
+    {
+      "anomalyCode": "02001001",
+      "title": "Gateway goes offline from the controller frequently",
+      "content": "Within 1 hour, the gateway goes offline %offlineCount% or more times."
+    },
+    {
+      "anomalyCode": "02005002",
+      "title": "VPN connection failure",
+      "content": "VPN connection failed."
+    },
+    {
+      "anomalyCode": "02005003",
+      "title": "DDNS service abnormal",
+      "content": "DDNS service is abnormal."
+    },
+    {
+      "anomalyCode": "02005004",
+      "title": "DNS service abnormal",
+      "content": "DNS service is abnormal."
+    },
+    {
+      "anomalyCode": "02007001",
+      "title": "Gateway fan abnormal",
+      "content": "Gateway fan is abnormal."
+    },
+    {
+      "anomalyCode": "02007002",
+      "title": "Gateway CPU utilization rate too high",
+      "content": "Within 10 min, the percentage of CPU samples at %threshold%% or higher is ≥ %count%%."
+    },
+    {
+      "anomalyCode": "02007003",
+      "title": "Gateway temperature too high",
+      "content": "Within 10 min, the device's temperature is too high."
+    },
+    {
+      "anomalyCode": "02008001",
+      "title": "Unauthorized log in from a gateway",
+      "content": "Within 10 min, an unauthorized user attempted to log in to the device via the serial port/TELNET/SSH/WEB."
+    },
+    {
+      "anomalyCode": "02008002",
+      "title": "Gateway WAN or LAN port detected attack packets",
+      "content": "Gateway WAN or LAN port detected attack packets."
+    },
+    {
+      "anomalyCode": "02009001",
+      "title": "Gateway WAN port bandwidth utilization rate too high",
+      "content": "Within 15 min, %count%% of WAN port traffic samples exceed %threshold%% of the Bandwidth Control value or %threshold%% of the WAN port physical bandwidth."
+    },
+    {
+      "anomalyCode": "02009002",
+      "title": "Gateway WAN port packet loss rate too high",
+      "content": "Within 15 min, %count%% of the WAN port packet loss rate samples exceed %threshold%%."
+    },
+    {
+      "anomalyCode": "02009003",
+      "title": "Gateway WAN port latency too high",
+      "content": "Within 15 min, %count%% of the WAN port latency samples exceed %threshold% ms."
+    },
+    {
+      "anomalyCode": "02003001",
+      "title": "Gateway client limit reached",
+      "content": "The number of connected clients has reached the device's limit."
+    },
+    {
+      "anomalyCode": "04003001",
+      "title": "Client Portal authentication failure",
+      "content": "Client Portal authentication failed."
+    },
+    {
+      "anomalyCode": "04003002",
+      "title": "Client Portal authentication too slow",
+      "content": "The client takes ≥ %threshold% s to communicate with a device/external service during portal authentication."
+    },
+    {
+      "anomalyCode": "06003001",
+      "title": "{SITE}'s successful portal authentication rate too low",
+      "content": "Within 1 hour, in the {SITE_LOWER}, the clients' portal authentication success rate is less than or equal to %threshold%%."
+    },
+    {
+      "anomalyCode": "02005001",
+      "title": "WAN port dial-up failed",
+      "content": "WAN port dial-up failed."
+    }
+  ]
+}
