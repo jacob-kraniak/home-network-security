@@ -1,7 +1,7 @@
 # Omada event inventory: what reaches Wazuh (syslog) and Grok Bot (webhook)
 
 **Drafted:** 2026-11-17 (ET), **updated 2026-11-18** with the live global list [L1], on branch `feat/omada-wazuh-realtime`. **Controller:** Omada Software Controller 6.3 on CT 101. **Manager:** Wazuh 4.8.2 on CT 100 (#44).
-**Related:** [wazuh-omada-syslog.md](wazuh-omada-syslog.md) · [omada-webhook-evaluation.md](omada-webhook-evaluation.md) · rules [`omada_realtime_rules.xml`](../configs/wazuh/rules/omada_realtime_rules.xml) · read-only checker [`omada-log-inventory.py`](../configs/omada/omada-log-inventory.py)
+**Related:** [wazuh-omada-syslog.md](wazuh-omada-syslog.md) · [omada-webhook-evaluation.md](omada-webhook-evaluation.md) · rules [`omada_realtime_rules.xml`](../configs/wazuh/rules/omada_realtime_rules.xml) · read-only checker [`omada-log-inventory.py`](../configs/omada/omada-log-inventory.py) · [gap analysis and troubleshooting playbooks](omada-wazuh-gap-analysis.md)
 
 > **What exists:** the public [Omada alert/event dictionary](omada-log-inventory/README.md) is the source of truth for which alert/event types and audit categories exist (built from a live capture on 2026-11-18). This file is HNS-specific: it maps those types to our Wazuh rules and records how *this* lab's controller is wired to Wazuh. TP-Link docs ([S1]–[S9]) are secondary, used for menu paths and anything not captured yet (site audit categories).
 
