@@ -62,6 +62,7 @@ Unchanged. See prior revision for the Phase 1 tables.
 | | [docs/services/omada-event-inventory.md](../services/omada-event-inventory.md) | HNS mapping of Omada types to syslog, webhook and Wazuh rules (2026-11-18) |
 | | [docs/services/omada-webhook-evaluation.md](../services/omada-webhook-evaluation.md) | Direct Omada webhook evaluation (2026-11-17) |
 | | [docs/services/omada-wazuh-realtime-INSTALL-STEPS.md](../services/omada-wazuh-realtime-INSTALL-STEPS.md) | Manual install steps: rules, Grok Bot integration, collector/push (2026-11-18) |
+| | [docs/services/omada-wazuh-gap-analysis.md](../services/omada-wazuh-gap-analysis.md) | Omada → Wazuh gap analysis: coverage matrix, troubleshooting playbooks, P1–P3 gaps, verify-first checks (2026-11-19) |
 | | [docs/configs/wazuh/rules/omada_realtime_rules.xml](../configs/wazuh/rules/omada_realtime_rules.xml) · [integrations/custom-grokbot](../configs/wazuh/integrations/custom-grokbot) | Wazuh rules 100620–100649 and real-time integration |
 | | [docs/configs/lab-watch/](../configs/lab-watch/lab-status-collect.py) · [docs/configs/omada/](../configs/omada/build-omada-dictionary.py) | Lab status collector/push, Omada read-only checker and dictionary generator |
 | | [docs/services/pihole-dns.md](../services/pihole-dns.md) | Pi-hole DNS deployment + VLAN enablement (2026-10-14) |
