@@ -303,7 +303,7 @@ See [docs/ROADMAP.md](../ROADMAP.md) for high-level phases.
 |------|----------------|
 | Hardware | Lightweight **SFF / Tiny**, **~32 GB RAM**, **512 GB–1 TB** NVMe, wired NIC |
 | Management | **Proxmox cluster** when Host B joins (single host today); QDevice or third node for quorum. Proxmox only — no mixed hypervisors, no separate PDM layer (decided 2026-10-08) |
-| Plane CE | Dedicated **nesting LXC**: trial **2 vCPU / 4 GiB / 40 GiB**; lasting **4 vCPU / 8 GiB / 50 GiB+** (official CE: 4 GB min, **8 GB** prod recommend) |
+| Plane CE | Dedicated **nesting LXC**: trial **2 vCPU / 4 GiB / 40 GiB**; lasting **4 vCPU / 8 GiB / 50 GiB+** (official CE: 4 GB min, **8 GB** prod recommend). **Deferred 2026-11-20 (Plane Cloud in use).** |
 | Placement | Plane on **Host B**; CT 100/101 stay on M715q |
 
 
