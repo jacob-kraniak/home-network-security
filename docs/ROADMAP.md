@@ -6,6 +6,8 @@
 > **Prior checkpoints:** [2026-09-14](phases/phase-2-checkpoint-2026-09-14.md) (Omada on-prem) · [2026-09-05](phases/phase-2-checkpoint-2026-09-05.md)  
 > **Wazuh outage narrative:** [docs/phases/phase-2-baseline-2026-08-29.md](phases/phase-2-baseline-2026-08-29.md)
 >
+> **Wazuh 4.14.11 upgrade (2026-11-26):** [docs/services/wazuh-4.14-upgrade-2026-11-26.md](services/wazuh-4.14-upgrade-2026-11-26.md)
+>
 > **Phase 3 remote access:** [docs/phases/phase-3-remote-access.md](phases/phase-3-remote-access.md) · P0 [#34](https://github.com/jacob-kraniak/home-network-security/issues/34) · P0-next [#36](https://github.com/jacob-kraniak/home-network-security/issues/36) · P1 [#35](https://github.com/jacob-kraniak/home-network-security/issues/35)
 
 ## Phase 1: Network Build — Stable Family Foundation (Completed ✅)
@@ -27,7 +29,7 @@
 
 - **Host:** Lenovo M715q Tiny, node `debian`, PVE 9.2.4, `192.168.0.176`.
 - **RAM:** 2×8 GB DDR4 SO-DIMM (~14.6 GiB).
-- **CT 100 wazuh:** 6G RAM / 81G disk / `192.168.0.178`. Wazuh **4.8.2**; upgrade to 4.14.x not started ([#44](https://github.com/jacob-kraniak/home-network-security/issues/44)). Agents 003, 004, 005, 007; `006` is a stale duplicate of `007` ([#57](https://github.com/jacob-kraniak/home-network-security/issues/57)).
+- **CT 100 wazuh:** 6G RAM / 81G disk / `192.168.0.178`. Wazuh **4.14.11-1** (indexer, manager, dashboard; filebeat 7.10.2-2), upgraded 2026-11-26 from 4.8.2 ([note](services/wazuh-4.14-upgrade-2026-11-26.md), [#44](https://github.com/jacob-kraniak/home-network-security/issues/44)). Agents 002, 003, 004, and 005 are Active. `006` remains a stale duplicate of `007` ([#57](https://github.com/jacob-kraniak/home-network-security/issues/57)). `wazuh-analysisd -t` reports duplicate rule 100600 (cleanup before [#64](https://github.com/jacob-kraniak/home-network-security/issues/64)).
 - **CT 101 portainer:** 6G / 100G / `192.168.0.200`. Portainer + RustDesk + Omada 6.3 + NetBox.
 - **Omada:** `mbentley/omada-controller:6.3` (6.3.0.45). Inform / Controller Hostname **`192.168.0.200`**. Cloud CBC closed.
 - **NetBox:** `netboxcommunity/netbox:v4.7-5.1.1` at `http://192.168.0.200:8000`. Local UI healthy; Cloud archive pending reconcile. Issue [#28](https://github.com/jacob-kraniak/home-network-security/issues/28) closed as platform deploy; import still open in docs.
@@ -37,7 +39,7 @@
 
 **Immediate Next Steps (still Phase 2):**
 1. Import Cloud inventory into local NetBox; dual-run; keep on-prem as SoT; document count deltas
-2. Wazuh tuning (group `agent.conf` + `local_rules.xml`)
+2. Wazuh tuning (group `agent.conf` + `local_rules.xml`). On 2026-11-26, `wazuh-analysisd -t` flagged duplicate rule 100600 in `local_rules.xml` and `omada_controller_rules.xml` (cleanup before [#64](https://github.com/jacob-kraniak/home-network-security/issues/64); [upgrade note](services/wazuh-4.14-upgrade-2026-11-26.md)).
 3. Optional PVE Directory storage on `/mnt/seagate3tb/pve-backup`
 4. Model hypervisor + CTs + USB + Omada controller in NetBox
 5. One restore path written (vzdump / volume copy). Backup steps: [#48](https://github.com/jacob-kraniak/home-network-security/issues/48)
@@ -76,4 +78,4 @@ See [phase-3-remote-access.md](phases/phase-3-remote-access.md).
 **Risk Note:** Keep CT 100 disk well under 80% or vuln feeds will kill Wazuh again. Omada Controller Hostname must stay `192.168.0.200` (not Docker `172.19.0.2`). One fstab line only for the Seagate UUID. Do not WAN-publish NetBox `:8000`. Host RAM is tight (~14.6 GiB, two 6G CTs) — size the jump guest small; media go on Host B / NAS (Plane self-host deferred), not the M715q.  
 **Project Board:** https://github.com/users/jacob-kraniak/projects/1
 
-*Last updated: 2026-11-23 — gap analysis and troubleshooting playbooks merged (#62); Omada real-time rules + alert/incident dictionaries merged (#59, #60), not installed; Cronitor relay noted; Plane self-host deferred. Wazuh upgrade not started (#44), CT Notes updater merged but not installed (#50), agent list (#57). Phase 3 Host B / Plane sizing lives in SSR Compute Sizing (SoT); P0 L3 still first network exit.*
+*Last updated: 2026-11-26 — Wazuh on CT 100 upgraded 4.8.2 → 4.14.11-1; agents 002–005 Active; agent 006 removal still open (#44, #57, [upgrade note](services/wazuh-4.14-upgrade-2026-11-26.md)). Duplicate rule 100600 cleanup is before #64. Prior: gap analysis merged (#62); Omada real-time rules + dictionaries merged (#59, #60), not installed; Cronitor relay noted; Plane self-host deferred. CT Notes updater merged but not installed (#50). Phase 3 Host B / Plane sizing lives in SSR Compute Sizing (SoT); P0 L3 still first network exit.*
